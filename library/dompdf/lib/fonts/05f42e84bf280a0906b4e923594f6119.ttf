@@ -1,0 +1,10 @@
+<br />
+<b>Fatal error</b>:  Uncaught exception 'Zend_Acl_Exception' with message 'Resource 'bootstrap' not found' in C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Acl.php:365
+Stack trace:
+#0 C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Acl.php(846): Zend_Acl-&gt;get('bootstrap')
+#1 C:\xampp\htdocs\flexacademia\library\Sistema\Acl.php(105): Zend_Acl-&gt;isAllowed(NULL, 'bootstrap', 'css')
+#2 C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Controller\Plugin\Broker.php(309): Sistema_Acl-&gt;preDispatch(Object(Zend_Controller_Request_Http))
+#3 C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Controller\Front.php(941): Zend_Controller_Plugin_Broker-&gt;preDispatch(Object(Zend_Controller_Request_Http))
+#4 C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Application\Bootstrap\Bootstrap.php(97): Zend_Controller_Front-&gt;dispatch()
+#5 C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Application.php(366): Zend_Application_Bootstrap_Bootstrap-&gt;run()
+#6 C:\xampp\htd in <b>C:\xampp\ZendFramework-1.12.3\ZendFramework-1.12.3\library\Zend\Controller\Plugin\Broker.php</b> on line <b>312</b><br />
