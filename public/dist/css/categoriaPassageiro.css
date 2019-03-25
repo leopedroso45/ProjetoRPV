@@ -1,0 +1,11 @@
+body {
+	background-image: url("../img/fundo.jpg");
+	width: 100%;
+}
+.botao
+{
+background: url("../img/edicao.png");
+width: 30px;  // coloca a largura do botao
+height: 30px; // coloca a altura do botao
+border: none;
+}
