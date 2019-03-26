@@ -1,20 +1,94 @@
 <div class="container">
     <div class="row">
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cadastrar Ônibus Intermunicipal</li>
+                </ol>
+            </nav>
+            <form class="jumbotron" method="post" enctype="multipart/form-data">
+                <!--                <div class="alert alert-success" role="alert">
+                                    Cadastro realizado com sucesso!
+                                </div>-->
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Categoria</label>
+                    <select class="form-control" name="id_categoria_onibus" id="id_categoria_onibus">
+                        <option value="1">Comum</option>
+                        <option value="2">Leito</option>
+                        <option value="3">Executivo</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Placa</label>
+                        <input type="text" class="form-control" name="placa" id="placa">
+                    </div>
+                    <div class="col">
+                        <label>Ano</label>
+                        <input type="text" class="form-control" name="ano" id="ano">
+                    </div>
+                    <div class="col">
+                        <label>Km</label>
+                        <input type="text" class="form-control" name="km" id="km">
+                    </div>
+                    <div class="col">
+                        <label>Nº Assentos</label>
+                        <input type="text" class="form-control" name="numero_assentos" id="numero_assentos">
+                    </div>
+                    <div class="col">
+                        <label>Nº Passageiros</label>
+                        <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Chassi</label>
+                        <input type="text" class="form-control" name="chassi" id="chassi">
+                    </div>
+                    <div class="col">
+                        <label>Marca</label>
+                        <input type="text" class="form-control" name="marca" id="marca">
+                    </div>
+                    <div class="col">
+                        <label>Modelo</label>
+                        <input type="text" class="form-control" name="modelo" id="modelo">
+                    </div>
+                    <div class="col">
+                        <label>Nº Andares</label>
+                        <input type="text" class="form-control" name="andares" id="andares">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Ar-cond.</label>
+                        <input type="text" class="form-control" name="arcondicionado" id="arcondicionado">
+                    </div>
+                    <div class="col">
+                        <label>Cor</label>
+                        <input type="text" class="form-control" name="cor" id="cor">
+                    </div>
+                    <div class="col">
+                        <label>Renavam</label>
+                        <input type="text" class="form-control" name="renavam" id="renavam">
+                    </div>
+                    <div class="col">
+                        <label>Banheiro</label>
+                        <input type="text" class="form-control" name="banheiro" id="banheiro">
+                    </div>
+                    <div class="col">
+                        <label>Situação</label>
+                        <input type="text" class="form-control" name="situacao" id="situacao">
+                    </div>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            </form>
+        </div>
+        <div class="col-lg-2"></div>
     </div>
 </div>
+

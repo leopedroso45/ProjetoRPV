@@ -5,7 +5,7 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->_helper->layout->setLayout('layout_secretario');
     }
 
     public function indexAction()
@@ -15,7 +15,11 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
 
     public function cadastrarAction()
     {
-        
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbtableOnibusIntermunicipal = new Application_Model_DbTable_OnibusIntermunicipal();
+            $dbtableOnibusIntermunicipal->cadastrarOnibusIntermunicipal($dados);
+        }
     }
 
 }

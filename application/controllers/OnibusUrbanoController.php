@@ -5,7 +5,7 @@ class OnibusUrbanoController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->_helper->layout->setLayout('layout_secretario');
     }
 
     public function indexAction()
@@ -15,7 +15,11 @@ class OnibusUrbanoController extends Zend_Controller_Action
 
     public function cadastrarAction()
     {
-        
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbtableOnibusUrbano = new Application_Model_DbTable_OnibusUrbano();
+            $dbtableOnibusUrbano->cadastrarOnibusUrbano($dados);
+        }
     }
 
 }

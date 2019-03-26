@@ -3,7 +3,7 @@
 class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'onibusUrbano';
+    protected $_name = 'onibus_urbano';
     protected $_rowClass = "Application_Model_OnibusUrbano";
     
     public function cadastrarOnibusUrbano($dados)
@@ -12,7 +12,15 @@ class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
         /*@var $onibusUrbano Application_Model_OnibusUrbano*/
         $onibusUrbano->setPlaca($dados['placa']);
         $onibusUrbano->setChassi($dados['chassi']);
-        $onibusUrbano->setNumeroAssentos($dados['numero_assentos']);
+        $onibusUrbano->setAno($dados['ano']);
+        $onibusUrbano->setMarca($dados['marca']);
+        $onibusUrbano->setModelo($dados['modelo']);
+        $onibusUrbano->setRenavam($dados['renavam']);
+        $onibusUrbano->setCor($dados['cor']);
+        $onibusUrbano->setSituacao($dados['situacao']);
+        $onibusUrbano->setKm($dados['km']);
+        $onibusUrbano->setNumero_assentos($dados['numero_assentos']);
+        $onibusUrbano->setNumero_passageiros($dados['numero_passageiros']);
         
         return $onibusUrbano->save();
     }

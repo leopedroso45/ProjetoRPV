@@ -4,51 +4,70 @@
         <div class="col-lg-8">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Início</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Cadastrar Ônibus Urbano</li>
                 </ol>
             </nav>
             <form class="jumbotron" method="post" enctype="multipart/form-data">
+                <!--                <div class="alert alert-success" role="alert">
+                                    Cadastro realizado com sucesso!
+                                </div>-->
                 <div class="row">
                     <div class="col">
                         <label>Placa</label>
-                        <input type="text" class="form-control" placeholder="Placa">
+                        <input type="text" class="form-control" name="placa" id="placa">
                     </div>
                     <div class="col">
-                        <label>Chassi</label>
-                        <input type="text" class="form-control" placeholder="Chassi">
+                        <label>Ano</label>
+                        <input type="text" class="form-control" name="ano" id="ano">
+                    </div>
+                    <div class="col">
+                        <label>Situação</label>
+                        <input type="text" class="form-control" name="situacao" id="situacao">
                     </div>
                     <div class="col">
                         <label>Nº Assentos</label>
-                        <input type="text" class="form-control" placeholder="Nº Assentos">
+                        <input type="text" class="form-control" name="numero_assentos" id="numero_assentos">
                     </div>
                     <div class="col">
                         <label>Nº Passageiros</label>
-                        <input type="text" class="form-control" placeholder="Nº Passageiros">
+                        <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Chassi</label>
+                        <input type="text" class="form-control" name="chassi" id="chassi">
+                    </div>
+                    <div class="col">
+                        <label>Km</label>
+                        <input type="text" class="form-control" name="km" id="km">
+                    </div>
+                    <div class="col">
+                        <label>Renavam</label>
+                        <input type="text" class="form-control" name="renavam" id="renavam">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label>Cor</label>
+                        <input type="text" class="form-control" name="cor" id="cor">
+                    </div>
+
+                    <div class="col">
+                        <label>Marca</label>
+                        <input type="text" class="form-control" name="marca" id="marca">
+                    </div>
+                    <div class="col">
+                        <label>Modelo</label>
+                        <input type="text" class="form-control" name="modelo" id="modelo">
                     </div>
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
             </form>
-            <!--            <form class="jumbotron" method="post" enctype="multipart/form-data">
-                            <div class="form-group col-lg-2">
-                                <label for="placa">Placa</label>
-                                <input type="text" class="form-control" id="placa">
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="exampleInputPassword1">Chassi</label>
-                                <input type="text" class="form-control" id="chassi">
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="numero_assentos">Número de Assentos</label>
-                                <input type="text" class="form-control" id="numero_assentos">
-                            </div>
-                            <div class="form-group col-lg-2">
-                                <label for="numero_passageiros">Número de Passageiros</label>
-                                <input type="text" class="form-control" id="numero_passageiros">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-                        </form>-->
         </div>
         <div class="col-lg-2"></div>
     </div>
