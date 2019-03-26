@@ -9,3 +9,24 @@ width: 30px;  // coloca a largura do botao
 height: 30px; // coloca a altura do botao
 border: none;
 }
+.botaoInformacao
+{
+background: url("../img/informacao.png");
+    text-indent:-9999px;
+    width:14px;
+    height:26px;
+}
+.botaoAdicionar
+{
+background-image: url("../img/adicionar.png");
+    text-indent:-9999px;
+    width:52px;
+    height:52px;
+}
+.botaoOnOff
+{
+background-image: url("../img/onoff.png");
+    text-indent:-9999px;
+    width:36px;
+    height:23px;
+}

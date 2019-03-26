@@ -1,6 +1,6 @@
 <?php
 
-class ConcessaoController extends Zend_Controller_Action
+class ConcessaoTrajetoController extends Zend_Controller_Action
 {
 
     public function init()
