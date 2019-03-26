@@ -30,3 +30,6 @@ background-image: url("../img/onoff.png");
     width:36px;
     height:23px;
 }
+fundoTransparente{
+	background-color:rgba(0,0,0,0.5); color: white"
+}
