@@ -5,29 +5,25 @@
 	<div class="col-sm-2"> </div>
 	  <div class="col-sm-8" >
 	  <br> <br> <br>
-			<table class="table table-bordered text-center" style="background-color: white;">
-		<tr class="text-primary">
-			<th class="cabecalho text-primary active" colspan="4"><center>Selecione a categoria de passageiro que deseja:</center>
-			<br>
 			
-			
-			
-		
-
-	  
-		  <table class="table">
-			<tbody class="Active">
-			  <tr>
-				<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="estudante"> Estudante/Professor </button></td>
-			  </tr>
-			  <tr>
-				<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="idoso">Pessoa Idosa </button></td>
-			  </tr>
-			  <tr>
-				<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="deficiencia"> Pessoa com Deficiência </button> </td>
-			  </tr>
-			</tbody>
-		  </table>
+			<div class="card bg-light mb-3" style="max-width: 55rem;">
+				<div class="card-body">
+					<center><h3>Selecione a categoria de passageiro que deseja:</h3></center>
+					 <table class="table">
+						<tbody class="Active">
+						  <tr>
+							<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="estudante"> Estudante/Professor </button></td>
+						  </tr>
+						  <tr>
+							<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="idoso">Pessoa Idosa </button></td>
+						  </tr>
+						  <tr>
+							<td><button type="button" class="btn"><a href=<?= $this->baseUrl("categoriapassageiro/listar-Passageiros")?> id="deficiencia"> Pessoa com Deficiência </button> </td>
+						  </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 	  </div>
 	<div class="col-sm-2"></div>
   </div>
