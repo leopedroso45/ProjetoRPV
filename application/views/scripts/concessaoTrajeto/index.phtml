@@ -8,44 +8,100 @@
 <div class="container fundo">
 	<div class="row" style="background-color:rgba(0,0,0,0.5);">
 
-	</div>
-   <div class="row">
-	<div class="col-sm-1"> 
+	</div><br>
+    <div class="row">
+		<div class="col-sm-2"> 
 	
-	</div>
-	
-	<div class="col-sm-10">
-	<br><br>
-		<div class="card" style="max-width: 400rem; background-color:rgba(0,0,0,0.5); color: white">
-			<div class="card-body" >
-				
-				<center><H3>Concessão de Trajetos </h3></center>
-				<div class="row"> 
-					&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
-											<i class="fas fa-plus-square" style="color:black"></i>
-										</button>
-					</div>
-				</div>
-				<div class="row" style="text-align:center">
-					<div class="col-sm-1"><h5> Código </h5></div>
-					<div class="col-sm-4"><h5> Data de inicio </h5></div>
-					<div class="col-sm-4"><h5> Data de fim </h5></div>
-					<div class="col-sm-2"><h5> Autorização </h5></div>
-					<div class="col-sm-1"><h5> Botões</div>
-				</div>
-				<div class="row" style="text-align:center">
-					<div class="col-sm-1"> 1 </div>
-					<div class="col-sm-4"> 24/01/2019 </div>
-					<div class="col-sm-4"> 24/03/2019 </div>
-					<div class="col-sm-2"> <i class="fas fa-download" style="color:white"> </i> </div>
-					<div class="col-sm-1"> <i class="fas fa-toggle-on" style="color:white"> </i>&nbsp;<i class="fas fa-info-circle" style="color:white"> </i> </div>
+		</div>
+		
+		<div class="col-sm-8" style="background-color:rgba(0,0,0,0.5); color: white">
+		<br>
+			<center><H3>Concessão de Trajetos </h3></center>
+			<div class="row"> 
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+					<i class="fas fa-plus-square" style="color:black"></i>
+					<label style="color:black"> Nova Concessão </label>
+				</button>
+			</div>
+			<div class="row">
+				<div class="table-responsive text-center">
+					<table class="table">
+					  <thead>
+						<tr>
+						  <th scope="col">Código</th>
+						  <th scope="col">Data de inicio</th>
+						  <th scope="col">Vigência</th>
+						  <th scope="col">Autorização</th>
+						  <th scope="col"></th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>					  
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+					  </tbody>
+					</table>
 				</div>
 			</div>
+
+			
 		</div>
 	</div>
 	
 	
-	<div class="col-sm-1">
+	<div class="col-sm-2">
 	
 	</div>
 	
@@ -66,24 +122,30 @@
 				
 				<div class="container-fluid"> 
 					<div class="row">
-						<table class="" style="background-color: white;">
-								<tr>
-									<td><div style="text-align: right;">Código:&nbsp;</div> </td>
-									<td><input type="text" class="form-control" id="nomeCompleto" value="" style="width:400px;font-size: 15px"></input></td>
-								</tr>
-								<tr>
-									<td><div style="text-align: right;">Data de inicio:&nbsp;</div> </td>
-									<td><input type="text" class="form-control" id="nomeCompleto" value="" style="width:400px;font-size: 15px"></input></td>
-								</tr>
-								<tr>
-									<td><div style="text-align: right;">Data de fim:&nbsp;</div> </td>
-									<td><input type="text" class="form-control" id="nomeCompleto" value="" style="width:400px;font-size: 15px"></input></td>
-								</tr>
-								<tr>
-									<td><div style="text-align: right;">Documento de Autorização:&nbsp;</div> </td>
-									<td><input type="text" class="form-control" id="nomeCompleto" value="" style="width:400px;font-size: 15px"></input></td>
-								</tr>
-						</table>
+						<div class="table-responsive">
+							<table class="" style="background-color: white;">
+									<tr>
+										<td><div style="text-align: right;">Código:&nbsp;</div> </td>
+										<td><input type="text" class="form-control" id="codigoConcessao" value="" style="width:400px;font-size: 15px"></input></td>
+									</tr>
+									<tr>
+										<td><div style="text-align: right;">Data de inicio:&nbsp;</div> </td>
+										<td><input type="date" class="form-control" id="dtInicioConcessao" value="" style="width:400px;font-size: 15px"></input></td>
+									</tr>
+									<tr>
+										<td><div style="text-align: right;">Data de fim:&nbsp;</div> </td>
+										<td><input type="date" class="form-control" id="dtFimConcessao" value="" style="width:400px;font-size: 15px"></input></td>
+									</tr>
+									<tr>
+										<td><div style="text-align: right;">Documento de Autorização:&nbsp;</div> </td>
+										<td>
+										  <button class="btn btn-default" id="docAutorizacaoConcessao">
+											<span class="glyphicon glyphicon-paperclip"></span>Anexar arquivo
+										  </button> 
+										</td>
+									</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 				 
@@ -94,9 +156,9 @@
              </div>
 			 
              <div class="modal-footer">
-			    <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+			    <button type="button" class="btn btn-success" id="botaoSalvarConcessao" data-dismiss="modal">Salvar</button>
 
-                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                 <button type="button" class="btn btn-danger" id="botaoFecharConcessao" data-dismiss="modal">Fechar</button>
              </div>
          </div>
     </div>

@@ -147,7 +147,7 @@
     <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
              <div class="modal-header">
-			     <h4 class="modal-title">ESTUDANTES/PROFESSORES</h4>
+			     <h4 class="modal-title">ESTUDANTES</h4>
                  <button type="button" class="close" data-dismiss="modal">
 					<span>&times;</span>
 				 </button>
@@ -167,15 +167,23 @@
 								</tr>
 								<tr>
 									<td><div style="text-align: right;">Data de Nascimento:&nbsp;</div></td>
-									<td><input type="text" class="form-control" id="dataDeNascimento" value="18/05/2017" style="width:400px;font-size: 15px"></input></td>
+									<td><input type="date" class="form-control" id="dataDeNascimento" value="18/05/2017" style="width:400px;font-size: 15px"></input></td>
 								</tr>								
 								<tr>
 									<td><div style="text-align: right;">Comprovante de Matrícula:&nbsp;</div></td>
-									<td><button class="btn btn-primary" id="comprovanteDeMatricula"><i class="fas fa-download"> Baixar arquivo PDF.. </i></button> </td>
+									<td>
+										<input type="file" class="btn btn-default" id="compMatricula">
+										</input>
+									</td>
+									<td>
+									</td>
 								</tr>
 								<tr>
 									<td><div style="text-align: right;">Comprovante de Residência:&nbsp;</div></td>
-									<td><button class="btn btn-primary" id="comprovanteDeResidencia"> <i class="fas fa-download"> Baixar arquivo PDF.. </i></button></td>
+									<td>
+										<input type="file" class="btn btn-default" id="compResidencia">
+										</input>
+									</td>
 								</tr>
 								<tr>
 									<td><div style="text-align: right;">Rua:&nbsp;</div></td>
@@ -197,7 +205,7 @@
 								<tr>
 									<td><div style="text-align: right;">Benefício Concedido:&nbsp;</div></td>
 									<td><div class="dropdown">
-											<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="beneficioConcedido">
+											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="beneficioConcedido">
 												Nenhum
 											</button>
 											<div class="dropdown-menu">
