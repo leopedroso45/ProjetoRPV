@@ -123,43 +123,18 @@
 				<div class="container-fluid"> 
 					<div class="row">
 						<div class="table-responsive">
-							<table class="" style="background-color: white;">
-									<tr>
-										<td><div style="text-align: right;">Código:&nbsp;</div> </td>
-										<td><input type="text" class="form-control" id="codigoConcessao" value="" style="width:400px;font-size: 15px"></input></td>
-									</tr>
-									<tr>
-										<td><div style="text-align: right;">Data de inicio:&nbsp;</div> </td>
-										<td><input type="date" class="form-control" id="dtInicioConcessao" value="" style="width:400px;font-size: 15px"></input></td>
-									</tr>
-									<tr>
-										<td><div style="text-align: right;">Data de fim:&nbsp;</div> </td>
-										<td><input type="date" class="form-control" id="dtFimConcessao" value="" style="width:400px;font-size: 15px"></input></td>
-									</tr>
-									<tr>
-										<td><div style="text-align: right;">Documento de Autorização:&nbsp;</div> </td>
-										<td>
-										  <button class="btn btn-default" id="docAutorizacaoConcessao">
-											<span class="glyphicon glyphicon-paperclip"></span>Anexar arquivo
-										  </button> 
-										</td>
-									</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-				 
-				 		 
-				 
-				 
-				 
-             </div>
-			 
-             <div class="modal-footer">
-			    <button type="button" class="btn btn-success" id="botaoSalvarConcessao" data-dismiss="modal">Salvar</button>
+								<form method="post">
+								  <div class="form-group">
+									<label for="exampleInputEmail1">codigo</label>
+									<input type="text" class="form-control" name="codConcessao" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+								  </div>
 
-                 <button type="button" class="btn btn-danger" id="botaoFecharConcessao" data-dismiss="modal">Fechar</button>
-             </div>
-         </div>
+								  <button type="submit" class="btn btn-primary">Submit</button>
+								</form>							
+						</div>
+		 			</div>
+				</div>
+			</div>
+        </div>
     </div>
  </div>
