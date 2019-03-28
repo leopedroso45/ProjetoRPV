@@ -1,1 +1,43 @@
-hello world
+<div class="col-lg-2"></div>
+<div class="col-lg-8">
+    <div clas="container">
+        <div clas="row">
+            <ol class="breadcrumb">
+                <?php if (Zend_Auth::getInstance()->getIdentity()->id_tipo_usuario === '1'): ?>
+                <li><a href="<?= $this->baseUrl('admin') ?>">Painel do Empreendedor</a></li>
+                <?php endif; ?>
+                <?php if (Zend_Auth::getInstance()->getIdentity()->id_tipo_usuario === '2'): ?>
+                <li><a href="<?= $this->baseUrl('admin-empreendedor') ?>">Painel do Empreendedor</a></li>
+                <?php endif; ?>
+                <li class="active">Logradouros</li>
+            </ol>
+            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Logradouro</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosLogradouros as $logradouro): ?>
+                        <tr>
+                            <td> <?= $logradouro['descricao'] ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-success btn-labeled" href="<?= $this->baseUrl('/viabilidade/cadastrar-viabilidade/id/' . $logradouro['id_logradouro']) ?>" >
+                                    <span class="btn-label"><i class="glyphicon glyphicon-plus"></i></span>Adicionar Cnae's
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Logradouro</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-lg-2"></div>

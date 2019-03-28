@@ -1,65 +1,53 @@
 <div class="container">
     <div class="row">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Placa</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Chassi</th>
-                    <th scope="col">Nº Passageiros</th>
-                    <th scope="col">Nº Assentos</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>IHJ</td>
-                    <td>Volkswagen</td>
-                    <td>ISF</td>
-                    <td>0004</td>
-                    <td>40</td>
-                    <td>47</td>
-                    <td>
-                        <button class="btn btn-info">
-                            <i class="fas fa-eye"></i>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>IFT</td>
-                    <td>Volkswagen</td>
-                    <td>ISF</td>
-                    <td>0005</td>
-                    <td>40</td>
-                    <td>47</td>
-                    <td>
-                        <button class="btn btn-info">
-                            <i class="fas fa-eye"></i>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>ITT</td>
-                    <td>Mercedes Benz</td>
-                    <td>LO815</td>
-                    <td>0006</td>
-                    <td>40</td>
-                    <td>47</td>
-                    <td>
-                        <button class="btn btn-info">
-                            <i class="fas fa-eye"></i>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ônibus Urbanos</li>
+            </ol>
+            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                        <tr>
+                            <td> <?= $onibus['id_onibus_urbano'] ?></td>
+                            <td> <?= $onibus['placa'] ?></td>
+                            <td> <?= $onibus['chassi'] ?></td>
+                            <td> <?= $onibus['numero_passageiros'] ?></td>
+                            <td> <?= $onibus['numero_assentos'] ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-success btn-labeled" href="<?= $this->baseUrl('#') ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Código</th>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
     </div>
 </div>
