@@ -14,6 +14,7 @@ class ConcessaoTrajetoController extends Zend_Controller_Action
 //        $lista = $dbTableUsuario->listarTodosUsuario();
 //        $this->view->listaDosUsuarios = $lista;
         
+        
         if ($this->getRequest()->isPost()) {
                 $dados = $this->getRequest()->getParams();
                 $dbTableConcessaoTrajeto = new Application_Model_DbTable_ConcessaoTrajeto();

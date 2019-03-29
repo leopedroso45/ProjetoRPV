@@ -8,6 +8,7 @@ class Application_Model_DbTable_ConcessaoTrajeto extends Zend_Db_Table_Abstract
     
     public function cadastrarConcessaoTrajeto($dados)
     {
+        
 //        var_dump($dados);die();
         $concessaoTrajeto = $this->createRow();
         /*@var $concessaoTrajeto Application_Model_ConcessaoTrajeto*/
