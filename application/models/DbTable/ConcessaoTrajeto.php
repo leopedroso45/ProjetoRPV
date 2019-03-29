@@ -20,6 +20,10 @@ class Application_Model_DbTable_ConcessaoTrajeto extends Zend_Db_Table_Abstract
         
         return $concessaoTrajeto->save();
     }
+
+    public function listarTodasConcessoes(){
+       return $this->fetchAll();
+    }
    
 
 }

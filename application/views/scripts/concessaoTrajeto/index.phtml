@@ -24,76 +24,37 @@
 					<label style="color:black"> Nova Concessão </label>
 				</button>
 			</div>
-			<div class="row">
-				<div class="table-responsive text-center">
-					<table class="table">
-					  <thead>
-						<tr>
-						  <th scope="col">Código</th>
-						  <th scope="col">Data de inicio</th>
-						  <th scope="col">Vigência</th>
-						  <th scope="col">Autorização</th>
-						  <th scope="col"></th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-						  <th scope="row">085</th>
-						  <td>24/10/2018</td>
-						  <td>24/06/2019</td>
-						  <td>
-						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
-								<span class="fas fa-download"></span>
-							</button> 
-						  </td>
-						  <td>
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-toggle-on"></span>
-						  </button> 
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-info-circle"></span>
-						  </button> 
-						  </td>
-						</tr>
-						<tr>
-						  <th scope="row">085</th>
-						  <td>24/10/2018</td>
-						  <td>24/06/2019</td>
-						  <td>
-						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
-								<span class="fas fa-download"></span>
-							</button> 
-						  </td>					  
-						  <td>
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-toggle-on"></span>
-						  </button> 
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-info-circle"></span>
-						  </button> 
-						  </td>
-						</tr>
-						<tr>
-						  <th scope="row">085</th>
-						  <td>24/10/2018</td>
-						  <td>24/06/2019</td>
-						  <td>
-						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
-								<span class="fas fa-download"></span>
-							</button> 
-						  </td>
-						  <td>
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-toggle-on"></span>
-						  </button> 
-						  <button class="btn btn-default" id="docAutorizacaoConcessao">
-							<span class="fas fa-info-circle"></span>
-						  </button> 
-						  </td>
-						</tr>
-					  </tbody>
-					</table>
-				</div>
+				<div class="row"> 
+		            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
+		                <thead>
+		                    <tr>
+		                        <th>Código</th>
+		                        <th>Data de Inicio</th>
+		                        <th>Data de Vigência</th>
+		                        <th>Autorização</th>
+		                        <th>Status</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
+		                        <tr>
+		                            <td> <?= $concessaotrajeto['codConcessao'] ?></td>		                        	
+		                            <td> <?= $concessaotrajeto['data_inicio'] ?></td>
+		                            <td> <?= $concessaotrajeto['data_fim'] ?></td>
+		                            <td> <?= $concessaotrajeto['doc_autorizacao'] ?></td>
+		                            <td> <?= $concessaotrajeto['status_concessao'] ?></td>
+		                        </tr>
+		                    <? endforeach; ?>
+		                </tbody>
+		            </table>
+        		</div>
+
+
+
+
+
+
+
 			</div>
 
 			
@@ -128,11 +89,11 @@
 								  	<label >Código</label>
 									<input type="text" class="form-control" name="codConcessao">
 									<label >Data de Inicio</label>
-									<input type="text" class="form-control" name="dataInicio">
+									<input type="date" class="form-control" name="dataInicio">
 									<label >Data de Vigência</label>
-									<input type="text" class="form-control" name="dataFim">
+									<input type="date" class="form-control" name="dataFim">
 									<label >Documento de Autorização</label>
-									<input type="text" class="form-control" name="docAutorizacao">
+									<input type="file" class="form-control" name="docAutorizacao">
 									<label >Status</label>
 									<input type="text" class="form-control" name="statusConcessao">
 								  </div>
