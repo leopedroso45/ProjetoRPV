@@ -3,7 +3,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+<script src="js/jquery-3.3.1.js"> </script>
 
 <div class="container fundo">
 	<div class="row" style="background-color:rgba(0,0,0,0.5);">
@@ -41,7 +41,15 @@
 		                            <td> <?= $concessaotrajeto['codConcessao'] ?></td>		                        	
 		                            <td> <?= $concessaotrajeto['data_inicio'] ?></td>
 		                            <td> <?= $concessaotrajeto['data_fim'] ?></td>
-		                            <td> <?= $concessaotrajeto['doc_autorizacao'] ?></td>
+		                            <td>
+		                                <button class="btn" id="documentoAutorizacao">
+											<i class="fa fa-download" style="color:black"></i>
+											<label style="color:black">
+												<a href="autorizaconcessao/autorizacao.pdf"
+												download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Baixar</a>
+											</label>
+										</button>
+									</td>
 		                            <td> <?= $concessaotrajeto['status_concessao'] ?></td>
 		                        </tr>
 		                    <? endforeach; ?>

@@ -1,0 +1,6 @@
+import numpy as np
+
+2. Crie um array randomico de tamanho 10: np.arange(10)
+3. Crie um array com os elementos variando de 0 to 9: np.random.rand(10) 
+4. Crie um array de zeros e tamanho 10: np.zeros(10)
+5. Crie um array de 1 (um) e tamanho 5: 
