@@ -1,0 +1,60 @@
+
+body {
+  
+  width: 100%;
+    
+  /*overflow-x:scroll;*/
+  background-size: cover;
+  background-attachment: fixed;
+  
+  background-repeat: no-repeat;
+  
+}
+
+#titulo{
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.8);
+}
+
+#titulo-cadastro{
+	color:white;
+	text-align: center;
+
+}
+
+#label{
+	color: white;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#col-aviso{
+	background-color: rgba(255,36,36,0.4);  
+	text-align: center; 
+	border-radius: 4px; 
+	color:white;
+}
+
+#fechar_aviso:hover{
+	color:yellow;
+
+}
+
+.btn-label{
+	background-color: rgba(0,0,0,0.15);
+	position: relative;
+	left: -12px;
+	display: inline-block;
+	padding:6px 12px;
+}
+
+.btn-labeled{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+

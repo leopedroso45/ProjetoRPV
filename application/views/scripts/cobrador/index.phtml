@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/cobrador.css") ?> />
+	<link href="css/cobrador.css" rel="stylesheet">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script>
+		 $(document).ready(function(){
+          $("form").hide();
+          $("div#aviso").hide();
+          $("button#novo_cobrador").click(function(){
+            $("form").toggle("slow");
+            $("button#fechar_aviso").click(function(){
+            $("div#aviso").hide("slow");
+        });
+            
+        }); 
+
+         
+      });
+
+		 $("button#gravar").click(function(){
+            setTimeout('location.reload();', 5000);
+        });
+		 
+		 
+
+		 
+
+
+		var i =1;
+	</script>
+
+
+</head>
+<body  style="background-image: url(dist/imagens/fundo.png);">
+
+	<h1 id="titulo">
+		Cobradores
+	</h1>
+
+	<div class="container" style="background-color: rgba(0,0,0,0.8); padding-bottom: 0px;">
+		
+		<div class="row-fluid" style="padding: 10px;">
+			
+			<button class="btn btn-outline-primary btn-lt" type="button" id="novo_cobrador" >
+				Novo Cobrador</button>
+			
+
+
+		</div>
+		<form  method="post"  >
+			<div class="form-group" >
+				<h2 style="color:white">Cadastro de Cobradores</h2>
+				<div class="row" >
+					
+					
+					<div class="col-8" >
+						<label for="nome-cobrador" id="label">Nome</label>
+  			 			<input type="text" name="nome" class="form-control" id="nome-cobrador" placeholder="Insira o nome completo">
+
+					</div>
+					<div class="col-4" >
+						<label for="cpf" id="label">CPF</label>
+  			 			<input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF">
+
+					</div>
+					
+
+				</div>
+				<div class="row">
+					<div class="col-11">
+						
+
+					</div>
+					<div class="col-1" style="padding: 10px;">
+						<button class="btn btn-outline-success btn-lt" type="submit" id="gravar">
+							Gravar
+						</button>
+
+					</div>
+				</div>
+				
+
+			</div>
+
+
+
+		</form>
+	</div>
+
+	<div class="container" style="background-color: rgba(0,0,0,0.8); color:white; ">
+		
+		<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Ações</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+	<? foreach ($this->listaDosCobradores as $cobrador): ?>
+		
+    <tr>
+      
+      <td><?= $cobrador->getId_cobrador() ?>	</td>
+      <td><?= $cobrador->getNome() ?>	</td>
+      <td><?= $cobrador->getCpf() ?>	</td>
+      <td><a class="btn btn-info btn-labeled" >
+			<span class="btn-label">
+				<i class="fas fa-eye"></i>
+			</span>
+				Visualizar dados
+     	   </a>	
+  	  </td>
+      
+    </tr>
+    
+      
+     
+    <? endforeach; ?>
+  </tbody>
+</table>
+
+	</div>
+	
+	
+<!-- </div> -->
+	
+	<script>
+		
+		
+
+	</script>
+
+</div>
+</div>
+
+</body>
+</html>

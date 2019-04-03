@@ -1,1 +1,179 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/trajeto.css" rel="stylesheet">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<script>
+		 $(document).ready(function(){
+          $("div#cad_trajeto").hide();
+          $("div#aviso").hide();
+          $("button#novo_trajeto").click(function(){
+            $("div#cad_trajeto").toggle("slow");
+            $("button#fechar_aviso").click(function(){
+            $("div#aviso").hide("slow");
+        });
+        });    
+      });
+		var i =1;
+	</script>
+
+
+</head>
+<body style="background-image: url(dist/imagens/fundo.png);">
+
+	<h1 id="titulo">
+		Trajetos
+	</h1>
+
+	<div class="container" style="background-color: rgba(0,0,0,0.5);">
+		
+		<div class="row">
+			<div class="col-6">
+			
+			</div>
+
+			<div class="col-6" style="padding: 10px;">
+				<button class="btn btn-dark btn-lt" type="button" id="novo_trajeto"   >
+				Novo Trajeto</button>
+				<button class="btn btn-dark btn-lt" type="button" id="nova_parada"   >
+				Nova Parada</button>
+				<button class="btn btn-dark btn-lt" type="button"   >
+				Editar Trajeto</button>
+				<button class="btn btn-dark btn-lt" type="button"   >
+				Editar Parada</button>
+
+			</div>
+
+
+		</div>
+	</div>
+	
+	<div class="container" style="background-color: rgba(0,0,0,0.5);" id="cad_trajeto">
+	<form action="TrajetoController.php" method="post">
+	<div class="form-group">
+		<div class="row" style="padding-bottom: 10px;" >
+
+			<div class="col-1">
+
+				<div class="custom-control custom-switch">
+	  			<input type="checkbox" class="custom-control-input" id="customSwitches">
+	  			<label class="custom-control-label" id="label" for="customSwitches">Ativo</label>
+				</div>
+			</div>
+			<div class="col-3">
+				
+				<label for="cod" id="label">Código</label>
+				<input type="text" name="cod" class="form-control" id="cod">
+			</div>
+			<div class="col-8">
+				<label for="descricao" id="label">Descrição</label>
+				<input type="text" class="form-control" id="descricao">
+			</div>
+		</div>	
+		<div class="row" id="aviso" style="padding-right: 50px;">
+			<div class="col-8">
+				
+			</div>
+			<div class="col-4" id="col-aviso" >
+				
+				Selecione uma parada! 
+				<button type="button" class="close" id="fechar_aviso" aria-label="Close">
+	 				<span aria-hidden="true">&times;</span>
+				</button>
+
+				
+			</div>
+			
+		</div>
+
+		<div class="row" style="padding-left: 10px;" >
+				<div class="col-5" id="teste11" >
+				 
+				 	<label for="par1" id="label">Paradas selecionadas:</label>
+				 	<div class="row"  id="teste1" style="height: 270px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
+				 		
+				 	</div>
+
+				</div>
+			<div class="col-2" style="padding-top: 60px; padding-left: 30px;  ">
+				<div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; ">
+					<div class="seta-1" id="seta1"></div>
+				</div>
+				<div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; padding-bottom: 20px;">
+					<div class="seta-2" id="seta2"></div>
+				</div>
+				
+				
+			</div>
+			<div class="col-5" >
+				 <div class="form-group">
+					<label for="sel3" id="label">Paradas:</label>
+	      <select multiple class="form-control" id="sel3" style="height: 270px;">
+						    <option>Rua Joaquina Ortiz Hovayek 46</option>
+						    <option>Avenida Beira Trilho 74</option>
+						    <option>Estrada Masgrau 26</option>
+						    <option>Rua Francisca Pinto 450</option>
+						    <option>Rua Carioca 728</option>
+						    <option>Rua Brigadeiro Olivério 315</option>
+						    <option>Rua Primeiro de Maio 35</option>
+						    <option>Rua Joaquim Aurélio Pedroso 110</option>
+						    <option>Rua Trezentos e Setenta 96</option>
+						    <option>Avenida Dr. Lauro Dorneles 1560</option>
+						    <option>Rua Crisãntemo 295</option>
+						    <option>Avenida Assis Brasil 334</option>
+						    <option>Avenida Beira Trilho 645</option>
+						    <option>Rua Salustiano Ferreira da Costa 72</option>
+
+						</select>
+				</div>
+			</div>
+
+		</div>	
+
+	
+		<div class="row">
+			<div class="col-4">
+				<label for="bus" id="label">
+					Alocar Ônibus
+				</label>
+			<input type="text" class="form-control" id="bus" disabled>
+			
+			</div>
+			<div class="col-3" style="padding-top: 31px;">
+				<button class="btn btn-dark btn-lt">Incluir</button>
+			</div>
+			<div class="col-5">
+				
+			</div>
+		</div>	
+
+		<div class="row" style="padding-bottom: 10px;">
+			<div class="col-9" ></div>
+		<div class="col-3" >
+			<button class="btn btn-dark btn-lt" type="button"   >
+				Cancelar</button>
+			<button class="btn btn-dark btn-lt" type="submit"   >
+				Gravar</button>
+		</div>
+	
+		</div>
+	</div>  <!-- fim form group-->
+	</form>
+	</div>
+<!-- </div> -->
+	
+	<script>
+		
+		
+
+	</script>
+
+</div>
+</div>
+
+</body>
+</html>

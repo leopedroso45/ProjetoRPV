@@ -5,12 +5,18 @@ class TrajetoController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        
     }
 
     public function indexAction()
     {
         
+    }
+     public function trajetoAction()
+    {
+        var_dump($_POST);
+
+echo $_POST['cod'];
     }
 
    
