@@ -12,9 +12,17 @@ class CategoriaPassageiroController extends Zend_Controller_Action
     {
         
     }
-	    public function listarPassageirosAction()
+	    public function estudanteAction()
     {
-        
+
+    }
+        public function idosoAction()
+    {
+
+    }
+        public function deficienteAction()
+    {
+
     }
 
     public function cadastrarAction()
