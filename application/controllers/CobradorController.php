@@ -28,15 +28,24 @@ class CobradorController extends Zend_Controller_Action
         
          $id = $this->getRequest()->getParams('id');
          $dbTableCobrador = new Application_Model_DbTable_Cobrador();
+         //var_dump($id);die();
          $cobrador = $dbTableCobrador->getCobradorPorId($id);
 
          if($this->getRequest()->isPost()){
             $dados = $this->getRequest()->getParams();
-            $id = $dbTableCobrador->editarCobrador($id, $dados);
+            $dbTableCobrador->editarCobrador($id, $dados);
+
+            
 
         }
 
+        $this->view->cobrador = $cobrador;
+
     }
+
+   
+
+
      
 
    

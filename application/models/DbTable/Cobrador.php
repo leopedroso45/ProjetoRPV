@@ -12,7 +12,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
 
     
         $cobrador = $this->createRow();
-        /*@var $usuario Application_Model_Usuario*/
+        /*@var $usuario Application_Model_Cobrador*/
         $cobrador->setNome($dados['nome-cobrador']);
         $cobrador->setCpf($dados['cpf-cobrador']);
 //       
@@ -20,11 +20,33 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
         return $cobrador->save();
     
     }
-        public function listarTodosCobradores(){
+        
+    public function listarTodosCobradores(){
 
-        return $this->fetchAll();
+    return $this->fetchAll();
 
-        }   
+    }
+
+     public function getCobradorPorId($id)
+    {
+        $select = $this->select()->where('id_cobrador = ?', $id);
+
+        return $this->fetchRow($select);
+    }
+
+
+    public function editarCobrador($id, $dados)
+    {
+        $cobrador = $this->find($id)->current();
+        /* @var $cobrador Application_Model_Cobrador */
+        $cobrador->setNome($dados['nome-cobrador']);
+        $cobrador->setCpf($dados['cpf-cobrador']);
+
+
+        return $cobrador->save();
+    }
+
+
     
 
     
