@@ -24,6 +24,7 @@
 					<label style="color:black"> Nova Concessão </label>
 				</button>
 			</div>
+			<br>
 				<div class="row"> 
 		            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
 		                <thead>
@@ -44,13 +45,19 @@
 		                            <td>
 		                                <button class="btn" id="documentoAutorizacao">
 											<i class="fa fa-download" style="color:black"></i>
-											<label style="color:black">
-												<a href="data:text/html"
+											<label style="color: black">
+												<a style="color: black" href="autorizaconcessao/autorizacao.pdf"
 												download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
 											</label>
 										</button>
 									</td>
-		                            <td> <?= $concessaotrajeto['status_concessao'] ?></td>
+		                            <td> 
+		                            	<!--<label class="switch">
+										 <input type="checkbox">
+										  <span class="slider round"></span>
+										</label>-->
+		                            	<?= $concessaotrajeto['status_concessao'] ?>
+	                            	</td>
 		                        </tr>
 		                    <? endforeach; ?>
 		                </tbody>
