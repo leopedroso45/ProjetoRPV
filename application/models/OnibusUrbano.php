@@ -2,6 +2,7 @@
 
 class Application_Model_OnibusUrbano extends Zend_Db_Table_Row_Abstract
 {
+//    private $id_onibus_urbano;
 //    private $placa;
 //    private $ano;
 //    private $marca;
@@ -14,6 +15,11 @@ class Application_Model_OnibusUrbano extends Zend_Db_Table_Row_Abstract
 //    private $numero_assentos;
 //    private $numero_passageiros;
     
+    function getId_onibus_urbano()
+    {
+        return $this->id_onibus_urbano;
+    }
+
     function getPlaca()
     {
         return $this->placa;
@@ -67,6 +73,11 @@ class Application_Model_OnibusUrbano extends Zend_Db_Table_Row_Abstract
     function getNumero_passageiros()
     {
         return $this->numero_passageiros;
+    }
+
+    function setId_onibus_urbano($id_onibus_urbano)
+    {
+        $this->id_onibus_urbano = $id_onibus_urbano;
     }
 
     function setPlaca($placa)
@@ -123,6 +134,7 @@ class Application_Model_OnibusUrbano extends Zend_Db_Table_Row_Abstract
     {
         $this->numero_passageiros = $numero_passageiros;
     }
-    
+
+
 
 }

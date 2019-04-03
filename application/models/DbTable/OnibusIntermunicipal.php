@@ -28,5 +28,10 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         
         return $onibusIntermunicipal->save();
     }
+    
+        public function listarTodosOnibusIntermunicipais()
+    {
+        return $this->fetchAll();
+    }
 
 }

@@ -22,6 +22,22 @@ class OnibusUrbanoController extends Zend_Controller_Action
             $dbtableOnibusUrbano = new Application_Model_DbTable_OnibusUrbano();
             $dbtableOnibusUrbano->cadastrarOnibusUrbano($dados);
         }
+        
+    }
+    
+        public function editarAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $dbTableOnibusUrbano = new Application_Model_DbTable_OnibusUrbano();
+        $onibusUrbano = $dbTableOnibusUrbano->getOnibusUrbanoPorId($id);
+        
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableOnibusUrbano->editarOnibusUrbano($id, $dados);
+        }
+        
+        $this->view->onibusUrbano = $onibusUrbano;
+        
     }
 
 }

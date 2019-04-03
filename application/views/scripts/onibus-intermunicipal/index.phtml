@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <table class="table table-hover">
+        <table class="table table-hover table-bordered dataTable">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -12,49 +12,34 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>IVK</td>
-                    <td>0001</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                        <button class="btn btn-info btn-labeled">
-                            <span class="btn-label">
-                            <i class="fas fa-eye"></i></span>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>IFT</td>
-                    <td>0002</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                        <button class="btn btn-info btn-labeled">
-                            <span class="btn-label">
-                            <i class="fas fa-eye"></i></span>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>ITT</td>
-                    <td>0003</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                        <button class="btn btn-info btn-labeled">
-                            <span class="btn-label">
-                            <i class="fas fa-eye"></i></span>
-                            Visualizar Detalhes
-                        </button>
-                    </td>
-                </tr>
+                <? foreach ($this->listarTodosOnibusIntermunicipais as $onibus): ?>
+                    <tr>
+                        <td> <?= $onibus['id_onibus_viagem'] ?></td>
+                        <td> <?= $onibus['placa'] ?></td>
+                        <td> <?= $onibus['chassi'] ?></td>
+                        <td> <?= $onibus['numero_passageiros'] ?></td>
+                        <td> <?= $onibus['numero_assentos'] ?></td>
+                        <td class="text-center">
+                            <a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('onibus-intermunicipal/id/'. $onibus['id_onibus_viagem']) ?>" >
+                                <span class="btn-label">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                                Visualizar Detalhes
+                            </a>
+                        </td>
+                    </tr>
+                <? endforeach; ?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Chassi</th>
+                    <th scope="col">Nº Passageiros</th>
+                    <th scope="col">Nº Assentos</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

@@ -10,7 +10,9 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        
+        $dbTableOnibusIntermunicipal = new Application_Model_DbTable_OnibusIntermunicipal();
+        $lista = $dbTableOnibusIntermunicipal->listarTodosOnibusIntermunicipais();
+        $this->view->listarTodosOnibusIntermunicipais = $lista;
     }
 
     public function cadastrarAction()
@@ -20,6 +22,21 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
             $dbtableOnibusIntermunicipal = new Application_Model_DbTable_OnibusIntermunicipal();
             $dbtableOnibusIntermunicipal->cadastrarOnibusIntermunicipal($dados);
         }
+    }
+
+    public function editarAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $dbTableOnibusIntermunicipal = new Application_Model_DbTable_OnibusIntermunicipal();
+        $onibusIntermunicipal = $dbTableOnibusIntermunicipal->getOnibusIntermunicipalPorId($id);
+        
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $id = $dbTableOnibusIntermunicipal->editarOnibusIntermunicipal($id, $dados);
+        }
+        
+        $this->view->onibusIntermunicipal = $onibusIntermunicipal;
+        
     }
 
 }
