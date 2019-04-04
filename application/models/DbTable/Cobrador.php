@@ -37,8 +37,14 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
 
     public function editarCobrador($id, $dados)
     {
-        $cobrador = $this->find($id)->current();
-        /* @var $cobrador Application_Model_Cobrador */
+
+            define('ID', array(
+            $id
+        ));
+
+
+        $cobrador = $this->find(ID)->current();
+       
         $cobrador->setNome($dados['nome-cobrador']);
         $cobrador->setCpf($dados['cpf-cobrador']);
 
@@ -47,9 +53,5 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
     }
 
 
-    
-
-    
-    
-    
+   
 }

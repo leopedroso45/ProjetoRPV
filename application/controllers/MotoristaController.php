@@ -25,19 +25,25 @@ class MotoristaController extends Zend_Controller_Action
 
     public function editarAction(){
         
-         $id = $this->getRequest()->getParams('id');
-         $dbTableMotorista = new Application_Model_DbTable_Cobrador();
-         $cobrador = $dbTableCobrador->getCobradorPorId($id);
+        $this->_helper->layout->setLayout('layout');
+        
+         $id = $this->getRequest()->getParam('id');
+         $dbTableMotorista = new Application_Model_DbTable_Motorista();
+         //var_dump($id);die();
+         $motorista = $dbTableMotorista->getMotoristaPorId($id);
 
          if($this->getRequest()->isPost()){
             $dados = $this->getRequest()->getParams();
-            $id = $dbTableMotorista->editarMotorista($id, $dados);
+            $dbTableMotorista->editarMotorista($id, $dados);
+
+            
 
         }
 
-    }
+        $this->view->motorista = $motorista;
      
 
    
     }
+}
 

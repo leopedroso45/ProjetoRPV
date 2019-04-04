@@ -25,8 +25,9 @@ class CobradorController extends Zend_Controller_Action
     }
 
      public function editarAction(){
+        $this->_helper->layout->setLayout('layout');
         
-         $id = $this->getRequest()->getParams('id');
+         $id = $this->getRequest()->getParam('id');
          $dbTableCobrador = new Application_Model_DbTable_Cobrador();
          //var_dump($id);die();
          $cobrador = $dbTableCobrador->getCobradorPorId($id);
