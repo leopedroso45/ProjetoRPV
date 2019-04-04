@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_ConcessaoTrajeto extends Zend_Db_Table_Row_Abstract
+class Application_Model_CategoriaPassageiro extends Zend_Db_Table_Row_Abstract
 {
     
 //        private $data_inicio;

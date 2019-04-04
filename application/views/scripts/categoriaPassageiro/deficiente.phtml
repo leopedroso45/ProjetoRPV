@@ -21,6 +21,16 @@
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"> <center>Data de Solicitação</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Situação</center></th>
 								</tr>
+
+								<? foreach ($this->listarBeneficios as $beneficio): ?>
+		                        <tr>
+		                            <td> <?= $beneficio['id_solicitacao'] ?></td>		                        	
+		                            <td> <?= $beneficio['idf_pessoa'] ?></td>
+		                            <td> <?= $beneficio['data_solicitacao'] ?></td>
+		                            <td> <?= $beneficio['idf_situacao_solicitacao'] ?></td>
+		                        </tr>
+		                    	<? endforeach; ?>
+
 								<tr>
 									<td class="fundoTransparente">1</td>
 									<td> Vagner Ereno Quincozes </td>
