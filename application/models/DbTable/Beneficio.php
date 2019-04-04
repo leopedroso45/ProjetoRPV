@@ -3,11 +3,11 @@
 class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'solicitacao_beneficio';
+    protected $_name = 'solicitacaobeneficio';
     protected $_rowClass = "Application_Model_Beneficio";
     
     
-     public function listarBeneficios(){
+    public function listarBeneficios(){
        return $this->fetchAll();
     }
 

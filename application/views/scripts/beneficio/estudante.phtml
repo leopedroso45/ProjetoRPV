@@ -22,14 +22,18 @@
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Situação</center></th>
 								</tr>
 								<tr>
-									<td class="fundoTransparente">1</td>
-									<td> Vagner Ereno Quincozes </td>
-									<td> 25/03/2019 </td>
-									<td>
-										<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
+								<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
+			                        <tr>
+			                            <td> <?= $solicitacaobeneficio['id_solicitacao'] ?></td>		                        
+			                            <td> <?= $solicitacaobeneficio['idf_pessoa'] ?></td>
+			                            <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
+			                            <td> <?= $solicitacaobeneficio['idf_situacao_solicitacao'] ?>
+			                            	<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
 											<i class="fas fa-edit" style="color:black"></i>
 										</button>
-									</td>
+			                            </td>
+			                        </tr>
+		                    	<? endforeach; ?>
 								</tr>
 
 							</table>

@@ -10,15 +10,24 @@ class BeneficioController extends Zend_Controller_Action
 
     public function indexAction()
     {
+
+    }
+        public function deficienteAction()
+    {
+        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+        $lista = $dbTableBeneficio->listarBeneficios();
+        $this->view->listarBeneficios = $lista;
+    }    
+    public function idosoAction()
+    {
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
         $lista = $dbTableBeneficio->listarBeneficios();
         $this->view->listarBeneficios = $lista;
     }
-	    public function listarBeneficios()
+        public function estudanteAction()
     {
-
+        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+        $lista = $dbTableBeneficio->listarBeneficios();
+        $this->view->listarBeneficios = $lista;
     }
-
-
-
 }
