@@ -23,75 +23,58 @@ background-image: url("../img/adicionar.png");
     width:52px;
     height:52px;
 }
-.botaoOnOff
-{
-background-image: url("../img/onoff.png");
-    text-indent:-9999px;
-    width:36px;
-    height:23px;
-}
 fundoTransparente{
 	background-color:rgba(0,0,0,0.5); color: white;
 }
 
-/** AQUI COMEÇA O ON/OFF *
-.switch {
-      position: relative;
-      display: inline-block;
-      width: 48px;
-      height: 20px;
-    }
 
-    .switch input { 
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
 
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 13px;
-      width: 13px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
+<style type="text/css">
+  .onoff input.toggle {
+    display: none;
+}
 
-    input:checked + .slider {
-      background-color: #04B431;
-    }
+.onoff input.toggle + label {
+    display: inline-block;
+    position: relative;
+    box-shadow: inset 0 0 0px 1px #d5d5d5;
+    height: 20px;
+    width: 50px;
+    border-radius: 10px;
+}
 
-    input:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
-    }
+.onoff input.toggle + label:before {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 50px;
+    border-radius: 10px;
+    background: rgba(19, 191, 17, 0);
+    transition: 0.1s ease-in-out;
+}
 
-    input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-    }
+.onoff input.toggle + label:after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    left: 0px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 0.1s ease-in-out;
+}
 
-    /* Rounded sliders 
-    .slider.round {
-      border-radius: 34px;
-    }
+.onoff input.toggle:checked + label:before {
+    width: 50px;
+    background: #13bf11;
+}
 
-    .slider.round:before {
-      border-radius: 50%;
-    }
-     AQUI TERMINA O ON/OFF *//
+.onoff input.toggle:checked + label:after {
+    left: 30px;
+    box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+</style>

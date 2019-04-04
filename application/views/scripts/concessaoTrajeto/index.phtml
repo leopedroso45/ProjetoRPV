@@ -4,6 +4,9 @@
 <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <script src="js/jquery-3.3.1.js"> </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/concessaoTrajeto.js"></script>
+
 
 <div class="container fundo">
 	<div class="row" style="background-color:rgba(0,0,0,0.5);">
@@ -50,17 +53,37 @@
 											</label>
 										</button>
 									</td>
-		                            <td> 
-		                            	<input type="checkbox" checked data-toggle="toggle" id="ativo" name="ativo">
-		                            	<input type="checkbox" checked data-toggle="toggle" id="inativo" name="inativo">
-		                            	<?= $concessaotrajeto['status_concessao'] ?>
+		                            <td>
+	                            	   <script type="text/javascript">
+	                            	   		var estado = document.getElementById('estado');
+											    $('#onoff1').on('change', function() {
+											        var el = this;
+											        estado.innerHTML = el.checked ? 'ligado' : 'desligado';
 
+											        // aqui podes juntar a lógica do ajax
+											        $.ajax({
+											            url: "some.php",
+											            data: {
+											                estado: this.checked
+											            }
+											        }).done(function(msg) {
+											            if (msg == 'failed') return el.checked = !el.checked; // caso o servidor retorne "failed" mudar o estado do botão
+											            else alert("Info gravada: " + msg);
+											        });
+										   	 });
+										</script> 
+										<div class="onoff">
+										    <input type="checkbox" hidden="" class="toggle" id="onoff1">
+										    <label for="onoff1"></label>
+										</div>
+										<p id="estado">desligado</p>
 	                            	</td>
 		                        </tr>
 		                    <? endforeach; ?>
 		                </tbody>
 		            </table>
         		</div>
+
 
 
 
