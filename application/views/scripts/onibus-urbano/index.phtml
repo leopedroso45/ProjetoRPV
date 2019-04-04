@@ -1,50 +1,124 @@
 <div class="container">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Ônibus Urbanos</li>
-    </ol>
     <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ônibus Urbanos</li>
+            </ol>
+        </div>
 
-        <table class="table table-hover table-bordered dataTable" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Placa</th>
-                    <th>Chassi</th>
-                    <th>Nº Passageiros</th>
-                    <th>Nº Assentos</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <button class="btn btn-primary clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" enctype="multipart/form-data">
+                        <!--                <div class="alert alert-success" role="alert">
+                                            Cadastro realizado com sucesso!
+                                        </div>-->
+                        <div class="row">
+                            <div class="col">
+                                <label>Placa</label>
+                                <input type="text" class="form-control" name="placa" id="placa">
+                            </div>
+                            <div class="col">
+                                <label>Ano</label>
+                                <input type="text" class="form-control" name="ano" id="ano">
+                            </div>
+                            <div class="col">
+                                <label>Situação</label>
+                                <input type="text" class="form-control" name="situacao" id="situacao">
+                            </div>
+                            <div class="col">
+                                <label>Nº Assentos</label>
+                                <input type="text" class="form-control" name="numero_assentos" id="numero_assentos">
+                            </div>
+                            <div class="col">
+                                <label>Nº Passageiros</label>
+                                <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label>Chassi</label>
+                                <input type="text" class="form-control" name="chassi" id="chassi">
+                            </div>
+                            <div class="col">
+                                <label>Km</label>
+                                <input type="text" class="form-control" name="km" id="km">
+                            </div>
+                            <div class="col">
+                                <label>Renavam</label>
+                                <input type="text" class="form-control" name="renavam" id="renavam">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label>Cor</label>
+                                <input type="text" class="form-control" name="cor" id="cor">
+                            </div>
+
+                            <div class="col">
+                                <label>Marca</label>
+                                <input type="text" class="form-control" name="marca" id="marca">
+                            </div>
+                            <div class="col">
+                                <label>Modelo</label>
+                                <input type="text" class="form-control" name="modelo" id="modelo">
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="margin-top: 2%">
+            <table class="table table-hover table-bordered dataTable">
+                <thead>
                     <tr>
-                        <td> <?= $onibus['id_onibus_urbano'] ?></td>
-                        <td> <?= $onibus['placa'] ?></td>
-                        <td> <?= $onibus['chassi'] ?></td>
-                        <td> <?= $onibus['numero_passageiros'] ?></td>
-                        <td> <?= $onibus['numero_assentos'] ?></td>
-                        <td class="text-center">
-                            <a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('/onibus-urbano/editar/id/'. $onibus['id_onibus_urbano']) ?>" >
-                                <span class="btn-label">
-                                    <i class="fas fa-eye"></i>
-                                </span>
-                                Visualizar Detalhes
-                            </a>
-                        </td>
+                        <th>Código</th>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th class="text-center">Ações</th>
                     </tr>
-                <? endforeach; ?>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Código</th>
-                    <th>Placa</th>
-                    <th>Chassi</th>
-                    <th>Nº Passageiros</th>
-                    <th>Nº Assentos</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                        <tr>
+                            <td> <?= $onibus['id_onibus_urbano'] ?></td>
+                            <td> <?= $onibus['placa'] ?></td>
+                            <td> <?= $onibus['chassi'] ?></td>
+                            <td> <?= $onibus['numero_passageiros'] ?></td>
+                            <td> <?= $onibus['numero_assentos'] ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('/onibus-urbano/editar/id/' . $onibus['id_onibus_urbano']) ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Código</th>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>

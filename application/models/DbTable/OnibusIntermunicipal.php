@@ -29,9 +29,39 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         return $onibusIntermunicipal->save();
     }
     
+        public function editarOnibusIntermunicipal($id, $dados)
+    {
+        $onibusIntermunicipal = $this->find($id)->current();
+        /*@var $onibusIntermunicipal Application_Model_OnibusIntermunicipal*/
+        $onibusIntermunicipal->setId_categoria_onibus($dados['id_categoria_onibus']);
+        $onibusIntermunicipal->setPlaca($dados['placa']);
+        $onibusIntermunicipal->setChassi($dados['chassi']);
+        $onibusIntermunicipal->setNumero_andares($dados['andares']);
+        $onibusIntermunicipal->setAno($dados['ano']);
+        $onibusIntermunicipal->setMarca($dados['marca']);
+        $onibusIntermunicipal->setModelo($dados['modelo']);
+        $onibusIntermunicipal->setRenavam($dados['renavam']);
+        $onibusIntermunicipal->setCor($dados['cor']);
+        $onibusIntermunicipal->setSituacao($dados['situacao']);
+        $onibusIntermunicipal->setKm($dados['km']);
+        $onibusIntermunicipal->setBanheiro($dados['banheiro']);
+        $onibusIntermunicipal->setArcondicionado($dados['arcondicionado']);
+        $onibusIntermunicipal->setNumero_assentos($dados['numero_assentos']);
+        $onibusIntermunicipal->setNumero_passageiros($dados['numero_passageiros']);
+
+        return $onibusIntermunicipal->save();
+    }
+    
         public function listarTodosOnibusIntermunicipais()
     {
         return $this->fetchAll();
+    }
+    
+        public function getOnibusIntermunicipalPorId($id)
+    {
+        $select = $this->select()->where('id_onibus_viagem = ?', $id);
+
+        return $this->fetchRow($select);
     }
 
 }
