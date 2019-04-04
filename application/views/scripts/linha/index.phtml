@@ -11,56 +11,43 @@
 			<center><H2>Gerir Linhas</h2></center>
 			<div class="row"> 
             <div class="col">
-				<Center><H4>Linhas</H4></Center>			              
-  <div class="col-12">
-    <div class="list-group listaDeTrajetos" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>   
-    </div>
-  </div>
-			</div>
-            <div class="col">
-							<Center><H4>Informações do Trajeto</H4></Center>
-							<ul class="list-group listaTrajetosSelecionados">
-								<li class="list-group-item list-group-item-success">Trajeto 1</li>
-								<li class="list-group-item list-group-item-info">Trajeto 2</li>
-								<li class="list-group-item list-group-item-warning">Trajeto 3</li>
-								<li class="list-group-item list-group-item-danger">Trajeto 4</li>
-							</ul>
-							<form>
-							<Center><H4>Alterar Tarifa</H4>
-								<div class="input-group validarReal">
-									<span class="input-group-addon">R$</span>
-									<input type="number" class="form-control" min="1" max="10" placeholder="Real" required>
-									<span class="input-group-addon">.00</span>
+						<Center><H4>Linhas</H4></Center>			              
+							<div class="col-12">
+								<div class="list-group listaDeTrajetos" id="list-tab" role="tablist">
+									<a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Linha 1</a>
+									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Linha 2</a>
+									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Linha 3</a>
+									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Linha 4</a>   
+									<a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Linha 5</a>
+									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Linha 6</a>
+									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Linha 7</a>
+									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Linha 8</a> 
+									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Linha 9</a>
+									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Linha 10</a>
+									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Linha 11</a> 
 								</div>
-								<h4>Término da Vigência</h4>
-								<div class="form-group">
-									<div id="filterDate2">
-										<!-- Datepicker as text field -->         
-										<div class="input-group date" data-date-format="dd.mm.yyyy">
-											<input  type="date" class="form-control" placeholder="dd.mm.yyyy" required>
-											<div class="input-group-addon" >
-												<span class="glyphicon glyphicon-th"></span>
-											</div>
-										</div>
-									</div>    
-								</div>
-								<script type="text/javascript">
-								$(function () {
-									$('.input-group.date').datepicker({format: "dd.mm.yyyy"}); 
-											});
-								</script>
-
-								<div style="margin-bottom: 5%;">
-									<button type="button" class="btn btn-warning">Voltar</button>
-									<button type="submit" class="btn btn-success">Pronto</button>
-								</div>
-								</Center>
-							</form>
+							</div>
 						</div>
+            <div class="col">
+							<Center><H4>Informações da Linha</H4>
+							<div class="container-fluid" role="tablist">
+								<div class="panel panel-default" style="color: black;  height: 120px; text-align: justify;" role="tablist">
+									<div class="panel-body" >Informações da Linha</div>
+								</div>
+							</div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-success">Criar</button>
+								<button type="button" class="btn btn-warning">Editar</button>
+								<button type="button" class="btn btn-danger">Arquivar</button>
+							</div>
+							<div class="distanciaDiv">
+								<button type="button" class="btn btn-default">Voltar</button>
+							</div>
+							</Center>
+						</div>
+						
+
+
 			</div>
 		</div>			
 	</div>
