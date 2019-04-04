@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/gerirLinhas.css") ?> />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="js/jquery-3.3.1.js"> </script>
+
+<div class="container fundo">
+  <div class="row">		
+		<div class="col-sm-12" style="background-color:rgba(0,0,0,0.4); color: white">
+			<center><H2>Gerir Linhas</h2></center>
+			<div class="row"> 
+            <div class="col">
+						<Center><H4>Linhas</H4></Center>			              
+				<!-- action="/action_page.php" Removido-->
+					<form class="form-horizontal" action="">
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Nome:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="email" placeholder="Nome de identificação da linha" name="email" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Descrição:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="email" placeholder="Informações" name="email" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Km/h:</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" id="email" placeholder="Informe o número de Km/h" name="email" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Situação:</label>
+								<label><input type="radio" name="optradio" checked>Ativo</label>
+								<label><input type="radio" name="optradio">Desativo</label>	
+						</div>
+						<div class="form-group">
+									<label class="control-label col-sm-2" for="email">Horário partida:</label>
+									<div class="col-sm-10">
+										<input type="time" class="form-control" id="email" placeholder="Horário de partida" name="email" required>
+									</div>
+						</div>
+						<div class="form-group">
+									<label class="control-label col-sm-2" for="email">Horário chegada:</label>
+									<div class="col-sm-10">
+										<input type="time" class="form-control" id="email" placeholder="Horário de chegada" name="email" required>
+									</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Nmr de Trechos:</label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" id="email" placeholder="Informe o número de trechos" name="email" required>
+							</div>
+						</div>	
+						<div class="form-group">        
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Enviar</button>
+							</div>
+						</div>
+					</form>
+
+						</div>
+            <div class="col">
+							<Center><H4>Definir Trechos</H4>
+										              
+							<div class="col-11">
+								<div class="list-group listaDeTrajetos" id="list-tab" role="tablist">
+									<a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Trecho 1</a>
+									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Trecho 2</a>
+									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Trecho 3</a>
+									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Trecho 4</a>   
+									<a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Trecho 5</a>
+									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Trecho 6</a>
+									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Trecho 7</a>
+								</div>
+								<div class="distanciaDiv">
+									<button type="button" class="btn btn-default">Adicionar</button>
+								</div>
+							</div>
+
+							
+							<div class="btn-group distanciaDiv">
+								<button type="button" class="btn btn-success">Criar</button>
+								<button type="button" class="btn btn-warning">Voltar</button>
+							</div>
+							</Center>
+						</div>
+						
+
+
+			</div>
+		</div>			
+	</div>
+</div>
