@@ -23,8 +23,9 @@
 								</tr>
 								<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
 			                        <tr>
-			                            <td> <?= $solicitacaobeneficio['id_solicitacao'] ?></td>		                        
+			                            <td> <?= $solicitacaobeneficio['id_solicitacao'] ?></td>								
 			                            <td> <?= $solicitacaobeneficio['idf_pessoa'] ?></td>
+			                            <TD> <?= $beneficio[‘nome’]?></TD>
 			                            <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
 			                            <td> <?= $solicitacaobeneficio['idf_situacao_solicitacao'] ?>
 			                            	<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 

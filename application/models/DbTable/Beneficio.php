@@ -4,10 +4,14 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract
 {
 
     protected $_name = 'solicitacaobeneficio';
+    protected $_name1 = 'pessoa';
     protected $_rowClass = "Application_Model_Beneficio";
     
     
     public function listarBeneficios(){
+       return $this->fetchAll();
+    }
+    public function listarDadosPessoa(){
        return $this->fetchAll();
     }
 
