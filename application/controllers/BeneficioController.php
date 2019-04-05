@@ -14,36 +14,38 @@ class BeneficioController extends Zend_Controller_Action
     }
         public function deficienteAction()
     {
+
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $lista = $dbTableBeneficio->listarBeneficios();
+        $lista = $dbTableBeneficio->listar();
         $this->view->listarBeneficios = $lista;
+
+        //$id = $this->getRequest()->getParam('id');
+
+       // $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+       // $beneficio = $dbTableBeneficio->getBeneficioPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableBeneficio->editarBeneficios($id, $dados);
+        }
+        //$this->view->beneficio = $beneficio;
+
+
     
-		$dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $lista = $dbTableBeneficio->listarDadosPessoa();
-        $this->view->listarDadosPessoa = $lista;
 	
 	}    
+	
 	
     public function idosoAction()
     {
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $lista = $dbTableBeneficio->listarBeneficios();
+        $lista = $dbTableBeneficio->listar();
         $this->view->listarBeneficios = $lista;
     }
         public function estudanteAction()
     {
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $lista = $dbTableBeneficio->listarBeneficios();
+        $lista = $dbTableBeneficio->listar();
         $this->view->listarBeneficios = $lista;
     }
-
-        public function listarPessoas()
-    {
-        $select = $this->select()->setIntegrityCheck(false);
-        $select->from(array('BEN' => 'BENEFICIO’), array('BEN.*'))
-                ->from(array('PESS' => 'PESSOA'), array('PESS.nome'))
-                ->where('BEN.ID_PESSOA = PESS.ID_PESSOA')
-
-                return $this->fetchAll($select);
-     }
 }

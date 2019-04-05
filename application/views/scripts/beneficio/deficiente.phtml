@@ -9,48 +9,36 @@
 <div class="container fundo">
 
 	  <div class="table-responsive" style="background-color:rgba(0,0,0,0.5); color: white">
-							<table class="table table-bordered dataTable" style="background-color:rgba(0,0,0,0.5); color: white">
+							<table class="table table-bordered text-center" style="background-color:rgba(0,0,0,0.5); color: white">
 								<tr class="text-primary">
 									<th class="fundoTransparente" colspan="4" style="background-color:rgba(0,0,0,0.5); color: white">
 										<center><h3>Novas Solicitações de Benefícios</h3></center>
 									</th>
 								</tr>
 								<tr>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white">Nº</th>
+									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>CPF</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Nome</center></th>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"> <center>Data de Solicitação</center></th>
+									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Data de Solicitação</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Situação</center></th>
 								</tr>
 								<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
 			                        <tr>
-			                            <td> <?= $solicitacaobeneficio['id_solicitacao'] ?></td>								
-			                            <td> <?= $solicitacaobeneficio['idf_pessoa'] ?></td>
-			                            <TD> <?= $beneficio[‘nome’]?></TD>
+			                            <td> <?= $solicitacaobeneficio['cpf'] ?></td>		                        
+			                            <td> <?= $solicitacaobeneficio['nome'] ?></td>
 			                            <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
 			                            <td> <?= $solicitacaobeneficio['idf_situacao_solicitacao'] ?>
-			                            	<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
+			                            	<a href="<?= '#myModal' . $solicitacaobeneficio['id_solicitacao'] ?>" class="btn" data-toggle="modal"> 
 											<i class="fas fa-edit" style="color:black"></i>
-										</button>
+										</a>
 			                            </td>
 			                        </tr>
-		                    	<? endforeach; ?>
-
-								<tr>
-									<td class="fundoTransparente">1</td>
-									<td> Vagner Ereno Quincozes </td>
-									<td> 25/03/2019 </td>
-									<td>
-										<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
-											<i class="fas fa-edit" style="color:black"></i>
-										</button>
-									</td>
-								</tr>
-
+			                           <? endforeach; ?>
 							</table>
 	  
 </div>
 	<!-- Modal -->
-<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+	<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
+<div class="modal fade" id="<?= 'myModal' . $solicitacaobeneficio['id_solicitacao'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -67,23 +55,23 @@
 							  <div class="form-group">
 							  	<div class="col-sm-6">
 									<label >Nome completo:</label>
-									<input type="text" disabled class="form-control" name="nomeCompleto" id="nomeCompleto">
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['nome'] ?> " name="nomeCompleto" id="nomeCompleto">
 									<label >Data de nascimento:</label>
 									<input type="date" disabled class="form-control" name="dataNascimento" id="dataNascimento">
 									<label >CPF:</label>
-									<input type="text" disabled class="form-control" name="cpf" id="cpf">
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['cpf'] ?>" name="cpf" id="cpf">
 									<label >RG:</label>
-									<input type="text" disabled class="form-control" name="rg" id="rg">
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
 									<label> Celular: </label>
-									<input type="text" disabled class="form-control" name="celular" id="celular">
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
 								</div>
 								<div class="col-sm-6">
 									<label> Rua: </label>
-									<input type="text" disabled class="form-control" name="rua" id="rua">
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rua'] ?>" name="rua" id="rua">
 									<label> Nº: </label>
-									<input type="text" disabled class="form-control" name="numeroCasa" id="numeroCasa">									
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['numero_casa'] ?>" name="numeroCasa" id="numeroCasa">									
 									<label> Bairro: </label>
-									<input type="text" disabled class="form-control" name="bairro" id="bairro">		
+									<input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['bairro'] ?>" name="bairro" id="bairro">		
 									<label> Qual a deficiência?: </label>
 									<input type="text" disabled class="form-control" name="tipoDeficiencia" id="tipoDeficiencia">								
 									<label >Atestado Médico</label>
@@ -107,7 +95,8 @@
 
          </div>
     </div>
- </div>
 
+ </div>
+    <? endforeach; ?>
 
 </body>

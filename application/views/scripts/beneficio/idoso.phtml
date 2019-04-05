@@ -16,7 +16,7 @@
 									</th>
 								</tr>
 								<tr>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white">Nº</th>
+									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>CPF</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Nome</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"> <center>Data de Solicitação</center></th>
 									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Situação</center></th>
@@ -24,8 +24,8 @@
 								<tr>
 								<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
 			                        <tr>
-			                            <td> <?= $solicitacaobeneficio['id_solicitacao'] ?></td>		                        
-			                            <td> <?= $solicitacaobeneficio['idf_pessoa'] ?></td>
+			                            <td> <?= $solicitacaobeneficio['cpf'] ?></td>		                        
+			                            <td> <?= $solicitacaobeneficio['nome'] ?></td>
 			                            <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
 			                            <td> <?= $solicitacaobeneficio['idf_situacao_solicitacao'] ?>
 			                            	<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 

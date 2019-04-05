@@ -15,6 +15,39 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract
        return $this->fetchAll();
     }
 
+        public function getBeneficioPorId($id)
+    {
+        $select = $this->select()->where('id_solicitacao = ?', $id);
+
+        return $this->fetchRow($select);
+    }
+
+       public function editarBeneficios($id, $dados)
+    {
+//      var_dump($dados);die();
+        $formularioCadastral = $this->find($id)->current();
+        /* @var $formularioCadastral Application_Model_Formulario */
+        $formularioCadastral->setNome($dados['nome']);
+
+        return $formularioCadastral->save();
+    }
+
+
+    public function listar()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA');
+
+ //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+
     /* 
     public function editarUsuario($id,$dados)
     {
