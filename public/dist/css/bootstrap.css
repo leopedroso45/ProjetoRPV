@@ -64,8 +64,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  text-align: left;
+  color: #FFFFFF;
+  text-align: center;
   background-color: #fff;
 }
 
@@ -4041,6 +4041,7 @@ tbody.collapse.show {
   height: 1.5em;
   vertical-align: middle;
   content: "";
+  
   background: no-repeat center center;
   background-size: 100% 100%;
 }
@@ -5374,7 +5375,7 @@ tbody.collapse.show {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  opacity: .5;
+  opacity: 0.50;
 }
 
 .close:hover, .close:focus {

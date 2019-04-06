@@ -1,0 +1,116 @@
+<div class="container">
+	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+
+      <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+        <li>
+          <a href="<?= $this->baseUrl('menuinicial') ?>">
+            menuinicial/
+          </a>
+        </li>
+        <li class="active">
+          categoria_onibus
+        </li>
+      </ol>
+
+      <form method="POST">
+
+
+
+
+       <script>
+        $(document).ready(function(){
+          $("div#cad_collapse").hide();
+
+          $("button#cad_categoria").click(function(){
+            $("div#cad_collapse").toggle("slow");
+          });
+        });
+
+      </script>
+
+
+
+      <div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+        <div class="card-body">
+          <div id="cad_collapse">
+            <div class="form-group">
+              <label for="">Descrição</label>
+              <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição" required/>
+            </div>
+            <div class="alert alert-danger diferente" style="display: none;" role="alert">
+              Confirme novamente a descricao!
+            </div>
+
+
+            <div class="input-group xmb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">R$</span>
+              </div>
+              <input type="text" class="form-control" maxlength="3" id="tarifa" name="tarifa" placeholder="Digite a tarifa" />
+            </div>
+            <div class="alert alert-danger diferente" style="display: none;" role="alert">
+              Confirme novamente a tarifa!
+            </div>
+
+
+            <br>
+
+            <div class="alert alert-success" style="display: none;" role="alert">
+              Cadastro de tarifa realizado com sucesso!
+            </div>
+            <button type="button" class="btn btn-block btn-primary cadastrarTarifa">Cadastrar</button>
+            <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
+          </div>
+        </div>
+
+
+
+
+
+        <div>
+
+          <label>Categorias Cadastradas:</label>
+          <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Tarifa</th>
+                <th scope="col">Ações</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <? foreach ($this->listarCategoriaOnibus  as $categoria_onibus): ?>
+
+                <tr>
+
+                  <td><?= $categoria_onibus->getId_categoria_onibus() ?></td>
+                  <td><?= $categoria_onibus->getDescricao() ?> </td>
+                  <td><?= $categoria_onibus->getTarifa() ?>  </td>
+                  <td><i class="fas fas-eye"><a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('categoria-onibus/editar/id/'. $categoria_onibus['id_categoria_onibus']) ?>" >Editar </a></i></td>
+                </tr>
+
+
+
+              <? endforeach; ?>
+            </tbody>
+          </table>
+
+
+
+
+
+        </div>
+      </div>
+
+    </form>
+    <div class="col-lg-2"></div>
+  </div>
+
+</div>

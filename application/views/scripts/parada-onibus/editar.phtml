@@ -1,0 +1,74 @@
+<div class="container">
+  <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+  <div class="row">
+  <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+       <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+                <li>
+                  <a href="<?= $this->baseUrl('menuinicial') ?>">
+                    menuinicial/
+                    </a>
+                    <a href="<?= $this->baseUrl('categoria-onibus') ?>">
+                    categoria_onibus/
+                    </a>
+                </li>
+                <li class="active">
+                     editar
+                </li>
+            </ol>
+<form method="POST">
+
+
+ <script>//Validar somente numero
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
+
+
+
+ <div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+  <div class="card-body">
+  <div class="input-group xmb-3">
+  <div class="input-group-prepend">
+    <input type="hidden" id="id_parada" name="id_parada" value="<?php echo $this->parada->getId_parada_onibus(); ?>">
+      <span class="input-group-text" id="basic-addon1">N°: </span>
+      </div>
+      <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="numeroParada" name="numeroParada" placeholder="Digite o numero da parada" required value="<?php echo $this->parada->getNumeroParada(); ?>">
+      </div>
+      <br>
+       <div class="input-group xmb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Local: </span>
+            </div>
+            <input type="text" class="form-control" id="local" name="local" placeholder="Digite o local da parada" required value="<?php echo $this->parada->getLocal(); ?>">
+      </div>
+      <br>
+       <div class="input-group xmb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Complemento: </span>
+            </div>
+            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento, se houver" value="<?php echo $this->parada->getComplemento(); ?>">
+      </div>
+
+<br>
+  <button type="submit" class="btn btn-block btn-primary">Editar</button>
+  <a href="<?= $this->baseUrl('categoria-onibus') ?>" class="btn btn-block btn-danger btn-primary">Voltar</a>
+
+
+
+</div>
+</div>
+
+  
+</form>
+
+ </div>
+<div class="col-lg-2"></div>
+</div>
+</div>
