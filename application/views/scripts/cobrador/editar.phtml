@@ -7,7 +7,7 @@
 	<title>Document</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/cobrador.css") ?> />
-
+	
 
 	
 
@@ -55,21 +55,26 @@
 
 					
 					
-					<div class="col-7" >
+					<div class="col-6" >
 						
 						<input type="hidden" id="id-cobrador" name="id-cobrador" value="<?php echo $this->cobrador->getId_cobrador(); ?>">
 						<label for="nome-cobrador" id="label">Nome</label>
-  			 			<input type="text" name="nome-cobrador" class="form-control" id="nome-cobrador" placeholder="Insira o nome completo" value="<?php echo $this->cobrador->getNome(); ?>">
+  			 			<input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo" value="<?php echo $this->cobrador->getNome(); ?>">
 
 					</div>
 					<div class="col-2" >
 						<label for="cpf" id="label">CPF</label>
-  			 			<input type="text" name="cpf-cobrador" class="form-control" id="cpf-cobrador" placeholder="Digite o CPF" value="<?php echo $this->cobrador->getCpf(); ?>">
+  			 			<input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" value="<?php echo $this->cobrador->getCpf(); ?>">
 
 					</div>
-					<div class="col-3" >
+					<div class="col-2">
+						<label for="telefone-cobrador" id="label">Telefone</label>
+  			 			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
+					</div>
+
+					<div class="col-2" >
 						<label for="rg-cobrador" id="label">RG</label>
-  			 			<input type="text" name="rg-cobrador" class="form-control" id="rg-cobrador" placeholder="Digite o RG" value="<?php echo $this->cobrador->getRg(); ?>">
+  			 			<input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG" value="<?php echo $this->cobrador->getRg(); ?>">
 
 					</div>
 					
@@ -79,18 +84,18 @@
 					
 					<div class="col-3" >
 						<label for="carteiraTrabalho-cobrador" id="label">Carteira de trabalho</label>
-  			 			<input type="text" name="carteiraTrabalho-cobrador" class="form-control" id="carteiraTrabalho-cobrador" placeholder="Digite o nº da Carteira de Trabalho" value="<?php echo $this->cobrador->getCarteiraTrabalho(); ?>">
+  			 			<input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da Carteira de Trabalho" value="<?php echo $this->cobrador->getCarteiraTrabalho(); ?>">
 
 					</div>
 
 					<div class="col-3" >
 						<label for="pis-cobrador" id="label">Número do PIS</label>
-  			 			<input type="text" name="pis-cobrador" class="form-control" id="pis-cobrador" placeholder="Digite o PIS" value="<?php echo $this->cobrador->getPis(); ?>">
+  			 			<input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS" value="<?php echo $this->cobrador->getPis(); ?>">
 
 					</div>
 					<div class="col-3" >
 						<label for="cnh-cobrador" id="label">CNH</label>
-  			 			<input type="text" name="cnh-cobrador" class="form-control" id="cnh-cobrador" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
+  			 			<input type="text" name="cnh" class="form-control" id="cnh" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
 
 					</div>
 
@@ -98,7 +103,7 @@
 
 					<div class="col-3" >
 						<label for="dataAdmissao-cobrador" id="label">Data de admissão</label>
-  			 			<input type="date" name="dataAdmissao-cobrador" class="form-control" id="dataAdmissao-cobrador" placeholder="Digite a data de admissão" value="<?php echo $this->cobrador->getDataAdmissao(); ?>">
+  			 			<input type="date" name="dataAdmissao" class="form-control" id="dataAdmissao" placeholder="Digite a data de admissão" value="<?php echo $this->cobrador->getDataAdmissao(); ?>">
 
 					</div>
 
@@ -108,16 +113,14 @@
 				<!-- fim cad novo -->
 
 				<div class="row">
-					<div class="col-11">
-						
-
-					</div>
-					<div class="col-1" style="padding: 10px;">
-						<button class="btn btn-outline-success btn-lt" type="submit" id="gravar">
+					<div class="col-12" style="padding: 15px">
+						<button class="btn btn-outline-success btn-lg btn-block"  id="gravar">
 							Gravar
 						</button>
 
+
 					</div>
+					
 				</div>
 				
 
@@ -136,6 +139,19 @@
 	<script>
 		
 		
+		
+
+		 var c = alert.confirm();
+
+                    confirma function () {
+                        if(c){
+                            location.href=baseUrl + 'cobrador';
+                        }
+                    
+
+                }
+                confirma();
+	
 
 	</script>
 

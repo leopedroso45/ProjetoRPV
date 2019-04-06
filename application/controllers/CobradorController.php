@@ -35,12 +35,13 @@ class CobradorController extends Zend_Controller_Action
          if($this->getRequest()->isPost()){
             $dados = $this->getRequest()->getParams();
             $dbTableCobrador->editarCobrador($id, $dados);
-
+           
             
 
         }
 
         $this->view->cobrador = $cobrador;
+
 
     }
 
@@ -57,6 +58,7 @@ class CobradorController extends Zend_Controller_Action
             $dbTableCobrador->editarAtivo($id, $dados);
         }
         $this->view->cobrador = $cobrador;
+
     }
 
 
