@@ -3,7 +3,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="js/jquery-3.3.1.js"> </script>
+<script src="js/jquery-3.3.1.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?= $this->baseUrl('dist/js/concessaoTrajeto.js') ?>"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
@@ -18,216 +18,227 @@
 
 </div><br>
 <div class="row">
-	<div class="col-sm-2" > 
+    <div class="col-sm-2" > 
 
-	</div>
+    </div>
 
-	<div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
-		<div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
-			<center><H3>Concessão de Trajetos </H3></center>
-			<div class="row"> 
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
-					<i class="fas fa-plus-square" style="color:black"></i>
-					<label style="color:black"> Nova Concessão </label>
-				</button>
-			</div>
-			<br>
-		</div>
-		<div class="row"> 
-			<table class="table table-hover table-bordered dataTable" style="width: 100%;">
-				<thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
-					<tr>
-						<th>Data de Inicio</th>
-						<th>Data de Vigência</th>
-						<th>Autorização</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
-						<tr>
-							
-							<td> <?= $concessaotrajeto['data_inicio'] ?></td>
-							<td> <?= $concessaotrajeto['data_fim'] ?></td>
-							<td>
-								<button class="btn" id="documentoAutorizacao">
-									<i class="fa fa-download" style="color:black"></i>
-									<label style="color: black">
-										<a style="color: black" href="autorizaconcessao/autorizacao.pdf"
-										download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
-									</label>
-								</button>
-							</td>
-							<td>
-
-							
-
-								<?php if ($concessaotrajeto['status_concessao'] === 'ATIVO'): ?>
-									<div class="btn-group" id="status" data-toggle="buttons">
-										<label class="btn btn-default plug status-on btn-on aberto active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
-											<input type="radio" name="plug" checked="checked">ATIVO</label>
-											<label class="btn btn-default plug status-off btn-off fechado" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
-												<input type="radio" name="plug">INATIVO</label>
-											</div>
-										<?php endif; ?>
-
-								<?php if ($concessaotrajeto['status_concessao'] === 'INATIVO'): ?>
-									<div class="btn-group" id="status" data-toggle="buttons">
-										<label class="btn btn-default status-on btn-on plug aberto" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
-											<input type="radio" name="plug" checked="checked">ATIVO</label>
-											<label class="btn btn-default status-off btn-off plug fechado active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
-											<input type="radio" name="plug">INATIVO</label>
-									</div>
-								<?php endif; ?>
-							</td>
-										</tr>
-									<? endforeach; ?>
-								</tbody>
-							</table>
-						</div>
-					</div>
+    <div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
+        <div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+            <center><H3>Concessão de Trajetos </H3></center>
+            <div class="row"> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+                    <i class="fas fa-plus-square" style="color:black"></i>
+                    <label style="color:black"> Nova Concessão </label>
+                </button>
+            </div>
+            <br>
+        </div>
+        <div class="row"> 
+            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
+                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+                    <tr>
+                        <th>Extensão</th>
+                        <th>Data de Inicio</th>
+                        <th>Data de Vigência</th>
+                        <th>Autorização</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
+                        <tr>
+                            <td> <?= $concessaotrajeto['extensao'] ?></td>
+                            <td> <?= $concessaotrajeto['data_inicio'] ?></td>
+                            <td> <?= $concessaotrajeto['data_fim'] ?></td>
+                            <td>
+                                <button class="btn" id="documentoAutorizacao">
+                                    <i class="fa fa-download" style="color:black"></i>
+                                    <label style="color: black">
+                                        <a style="color: black" href="autorizaconcessao/autorizacao.pdf"
+                                           download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
+                                    </label>
+                                </button>
+                            </td>
+                            <td>
 
 
-				</div>
-			</div>
+
+                                <?php if ($concessaotrajeto['status_concessao'] === 'ATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($concessaotrajeto['status_concessao'] === 'INATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default status-on btn-on plug aberto" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 
-			<div class="col-sm-2">
-
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Modal -->
-	<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
-					<button type="button" class="close" data-dismiss="modal">
-						<span>&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-
-					<div class="container-fluid"> 
-						<div class="row">
-							<div class="table-responsive">
+</div>
+</div>
 
 
-								<form method="post">
-									<div class="col-xs-8 date">
-										    <div class="form-group row">
-											<label class="col-sm-4 col-form-label" >Data de Inicio</label>										    	
-										        <div class="col-xs-8 date">
-										            <div class="input-group input-append date" id="datePicker">
-										                <input type="text" class="form-control" id="dataInicio" name="date" />
-										                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-										            </div>
-										        </div>
-										    </div>
-										    <div class="form-group row">
-											<label class="col-sm-4 col-form-label">Data Final</label>										        <div class="col-xs-8 date">
-										            <div class="input-group input-append date" id="datePicker2">
-										                <input type="text" class="form-control" id="dataFim" name="date" />
-										                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-										            </div>
-										        </div>
-										    </div>
-                                      <div class="form-group row">
+<div class="col-sm-2">
+
+</div>
+
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid"> 
+                    <div class="row">
+                        <div class="table-responsive">
+
+
+                            <form method="post">
+                                <div class="col-xs-8 date">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label" >Extensão</label>
+                                        <div class="col-xs-8 date">
+                                            <div class="input-group input-append date" id="">   	    	
+                                                <input type="text" class="form-control" placeholder="Quantos km de extensão?" title="Extensão por quilômetros?" id="extensao" name="extensao">
+                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-road"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label" >Data de Inicio</label>										    	
+                                        <div class="col-xs-8 date">
+                                            <div class="input-group input-append date" id="datePicker">
+                                                <input type="text" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
+                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Data Final</label>										        <div class="col-xs-8 date">
+                                            <div class="input-group input-append date" id="datePicker2">
+                                                <input type="text" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
+                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-4 col-form-label" >Doc. de Autorização</label>
                                         <div class="col-xs-8 date">
-											<input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
+                                            <input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
                                         </div>
-                                        </div>
+                                    </div>
 
 
-														<div class="alert alert-success" role="alert" style="display: none">
-															Cadastro realizado com sucesso! :)
-														</div>
-														<button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
+                                    <div class="alert alert-success" role="alert" style="display: none">
+                                        Cadastro realizado com sucesso! :)
+                                    </div>
+                                    <button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
 
-										
+
+                                </div>
+                        </div>
+
+                        </form>	
+                        <script type="text/javascript">
+                            $(".cadastrarConcessao").click(function ()
+                            {
+                                var extensao = $("#extensao").val();
+                                var dataInicio = $("#dataInicio").val();
+                                var dataFim = $("#dataFim").val();
+                                var docAutorizacao = $("#docAutorizacao").val();
+
+                                // if (nome.length < 10) {
+                                //    $('.nome').removeClass('hidden');
+                                //    $('.alert-success').addClass('hidden');
+
+                                // } else if (email.length < 10) {
+                                //    $('.nome').addClass('hidden');
+                                //    $('.email').removeClass('hidden');
+                                //    $('.alert-success').addClass('hidden');
+
+                                //} else {
+                                $.ajax({
+                                    type: "POST",
+                                    url: baseUrl + 'concessaotrajeto/index',
+                                    async: false,
+                                    data: {extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
+
+                                    },
+                                    success: function () {
+                                        $(".alert-success").removeAttr("style");
+                                        location.reload();
+                                    },
+                                    error: function () {
+                                        alert("Error");
+                                    }
+                                });
+                            });
+
+                            function editarStatus(id, status) {
+
+                                //            alert('contate a manutenção');
+                                //		   alert("id = " + id + ", status = " + status);
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: baseUrl + 'concessaotrajeto/editar-status',
+                                    async: false,
+                                    data: {id: id,
+                                        status: status
+                                    },
+                                    success: function () {
+                                    },
+                                    error: function () {
+                                    }
+                                });
+                            }
+
+                            $('#datePicker2').datepicker({
+                                format: 'dd/mm/yyyy'
+                            })
+                                    .on('changeDate', function (e) {
+                                        // Revalidate the date field
+                                        $('#eventForm').formValidation('revalidateField', 'date');
+                                    });
+
+                            $('#datePicker').datepicker({
+                                format: 'dd/mm/yyyy'
+                            })
+                                    .on('changeDate', function (e) {
+                                        // Revalidate the date field
+                                        $('#eventForm').formValidation('revalidateField', 'date');
+                                    });
+
+                        </script>						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-									</div>
-
-								</form>	
-								<script type="text/javascript">
-									$(".cadastrarConcessao").click(function ()
-									{
-										var dataInicio = $("#dataInicio").val();
-										var dataFim = $("#dataFim").val();
-										var docAutorizacao = $("#docAutorizacao").val();
-
-        						// if (nome.length < 10) {
-							        //    $('.nome').removeClass('hidden');
-							        //    $('.alert-success').addClass('hidden');
-
-							        // } else if (email.length < 10) {
-							        //    $('.nome').addClass('hidden');
-							        //    $('.email').removeClass('hidden');
-							        //    $('.alert-success').addClass('hidden');
-
-							        //} else {
-							        	$.ajax({
-							        		type: "POST",
-							        		url: baseUrl + 'concessaotrajeto/index',
-							        		async: false,
-							        		data: {dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
-							        			
-							        		},
-							        		success: function () {
-							        			$(".alert-success").removeAttr("style");
-							        			location.reload();
-							        		},
-							        		error: function () {
-							        			alert("Error");
-							        		}
-							        	});
-							        });
-
-									function editarStatus (id, status) {
-									 
-									//            alert('contate a manutenção');
-								    //		   alert("id = " + id + ", status = " + status);
-
-								        $.ajax({
-								            type: "POST",
-								            url: baseUrl + 'concessaotrajeto/editar-status',
-								            async:false,
-								            data: {id: id,
-								                status: status
-								            },
-								            success: function () {
-								            },
-								            error: function () {
-								            }
-								        });
-								    }
-
-									    $('#datePicker2').datepicker({
-									            format: 'dd/mm/yyyy'
-									        })
-									        .on('changeDate', function(e) {
-									            // Revalidate the date field
-									            $('#eventForm').formValidation('revalidateField', 'date');
-									        });
-
-									        									    $('#datePicker').datepicker({
-									            format: 'dd/mm/yyyy'
-									        })
-									        .on('changeDate', function(e) {
-									            // Revalidate the date field
-									            $('#eventForm').formValidation('revalidateField', 'date');
-									        });
-
-							    </script>						
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>

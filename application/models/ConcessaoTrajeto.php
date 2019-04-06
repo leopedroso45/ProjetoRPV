@@ -3,6 +3,7 @@
 class Application_Model_ConcessaoTrajeto extends Zend_Db_Table_Row_Abstract
 {
     
+//        private $extensao;
 //        private $data_inicio;
 //        private $data_fim;
 //        private $codConcessao;
@@ -62,6 +63,17 @@ class Application_Model_ConcessaoTrajeto extends Zend_Db_Table_Row_Abstract
         function setStatus_concessao($status_concessao)
         {
             $this->status_concessao = $status_concessao;
+        }
+
+        function getExtensao()
+        {
+            return $this->extensao;
+        }
+
+        
+        function setExtensao($extensao)
+        {
+            $this->extensao = $extensao;
         }
 
         
