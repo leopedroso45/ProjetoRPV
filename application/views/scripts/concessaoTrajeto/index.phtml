@@ -33,7 +33,6 @@
 			<table class="table table-hover table-bordered dataTable" style="width: 100%;">
 				<thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
 					<tr>
-						<th>Código</th>
 						<th>Data de Inicio</th>
 						<th>Data de Vigência</th>
 						<th>Autorização</th>
@@ -43,7 +42,7 @@
 				<tbody>
 					<? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
 						<tr>
-							<td> <?= $concessaotrajeto['codConcessao'] ?></td>		                        	
+							
 							<td> <?= $concessaotrajeto['data_inicio'] ?></td>
 							<td> <?= $concessaotrajeto['data_fim'] ?></td>
 							<td>
@@ -56,93 +55,87 @@
 								</button>
 							</td>
 							<td>
-								<script type="text/javascript">
-									var estado = document.getElementById('estado');
-									$('#onoff1').on('change', function() {
-										var el = this;
-										estado.innerHTML = el.checked ? 'ligado' : 'desligado';
 
-											        // aqui podes juntar a lógica do ajax
-											        $.ajax({
-											        	url: "some.php",
-											        	data: {
-											        		estado: this.checked
-											        	}
-											        }).done(function(msg) {
-											            if (msg == 'failed') return el.checked = !el.checked; // caso o servidor retorne "failed" mudar o estado do botão
-											            else alert("Info gravada: " + msg);
-											        });
-											    });
-											</script> 
-											<div class="onoff">
-												<input type="checkbox" hidden="" class="toggle" id="onoff1">
-												<label for="onoff1"></label>
+							
+
+								<?php if ($concessaotrajeto['status_concessao'] === 'ATIVO'): ?>
+									<div class="btn-group" id="status" data-toggle="buttons">
+										<label class="btn btn-default plug status-on btn-on aberto active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+											<input type="radio" name="plug" checked="checked">ATIVO</label>
+											<label class="btn btn-default plug status-off btn-off fechado" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+												<input type="radio" name="plug">INATIVO</label>
 											</div>
-											<p id="estado">desligado</p>
-										</td>
-									</tr>
-								<? endforeach; ?>
-							</tbody>
-						</table>
+										<?php endif; ?>
+
+								<?php if ($concessaotrajeto['status_concessao'] === 'INATIVO'): ?>
+									<div class="btn-group" id="status" data-toggle="buttons">
+										<label class="btn btn-default status-on btn-on plug aberto" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+											<input type="radio" name="plug" checked="checked">ATIVO</label>
+											<label class="btn btn-default status-off btn-off plug fechado active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+											<input type="radio" name="plug">INATIVO</label>
+									</div>
+								<?php endif; ?>
+							</td>
+										</tr>
+									<? endforeach; ?>
+								</tbody>
+							</table>
+						</div>
 					</div>
+
+
 				</div>
+			</div>
 
+
+			<div class="col-sm-2">
 
 			</div>
-		</div>
-
-
-		<div class="col-sm-2">
 
 		</div>
-
 	</div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
-				<button type="button" class="close" data-dismiss="modal">
-					<span>&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				
-				<div class="container-fluid"> 
-					<div class="row">
-						<div class="table-responsive">
-							<form method="post">
-								<div class="form-group">
-									<div class="col-sm-6">
-										<label >Data de Inicio</label>
-										<input type="date" class="form-control" id="dataInicio" name="dataInicio">
-										<label >Data de Vigência</label>
-										<input type="date" class="form-control" id="dataFim" name="dataFim">
-										<br>
-										<div class="alert alert-success" role="alert" style="display: none">
-					                    Cadastro realizado com sucesso! :)
-					                	</div>
-										<button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
-									</div>
-									<div class="col-sm-6">
-										<label >Documento de Autorização</label>
-										<input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
-										<label >Status</label>
-										<input type="text" class="form-control" id="statusConcessao" name="statusConcessao">
-									</div>
-								</div>
+	<!-- Modal -->
+	<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
 
-							</form>	
-							<script type="text/javascript">
-								$(".cadastrarConcessao").click(function ()
-								{
-									var dataInicio = $("#dataInicio").val();
-									var dataFim = $("#dataFim").val();
-									var docAutorizacao = $("#docAutorizacao").val();
-									var statusConcessao = $("#statusConcessao").val();
+					<div class="container-fluid"> 
+						<div class="row">
+							<div class="table-responsive">
+								<form method="post">
+									<div class="form-group">
+										<div class="col-sm-6">
+											<label >Data de Inicio</label>
+											<input type="date" class="form-control" id="dataInicio" name="dataInicio">
+											<label >Data de Vigência</label>
+											<input type="date" class="form-control" id="dataFim" name="dataFim">
+											<br>
+											<div class="alert alert-success" role="alert" style="display: none">
+												Cadastro realizado com sucesso! :)
+											</div>
+											<button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
+										</div>
+										<div class="col-sm-6">
+											<label >Documento de Autorização</label>
+											<input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
+										</div>
+									</div>
+
+								</form>	
+								<script type="text/javascript">
+									$(".cadastrarConcessao").click(function ()
+									{
+										var dataInicio = $("#dataInicio").val();
+										var dataFim = $("#dataFim").val();
+										var docAutorizacao = $("#docAutorizacao").val();
 
         						// if (nome.length < 10) {
 							        //    $('.nome').removeClass('hidden');
@@ -158,8 +151,8 @@
 							        		type: "POST",
 							        		url: baseUrl + 'concessaotrajeto/index',
 							        		async: false,
-							        		data: {dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao,
-							        			statusConcessao: statusConcessao
+							        		data: {dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
+							        			
 							        		},
 							        		success: function () {
 							        			$(".alert-success").removeAttr("style");
@@ -170,6 +163,27 @@
 							        		}
 							        	});
 							        });
+
+									function editarStatus (id, status) {
+									 
+									//            alert('contate a manutenção');
+								    //		   alert("id = " + id + ", status = " + status);
+
+								        $.ajax({
+								            type: "POST",
+								            url: baseUrl + 'concessaotrajeto/editar-status',
+								            async:false,
+								            data: {id: id,
+								                status: status
+								            },
+								            success: function () {
+								            },
+								            error: function () {
+								            }
+								        });
+								    }
+
+
 							    </script>						
 							</div>
 						</div>

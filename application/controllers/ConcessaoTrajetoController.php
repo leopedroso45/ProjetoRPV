@@ -20,5 +20,23 @@ class ConcessaoTrajetoController extends Zend_Controller_Action
                 $dbTableConcessaoTrajeto->cadastrarConcessaoTrajeto($dados);
         }}
 
+    public function editarStatusAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableConcessaoTrajeto = new Application_Model_DbTable_ConcessaoTrajeto();
+        $concessaoTrajeto = $dbTableConcessaoTrajeto->getConcessaoTrajetoPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            //var_dump($dados); die();
+            $dbTableConcessaoTrajeto->editarStatus($id, $dados);
+        }
+        $this->view->concessaoTrajeto = $concessaoTrajeto;
+    }
+
+
+
+
 
 }
