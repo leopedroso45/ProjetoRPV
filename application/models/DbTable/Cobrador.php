@@ -13,8 +13,15 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
     
         $cobrador = $this->createRow();
         /*@var $usuario Application_Model_Cobrador*/
-        $cobrador->setNome($dados['nome-cobrador']);
+        $cobrador->setNome($dados['nome']);
         $cobrador->setCpf($dados['cpf-cobrador']);
+
+        $cobrador->setAtivo("ATIVO");
+        $cobrador->setRg($dados['rg']);
+        $cobrador->setCarteiraTrabalho($dados['carteiraTrabalho']);
+        $cobrador->setPis($dados['pis']);
+        $cobrador->setDataAdmissao($dados['dataAdmissao']);
+        $cobrador->setCnh($dados['cnh']);
 //       
         
         return $cobrador->save();
@@ -30,7 +37,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
      public function getCobradorPorId($id)
     {
         $select = $this->select()->where('id_cobrador = ?', $id);
-
+        
         return $this->fetchRow($select);
     }
 
@@ -45,12 +52,35 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
 
         $cobrador = $this->find(ID)->current();
        
-        $cobrador->setNome($dados['nome-cobrador']);
-        $cobrador->setCpf($dados['cpf-cobrador']);
+        $cobrador->setNome($dados['nome']);
+        $cobrador->setCpf($dados['cpf']);
+
+        //$cobrador->setAtivo($dados['ativo']);
+        $cobrador->setRg($dados['rg']);
+        $cobrador->setCarteiraTrabalho($dados['carteiraTrabalho']);
+        $cobrador->setPis($dados['pis']);
+        $cobrador->setDataAdmissao($dados['dataAdmissao']);
+        $cobrador->setCnh($dados['cnh']);
 
 
         return $cobrador->save();
     }
+
+        public function editarAtivo($id, $dados)
+    {
+        $this->find($id)->current();
+        $cobrador = $this->getCobradorPorId($id);
+        /* @var $viabilidade Application_Model_Viabilidade */
+
+        if ($dados['ativo'] === 'ATIVO') {
+            $cobrador->setAtivo('ATIVO');
+        } elseif ($dados['ativo'] === 'INATIVO') {
+            $cobrador->setAtivo('INATIVO');
+        }
+
+        return $cobrador->save();
+    }
+
 
 
    
