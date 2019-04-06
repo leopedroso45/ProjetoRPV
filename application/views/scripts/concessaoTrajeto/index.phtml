@@ -5,133 +5,175 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <script src="js/jquery-3.3.1.js"> </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/concessaoTrajeto.js"></script>
+<script type="text/javascript" src="<?= $this->baseUrl('dist/js/concessaoTrajeto.js') ?>"></script>
 
 
 <div class="container fundo">
 
 
-	</div><br>
-    <div class="row">
-		<div class="col-sm-2" > 
-	
-		</div>
-		
-		<div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
-			<div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
-				<center><H3>Concessão de Trajetos </H3></center>
-				<div class="row"> 
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
-						<i class="fas fa-plus-square" style="color:black"></i>
-						<label style="color:black"> Nova Concessão </label>
-					</button>
-				</div>
-				<br>
+</div><br>
+<div class="row">
+	<div class="col-sm-2" > 
+
+	</div>
+
+	<div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
+		<div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+			<center><H3>Concessão de Trajetos </H3></center>
+			<div class="row"> 
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+					<i class="fas fa-plus-square" style="color:black"></i>
+					<label style="color:black"> Nova Concessão </label>
+				</button>
 			</div>
-				<div class="row"> 
-		            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
-		                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
-		                    <tr>
-		                        <th>Código</th>
-		                        <th>Data de Inicio</th>
-		                        <th>Data de Vigência</th>
-		                        <th>Autorização</th>
-		                        <th>Status</th>
-		                    </tr>
-		                </thead>
-		                <tbody>
-		                    <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
-		                        <tr>
-		                            <td> <?= $concessaotrajeto['codConcessao'] ?></td>		                        	
-		                            <td> <?= $concessaotrajeto['data_inicio'] ?></td>
-		                            <td> <?= $concessaotrajeto['data_fim'] ?></td>
-		                            <td>
-		                                <button class="btn" id="documentoAutorizacao">
-											<i class="fa fa-download" style="color:black"></i>
-											<label style="color: black">
-												<a style="color: black" href="autorizaconcessao/autorizacao.pdf"
-												download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
-											</label>
-										</button>
-									</td>
-		                            <td>
-	                            	   <script type="text/javascript">
-	                            	   		var estado = document.getElementById('estado');
-											    $('#onoff1').on('change', function() {
-											        var el = this;
-											        estado.innerHTML = el.checked ? 'ligado' : 'desligado';
+			<br>
+		</div>
+		<div class="row"> 
+			<table class="table table-hover table-bordered dataTable" style="width: 100%;">
+				<thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+					<tr>
+						<th>Código</th>
+						<th>Data de Inicio</th>
+						<th>Data de Vigência</th>
+						<th>Autorização</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
+						<tr>
+							<td> <?= $concessaotrajeto['codConcessao'] ?></td>		                        	
+							<td> <?= $concessaotrajeto['data_inicio'] ?></td>
+							<td> <?= $concessaotrajeto['data_fim'] ?></td>
+							<td>
+								<button class="btn" id="documentoAutorizacao">
+									<i class="fa fa-download" style="color:black"></i>
+									<label style="color: black">
+										<a style="color: black" href="autorizaconcessao/autorizacao.pdf"
+										download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
+									</label>
+								</button>
+							</td>
+							<td>
+								<script type="text/javascript">
+									var estado = document.getElementById('estado');
+									$('#onoff1').on('change', function() {
+										var el = this;
+										estado.innerHTML = el.checked ? 'ligado' : 'desligado';
 
 											        // aqui podes juntar a lógica do ajax
 											        $.ajax({
-											            url: "some.php",
-											            data: {
-											                estado: this.checked
-											            }
+											        	url: "some.php",
+											        	data: {
+											        		estado: this.checked
+											        	}
 											        }).done(function(msg) {
 											            if (msg == 'failed') return el.checked = !el.checked; // caso o servidor retorne "failed" mudar o estado do botão
 											            else alert("Info gravada: " + msg);
 											        });
-										   	 });
-										</script> 
-										<div class="onoff">
-										    <input type="checkbox" hidden="" class="toggle" id="onoff1">
-										    <label for="onoff1"></label>
-										</div>
-										<p id="estado">desligado</p>
-	                            	</td>
-		                        </tr>
-		                    <? endforeach; ?>
-		                </tbody>
-		            </table>
-        		</div>
-			</div>
+											    });
+											</script> 
+											<div class="onoff">
+												<input type="checkbox" hidden="" class="toggle" id="onoff1">
+												<label for="onoff1"></label>
+											</div>
+											<p id="estado">desligado</p>
+										</td>
+									</tr>
+								<? endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-			
+
+			</div>
 		</div>
+
+
+		<div class="col-sm-2">
+
+		</div>
+
 	</div>
-	
-	
-	<div class="col-sm-2">
-	
-	</div>
-	
-  </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-			     <h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
-                 <button type="button" class="close" data-dismiss="modal">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
+				<button type="button" class="close" data-dismiss="modal">
 					<span>&times;</span>
-				 </button>
-             </div>
-             <div class="modal-body">
+				</button>
+			</div>
+			<div class="modal-body">
 				
 				<div class="container-fluid"> 
 					<div class="row">
 						<div class="table-responsive">
-								<form method="post">
-								  <div class="form-group">
-									<label >Data de Inicio</label>
-									<input type="date" class="form-control" name="dataInicio">
-									<label >Data de Vigência</label>
-									<input type="date" class="form-control" name="dataFim">
-									<label >Documento de Autorização</label>
-									<input type="file" class="form-control" name="docAutorizacao">
-									<label >Status</label>
-									<input type="text" class="form-control" name="statusConcessao">
-								  </div>
+							<form method="post">
+								<div class="form-group">
+									<div class="col-sm-6">
+										<label >Data de Inicio</label>
+										<input type="date" class="form-control" id="dataInicio" name="dataInicio">
+										<label >Data de Vigência</label>
+										<input type="date" class="form-control" id="dataFim" name="dataFim">
+										<br>
+										<div class="alert alert-success" role="alert" style="display: none">
+					                    Cadastro realizado com sucesso! :)
+					                	</div>
+										<button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
+									</div>
+									<div class="col-sm-6">
+										<label >Documento de Autorização</label>
+										<input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
+										<label >Status</label>
+										<input type="text" class="form-control" id="statusConcessao" name="statusConcessao">
+									</div>
+								</div>
 
-								  <button type="submit" class="btn btn-primary">Submit</button>
-								</form>							
+							</form>	
+							<script type="text/javascript">
+								$(".cadastrarConcessao").click(function ()
+								{
+									var dataInicio = $("#dataInicio").val();
+									var dataFim = $("#dataFim").val();
+									var docAutorizacao = $("#docAutorizacao").val();
+									var statusConcessao = $("#statusConcessao").val();
+
+        						// if (nome.length < 10) {
+							        //    $('.nome').removeClass('hidden');
+							        //    $('.alert-success').addClass('hidden');
+
+							        // } else if (email.length < 10) {
+							        //    $('.nome').addClass('hidden');
+							        //    $('.email').removeClass('hidden');
+							        //    $('.alert-success').addClass('hidden');
+
+							        //} else {
+							        	$.ajax({
+							        		type: "POST",
+							        		url: baseUrl + 'concessaotrajeto/index',
+							        		async: false,
+							        		data: {dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao,
+							        			statusConcessao: statusConcessao
+							        		},
+							        		success: function () {
+							        			$(".alert-success").removeAttr("style");
+							        		},
+							        		error: function () {
+							        			alert("Error");
+							        		}
+							        	});
+							        });
+							    </script>						
+							</div>
 						</div>
-		 			</div>
+					</div>
 				</div>
 			</div>
-        </div>
-    </div>
- </div>
+		</div>
+	</div>

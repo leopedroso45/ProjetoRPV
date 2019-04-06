@@ -1,4 +1,4 @@
-
+    $(document).ready(function () {
 
     var estado = document.getElementById('estado');
     $('#onoff1').on('change', function() {
