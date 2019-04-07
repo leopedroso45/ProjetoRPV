@@ -143,12 +143,54 @@ $(document).on('click', '.clickable', function (e) {
         
 
 
-        if (nome.length === 0) {
-        	
+       if (nome.length === 0) {
+        	$('.nome').removeAttr("style");
                 
         }
-        else if (cpf.length < 11) {
-        	
+        else if (cpf.length < 12) {
+        	$('.cpf').removeAttr("style");	
+
+        	$('.nome').attr("style", "display:none");	
+        } 
+        else if (telefone.length < 1) {
+        	$('.telefone').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        } 
+        else if (rg.length < 1) {
+        	$('.rg').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        } 
+        else if (carteiraTrabalho.length < 1) {
+        	$('.carteiraTrabalho').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        }
+        else if (pis.length < 1) {
+        	$('.pis').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        	$('.carteiraTrabalho').attr("style", "display:none");
+        } 
+        else if (dataAdmissao.length < 10) {
+        	$('.dataAdmissao').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        	$('.carteiraTrabalho').attr("style", "display:none");
+        	$('.pis').attr("style", "display:none");
         } 
 
         else {

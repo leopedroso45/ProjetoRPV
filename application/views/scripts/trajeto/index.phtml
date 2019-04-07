@@ -147,21 +147,27 @@
 			
 		
 			
-			<button class="btn btn-outline-success btn-lg btn-block" type="submit"   >
-				Gravar</button>
+		<button class="btn btn-outline-success btn-lg btn-block" type="submit"   >
+				Gravar
+		</button>
+
+		<button class="btn btn-outline-danger btn-lg btn-block" type="button" id="cancelar"  >
+				Cancelar
+		</button>
 		
 	
 		</div>
 	</div>  <!-- fim form group-->
 	</form>
 	</div>
-<!-- </div> -->
-	
-	<script>
-		
-		
 
-	</script>
+		<script>
+		$("button#cancelar").click(function(){
+      	      location.href = baseUrl + 'trajeto';
+        });
+ 	</script>
+
+	
 
 </div>
 </div>
