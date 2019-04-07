@@ -21,50 +21,51 @@
         });    
       });
         var i =1; 
+
     </script>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+    <body >
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.9);" >
+            <div class="container" >
                 <a class="navbar-brand" href="#">PampaBus</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto" >
                         <li class="nav-item active">
                             <a class="nav-link" href="<?= $this->baseUrl("index") ?>">
-                                <i class="fas fa-home"></i>
+                                <i class="fas fa-home" style="color:white"></i>
                                     Início 
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" title="(Alt+n) Visualizar Ônibus Urbanos" href="<?= $this->baseUrl("onibus-urbano") ?>">
-                                <i class="fas fa-bus-alt"></i>
+                                <i class="fas fa-bus-alt"style="color:white"></i>
                                 Ô<u>n</u>ibus Urbanos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" title="(Alt+i) Visualizar Ônibus Intermunicipais" href="<?= $this->baseUrl("onibus-intermunicipal") ?>">
-                                <i class="fas fa-bus"></i>
+                                <i class="fas fa-bus"style="color:white"></i>
                                 Ôn<u>i</u>bus Intermunicipais</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" title="(Alt+i) Visualizar Ônibus Intermunicipais" href="<?= $this->baseUrl("trajeto") ?>">
-                                <i class="fas fa-bus"></i>
+                                <i class="fas fa-bus"style="color:white"></i>
                                 <u>T</u>rajetos</a>
                         </li>
                        
                         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" title="Conta PampaBus" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user"style="color:white"></i>
                                 Funcionários
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<?= $this->baseUrl("cobrador") ?>">Cobrador</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"style="background-color: rgba(0,0,0,0.9);">
+                                <a class="dropdown-item" href="<?= $this->baseUrl("cobrador") ?> " style="color:white; ">Cobrador</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= $this->baseUrl("motorista") ?>">Motorista</a>
+                                <a class="dropdown-item" href="<?= $this->baseUrl("motorista") ?>" style="color:white">Motorista</a>
                             </div>
                         </li>
                     </ul>

@@ -23,7 +23,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
         $cobrador->setDataAdmissao($dados['dataAdmissao']);
         $cobrador->setCnh($dados['cnh']);
         $cobrador->setTelefone($dados['telefone']);
-        $cobrador->setCnh($dados['email']);
+        $cobrador->setEmail($dados['email']);
 //       
         
         return $cobrador->save();

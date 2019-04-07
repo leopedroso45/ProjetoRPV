@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt=br">
 <head>
 	<meta charset="UTF-8">
 	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,11 @@
 
 
 		var i =1;
+
+		$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',                
+    language: 'pt-BR'
+});
 	</script>
 
 
@@ -110,22 +115,15 @@
 
 					<div class="col-3" >
 						<label for="dataAdmissao" id="label">Data de admissão</label>
-  			 			<input type="date" name="dataAdmissao" class="form-control" id="dataAdmissao" placeholder="Digite a data de admissão">
+  			 			<input type="text" name="dataAdmissao" class="form-control date" id="dataAdmissao" placeholder="Digite a data de admissão">
 
 					</div>
-
 
 				</div>
 				<div class="row">
 					<div class="col-12" style="padding: 15px">
 						
 					
-					
-					<div class="alert alert-success " style="display:none;" role="alert">
-                  			Cadastro de conta realizado com sucesso!
-               			</div>
-               			
-
                			<div class="alert alert-danger nome" style="display:none;" role="alert">
                     		O campo NOME é de preenchimento obrigatório!
                 		</div>
@@ -134,8 +132,28 @@
                     		CPF inválido!
                 		</div>
 
-                		<div class="alert alert-danger ff" style="display:none;" role="alert">
-                    		CPF inválido!
+                		<div class="alert alert-danger telefone" style="display:none;" role="alert">
+                    		O campo TELEFONE é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
+                    		O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger rg" style="display:none;" role="alert">
+                    		O campo RG é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger pis" style="display:none;" role="alert">
+                    		O campo Nº do PIS é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger cnh" style="display:none;" role="alert">
+                    		O campo CNH é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
+                    		O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
                 		</div>
 						
 
@@ -166,10 +184,10 @@
   <thead>
     <tr>
       <th scope="col">Nome</th>
-      <th scope="col">Cpf</th>
+      <th scope="col">CPF</th>
       <th scope="col">Data de admissão</th>
       <th scope="col">Status</th>
-      <th scope="col">Visualizar</th>
+      <th scope="col">Detalhes</th>
 
 
       

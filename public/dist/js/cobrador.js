@@ -8,10 +8,10 @@
 
 
 $(document).ready(function(){
-$('#pis-cobrador').mask('9999999999');
-$('#cnh-cobrador').mask('999999999999');
-$('#rg-cobrador').mask('AAAAAAAAAAAA');
-$('#cpf-cobrador').mask('999999999-99');
+$('#pis').mask('9999999999');
+$('#cnh').mask('999999999999');
+$('#rg').mask('AAAAAAAAAAAA');
+$('#cpf').mask('999999999-99');
 
 
 $(document).on('click', '.clickable', function (e) {
@@ -47,14 +47,57 @@ $(document).on('click', '.clickable', function (e) {
         var telefone = $("#telefone").val();
         var email = $("#email").val();
         
+        
         if (nome.length === 0) {
         	$('.nome').removeAttr("style");
                 
         }
-        else if (cpf.length === 0) {
+        else if (cpf.length < 12) {
         	$('.cpf').removeAttr("style");	
+
         	$('.nome').attr("style", "display:none");	
-        } else {
+        } 
+        else if (telefone.length < 1) {
+        	$('.telefone').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        } 
+        else if (rg.length < 1) {
+        	$('.rg').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        } 
+        else if (carteiraTrabalho.length < 1) {
+        	$('.carteiraTrabalho').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        }
+        else if (pis.length < 1) {
+        	$('.pis').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        	$('.carteiraTrabalho').attr("style", "display:none");
+        } 
+        else if (dataAdmissao.length < 10) {
+        	$('.dataAdmissao').removeAttr("style");
+
+        	$('.nome').attr("style", "display:none");	
+        	$('.cpf').attr("style", "display:none");
+        	$('.telefone').attr("style", "display:none");
+        	$('.rg').attr("style", "display:none");
+        	$('.carteiraTrabalho').attr("style", "display:none");
+        	$('.pis').attr("style", "display:none");
+        } 
+        else {
             $.ajax({
                 type: "POST",
                 url: baseUrl + 'cobrador/index',
@@ -104,9 +147,11 @@ $(document).on('click', '.clickable', function (e) {
         	
                 
         }
-        else if (cpf.length === 0) {
+        else if (cpf.length < 11) {
         	
-        } else {
+        } 
+
+        else {
         
 
 //        alert("id = " + id + ", status = " + status);

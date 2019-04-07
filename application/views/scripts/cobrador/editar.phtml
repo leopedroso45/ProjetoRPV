@@ -9,7 +9,9 @@
 	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/cobrador.css") ?> />
 	
 
-	
+	<script>
+		
+	</script>
 
 
 </head>
@@ -84,7 +86,7 @@
 					</div>
 					<div class="col-3" >
 						<label for="email" id="label">Email</label>
-  			 			<input type="text" name="email" class="form-control" id="email" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
+  			 			<input type="text" name="email" class="form-control" id="email"  value="<?php echo $this->cobrador->getEmail(); ?>">
 
 					</div>
 
@@ -111,24 +113,24 @@
 					</div>
 					
 				</div>
-				
+				<div class="row">
+					<div class="col-12" style="padding: 15px; padding-top: 0px;">
+						<button class="btn btn-outline-danger btn-lg btn-block " name="edita" type="button"  id="voltar">
+							Voltar
+						</button>
 
+
+					</div>				
+				</div>				
 			</div>
-
-
-
 		</form>
 	</div>
-
-	
-	
-	
-<!-- </div> -->
-	
-	
-
-</div>
-</div>
-
+	</div>
+	</div>
+	<script>
+		$("button#voltar").click(function(){
+      	      location.href = baseUrl + 'cobrador';
+        });
+ 	</script>
 </body>
 </html>
