@@ -161,6 +161,10 @@
 							Gravar
 						</button>
 
+						<button class="btn btn-outline-danger btn-lg btn-block" type="button" id="cancelar"  >
+							Cancelar
+						</button>
+
 						</div>
 
 
@@ -251,11 +255,15 @@
 	
 <!-- </div> -->
 	
-	<script>
+	
 		
-		
+		<script>
+		$("button#cancelar").click(function(){
+      	      location.href = baseUrl + 'cobrador';
+        });
+ 	</script>
 
-	</script>
+	
 
 </div>
 </div>

@@ -6,15 +6,19 @@
 	
 	<title>Editar Motorista</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/motorista.css") ?> />
 	
+
+	<script>
+		
+	</script>
 
 
 </head>
 <body style="background-image: url(../../../dist/imagens/fundo.png);" >
 
 	<h1 id="titulo">
-		Editar Motorista
+		Editar
 	</h1>
 
 	<div class="container" style="background-color: rgba(0,0,0,0.8); padding-bottom: 0px;">
@@ -23,58 +27,156 @@
 		<form  method="post"  >
 			<div class="form-group" >
 				
-				<h2 style="color:white">Cadastro de Motoristas</h2>
-				<div class="row" >
+				<h2 style="color:white">Editar</h2>
+				
+				<!-- fim cad velho -->
+						<input type="hidden" id="id_motorista" name="id_motorista" value="<? echo $this->motorista['id_motorista'] ?>">
+
+				     
+
+
+				
+				<div class="row"  >
+					
+
 					
 					
-					<div class="col-8" >
-						<label for="nome-cobrador" id="label" >Nome</label>
+					<div class="col-6" >
+						
 						<input type="hidden" id="id-motorista" name="id-motorista" value="<?php echo $this->motorista->getId_motorista(); ?>">
-  			 			<input type="text" name="nome-motorista" class="form-control" id="nome-motorista" placeholder="Insira o nome completo" value="<?php echo $this->motorista->getNome(); ?>">
+						<label for="nome-motorista" id="label">Nome</label>
+  			 			<input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo" value="<?php echo $this->motorista->getNome(); ?>">
 
 					</div>
-					<div class="col-4" >
+					<div class="col-2" >
 						<label for="cpf" id="label">CPF</label>
-  			 			<input type="text" name="cpf-motorista" class="form-control" id="cpf-motorista" placeholder="Digite o CPF" value="<?php echo $this->motorista->getCpf(); ?>">
+  			 			<input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" value="<?php echo $this->motorista->getCpf(); ?>">
+
+					</div>
+					<div class="col-2">
+						<label for="telefone" id="label">Telefone</label>
+  			 			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone" value="<?php echo $this->motorista->getTelefone(); ?>">
+					</div>
+
+					<div class="col-2" >
+						<label for="rg-motorista" id="label">RG</label>
+  			 			<input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG" value="<?php echo $this->motorista->getRg(); ?>">
 
 					</div>
 					
 
 				</div>
 				<div class="row">
-					<div class="col-11">
-						
+					
+					<div class="col-2" >
+						<label for="carteiraTrabalho-motorista" id="label">Carteira de trabalho</label>
+  			 			<input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da Carteira de Trabalho" value="<?php echo $this->motorista->getCarteiraTrabalho(); ?>">
 
 					</div>
-					<div class="col-1" style="padding: 10px;">
-						<button class="btn btn-outline-success btn-lt" type="submit" id="gravar">
+
+					<div class="col-2" >
+						<label for="pis" id="label">Número do PIS</label>
+  			 			<input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS" value="<?php echo $this->motorista->getPis(); ?>">
+
+					</div>
+					<div class="col-2" >
+						<label for="cnh" id="label">CNH</label>
+  			 			<input type="text" name="cnh" class="form-control" id="cnh" placeholder="Digite a CNH" value="<?php echo $this->motorista->getCnh(); ?>">
+
+					</div>
+					<div class="col-3" >
+						<label for="email" id="label">Email</label>
+  			 			<input type="text" name="email" class="form-control" id="email"  value="<?php echo $this->motorista->getEmail(); ?>">
+
+					</div>
+
+					
+
+					<div class="col-3" >
+						<label for="dataAdmissao-motorista" id="label">Data de admissão</label>
+  			 			<input type="date" name="dataAdmissao" class="form-control" id="dataAdmissao" placeholder="Digite a data de admissão" value="<?php echo $this->motorista->getDataAdmissao(); ?>">
+
+					</div>
+
+
+				</div>
+				
+				<!-- fim cad novo -->
+				
+
+
+				<div class="row">
+					<div class="col-12" style="padding: 15px">
+						<div class="row">
+							<div class="col-3"></div>
+							<div class="col-6">
+								<div class="alert alert-danger nome" style="display:none;" role="alert">
+                    		O campo NOME é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger cpf" style="display:none;" role="alert">
+                    		CPF inválido!
+                		</div>
+
+                		<div class="alert alert-danger telefone" style="display:none;" role="alert">
+                    		O campo TELEFONE é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
+                    		O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger rg" style="display:none;" role="alert">
+                    		O campo RG é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger pis" style="display:none;" role="alert">
+                    		O campo Nº do PIS é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger cnh" style="display:none;" role="alert">
+                    		O campo CNH é de preenchimento obrigatório!
+                		</div>
+
+                		<div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
+                    		O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
+                		</div>
+								
+
+
+							</div>
+							<div class="col-3"></div>
+						</div>
+
+
+
+						<button class="btn btn-outline-success btn-lg btn-block edita" name="edita" type="button"  id="gravar">
 							Gravar
 						</button>
 
+
 					</div>
+					
 				</div>
-				
+				<div class="row">
+					<div class="col-12" style="padding: 15px; padding-top: 0px;">
 
+						<button class="btn btn-outline-danger btn-lg btn-block " name="edita" type="button"  id="voltar">
+							Cancelar
+						</button>
+
+
+					</div>				
+				</div>				
 			</div>
-
-
-
 		</form>
 	</div>
-
-	
-	
-	
-<!-- </div> -->
-	
+	</div>
+	</div>
 	<script>
-		
-		
-
-	</script>
-
-</div>
-</div>
-
+		$("button#voltar").click(function(){
+      	      location.href = baseUrl + 'motorista';
+        });
+ 	</script>
 </body>
 </html>

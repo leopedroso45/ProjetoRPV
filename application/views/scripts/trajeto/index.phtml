@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt=br"
 <head>
 	<meta charset="UTF-8">
 	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/trajeto.css" rel="stylesheet">
+	<link href="css/trajeeto.css" rel="stylesheet">
 	<title>Document</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -49,25 +49,66 @@
 	<div class="form-group">
 		<div class="row" style="padding-bottom: 10px;" >
 
-			<div class="col-1">
+			<div class="col-6">
 
-				<div class="custom-control custom-switch">
-	  			<input type="checkbox" class="custom-control-input" checked id="customSwitches">
-	  			<label class="custom-control-label" id="label" for="customSwitches" >Ativo</label>
-				</div>
-			</div>
-			<div class="col-3">
-				
-				<label for="cod" id="label">Código</label>
-				<input type="text" name="cod" class="form-control" id="cod">
-			</div>
-			<div class="col-8">
 				<label for="descricao" id="label">Descrição</label>
 				<input type="text" class="form-control" id="descricao">
 			</div>
+			<div class="col-5">
+				<input type="hidden" id="id-onibus">
+				<label for="cod" id="label"> Alocar ônibus</label>
+				<input type="text" name="cod" class="form-control" id="cod">
+				
+			</div>
+			<div class="col-1" style="padding-top: 31px; padding-left: 0px;">
+				<button class=" btn btn-outline-primary" type="button" >
+					<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+
+				</button>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5">
+				<input type="hidden" id="id-motorista">
+				<label for="descricao" id="label">Alocar Motorista</label>
+				<input type="text" class="form-control" id="descricao">
+
+			</div>
+			<div class="col-1"style="padding-top: 31px; padding-left: 0px;">
+				<button class=" btn btn-outline-primary" type="button" >
+					<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+
+				</button>
+
+			</div>
+			<div class="col-5">
+				<input type="hidden" id="id-cobrador">
+				<label for="descricao" id="label">Alocar Cobrador</label>
+				<input type="text" class="form-control" id="descricao">
+
+			</div>
+			<div class="col-1"style="padding-top: 31px; padding-left: 0px;">
+				<button class=" btn btn-outline-primary" type="button" >
+					<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+
+				</button>
+
+
+			</div>
+
+		</div>	
+		<div class="row"></div>
+		<div class="col-6">
+			
+		</div>
+		<div class="col-6">
+			
+
+		</div>
 		</div>	
 		<div class="row" id="aviso" style="padding-right: 50px;">
-			<div class="col-8">
+			<div class="col-3">
 				
 			</div>
 			<div class="col-4" id="col-aviso" >
@@ -127,27 +168,13 @@
 		</div>	
 
 	
-		<div class="row">
-			<div class="col-4">
-				<label for="bus" id="label">
-					Alocar Ônibus
-				</label>
-			<input type="text" class="form-control" id="bus" disabled>
-			
-			</div>
-			<div class="col-3" style="padding-top: 31px;">
-				<button class="btn btn-dark btn-lt">Incluir</button>
-			</div>
-			<div class="col-5">
-				
-			</div>
-		</div>	
+		
 
 		<div class="row" style="padding: 15px;">
 			
 		
 			
-		<button class="btn btn-outline-success btn-lg btn-block" type="submit"   >
+		<button class="btn btn-outline-success btn-lg btn-block" type="button"   >
 				Gravar
 		</button>
 
@@ -157,9 +184,51 @@
 		
 	
 		</div>
-	</div>  <!-- fim form group-->
+	</div>  
 	</form>
+	</div>			<!-- fim container form-->
+
+	<div class="container" style="background-color: rgba(0,0,0,0.8); color: white">
+		
+		<table class="table" >
+  <thead >
+    <tr>
+      <th scope="col">Descrição</th>
+      <th scope="col">Ônibus</th>
+      <th scope="col">Motorista</th>
+      <th scope="col">Cobrador</th>
+      <th scope="col">Status</th>
+      <th scope="col">Detalhes</th>
+
+
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+	
+		
+                           
+		
+    <tr>
+      
+      <td> 	</td>
+      <td> 	</td>
+      <td> 	</td>
+      <td>  </td>
+      <td>	</td>
+      
+    </tr>
+    
+      
+     
+  
+  </tbody>
+</table>
+
 	</div>
+
+
 
 		<script>
 		$("button#cancelar").click(function(){

@@ -5,7 +5,7 @@ class CobradorController extends Zend_Controller_Action
 
    public function init()
     {
-        $this->_helper->layout->setLayout('layout');
+        $this->_helper->layout->setLayout('layout_Cobrador');
         
     }
 
@@ -25,7 +25,7 @@ class CobradorController extends Zend_Controller_Action
     }
 
      public function editarAction(){
-        $this->_helper->layout->setLayout('layout');
+        $this->_helper->layout->setLayout('layout_Cobrador');
         
          $id = $this->getRequest()->getParam('id');
          $dbTableCobrador = new Application_Model_DbTable_Cobrador();
