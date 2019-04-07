@@ -15,36 +15,32 @@
 							<div class="alert alert-info">
 								<div class="form">
 									<div class="listaDeTrajetos">
-										<label class="radio">
-												<input value="1" type="radio">Trajeto 1
-										</label>
-										<label class="radio">
-												<input value="2" type="radio">Trajeto 2
-										</label>
-										<label class="radio">
-												<input value="3" type="radio">Trajeto 3
-										</label>
-										<label class="radio">
-												<input value="4" type="radio">Trajeto 4
-										</label>
+									<!-- O name é justamente o nome do Trajeto! -->
+									<form>
+										<div class="checkbox">
+											<label><input type="checkbox" name="abc" id="myCheck" onclick="selecionarCheckbox(this); return true;">Trajeto 1</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" name="def" id="myCheck" onclick="selecionarCheckbox(this); return true;">Trajeto 2</label>
+										</div>
+										<div class="checkbox">
+											<label><input type="checkbox" name="ghi" id="myCheck" onclick="selecionarCheckbox(this); return true;">Trajeto 3</label>
+										</div>
+									</form>
 									</div>
 								</div>
         			</div>
 						</div>
 
             <div class="col">
-							<Center><H4>Informações do Trajeto</H4></Center>
-							<ul class="list-group listaTrajetosSelecionados">
-								<li class="list-group-item list-group-item-success">Trajeto 1</li>
-								<li class="list-group-item list-group-item-info">Trajeto 2</li>
-								<li class="list-group-item list-group-item-warning">Trajeto 3</li>
-								<li class="list-group-item list-group-item-danger">Trajeto 4</li>
-							</ul>
+							<Center><H4>Trajetos selecionados</H4></Center>
+							<div class="list-group listaTrajetosSelecionados" id="div1">
+							</div>
 							<form>
 							<Center><H4>Alterar Tarifa</H4>
 								<div class="input-group validarReal">
 									<span class="input-group-addon">R$</span>
-									<input type="number" class="form-control" min="1" max="10" placeholder="Real" required>
+									<input type="number" class="form-control" min="1" max="10" placeholder="Real" id="campoTarifa" required>
 									<span class="input-group-addon">.00</span>
 								</div>
 								<h4>Término da Vigência</h4>
@@ -53,18 +49,12 @@
 										<!-- Datepicker as text field -->         
 										<div class="input-group date" data-date-format="dd.mm.yyyy">
 											<input  type="date" class="form-control" placeholder="dd.mm.yyyy" required>
-											<div class="input-group-addon" >
-												<span class="glyphicon glyphicon-th"></span>
+											<div class="input-group-addon " >
+												<span class="glyphicon glyphicon-th" ></span>
 											</div>
 										</div>
 									</div>    
 								</div>
-								<script type="text/javascript">
-								$(function () {
-									$('.input-group.date').datepicker({format: "dd.mm.yyyy"}); 
-											});
-								</script>
-
 								<div style="margin-bottom: 5%;">
 									<button type="button" class="btn btn-warning">Voltar</button>
 									<button type="submit" class="btn btn-success">Pronto</button>
@@ -77,3 +67,49 @@
 		</div>			
 	</div>
 </div>
+
+<script type="text/javascript">
+	
+	var trajetos = [];
+
+    function doalert(obj) {
+			if(obj.getAttribute("id") == 1){	
+        obj.setAttribute("class", "list-group-item active");
+				obj.setAttribute("id", 0);
+        return false;
+			} else {
+				obj.setAttribute("class", "list-group-item");
+				obj.setAttribute("id", 1);
+				return true;
+			}
+    }
+
+		function selecionarCheckbox(obj) {
+			if(obj.checked == true){	
+				var para = document.createElement("a");
+				para.setAttribute("href", "");
+				para.setAttribute("class", "list-group-item");
+				para.setAttribute("id", 1);
+				var text = obj.getAttribute("name");
+				para.setAttribute("name", text);
+				para.setAttribute("onclick", "doalert(this); return false;");
+				var node = document.createTextNode(text);
+				para.appendChild(node);
+				var element = document.getElementById("div1");
+				element.appendChild(para);
+				trajetos.push(para);
+        return false;
+			} else {
+				
+				obj.setAttribute("class", "list-group-item");
+				obj.setAttribute("id", 1);
+				trajetos.pop(obj);
+				return true;
+			}
+    }
+
+		function datepickerfunction() {
+			$('.input-group.date').datepicker({format: "dd.mm.yyyy"}); 
+		};
+
+</script>
