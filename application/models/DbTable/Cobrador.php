@@ -14,7 +14,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
         $cobrador = $this->createRow();
         /*@var $usuario Application_Model_Cobrador*/
         $cobrador->setNome($dados['nome']);
-        $cobrador->setCpf($dados['cpf-cobrador']);
+        $cobrador->setCpf($dados['cpf']);
 
         $cobrador->setAtivo("ATIVO");
         $cobrador->setRg($dados['rg']);
@@ -22,6 +22,8 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
         $cobrador->setPis($dados['pis']);
         $cobrador->setDataAdmissao($dados['dataAdmissao']);
         $cobrador->setCnh($dados['cnh']);
+        $cobrador->setTelefone($dados['telefone']);
+        $cobrador->setCnh($dados['email']);
 //       
         
         return $cobrador->save();
@@ -42,7 +44,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
     }
 
 
-    public function editarCobrador($id, $dados)
+    /*public function editarCobrador($id, $dados)
     {
 
             define('ID', array(
@@ -64,7 +66,7 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
 
 
         return $cobrador->save();
-    }
+    } */
 
         public function editarAtivo($id, $dados)
     {
@@ -77,6 +79,24 @@ class Application_Model_DbTable_Cobrador extends Zend_Db_Table_Abstract{
         } elseif ($dados['ativo'] === 'INATIVO') {
             $cobrador->setAtivo('INATIVO');
         }
+
+        return $cobrador->save();
+    }
+    public function editarCobradorajax($id, $dados)
+    {
+        $this->find($id)->current();
+        $cobrador = $this->getCobradorPorId($id);
+        
+
+        $cobrador->setNome($dados['nome']);
+        $cobrador->setCpf($dados['cpf']);
+        $cobrador->setRg($dados['rg']);
+        $cobrador->setCarteiraTrabalho($dados['carteiraTrabalho']);
+        $cobrador->setPis($dados['pis']);
+        $cobrador->setDataAdmissao($dados['dataAdmissao']);
+        $cobrador->setCnh($dados['cnh']);
+        $cobrador->setTelefone($dados['telefone']);
+        $cobrador->setEmail($dados['email']);
 
         return $cobrador->save();
     }

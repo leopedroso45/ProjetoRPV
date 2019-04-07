@@ -61,6 +61,21 @@ class CobradorController extends Zend_Controller_Action
 
     }
 
+    public function editarCobradorajaxAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableCobrador = new Application_Model_DbTable_Cobrador();
+        $cobrador = $dbTableCobrador->getCobradorPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableCobrador->editarCobradorajax($id, $dados);
+        }
+        $this->view->cobrador = $cobrador;
+
+    }
+
 
    
 

@@ -25,28 +25,12 @@
 		<form  method="post"  >
 			<div class="form-group" >
 				
-				<h2 style="color:white">Cadastro de Cobradores</h2>
+				<h2 style="color:white">Editar</h2>
 				
 				<!-- fim cad velho -->
 						<input type="hidden" id="id_cobrador" name="id_cobrador" value="<? echo $this->cobrador['id_cobrador'] ?>">
 
-				      <?php if ($this->cobrador->getAtivo() === 'ATIVO'): ?>
-                            <div class="btn-group" id="status" data-toggle="buttons">
-                                <label class="btn btn-default plug status-on btn-on aberto active">
-                                    <input type="radio" name="plug" checked="checked">ATIVO</label>
-                                <label class="btn btn-default plug status-off btn-off fechado">
-                                    <input type="radio" name="plug">INATIVO</label>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ($this->cobrador->getAtivo() === 'INATIVO'): ?>
-                            <div class="btn-group" id="status" data-toggle="buttons">
-                                <label class="btn btn-default status-on btn-on plug aberto">
-                                    <input type="radio" name="plug" checked="checked">ATIVO</label>
-                                <label class="btn btn-default status-off btn-off plug fechado active">
-                                    <input type="radio" name="plug">INATIVO</label>
-                            </div>
-                        <?php endif; ?>
+				     
 
 
 				
@@ -68,8 +52,8 @@
 
 					</div>
 					<div class="col-2">
-						<label for="telefone-cobrador" id="label">Telefone</label>
-  			 			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
+						<label for="telefone" id="label">Telefone</label>
+  			 			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone" value="<?php echo $this->cobrador->getTelefone(); ?>">
 					</div>
 
 					<div class="col-2" >
@@ -82,20 +66,25 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-3" >
+					<div class="col-2" >
 						<label for="carteiraTrabalho-cobrador" id="label">Carteira de trabalho</label>
   			 			<input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da Carteira de Trabalho" value="<?php echo $this->cobrador->getCarteiraTrabalho(); ?>">
 
 					</div>
 
-					<div class="col-3" >
-						<label for="pis-cobrador" id="label">Número do PIS</label>
+					<div class="col-2" >
+						<label for="pis" id="label">Número do PIS</label>
   			 			<input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS" value="<?php echo $this->cobrador->getPis(); ?>">
 
 					</div>
-					<div class="col-3" >
-						<label for="cnh-cobrador" id="label">CNH</label>
+					<div class="col-2" >
+						<label for="cnh" id="label">CNH</label>
   			 			<input type="text" name="cnh" class="form-control" id="cnh" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
+
+					</div>
+					<div class="col-3" >
+						<label for="email" id="label">Email</label>
+  			 			<input type="text" name="email" class="form-control" id="email" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
 
 					</div>
 
@@ -114,7 +103,7 @@
 
 				<div class="row">
 					<div class="col-12" style="padding: 15px">
-						<button class="btn btn-outline-success btn-lg btn-block"  id="gravar">
+						<button class="btn btn-outline-success btn-lg btn-block edita" name="edita" type="button"  id="gravar">
 							Gravar
 						</button>
 
@@ -136,24 +125,7 @@
 	
 <!-- </div> -->
 	
-	<script>
-		
-		
-		
-
-		 var c = alert.confirm();
-
-                    confirma function () {
-                        if(c){
-                            location.href=baseUrl + 'cobrador';
-                        }
-                    
-
-                }
-                confirma();
 	
-
-	</script>
 
 </div>
 </div>

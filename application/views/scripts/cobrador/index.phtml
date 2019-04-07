@@ -47,7 +47,7 @@
 		
 		<div class="row-fluid" style="padding: 10px;">
 			
-			<button class="btn btn-outline-primary btn-lt" type="button" id="novo_cobrador" >
+			<button class="btn btn-outline-primary btn-lt " type="button" id="novo_cobrador" >
 				Novo Cobrador</button>
 			
 
@@ -60,23 +60,23 @@
 					
 					
 					<div class="col-5" >
-						<label for="nome-cobrador" id="label">Nome</label>
-  			 			<input type="text" name="nome-cobrador" class="form-control" id="nome-cobrador" placeholder="Insira o nome completo">
+						<label for="nome" id="label">Nome</label>
+  			 			<input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo">
 
 					</div>
 					<div class="col-2" >
 						<label for="cpf" id="label">CPF</label>
-  			 			<input type="text" name="cpf-cobrador" class="form-control" id="cpf-cobrador" placeholder="Digite o CPF">
+  			 			<input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF">
 
 					</div>
 					<div class="col-2" >
-						<label for="telefone-cobrador" id="label">Telefone</label>
-  			 			<input type="text" name="telefone-cobrador" class="form-control" id="telefone-cobrador" placeholder="Digite o telefone">
+						<label for="telefone" id="label">Telefone</label>
+  			 			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
 
 					</div>
 					<div class="col-3" >
-						<label for="rg-cobrador" id="label">RG</label>
-  			 			<input type="text" name="rg-cobrador" class="form-control" id="rg-cobrador" placeholder="Digite o RG">
+						<label for="rg" id="label">RG</label>
+  			 			<input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG">
 
 					</div>
 					
@@ -84,28 +84,33 @@
 				</div>
 				<div class="row">
 					
-					<div class="col-3" >
-						<label for="carteiraTrabalho-cobrador" id="label">Carteira de trabalho</label>
-  			 			<input type="text" name="carteiraTrabalho-cobrador" class="form-control" id="carteiraTrabalho-cobrador" placeholder="Digite o RG">
-
-					</div>
-
-					<div class="col-3" >
-						<label for="pis-cobrador" id="label">Número do PIS</label>
-  			 			<input type="text" name="pis-cobrador" class="form-control" id="pis-cobrador" placeholder="Digite o PIS">
+					<div class="col-2" >
+						<label for="carteiraTrabalho" id="label">Carteira de trabalho</label>
+  			 			<input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da CT">
 
 					</div>
 					<div class="col-3" >
-						<label for="cnh-cobrador" id="label">CNH</label>
-  			 			<input type="text" name="cnh-cobrador" class="form-control" id="cnh-cobrador" placeholder="Digite a CNH">
+						<label for="email" id="label">Email</label>
+  			 			<input type="text" name="email" class="form-control" id="email" placeholder="Digite o email">
+
+					</div>
+
+					<div class="col-2" >
+						<label for="pis" id="label">Número do PIS</label>
+  			 			<input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS">
+
+					</div>
+					<div class="col-2" >
+						<label for="cnh" id="label">CNH</label>
+  			 			<input type="text" name="cnh" class="form-control" id="cnh" placeholder="Digite a CNH">
 
 					</div>
 
 					
 
 					<div class="col-3" >
-						<label for="dataAdmissao-cobrador" id="label">Data de admissão</label>
-  			 			<input type="date" name="dataAdmissao-cobrador" class="form-control" id="dataAdmissao-cobrador" placeholder="Digite a data de admissão">
+						<label for="dataAdmissao" id="label">Data de admissão</label>
+  			 			<input type="date" name="dataAdmissao" class="form-control" id="dataAdmissao" placeholder="Digite a data de admissão">
 
 					</div>
 
@@ -163,7 +168,10 @@
       <th scope="col">Nome</th>
       <th scope="col">Cpf</th>
       <th scope="col">Data de admissão</th>
-      <th scope="col">Ações</th>
+      <th scope="col">Status</th>
+      <th scope="col">Visualizar</th>
+
+
       
       
     </tr>
@@ -171,11 +179,35 @@
   <tbody>
 	<? foreach ($this->listaDosCobradores as $cobrador): ?>
 		
+                           
+		
     <tr>
       
       <td><?= $cobrador->getNome() ?>	</td>
       <td><?= $cobrador->getCpf() ?>	</td>
       <td><?= $cobrador->getDataAdmissao() ?>	</td>
+      <td>
+      			<input type="hidden" value="<?php $cobrador->getAtivo(); ?>" >
+      			 <?php if ($cobrador->getAtivo() === 'ATIVO'): ?>
+                            <div class="btn-group" id="status" data-toggle="buttons">
+                                <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $cobrador->getId_cobrador() ?>, 'ATIVO')">
+                                	
+                                    <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                <label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $cobrador->getId_cobrador() ?>, 'INATIVO')">
+                                    <input type="radio" name="plug">INATIVO</label>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($cobrador->getAtivo() === 'INATIVO'): ?>
+                            <div class="btn-group" id="status" data-toggle="buttons">
+                                <label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $cobrador->getId_cobrador()?>, 'ATIVO')">
+                                    <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $cobrador->getId_cobrador()?>, 'INATIVO')">
+                                    <input type="radio" name="plug">INATIVO</label>
+                            </div>
+                        <?php endif; ?>
+
+      </td>
       <td><a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('cobrador/editar/id/' . $cobrador['id_cobrador']) ?>"
 
 

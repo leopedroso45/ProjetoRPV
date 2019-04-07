@@ -30,20 +30,22 @@ $(document).on('click', '.clickable', function (e) {
     }
 });
 	
-   $(".btn-outline-success").click(function ()
+   $(".cadastrar-cobrador").click(function ()
     {
 
     	//alert();
-        var nome = $("#nome-cobrador").val();
+        var nome = $("#nome").val();
         //var email = $("#email").val();
-        var cpf = $("#cpf-cobrador").val();
+        var cpf = $("#cpf").val();
         //var senha = $("#senha").val();
         //var telefone = $("#telefone").val();
-        var cnh = $("#cnh-cobrador").val();
-        var pis = $("#pis-cobrador").val();
-        var carteiraTrabalho = $("#carteiraTrabalho-cobrador").val();
-        var rg = $("#rg-cobrador").val();
-        var dataAdmissao = $("#dataAdmissao-cobrador").val();
+        var cnh = $("#cnh").val();
+        var pis = $("#pis").val();
+        var carteiraTrabalho = $("#carteiraTrabalho").val();
+        var rg = $("#rg").val();
+        var dataAdmissao = $("#dataAdmissao").val();
+        var telefone = $("#telefone").val();
+        var email = $("#email").val();
         
         if (nome.length === 0) {
         	$('.nome').removeAttr("style");
@@ -59,7 +61,7 @@ $(document).on('click', '.clickable', function (e) {
                 async: false,
                 data: {nome: nome, cpf: cpf,
                       rg: rg, carteiraTrabalho: carteiraTrabalho,
-                     pis: pis, dataAdmissao: dataAdmissao, cnh: cnh
+                     pis: pis, dataAdmissao: dataAdmissao, cnh: cnh, email: email, telefone: telefone
                 },
                 success: function () {
                 	//$('.alert-success').removeAttr("style");
@@ -67,14 +69,6 @@ $(document).on('click', '.clickable', function (e) {
 
     					location.reload(); 
 					});
-
-
-
-
-
-
-
-
 
 
                 	     },
@@ -88,23 +82,68 @@ $(document).on('click', '.clickable', function (e) {
 
     });
 
-     $(".plug").click(function ()
+     
+
+     $(".edita").click(function ()
     {
-        var $this = $(this);
-        var ativo;
-        var id = $("#id-cobrador").val();
+        
+        var id = $("#id-cobrador").val();        
+        var nome = $("#nome").val();
+        var cpf = $("#cpf").val();
+        var rg  = $("#rg").val();
+        var carteiraTrabalho = $("#carteiraTrabalho").val();
+        var pis = $("#pis").val();
+        var dataAdmissao = $("#dataAdmissao").val();
+        var cnh = $("#cnh").val();
+        var telefone = $("#telefone").val();
+        var email = $("#email").val();
+        
 
-        if ($this.hasClass('aberto')) {
-            ativo = 'ATIVO';
 
-        } else if ($this.hasClass('fechado')) {
-            ativo = 'INATIVO';
-
-        } else if ($this.hasClass(null)) {
-//            alert('contate a manutenção');
+        if (nome.length === 0) {
+        	
+                
         }
+        else if (cpf.length === 0) {
+        	
+        } else {
+        
 
 //        alert("id = " + id + ", status = " + status);
+
+        $.ajax({
+            type: "POST",
+            url: baseUrl + 'cobrador/editar-cobradorajax',
+            async: false,
+            data: {id: id,
+                 nome: nome, cpf: cpf, rg:rg, carteiraTrabalho: carteiraTrabalho,
+                pis: pis, dataAdmissao: dataAdmissao, cnh: cnh, telefone: telefone, email: email
+            },
+
+            success: function () {
+            	
+            	bootbox.alert("Alteração realizada com sucesso!", function(){ 
+
+    					location.reload(); 
+					});
+
+            },
+            error: function () {
+            	bootbox.alert("Alteração realizada com sucesso!", function(){ 
+
+    					location.href = baseUrl + 'cobrador'; 
+					});
+            } 
+        });
+    }
+    
+	});
+
+});
+
+function editarAtivo(id, ativo)
+    {
+
 
         $.ajax({
             type: "POST",
@@ -117,12 +156,16 @@ $(document).on('click', '.clickable', function (e) {
 
             },
             error: function () {
-//                 alert();
+                 
 //                $('.dataTable').reload();
             }
         });
-    });
+    }
 
-   });
+
+
+
+   
+
 
 
