@@ -34,8 +34,7 @@
 
             <div class="col">
 							<Center><H4>Trajetos selecionados</H4></Center>
-							<div class="list-group listaTrajetosSelecionados" id="div1">
-							</div>
+							<div class="list-group listaTrajetosSelecionados" id="div1"></div>
 							<form>
 							<Center><H4>Alterar Tarifa</H4>
 								<div class="input-group validarReal">
@@ -48,7 +47,7 @@
 									<div id="filterDate2">
 										<!-- Datepicker as text field -->         
 										<div class="input-group date" data-date-format="dd.mm.yyyy">
-											<input  type="date" class="form-control" placeholder="dd.mm.yyyy" required>
+											<input  type="date" class="form-control" placeholder="dd.mm.yyyy" id="campoVigencia" required>
 											<div class="input-group-addon " >
 												<span class="glyphicon glyphicon-th" ></span>
 											</div>
@@ -59,10 +58,9 @@
 									<button type="button" class="btn btn-warning">Voltar</button>
 									<button type="submit" class="btn btn-success">Pronto</button>
 								</div>
-								</Center>
+							</Center>
 							</form>
 						</div>
-
 			</div>
 		</div>			
 	</div>
@@ -100,12 +98,19 @@
 				trajetos.push(para);
         return false;
 			} else {
-				
-				obj.setAttribute("class", "list-group-item");
-				obj.setAttribute("id", 1);
-				trajetos.pop(obj);
+				var nome = obj.getAttribute("name");
+					for (var i=0;i<document.getElementsByName(nome).length;i++){
+						document.getElementsByName(nome)[1].remove();
+						for (j = 0; j < trajetos.length; j++) { 
+							var trajeto = trajetos[j].getAttribute("name");
+							if(trajeto == nome){
+								trajetos.pop(trajetos[j]);
+								alert("Trajeto: " + nome + " foi removido com sucesso!");
+							}
+						}
+					}
 				return true;
-			}
+				}
     }
 
 		function datepickerfunction() {
