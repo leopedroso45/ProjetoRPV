@@ -10,9 +10,9 @@ class TarifaController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $dbTableTarifa = new Application_Model_DbTable_Tarifa();
-        $lista = $dbTableTarifa->listarTarifas();
-        $this->view->listarTarifas = $lista;
+        $dbTableTrajeto = new Application_Model_DbTable_Trajeto();
+        $lista = $dbTableTrajeto->listarTrajetos();
+        $this->view->listarTrajetos = $lista;
         
         if ($this->getRequest()->isPost()) {
                 $dados = $this->getRequest()->getParams();
