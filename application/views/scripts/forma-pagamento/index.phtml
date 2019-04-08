@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css")?> />
+
+  <div class="row" >
+    <div class="col-lg-2"></div>
+    <div class="col-8">
+
+     <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+      <li>
+        <a href="<?= $this->baseUrl('menuinicial') ?>">
+          menuinicial/
+        </a>
+      </li>
+      <li class="active">
+        formas_pagamento
+      </li>
+    </ol>
+
+
+
+    <div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+
+      <label>Formas de Pagamento:</label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Foma de Pagamento</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+
+          <? foreach ($this->listarFormaPagamento  as $forma_pagamento): ?>
+
+            <tr>
+
+              <td><?= $forma_pagamento->getDescricao() ?> </td>
+              <td>
+
+
+
+
+
+                <?php if ($forma_pagamento['status'] === 'ATIVO'): ?>
+                  <div class="btn-group" id="status" data-toggle="buttons">
+                    <label class="btn btn-default status-on btn-on aberto active" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>,'ATIVO')">
+                      <input type="radio" name="plug" checked="checked">
+                      ATIVO
+                    </label>
+                    <label class="btn btn-default btn-off fechado" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>,'INATIVO')">
+                      <input type="radio" name="plug">
+                      INATIVO
+                    </label>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($forma_pagamento['status'] === 'INATIVO'): ?>
+                  <div class="btn-group" id="status" data-toggle="buttons">
+                    <label class="btn btn-default btn-on aberto" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>,'ATIVO')">
+                      <input type="radio" name="plug" checked="checked">
+                      ATIVO
+                    </label>
+                    <label class="btn btn-default btn-off fechado active" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>,'INATIVO')">
+                      <input type="radio" name="plug">
+                      INATIVO
+                    </label>
+                  </div>
+                <?php endif; ?>
+
+
+
+              </td>
+              <td><i class="fas fas-eye"><a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('forma-pagamento/editar/id/'. $forma_pagamento->getId_pagamento()) ?>" >Editar </a></i></td>
+            </tr>
+
+
+
+          <? endforeach; ?>
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-block btn-success">Cadastrar</button>
+      <button type="submit" class="btn btn-block btn-primary">Salvar</button>
+      <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
+    </div>
+  </div>
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+

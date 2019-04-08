@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+<div class="container fundo">
+	<div class="row" style="background-color:rgba(0,0,0,0.5);">
+
+	</div><br>
+    <div class="row">
+		<div class="col-sm-2"> 
+	
+		</div>
+		
+		<div class="col-sm-8" style="background-color:rgba(0,0,0,0.5); color: white">
+		<br>
+			<center><H3>Concessão de Trajetos </h3></center>
+			<div class="row"> 
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+					<i class="fas fa-plus-square" style="color:black"></i>
+					<label style="color:black"> Nova Concessão </label>
+				</button>
+			</div>
+			<div class="row">
+				<div class="table-responsive text-center">
+					<table class="table">
+					  <thead>
+						<tr>
+						  <th scope="col">Código</th>
+						  <th scope="col">Data de inicio</th>
+						  <th scope="col">Vigência</th>
+						  <th scope="col">Autorização</th>
+						  <th scope="col"></th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>					  
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+						<tr>
+						  <th scope="row">085</th>
+						  <td>24/10/2018</td>
+						  <td>24/06/2019</td>
+						  <td>
+						  	<button class="btn btn-default" id="docAutorizacaoConcessao">
+								<span class="fas fa-download"></span>
+							</button> 
+						  </td>
+						  <td>
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-toggle-on"></span>
+						  </button> 
+						  <button class="btn btn-default" id="docAutorizacaoConcessao">
+							<span class="fas fa-info-circle"></span>
+						  </button> 
+						  </td>
+						</tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+	
+	
+	<div class="col-sm-2">
+	
+	</div>
+	
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+			     <h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
+                 <button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				 </button>
+             </div>
+             <div class="modal-body">
+				
+				<div class="container-fluid"> 
+					<div class="row">
+						<div class="table-responsive">
+								<form method="post">
+								  <div class="form-group">
+									<label >dataInicio</label>
+									<input type="text" class="form-control" name="dataInicio">
+								  </div>
+
+								  <button type="submit" class="btn btn-primary">Submit</button>
+								</form>							
+						</div>
+		 			</div>
+				</div>
+			</div>
+        </div>
+    </div>
+ </div>

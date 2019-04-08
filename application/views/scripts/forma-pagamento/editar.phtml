@@ -1,0 +1,58 @@
+<div class="container">
+	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+     <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+      <li>
+        <a href="<?= $this->baseUrl('menuinicial') ?>">
+          menuinicial/
+        </a>
+        <a href="<?= $this->baseUrl('forma-pagamento') ?>">
+          forma_pagamento/
+        </a>
+      </li>
+      <li class="active">
+       editar
+     </li>
+   </ol>
+   <form method="POST">
+
+
+<script>//Validar somente numero
+function somenteNumeros(num){
+  var er = /[^0-9.]/;
+  er.lastIndex = 0;
+  var campo = num;
+  if (er.test(campo.value)) {
+    campo.value = "";
+  }
+}
+</script>
+
+
+
+<div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+  <div class="card-body"> 
+    <div class="form-group">
+      <input type="hidden" id="id_pagamento" name="id_pagamento" value="<?php echo $this->pagamento->getId_pagamento(); ?>">
+      <label for="">Descrição</label>
+      <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição" value="<?php echo $this->pagamento->getDescricao(); ?>">
+    </div>
+
+    <br>
+    <button type="button" class="btn btn-block btn-primary editarFormaPagamento">Editar</button>
+    <a href="<?= $this->baseUrl('forma-pagamento') ?>" class="btn btn-block btn-danger btn-primary">Voltar</a>
+
+
+
+  </div>
+</div>
+
+
+</form>
+
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
