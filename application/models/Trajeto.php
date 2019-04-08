@@ -5,23 +5,23 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
 
 	
 //	private $id_trajeto;
-//    private $id_cobrador;
-//    private $id_motorista;
-//    private $nome;
-//    private $num_paradas;
-//    private $chegada;
-//    private $partida;
-//    private $situacao;
+    private $id_cobrador;
+    private $id_motorista;
+    private $nome;
+    private $num_paradas;
+    private $chegada;
+    private $partida;
+    private $situacao;
 
+    private $descricao;
 
+    private $id_onibus;
 
     
 
 
     
    
-
-    
 
     /**
      * @return mixed
@@ -179,6 +179,46 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
     public function setSituacao($situacao)
     {
         $this->situacao = $situacao;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param mixed $descricao
+     *
+     * @return self
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdOnibus()
+    {
+        return $this->id_onibus;
+    }
+
+    /**
+     * @param mixed $id_onibus
+     *
+     * @return self
+     */
+    public function setIdOnibus($id_onibus)
+    {
+        $this->id_onibus = $id_onibus;
 
         return $this;
     }

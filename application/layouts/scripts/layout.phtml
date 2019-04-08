@@ -97,6 +97,7 @@
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/mask.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/cobrador.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/motorista.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/trajeto.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.js') ?>"></script>
         <?= $this->headScript(); ?>
@@ -130,6 +131,29 @@
                                 
             }
          
+        });
+
+
+        $("#alocar-cobrador").click(function() {
+            var id_cobrador = $("#sel4 option:selected").val();
+            var nome = $("#sel4 option:selected").text();
+
+           
+
+            document.getElementById("id-cobrador").value = id_cobrador;
+            document.getElementById("descricao-cobrador").value = nome;
+       
+        });
+
+         $("#alocar-motorista").click(function() {
+            var id_motorista = $("#sel5 option:selected").val();
+            var nome = $("#sel5 option:selected").text();
+
+           
+
+            document.getElementById("id-motorista").value = id_motorista;
+            document.getElementById("descricao-motorista").value = nome;
+       
         });
 
     </script>

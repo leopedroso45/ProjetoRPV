@@ -13,7 +13,7 @@ class CobradorController extends Zend_Controller_Action
         
         $dbTableCobrador = new Application_Model_DbTable_Cobrador();
         $lista = $dbTableCobrador->listarTodosCobradores();
-        //var_dump($lista);die();
+        
         $this->view->listaDosCobradores = $lista;
 
         if($this->getRequest()->isPost()) {

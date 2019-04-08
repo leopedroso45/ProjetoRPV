@@ -15,7 +15,23 @@ class TrajetoController extends Zend_Controller_Action
         //var_dump($lista);die();
         $this->view->listaDasParadas = $lista;
 
+        // inicio listar cobrador
 
+        $dbTableCobrador = new Application_Model_DbTable_Cobrador();
+        $lista2 = $dbTableCobrador->listarTodosCobradores();
+        
+        $this->view->listaDosCobradores = $lista2;
+
+
+        //fim listar cobrador
+        //inicio listar motorista
+
+         $dbTableMotorista = new Application_Model_DbTable_Motorista();
+        $lista3 = $dbTableMotorista->listarTodosMotoristas();
+        
+        $this->view->listaDosMotoristas = $lista3;
+
+        // fim listar motorista
 
         $dbTableTrajeto = new Application_Model_DbTable_Trajeto();
          $dbTableParadaTrajeto = new Application_Model_DbTable_ParadaTrajeto();
@@ -24,6 +40,9 @@ class TrajetoController extends Zend_Controller_Action
         if($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
            // var_dump($dados);die();
+
+            $dbTableTrajeto->cadastrarTrajeto($dados);
+
             $paradas = explode(',', $dados['id_parada']);
 
             for ($i = 0; $i < sizeof($paradas); $i++) {
