@@ -3,8 +3,6 @@
  $('#descricao').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
  $('#tarifa').mask('9.998');
  $('#numeroParada').mask('9999');
-$('#local').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'); //11
-$('#complemento').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS'); //17
 $('#modelo').mask('SSSSSSSSSSSSSS');
 $('#marca').mask('SSSSSSSSSSSSSS');
 $('#cor').mask('SSSSSSSSSSSSSSSS');
@@ -74,7 +72,10 @@ $(".cadastrarTarifa").click(function ()
         		data: {descricao: descricao, tarifa: tarifa
         		},
         		success: function () {
-        			$(".alert-success").removeAttr("style");
+        			bootbox.alert("Cadastro realizado com sucesso!", function(){
+                        size: "small"
+                        location.reload();
+                    }); 
         		},
         		error: function () {
         			alert("error");
@@ -108,7 +109,11 @@ $(".cadastrarParada").click(function ()
         		data: {numeroParada: numeroParada, local: local, complemento: complemento
         		},
         		success: function () {
-        			$(".alert-success").removeAttr("style");
+                    bootbox.alert("Cadastro realizado com sucesso!", function(){
+                        location.reload();
+                    });
+                    
+        			//$(".alert-success").removeAttr("style");
         		},
         		error: function () {
         			alert("error");
@@ -142,7 +147,9 @@ $(".cadastrarFormaPagamento").click(function ()
                 data: {descricao: descricao
                 },
                 success: function () {
-                    $(".alert-success").removeAttr("style");
+                    bootbox.alert("Cadastro realizado com sucesso!", function(){
+                        location.reload();
+                    });  
                 },
                 error: function () {
                     alert("error");
@@ -164,7 +171,9 @@ $(".editarFormaPagamento").click(function ()
                 data: {descricao: descricao, id: id
                   },
                 success: function () {
-                console.log();
+                bootbox.alert("Edição realizada com sucesso!", function(){
+                        location.reload();
+                    });
                 },
                 error: function () {
                     console.log();
@@ -186,8 +195,9 @@ function editarStatus(id,status) {
             data: {id: id,
                 status: status},
             success: function () {
-                alert("successo");
-
+                bootbox.alert("Edição realizada com sucesso!", function(){
+                        location.reload();
+                    });
             },
             error: function () {
                  
