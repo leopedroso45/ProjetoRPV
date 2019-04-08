@@ -21,7 +21,7 @@
                                     <? foreach ($this->listarTrajetos as $trajeto): ?>
                                         <div class="checkbox">
                                             <label><input type="checkbox" name="<?= $trajeto->getNome() ?>" value="<?= $trajeto->getId_trajeto() ?>" id="myCheck" onclick="selecionarCheckbox(this); return true;">
-                                        <?= $trajeto->getNome() ?>
+                                                <?= $trajeto->getNome() ?>
                                             </label>
                                         </div>
 
@@ -35,7 +35,7 @@
                 <div class="col">
                     <Center><H4>Trajetos selecionados</H4></Center>
                     <div class="list-group listaTrajetosSelecionados" id="div1"></div>
-                    
+
                     <form>
                         <Center><H4>Alterar Tarifa</H4>
                             <div class="input-group validarReal">
@@ -90,8 +90,8 @@
             para.setAttribute("id", 1);
             var text = obj.getAttribute("name");
             var textValue = obj.getAttribute("value");
-            para.setAttribute("name", text);
-            para.setAttribute("value", textValue);
+            para.setAttribute("name", "trajeto[]");
+            para.setAttribute("at", textValue);
             para.setAttribute("onclick", "doalert(this); return false;");
             var node = document.createTextNode(text);
             para.appendChild(node);

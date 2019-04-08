@@ -66,15 +66,15 @@ $(".cadastrarTarifa").click(function () {
     var vigencia = $("#vigencia").val();
     var trajetos = [];
     var cont = 0;
-
+    
     $('.ids').each(function () {
-            trajetos.push($(this).val());
+            trajetos.push($(this).attr("at"));
             cont++;
     });
 
-
     id_trajeto = trajetos.toString();
-        alert("id_trajeto = " + id_trajeto + ", valor = " + valor);
+        alert("id_trajeto = " + trajetos + ", valor = " + valor);
+        
     $.ajax({
         type: 'POST',
         url: baseUrl + 'tarifa/index',

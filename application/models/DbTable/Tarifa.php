@@ -11,6 +11,7 @@ class Application_Model_DbTable_Tarifa extends Zend_Db_Table_Abstract
         /*@var $paradaOnibus Application_Model_CategoriaOnibus*/
         $tarifa->setValor($dados['valor']);
         $tarifa->setVigencia($dados['vigencia']);
+        $tarifa->setId_trajeto($dados['id_trajeto']);
         $tarifa->setSituacao(true);
         
         return $tarifa->save();
