@@ -1,8 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+﻿
 
  $('#descricao').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
  $('#tarifa').mask('9.998');
@@ -120,4 +116,51 @@ $(".cadastrarParada").click(function ()
         	});
         //}
     });
+
+
+$(".editarFormaPagamento").click(function ()
+{
+    var id = $("#id_pagamento").val();
+    var descricao = $("#descricao").val();
+
+            $.ajax({
+                type: "POST",
+                url: baseUrl + 'forma-pagamento/editar',
+                async: false,
+                data: {descricao: descricao, id: id
+                  },
+                success: function () {
+                console.log();
+                },
+                error: function () {
+                    console.log();
+                }
+            });
+        //}
+    });
+
+//alert();
+
+function editarStatus(id,status) {
+      //  alert();
+
+//alert(id, status);
+        $.ajax({
+            type: "POST",
+            url: baseUrl + 'forma-pagamento/editar-status',
+            async: false,
+            data: {id: id,
+                status: status},
+            success: function () {
+                alert("successo");
+
+            },
+            error: function () {
+                 
+
+            }
+        });
+    }
+
+
 
