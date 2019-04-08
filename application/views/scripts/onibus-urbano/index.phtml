@@ -69,9 +69,16 @@
                                 <label>Modelo</label>
                                 <input type="text" class="form-control" name="modelo" id="modelo">
                             </div>
-                        </div>
-                        <hr>
-                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        </div><hr>
+                        <div class="alert alert-success" style="display:none;" role="alert">
+                                Cadastro de conta realizado com sucesso!
+                            </div>
+                            <div class="alert alert-danger placa" style="display:none;" role="alert">
+                                Preencha a Placa corretamente!
+                            </div>
+                        <button type="button" class="btn btn-primary btn-block cadastrar-onibus-urbano">
+                            Cadastrar
+                        </button>
                     </form>
                 </div>
             </div>
@@ -81,7 +88,6 @@
             <table class="table table-hover table-bordered dataTable">
                 <thead>
                     <tr>
-                        <th>Código</th>
                         <th>Placa</th>
                         <th>Chassi</th>
                         <th>Nº Passageiros</th>
@@ -92,7 +98,6 @@
                 <tbody>
                     <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
                         <tr>
-                            <td> <?= $onibus['id_onibus_urbano'] ?></td>
                             <td> <?= $onibus['placa'] ?></td>
                             <td> <?= $onibus['chassi'] ?></td>
                             <td> <?= $onibus['numero_passageiros'] ?></td>
@@ -110,7 +115,6 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Código</th>
                         <th>Placa</th>
                         <th>Chassi</th>
                         <th>Nº Passageiros</th>
