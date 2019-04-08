@@ -5,14 +5,15 @@ class CategoriaPassageiroController extends Zend_Controller_Action
 
     public function init()
     {
-		$this->_helper->layout->setLayout("layout_adminlocal");
+        $this->_helper->layout->setLayout('layout_admin_geral');
     }
 
     public function indexAction()
     {
         
     }
-	    public function listarPassageirosAction()
+
+    public function listarPassageirosAction()
     {
         
     }
@@ -20,7 +21,7 @@ class CategoriaPassageiroController extends Zend_Controller_Action
     public function cadastrarAction()
     {
         $this->view->headScript()->appendFile($this->view->baseUrl('bootstrap/js/janela-de-dialogo.js'));
-        
+
         $this->view->message = '';
         $formulario = new Application_Form_Usuario();
         if ($this->getRequest()->isPost()) {
@@ -52,7 +53,7 @@ class CategoriaPassageiroController extends Zend_Controller_Action
     public function editarAction()
     {
         $this->view->headScript()->appendFile($this->view->baseUrl('bootstrap/js/janela-de-dialogo.js'));
-        
+
         $this->view->message = '';
         $id = $this->getRequest()->getParam('id');
         $formulario = new Application_Form_UsuarioEditar();
