@@ -19,6 +19,10 @@
         });    
       });
 		var i =1;
+
+
+
+		
 	</script>
 
 
@@ -57,7 +61,7 @@
 			<div class="col-5">
 				<input type="hidden" id="id-onibus">
 				<label for="cod" id="label"> Alocar ônibus</label>
-				<input type="text" name="cod" class="form-control" id="cod">
+				<a type="text" name="cod" class="form-control" id="cod">.</a>
 				
 			</div>
 			<div class="col-1" style="padding-top: 31px; padding-left: 0px;">
@@ -146,20 +150,11 @@
 				 <div class="form-group">
 					<label for="sel3" id="label">Paradas:</label>
 	      <select multiple class="form-control" id="sel3" style="height: 270px;">
-						    <option>Rua Joaquina Ortiz Hovayek 46</option>
-						    <option>Avenida Beira Trilho 74</option>
-						    <option>Estrada Masgrau 26</option>
-						    <option>Rua Francisca Pinto 450</option>
-						    <option>Rua Carioca 728</option>
-						    <option>Rua Brigadeiro Olivério 315</option>
-						    <option>Rua Primeiro de Maio 35</option>
-						    <option>Rua Joaquim Aurélio Pedroso 110</option>
-						    <option>Rua Trezentos e Setenta 96</option>
-						    <option>Avenida Dr. Lauro Dorneles 1560</option>
-						    <option>Rua Crisãntemo 295</option>
-						    <option>Avenida Assis Brasil 334</option>
-						    <option>Avenida Beira Trilho 645</option>
-						    <option>Rua Salustiano Ferreira da Costa 72</option>
+	      		   <? foreach ($this->listaDasParadas as $parada): ?>
+
+						    <option  value="<?= $parada['id_parada'] ?>"><?=  $parada['local']; ?></option>
+						     <? endforeach; ?>
+						    
 
 						</select>
 				</div>
@@ -174,7 +169,7 @@
 			
 		
 			
-		<button class="btn btn-outline-success btn-lg btn-block" type="button"   >
+		<button class="btn btn-outline-success btn-lg btn-block cadastrar-trajeto" type="button"   >
 				Gravar
 		</button>
 

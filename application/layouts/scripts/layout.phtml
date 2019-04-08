@@ -97,31 +97,37 @@
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/mask.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/cobrador.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/trajeto.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.js') ?>"></script>
         <?= $this->headScript(); ?>
         <script>
         
         $("#seta1").click(function() {
-            var selecao = $("#sel3 option:selected").val();
+            var id_parada = $("#sel3 option:selected").val();
+            var local = $("#sel3 option:selected").text();
+          
+         // alert(id_parada);
+          // alert(local);
 
-            if(selecao == null){
+
+            if(id_parada == null){
                 
                 $("div#aviso").show("slow");
             }
             else{
                 $( "#teste1" ).append('<div class="row" id="paradax" style="padding: 10px; padding-bottom: 0px;">'+
                                     '<div class="col-9">'+
-                                    '<input class="form-control" type="text" id="parada'+i+'" disabled style="width: 305px; padding-left: 10px;">'+
+                                    '<a class="form-control ids" at='+id_parada+' type="text" name="parada[]"  disabled style="width: 305px; padding-left: 10px;">'+local+' </a>'+
 
                                     '</div>'+
-                                    '<div class="col-3" id="hora'+i+'" style="padding-botton: 0px; padding-left: 5px; " >'+
-                                    '<input class="form-control" type="time" style="width: 100px; padding-bottom: 0px;">'+
+                                    '<div class="col-3"  style="padding-botton: 0px; padding-left: 5px; " >'+
+                                    '<input class="form-control horarios" name="horarios[]"  type="time" style="width: 100px; padding-bottom: 0px;">'+
 
                                     '</div>'+
                                     '</div>'
                                     );
-                                document.getElementById('parada'+i).value = selecao;
-                                i++;
+                               // document.getElementById(id_parada).value = local;
+                                
             }
          
         });
