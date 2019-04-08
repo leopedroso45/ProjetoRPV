@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
-     <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+     <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.7);">
       <li>
         <a href="<?= $this->baseUrl('menuinicial') ?>">
           menuinicial/
@@ -32,7 +32,7 @@ function somenteNumeros(num){
 
 
 
-<div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+<div class="card mb-3" style="background-color:rgba(0,0,0,0.7);">
   <div class="card-body"> 
     <div class="form-group">
       <input type="hidden" id="id_pagamento" name="id_pagamento" value="<?php echo $this->pagamento->getId_pagamento(); ?>">
@@ -41,8 +41,8 @@ function somenteNumeros(num){
     </div>
 
     <br>
-    <button type="button" class="btn btn-block btn-primary editarFormaPagamento">Editar</button>
-    <a href="<?= $this->baseUrl('forma-pagamento') ?>" class="btn btn-block btn-danger btn-primary">Voltar</a>
+    <button type="button" class="col-lg-2 btn btn-primary editarFormaPagamento">Salvar</button>
+    <a href="<?= $this->baseUrl('forma-pagamento') ?>" class="col-lg-2 btn btn-primary">Voltar</a>
 
 
 

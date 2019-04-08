@@ -105,7 +105,7 @@ $(".cadastrarParada").click(function ()
         		type: "POST",
         		url: baseUrl + 'parada-onibus/index',
         		async: false,
-        		data: {numeroParada: numeroParada, local: local, local: local
+        		data: {numeroParada: numeroParada, local: local, complemento: complemento
         		},
         		success: function () {
         			$(".alert-success").removeAttr("style");
@@ -114,6 +114,40 @@ $(".cadastrarParada").click(function ()
         			alert("error");
         		}
         	});
+        //}
+    });
+
+
+
+$(".cadastrarFormaPagamento").click(function ()
+{
+
+    var descricao = $("#descricao").val();
+  
+
+     /*   if (descricao.length < 3) {
+            $('.descricao').removeClass('hidden');
+            $('.alert-success').addClass('hidden');
+
+        } else if (tarifa.length < 10) {
+            $('.descricao').addClass('hidden');
+            $('.tarifa').removeClass('hidden');
+            $('.alert-success').addClass('hidden');*/
+
+        //} else {
+            $.ajax({
+                type: "POST",
+                url: baseUrl + 'forma-pagamento/index',
+                async: false,
+                data: {descricao: descricao
+                },
+                success: function () {
+                    $(".alert-success").removeAttr("style");
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
         //}
     });
 

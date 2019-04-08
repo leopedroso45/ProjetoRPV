@@ -66,6 +66,21 @@ body{
 .btn-label { position: relative; left: -12px; display: inline-block; padding: 2px 12px; background: rgba(0,0,0,0.15); border-radius: 3px 0 0 3px; }
 
 
+/* Checkbox Hack */
+#toggle-1 {
+   display:none;
+}
+
+/* CSS padrão da div */
+#mostra {
+   display:none;
+}
+
+/* CSS quando o checkbox está marcado */
+#toggle-1:checked ~ #mostra {
+   display:block;
+}
+
 
 
 
