@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
+
+<div class="container fundo">
+   <div class="row">
+	<div class="col-sm-2"> </div>
+	  <div class="col-sm-8" >
+	  <br> <br> <br>
+			
+		<div class="card" style="max-width: 400rem; background-color:rgba(0,0,0,0.5); color: white">
+				<div class="card-body" >
+					<center><h3>Selecione a categoria de passageiro que deseja:</h3></center>
+					 <table class="table">
+						<tbody class="Active">
+						  <tr>
+							<td><a href="<?= $this->baseUrl("beneficio/estudante")?>" class="btn btn-block btn-primary" id="estudante"> 
+								<i class="fas fa-user-graduate"></i> Estudante
+							</a></td>
+						  </tr>
+						  <tr>
+							<td><a href="<?= $this->baseUrl("beneficio/idoso")?>" class="btn btn-block btn-primary" id="idoso">
+								<i class="fas fa-hiking"></i> Pessoa Idosa
+							</a></td>
+						  </tr>
+						  <tr>
+							<td><a href="<?= $this->baseUrl("beneficio/deficiente")?>" class="btn btn-block btn-primary" id="deficiencia"> 
+							<i class="fas fa-wheelchair"></i> Pessoa com Deficiencia
+                            </a></td>
+						  </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	  </div>
+	<div class="col-sm-2"></div>
+  </div>
+</div>
