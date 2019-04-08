@@ -4,14 +4,14 @@ class Application_Model_DbTable_Tarifa extends Zend_Db_Table_Abstract
     protected $_name = 'tarifa';
     protected $_rowClass = "Application_Model_Tarifa";
     
-    public function cadastrarTarifa($dados)
+    public function cadastrarTarifa($dados, $trajeto)
     {
         //var_dump($dados); die();
         $tarifa = $this->createRow();
         /*@var $paradaOnibus Application_Model_CategoriaOnibus*/
         $tarifa->setValor($dados['valor']);
         $tarifa->setVigencia($dados['vigencia']);
-        $tarifa->setId_trajeto($dados['id_trajeto']);
+        $tarifa->setId_trajeto($trajeto);
         $tarifa->setSituacao(true);
         
         return $tarifa->save();

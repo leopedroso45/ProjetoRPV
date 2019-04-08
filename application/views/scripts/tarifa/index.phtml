@@ -48,7 +48,7 @@
                                 <div id="filterDate2">
                                     <!-- Datepicker as text field -->         
                                     <div class="input-group date" data-date-format="dd.mm.yyyy">
-                                        <input  type="date" class="form-control" placeholder="dd.mm.yyyy" id="vigencia" required>
+                                        <input type="date" class="form-control" placeholder="dd.mm.yyyy" id="vigencia" required>
                                         <div class="input-group-addon " >
                                             <span class="glyphicon glyphicon-th" ></span>
                                         </div>
@@ -56,8 +56,7 @@
                                 </div>    
                             </div>
                             <div style="margin-bottom: 5%;">
-                                <button type="button" class="btn btn-warning">Voltar</button>
-                                <button type="submit" class="btn btn-success cadastrarTarifa">Pronto</button>
+                                <button type="submit" class="btn btn-success btn-block cadastrarTarifa">Pronto</button>
                             </div>
                         </Center>
                     </form>
@@ -69,7 +68,7 @@
 
 <script type="text/javascript">
     var trajetos = [];
-    function doalert(obj) {
+    /** function doalert(obj) {
         if (obj.getAttribute("id") == 1) {
             obj.setAttribute("class", "list-group-item active");
             obj.setAttribute("id", 0);
@@ -81,12 +80,13 @@
             return true;
         }
     }
+    */
 
     function selecionarCheckbox(obj) {
         if (obj.checked == true) {
             var para = document.createElement("a");
             para.setAttribute("href", "");
-            para.setAttribute("class", "list-group-item ids");
+            para.setAttribute("class", "list-group-item ids trajetos");
             para.setAttribute("id", 1);
             var text = obj.getAttribute("name");
             var textValue = obj.getAttribute("value");
@@ -100,12 +100,15 @@
             trajetos.push(para);
             return false;
         } else {
+
             var nome = obj.getAttribute("name");
             for (var i = 0; i < document.getElementsByName(nome).length; i++) {
-                document.getElementsByName(nome)[1].remove();
+                //document.getElementsByName(nome)[1].remove();
+                var classe = document.getElementsByClassName("trajetos")[0].remove();
                 for (j = 0; j < trajetos.length; j++) {
                     var trajeto = trajetos[j].getAttribute("name");
                     if (trajeto == nome) {
+                        //document.getElementsByName(nome)[1].remove();
                         trajetos.pop(trajetos[j]);
                     }
                 }

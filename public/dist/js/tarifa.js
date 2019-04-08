@@ -1,3 +1,5 @@
+
+
 var estado = document.getElementById('estado');
 $('#onoff1').on('change', function () {
     var el = this;
@@ -66,6 +68,10 @@ $(".cadastrarTarifa").click(function () {
     var vigencia = $("#vigencia").val();
     var trajetos = [];
     var cont = 0;
+
+    /** if(valor.val()>10 && valor.length === 0){
+        alert("Num deu!");
+    }*/
     
     $('.ids').each(function () {
             trajetos.push($(this).attr("at"));
@@ -73,7 +79,7 @@ $(".cadastrarTarifa").click(function () {
     });
 
     id_trajeto = trajetos.toString();
-        alert("id_trajeto = " + trajetos + ", valor = " + valor);
+        //alert("id_trajeto = " + trajetos + ", valor = " + valor);
         
     $.ajax({
         type: 'POST',

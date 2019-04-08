@@ -16,8 +16,12 @@ class TarifaController extends Zend_Controller_Action
         
         if ($this->getRequest()->isPost()) {
                 $dados = $this->getRequest()->getParams();
-                $dbTableTarifa = new Application_Model_DbTable_Tarifa();
-                $dbTableTarifa->cadastrarTarifa($dados);
+                $trajetos = explode(',', $dados['id_trajeto']);
+                for($i = 0; $i < sizeof($trajetos); $i++){
+                    $dbTableTarifa = new Application_Model_DbTable_Tarifa();
+                    $dbTableTarifa->cadastrarTarifa($dados, $trajetos[$i]);
+                }
+
         }
     }
 
