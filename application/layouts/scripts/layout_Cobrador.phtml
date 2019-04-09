@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="UTF-8">
+        <title>Controle de Frotas</title>
+        <script type="text/javascript">
+            var baseUrl = '<?= $this->baseUrl('/') ?>';
+        </script>
+        <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/") ?> />
+        <!--Caminho da public "$this->baseUrl()-->
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap.css") ?> />
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/trajeto.css") ?> />
+        <script>
+         $(document).ready(function(){
+          $("div#cad_trajeto").hide();
+          $("button#novo_trajeto").click(function(){
+            $("div#cad_trajeto").toggle("slow");
+        });    
+      });
+        var i =1; 
+
+    </script>
+    </head>
+    <body >
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0.9);" >
+            <div class="container" >
+                <a class="navbar-brand" href="#">PampaBus</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" >
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?= $this->baseUrl("index") ?>">
+                                <i class="fas fa-home" style="color:white"></i>
+                                    Início 
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="(Alt+n) Visualizar Ônibus Urbanos" href="<?= $this->baseUrl("onibus-urbano") ?>">
+                                <i class="fas fa-bus-alt"style="color:white"></i>
+                                Ô<u>n</u>ibus Urbanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="(Alt+i) Visualizar Ônibus Intermunicipais" href="<?= $this->baseUrl("onibus-intermunicipal") ?>">
+                                <i class="fas fa-bus"style="color:white"></i>
+                                Ôn<u>i</u>bus Intermunicipais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" title="(Alt+i) Visualizar Ônibus Intermunicipais" href="<?= $this->baseUrl("trajeto") ?>">
+                                <i class="fas fa-bus"style="color:white"></i>
+                                <u>T</u>rajetos</a>
+                        </li>
+                       
+                        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" title="Conta PampaBus" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"style="color:white"></i>
+                                Funcionários
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"style="background-color: rgba(0,0,0,0.9);">
+                                <a class="dropdown-item" href="<?= $this->baseUrl("cobrador") ?> " style="color:white; ">Cobrador</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="<?= $this->baseUrl("motorista") ?>" style="color:white">Motorista</a>
+                            </div>
+                        </li>
+                    </ul>
+                    </ul>
+
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" title="Conta PampaBus" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                                Fulano
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Dados Pessoais</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Sair</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Conteudo das páginas-->
+        <main style="margin-top: 2%;">
+            <?php echo $this->layout()->content; ?>
+        </main>
+
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/mask.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/cobrador.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.js') ?>"></script>
+        <?= $this->headScript(); ?>
+        <script>
+        
+        $("#seta1").click(function() {
+            var selecao = $("#sel3 option:selected").val();
+
+            if(selecao == null){
+                
+                $("div#aviso").show("slow");
+            }
+            else{
+                $( "#teste1" ).append('<div class="row" id="paradax" style="padding: 10px; padding-bottom: 0px;">'+
+                                    '<div class="col-9">'+
+                                    '<input class="form-control" type="text" id="parada'+i+'" disabled style="width: 305px; padding-left: 10px;">'+
+
+                                    '</div>'+
+                                    '<div class="col-3" id="hora'+i+'" style="padding-botton: 0px; padding-left: 5px; " >'+
+                                    '<input class="form-control" type="time" style="width: 100px; padding-bottom: 0px;">'+
+
+                                    '</div>'+
+                                    '</div>'
+                                    );
+                                document.getElementById('parada'+i).value = selecao;
+                                i++;
+            }
+         
+        });
+
+    </script>
+    </body>
+</html>
