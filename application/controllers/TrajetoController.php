@@ -41,17 +41,16 @@ class TrajetoController extends Zend_Controller_Action
             $dados = $this->getRequest()->getParams();
            // var_dump($dados);die();
 
-            $dbTableTrajeto->cadastrarTrajeto($dados);
-
+           $id_trajeto =  $dbTableTrajeto->cadastrarTrajeto($dados);
+           // var_dump($id_trajeto);die();
             $paradas = explode(',', $dados['id_parada']);
 
             for ($i = 0; $i < sizeof($paradas); $i++) {
-                  $dbTableParadaTrajeto->cadastrarParadaTrajeto($dados, $paradas[$i]);
+                  $dbTableParadaTrajeto->cadastrarParadaTrajeto($id_trajeto , $paradas[$i]);
             }
+        
 
-
-           //$dbTableParadaTrajeto->cadastrarParadaTrajeto($dados);
-           //$dbTableTrajeto->cadastrarTrajeto($dados);
+           
 
 
         }

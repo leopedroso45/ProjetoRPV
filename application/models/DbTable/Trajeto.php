@@ -11,9 +11,9 @@ class Application_Model_DbTable_Trajeto extends Zend_Db_Table_Abstract
         $trajeto = $this->createRow();
         /*@var $trajeto Application_Model_trajeto*/
         
-        $trajeto->setIdCobrador("id_cobrador"); 
-        $trajeto->setIdMotorista("id_motorista");
-        $trajeto->setIdOnibus("2");     
+        $trajeto->setIdtrajetocobrador($dados['id_cobrador']); 
+        $trajeto->setIdtrajetomotorista($dados['id_motorista']);
+        $trajeto->setIdtrajetoonibus("2");     
         $trajeto->setDescricao($dados['descricao']);
         $trajeto->setNumparadas($dados['num_paradas']);
 

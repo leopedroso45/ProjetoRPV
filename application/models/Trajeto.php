@@ -5,17 +5,17 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
 
 	
 //	private $id_trajeto;
-    private $id_cobrador;
-    private $id_motorista;
-    private $nome;
-    private $num_paradas;
-    private $chegada;
-    private $partida;
-    private $situacao;
+   // private $id_cobrador;
+   // private $id_motorista;
+   // private $nome;
+  //  private $num_paradas;
+ //   private $chegada;
+  //  private $partida;
+  //  private $situacao;
 
-    private $descricao;
+   // private $descricao;
 
-    private $id_onibus;
+  //  private $id_onibus;
 
     
 
@@ -36,19 +36,14 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
      *
      * @return self
      */
-    public function setIdTrajeto($id_trajeto)
-    {
-        $this->id_trajeto = $id_trajeto;
-
-        return $this;
-    }
+   
 
     /**
      * @return mixed
      */
-    public function getIdCobrador()
+    public function getIdtrajetocobrador()
     {
-        return $this->id_cobrador;
+        return $this->id_trajetocobrador;
     }
 
     /**
@@ -56,9 +51,9 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
      *
      * @return self
      */
-    public function setIdCobrador($id_cobrador)
+    public function setIdtrajetocobrador($id_cobrador)
     {
-        $this->id_cobrador = $id_cobrador;
+        $this->id_trajetocobrador = $id_cobrador;
 
         return $this;
     }
@@ -66,9 +61,9 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
     /**
      * @return mixed
      */
-    public function getIdMotorista()
+    public function getIdtrajetomotorista()
     {
-        return $this->id_motorista;
+        return $this->id_trajetomotorista;
     }
 
     /**
@@ -76,9 +71,9 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
      *
      * @return self
      */
-    public function setIdMotorista($id_motorista)
+    public function setIdtrajetomotorista($id_motorista)
     {
-        $this->id_motorista = $id_motorista;
+        $this->id_trajetomotorista = $id_motorista;
 
         return $this;
     }
@@ -206,9 +201,9 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
     /**
      * @return mixed
      */
-    public function getIdOnibus()
+    public function getIdtrajetoonibus()
     {
-        return $this->id_onibus;
+        return $this->id_trajetoonibus;
     }
 
     /**
@@ -216,9 +211,9 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
      *
      * @return self
      */
-    public function setIdOnibus($id_onibus)
+    public function setIdtrajetoonibus($id_onibus)
     {
-        $this->id_onibus = $id_onibus;
+        $this->id_trajetoonibus = $id_onibus;
 
         return $this;
     }
