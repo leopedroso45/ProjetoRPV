@@ -64,6 +64,19 @@
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
                                                     <label> Celular: </label>
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
+                                                    <label>Conceder Benefício:</label>
+                                                    <button class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                        <label class="btn btn-outline-dark">
+                                                            <input type="radio" name="options" id="nenhum" name="nenhum" autocomplete="off"> Nenhum
+                                                        </label>
+                                                        <label class="btn btn-outline-dark">
+                                                            <input type="radio" name="options" id="meiaPassagem" name="meiaPassagem" autocomplete="off"> Meia-Passagem
+                                                        </label>
+                                                        <label class="btn btn-outline-dark">
+                                                            <input type="radio" name="options" id="isencao" name="isencao" autocomplete="off"> Isenção
+                                                        </label>
+                                                    </button>
+                                                    <br><button type="submit" name="botaoConceder" id="botaoConceder" class="btn btn-success">Salvar</button>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <label> Rua: </label>
