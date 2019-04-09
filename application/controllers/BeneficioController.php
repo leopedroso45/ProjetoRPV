@@ -16,8 +16,8 @@ class BeneficioController extends Zend_Controller_Action
     {
 
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $lista = $dbTableBeneficio->listar();
-        $this->view->listarBeneficios = $lista;
+        $listaDeficiente = $dbTableBeneficio->listarDeficiente();
+        $this->view->listarBeneficios = $listaDeficiente;
 
         //$id = $this->getRequest()->getParam('id');
 

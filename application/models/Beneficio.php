@@ -17,7 +17,22 @@ class Application_Model_Beneficio extends Zend_Db_Table_Row_Abstract
 //        private $data_nascimento;
 //        private $celular;
 //        private $bairro;
-		  
+        function getTipo_deficiencia() {
+            return $this->tipo_deficiencia;
+        }
+
+        function getAtestado_medico() {
+            return $this->atestado_medico;
+        }
+
+        function setTipo_deficiencia($tipo_deficiencia) {
+            $this->tipo_deficiencia = $tipo_deficiencia;
+        }
+
+        function setAtestado_medico($atestado_medico) {
+            $this->atestado_medico = $atestado_medico;
+        }
+  
         function getId_pessoa()
         {
             return $this->id_pessoa;

@@ -33,7 +33,42 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract
     }
 
 
-    public function listar()
+    public function listarDeficiente()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('DEF' => 'PESSOA_COM_DEFICIENCIA'), array('DEF.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))                
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = DEF.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 0');
+
+ //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+    public function listarIdoso()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA');
+
+ //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+    public function listarEstudante()
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
