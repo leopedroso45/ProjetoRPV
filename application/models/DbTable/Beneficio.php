@@ -90,16 +90,16 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
         return $this->fetchAll($select);
     }
 
-    public function editarStatus($id, $dados) {
+    public function editarBeneficioAction($id, $dados) {
         $this->find($id)->current();
         $beneficio = $this->getBeneficioPorId($id);
-        /* @var $viabilidade Application_Model_Viabilidade */
+        /* @var $beneficio Application_Model_Beneficio */
 
-        if ($dados['situacao'] === 'nenhum') {
+        if ($dados['beneficio'] === 'nenhum') {
             $beneficio->setSituacao('nenhum');
-        } elseif ($dados['situacao'] === 'meiaPassagem') {
+        } elseif ($dados['beneficio'] === 'meiaPassagem') {
             $beneficio->setSituacao('meiaPassagem');
-        } elseif ($dados['situacao'] === 'isencao') {
+        } elseif ($dados['beneficio'] === 'isencao') {
             $beneficio->setSituacao('isencao');
         }
         return $beneficio->save();

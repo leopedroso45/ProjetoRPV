@@ -65,12 +65,14 @@
                                                     <label> Celular: </label>
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
                                                     <label>Benefício Concedido:</label>
-                                                    <br><input type="radio" name="situacao" id="situacao" value="nenhum"> Nenhum
-                                                    <input type="radio" name="situacao" id="situacao" value="meiaPassagem"> Meia Passagem
-                                                    <input type="radio" name="situacao" id="situacao" value="isencao"> Isenção
+                                                    <br><select name="beneficio" id="beneficio">
+                                                        <option value="nenhum">Nenhum</option>
+                                                        <option value="meiaPassagem">Meia Passagem</option>
+                                                        <option value="isencao">Isenção</option>
+                                                    </select>
                                                     <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
-                                                                onclick="editarStatus(<?= $solicitacaobeneficio['id_solicitacao'] ?>, 'ATIVO')">Salvar
-                                                            </button>
+                                                                    onclick="editarBeneficio(<?= $solicitacaobeneficio['id_solicitacao'] ?>, beneficio.value)">Salvar
+                                                    </button>
 
                                                 </div>
                                                 <div class = "col-sm-6">
@@ -109,24 +111,23 @@
 
         <script type="text/javascript">
 
-            function editarSituacao(id, situacao) {
-
-                //            alert('contate a manutenção');
-                //		   alert("id = " + id + ", status = " + status);
-
+            function editarBeneficio(id, situacao) {
                 $.ajax({
                     type: "POST",
-                    url: baseUrl + 'concessaotrajeto/editar-situacao',
+                    url: baseUrl + 'beneficio/editarbeneficio',
                     async: false,
                     data: {id: id,
                         situacao: situacao
                     },
                     success: function () {
+                        alert("SUCESSO! id = " + id + ", status = " + situacao);
                     },
                     error: function () {
+                        alert("ERRO! id = " + id + ", status = " + situacao);
                     }
                 });
             }
         </script>
+    </script>
 
 </body>

@@ -21,15 +21,14 @@ class Application_Model_Beneficio extends Zend_Db_Table_Row_Abstract {
 //        private $comprovante_residencia;
 //        private $comprovante_matricula;
 //        private $carteira_idoso;
-//        private $situacao;
+//        private $beneficio;    
     
-    
-    function getSituacao() {
-        return $this->situacao;
+    function getBeneficio() {
+        return $this->beneficio;
     }
 
-    function setSituacao($situacao) {
-        $this->situacao = $situacao;
+    function setBeneficio($beneficio) {
+        $this->beneficio = $beneficio;
     }
 
     function getId_solicitacao() {
