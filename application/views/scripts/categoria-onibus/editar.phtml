@@ -8,7 +8,7 @@
         <a href="<?= $this->baseUrl('menuinicial') ?>">
           menuinicial/
         </a>
-        <a href="<?= $this->baseUrl('parada-onibus') ?>">
+        <a href="<?= $this->baseUrl('categoria-onibus') ?>">
           categoria_onibus/
         </a>
       </li>
@@ -39,6 +39,9 @@
       <label for="">Descrição</label>
       <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição" required value="<?php echo $this->categoria->getDescricao(); ?>">
     </div>
+    <div class="alert alert-danger descricao" style="display: none;" role="alert">
+      O campo descrição é obrigatório!
+    </div>  
 
     <div class="input-group xmb-3">
       <div class="input-group-prepend">
@@ -46,9 +49,17 @@
       </div>
       <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="3" id="tarifa" name="tarifa" placeholder="Digite a tarifa" required value="<?php echo $this->categoria->getTarifa(); ?>">
     </div>
-
     <br>
-    <button type="submit" class="col-lg-2 btn btn-primary">Salvar</button>
+    <div class="alert alert-danger tarifa" style="display: none;" role="alert">
+      O campo valor da tarifa é obrigatório!
+    </div> 
+
+
+    <div class="alert alert-success" style="display: none;" role="alert">
+      Edição efetuada com sucesso!
+    </div>
+    <br>
+    <button type="button" class="col-lg-2 btn  btn-primary editarTarifa">Salvar</button>
     <a href="<?= $this->baseUrl('categoria-onibus') ?>" class="col-lg-2 btn btn-primary">Voltar</a>
 
 

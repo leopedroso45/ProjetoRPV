@@ -38,8 +38,8 @@
               <div class="form-group">
                 <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição" required/>
               </div>
-              <div class="alert alert-danger diferente" style="display: none;" role="alert">
-                Confirme novamente a descricao!
+              <div class="alert alert-danger descricao" style="display: none;" role="alert">
+                O campo descrição é obrigatório!
               </div>
               <div class="input-group xmb-3">
                 <div class="input-group-prepend">
@@ -47,10 +47,10 @@
                 </div>
                 <input type="text" class="form-control" maxlength="3" id="tarifa" name="tarifa" placeholder="Digite a tarifa" required/>
               </div>
-              <div class="alert alert-danger diferente" style="display: none;" role="alert">
-                Confirme novamente a tarifa!
-              </div>
               <br>
+              <div class="alert alert-danger tarifa" style="display: none;" role="alert">
+                O campo valor da tarifa é obrigatório!
+              </div>      
               <div class="alert alert-success" style="display: none;" role="alert">
                 Cadastro de tarifa realizado com sucesso!
               </div>
@@ -58,7 +58,7 @@
               <a href="../public/menuinicial" class="col-lg-2  btn btn-primary">Voltar</a>
             </div>
           </div>
-
+  
 
           <div>
             <button type="button" id="botao" class="btn btn-block btn-primary">Nova categoria</button>
