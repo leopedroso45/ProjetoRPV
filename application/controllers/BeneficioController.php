@@ -47,5 +47,20 @@ class BeneficioController extends Zend_Controller_Action {
             $dbTableBeneficio->editarBeneficios($id, $dados);
         }
     }
+    
+    public function editarSituacaoAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+        $beneficio = $dbTableBeneficio->getBeneficioPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            //var_dump($dados); die();
+            $dbTableBeneficio->editarStatus($id, $dados);
+        }
+        $this->view->beneficio = $beneficio;
+    }
 
 }

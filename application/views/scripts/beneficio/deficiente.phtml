@@ -64,24 +64,13 @@
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
                                                     <label> Celular: </label>
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
-                                                    <br><label>Conceder Benefício:</label>
-                                                    <br><button class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <label class="btn btn-outline-dark" id="nenhum" onclick="alert()">
-                                                            <input type="radio" name="options" id="nenhum" name="nenhum" autocomplete="off"> Nenhum
-                                                        </label>
-                                                        <label class="btn btn-outline-dark" id="meiaPassagem">
-                                                            <input type="radio" name="options1" name="meiaPassagem" autocomplete="off"> Meia-Passagem
-                                                        </label>
-                                                        <label class="btn btn-outline-dark" id="isencao">
-                                                            <input type="radio" name="options2"   name="isencao" autocomplete="off"> Isenção
-                                                        </label>
-                                                    </button>
-                       
-                                                    <script type="text/javascript">
-                                                    if (document.getElementById("meiaPassagem").click()){
-                                                                alert();
-                                                            }                                                   
-                                                    </script>        
+                                                    <label>Benefício Concedido:</label>
+                                                    <br><input type="radio" name="situacao" id="situacao" value="nenhum"> Nenhum
+                                                    <input type="radio" name="situacao" id="situacao" value="meiaPassagem"> Meia Passagem
+                                                    <input type="radio" name="situacao" id="situacao" value="isencao"> Isenção
+                                                    <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
+                                                                onclick="editarStatus(<?= $solicitacaobeneficio['id_solicitacao'] ?>, 'ATIVO')">Salvar
+                                                            </button>
 
                                                 </div>
                                                 <div class = "col-sm-6">
@@ -117,5 +106,27 @@
             </div>
         <? endforeach;
         ?>
+
+        <script type="text/javascript">
+
+            function editarSituacao(id, situacao) {
+
+                //            alert('contate a manutenção');
+                //		   alert("id = " + id + ", status = " + status);
+
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl + 'concessaotrajeto/editar-situacao',
+                    async: false,
+                    data: {id: id,
+                        situacao: situacao
+                    },
+                    success: function () {
+                    },
+                    error: function () {
+                    }
+                });
+            }
+        </script>
 
 </body>
