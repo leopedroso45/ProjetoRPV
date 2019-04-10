@@ -66,7 +66,28 @@ body {
 }
 
 
+.btn-default{
+	border: 1px solid;
+	border-color: rgba(255,255,255,0.5);
+}
 
+
+.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+
+
+
+
+
+[data-toggle=buttons]>.btn input[type=checkbox],
+ [data-toggle=buttons]>.btn input[type=radio],
+  [data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
+   [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
+	position: absolute;
+	clip: rect(0,0,0,0);
+	pointer-events: none;
+
+}
 
 
 

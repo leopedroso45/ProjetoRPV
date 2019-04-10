@@ -156,6 +156,17 @@
        
         });
 
+         $("#alocar-onibus").click(function() {
+            var id_onibus = $("#sel6 option:selected").val();
+            var placa = $("#sel6 option:selected").text();
+
+           
+
+            document.getElementById("id-onibus").value = id_onibus;
+            document.getElementById("descricao-onibus").value = placa;
+       
+        });
+
     </script>
     </body>
 </html>
