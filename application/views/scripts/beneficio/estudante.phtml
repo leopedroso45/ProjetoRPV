@@ -1,111 +1,105 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<body>
 
 <div class="container fundo">
 
-	  <div class="table-responsive" style="background-color:rgba(0,0,0,0.5); color: white">
-							<table class="table table-bordered text-center" style="background-color:rgba(0,0,0,0.5); color: white">
-								<tr class="text-primary">
-									<th class="fundoTransparente" colspan="4" style="background-color:rgba(0,0,0,0.5); color: white">
-										<center><h3>Novas Solicitações de Benefícios</h3></center>
-									</th>
-								</tr>
-								<tr>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>CPF</center></th>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Nome</center></th>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Data de Solicitação</center></th>
-									<th class="fundoTransparente" colspan="1" style="background-color:rgba(0,0,0,0.5); color: white"><center>Situação</center></th>
-								</tr>
-								<tr>
-								<? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
-			                        <tr>
-			                            <td> <?= $solicitacaobeneficio['cpf'] ?></td>		                        
-			                            <td> <?= $solicitacaobeneficio['nome'] ?></td>
-			                            <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
-			                            <td> <?= $solicitacaobeneficio['idf_situacao_solicitacao'] ?>
-			                            	<button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
-											<i class="fas fa-edit" style="color:black"></i>
-										</button>
-			                            </td>
-			                        </tr>
-		                    	<? endforeach; ?>
-								</tr>
+    <div class="table-responsive" style="color: white">
+        <table class="table table-bordered text-center" style="background-color:rgba(0,0,0,0.5); color: white">
+            <tr class="text-primary">
+                <th  colspan="4">
+            <center><h3>Novas Solicitações de Benefícios</h3></center>
+            </th>
+            </tr>
+            <tr>
+                <th class="fundoTransparente" colspan="1"><center>CPF</center></th>
+            <th class="fundoTransparente" colspan="1"><center>Nome</center></th>
+            <th class="fundoTransparente" colspan="1"><center>Data de Solicitação</center></th>
+            <th class="fundoTransparente" colspan="1"><center>Situação</center></th>
+            </tr>
+            <tr>
+                <? foreach ($this->listarBeneficios as $solicitacaobeneficio): ?>
+                <tr>
+                    <td> <?= $solicitacaobeneficio['cpf'] ?></td>		                        
+                    <td> <?= $solicitacaobeneficio['nome'] ?></td>
+                    <td> <?= $solicitacaobeneficio['data_solicitacao'] ?></td>
+                    <td> 
+                        <button class="btn" data-toggle="modal" data-target="#modal-mensagem"> 
+                            <i class="fas fa-edit" style="color:black"></i>
+                        </button>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+            </tr>
 
-							</table>
-	  
-</div>
-	<!-- Modal -->
-<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-			     <h4 class="modal-title">ESTUDANTES</h4>
-                 <button type="button" class="close" data-dismiss="modal">
-					<span>&times;</span>
-				 </button>
-             </div>
-             <div class="modal-body">
-				<div class="container-fluid"> 
-					<div class="row">
-						<div class="table-responsive">
-							<form method="post">
-							  <div class="form-group">
-							  	<div class="col-sm-6">
-									<label >Nome completo:</label>
-									<input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto">
-									<label >Data de nascimento:</label>
-									<input type="date" class="form-control" name="dataNascimento" id="dataNascimento">
-									<label >CPF:</label>
-									<input type="text" class="form-control" name="cpf" id="cpf">
-									<label >RG:</label>
-									<input type="text" class="form-control" name="rg" id="rg">
-									<label> Celular: </label>
-									<input type="text" class="form-control" name="celular" id="celular">
-								</div>
-								<div class="col-sm-6">
-									<label> Rua: </label>
-									<input type="text" class="form-control" name="rua" id="rua">
-									<label> Nº: </label>
-									<input type="text" class="form-control" name="numeroCasa" id="numeroCasa">									
-									<label> Bairro: </label>
-									<input type="text" class="form-control" name="bairro" id="bairro">									
-									<label >Comprovante de Matrícula:</label>
-									<br>
-									<button class="btn" name="comprovanteMatricula" id="comprovanteMatricula">
-										<i class="fa fa-download" style="color:black"></i>
-										<label style="color:black">
-											<a style="color:black" href="autorizaconcessao/autorizacao.pdf"
-											download="a">Download </a>
-										</label>
-									</button>
-									<br>
-									<label >Comprovante de Residência:</label>
-									<br>
-									<button class="btn" name="comprovanteResidencia" id="comprovanteResidencia">
-										<i class="fa fa-download" style="color:black"></i>
-										<label style="color:black">
-											<a style="color:black" href="autorizaconcessao/autorizacao.pdf"
-											download="a">Download </a>
-										</label>
-									</button>
-								</div>
-							  </div>
-							  <button type="submit" name="botaoConceder" id="botaoConceder" class="btn btn-success">Conceder</button>
-							  <button type="submit" class="btn btn-danger">Não Conceder</button>							
-							</form>							
-						</div>
-		 			</div>
-				</div>			 
-             </div>
+        </table>
 
-         </div>
     </div>
- </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ESTUDANTES</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid"> 
+                        <div class="row">
+                            <div class="table-responsive">
+                                <form method="post">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label >Nome completo:</label>
+                                            <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto">
+                                            <label >Data de nascimento:</label>
+                                            <input type="date" class="form-control" name="dataNascimento" id="dataNascimento">
+                                            <label >CPF:</label>
+                                            <input type="text" class="form-control" name="cpf" id="cpf">
+                                            <label >RG:</label>
+                                            <input type="text" class="form-control" name="rg" id="rg">
+                                            <label> Celular: </label>
+                                            <input type="text" class="form-control" name="celular" id="celular">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label> Rua: </label>
+                                            <input type="text" class="form-control" name="rua" id="rua">
+                                            <label> Nº: </label>
+                                            <input type="text" class="form-control" name="numeroCasa" id="numeroCasa">									
+                                            <label> Bairro: </label>
+                                            <input type="text" class="form-control" name="bairro" id="bairro">									
+                                            <label >Comprovante de Matrícula:</label>
+                                            <br>
+                                            <button class="btn" name="comprovanteMatricula" id="comprovanteMatricula">
+                                                <i class="fa fa-download" style="color:black"></i>
+                                                <label style="color:black">
+                                                    <a style="color:black" href="autorizaconcessao/autorizacao.pdf"
+                                                       download="a">Download </a>
+                                                </label>
+                                            </button>
+                                            <br>
+                                            <label >Comprovante de Residência:</label>
+                                            <br>
+                                            <button class="btn" name="comprovanteResidencia" id="comprovanteResidencia">
+                                                <i class="fa fa-download" style="color:black"></i>
+                                                <label style="color:black">
+                                                    <a style="color:black" href="autorizaconcessao/autorizacao.pdf"
+                                                       download="a">Download </a>
+                                                </label>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button type="submit" name="botaoConceder" id="botaoConceder" class="btn btn-success">Conceder</button>
+                                    <button type="submit" class="btn btn-danger">Não Conceder</button>							
+                                </form>							
+                            </div>
+                        </div>
+                    </div>			 
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
-</body>
+</div>

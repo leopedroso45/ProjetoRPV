@@ -1,29 +1,10 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="js/jquery-3.3.1.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="<?= $this->baseUrl('dist/js/concessaoTrajeto.js') ?>"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
-
-
-
 <div class="container fundo">
-
-
 </div><br>
 <div class="row">
-    <div class="col-sm-2" > 
-
+    <div class="col-sm-2"> 
     </div>
-
-    <div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
-        <div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+    <div class="col-sm-8" style="background-color:rgba(0,0,0,0.5); color: white">
+        <div style="color: white">
             <center><H3>Concessão de Trajetos </H3></center>
             <div class="row"> 
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,8 +16,8 @@
             <br>
         </div>
         <div class="row"> 
-            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
-                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+            <table class="table" style="width: 100%;">
+                <thead style="color: white">
                     <tr>
                         <th>Extensão</th>
                         <th>Data de Inicio</th>
@@ -46,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
+                    <? foreach ($this->listaDasConcessoes as $concessaotrajeto): ?>
                         <tr>
                             <td> <?= $concessaotrajeto['extensao'] ?></td>
                             <td> <?= $concessaotrajeto['data_inicio'] ?></td>

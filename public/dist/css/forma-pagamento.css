@@ -1,9 +1,9 @@
-.btn-group, .btn-group-vertical {
+/*.btn-group, .btn-group-vertical {
     position: relative;
     display: block; 
     vertical-align: middle;
     margin-bottom: 5%;
-}
+}*/
 
 th, td, label{
     color: white;
@@ -11,7 +11,7 @@ th, td, label{
 
 .btn-default.btn-on.active{background-color: #5BB75B;color: white;}
 .btn-default.btn-off.active{background-color: #DA4F49;color: white;}
-.btn-default{border-color: #FFFFFF;background-color: ;color: white;}
+.btn-default{background-color: #FFFFFF;color: black;}
 
 
 
