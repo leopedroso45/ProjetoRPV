@@ -1,125 +1,97 @@
 <div class="container">
-    <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){
 
-            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
-                <li>
-                    <a href="<?= $this->baseUrl('menuinicial') ?>" style="color:white;">
-                        menuinicial/
-                    </a>
-                </li>
-                <li class="active" style="color:gray;">
-                    parada_onibus
-                </li>
-            </ol>
+    $("div#oculto").hide();
 
-            <form method="POST">
+    $("button#botao").click(function(){
+      $("div#oculto").toggle("slow");
+    });
+  });
+</script>
 
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.7);">
+      <li>
+        <a href="<?= $this->baseUrl('menuinicial') ?>">
+          menuinicial/
+        </a>
+      </li>
+      <li class="active">
+        parada_onibus
+      </li>
+    </ol>
 
-                <script>//Validar somente numero
-                    function somenteNumeros(num) {
-                        var er = /[^0-9.]/;
-                        er.lastIndex = 0;
-                        var campo = num;
-                        if (er.test(campo.value)) {
-                            campo.value = "";
-                        }
-                    }
-                </script>
+    <form method="POST">
+      <div class="card mb-3" style="background-color:rgba(0,0,0,0.7);">
+        <div class="card-body" id="oculto">
+          <div class="input-group xmb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="numero">N°: </span>
+            </div>
+            <input type="text" class="form-control" id="numeroParada" name="numeroParada" placeholder="Digite o numero da parada" required/>
+          </div>
+          <br>
+          <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+            O campo numero de parada é obrigatório!
+          </div>
+          <div class="input-group xmb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Local: </span>
+            </div>
+            <input type="text" class="form-control" id="local" name="local" placeholder="Digite o local da parada" required/>
+          </div>
+          <br>
+          <div class="alert alert-danger local" style="display: none;" role="alert">
+            O campo local é obrigatório!
+          </div>
+          <div class="input-group xmb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Complemento: </span>
+            </div>
+            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento, se houver" />
+          </div>
+          <br>
+          <div class="alert alert-success " style="display: none;" role="alert">
+            Cadastro de parada realizado com sucesso!
+          </div>
+          <button type="button" class="col-lg-2 btn btn-primary cadastrarParada">Salvar</button>
+          <a href="../public/menuinicial" class="col-lg-2  btn btn-primary">Voltar</a>
+          </div>
+          
 
-                <div class="card mb-3" style="background-color:rgba(0,0,0,0.5);">
-                    <div class="card-body">
-                        <div class="input-group xmb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="numero">N°: </span>
-                            </div>
-                            <input type="text" class="form-control" id="numeroParada" name="numeroParada" placeholder="Digite o numero da parada" required/>
-                        </div>
-                        <div class="alert alert-danger diferente" style="display: none;" role="alert">
-                            Confirme novamente o numero da parada!
-                        </div>
-
-                        <br>
-                        <div class="input-group xmb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Local: </span>
-                            </div>
-                            <input type="text" class="form-control" id="local" name="local" placeholder="Digite o local da parada" required/>
-                        </div>
-                        <div class="alert alert-danger diferente" style="display: none;" role="alert">
-                            Confirme novamente o local!
-                        </div>
-                        <br>
-                        <div class="input-group xmb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Complemento: </span>
-                            </div>
-                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento, se houver" />
-                        </div>
-                        <div class="alert alert-danger diferente " style="display: none;" role="alert">
-                            Confirme novamente o complemento!
-                        </div>
-
-
-
-
-                        <br>
-                        <div class="alert alert-success " style="display: none;" role="alert">
-                            Cadastro de parada realizado com sucesso!
-                        </div>
-                        <button type="button" class="btn btn-block btn-primary cadastrarParada">Cadastrar</button>
-                        <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
-                    </div>
-
-
-
-
-                    <div>
-
-                        <label>Paradas Cadastradas:</label>
-                        <table class="table" >
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">N° da parada</th>
-                                    <th scope="col">Local</th>
-                                    <th scope="col">Complemento</th>
-                                    <th scope="col">Ações</th>
-
-
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <? foreach ($this->listarParadaOnibus as $parada_onibus): ?>
-
-                                    <tr>
-
-                                        <td><?= $parada_onibus->getId_parada_onibus() ?></td>
-                                        <td><?= $parada_onibus->getNumeroParada() ?> </td>
-                                        <td><?= $parada_onibus->getLocal() ?>  </td>
-                                        <td><?= $parada_onibus->getComplemento() ?>  </td>
-                                        <td><i class="fas fas-eye"><a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('parada-onibus/editar/id/' . $parada_onibus['id_parada']) ?>" >Editar </a></i></td>
-                                    </tr>
-
-
-
-                                <? endforeach; ?>
-                            </tbody>
-                        </table>
-
-
-
-
-
-                    </div>
-                </div>
-
-            </form>
-            <div class="col-lg-2"></div>
+          <div>
+          <button type="button" id="botao" class="btn btn-block btn-primary">Nova parada</button>
+          <label><h2>Paradas Cadastradas:</h2></label>
+          <table class="table" >
+            <thead>
+              <tr>
+               <!-- <th scope="col">ID</th> -->
+                <th scope="col">N° da parada</th>
+                <th scope="col">Local</th>
+                <th scope="col">Complemento</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <? foreach ($this->listarParadaOnibus  as $parada_onibus): ?>
+                <tr>
+<!--                   <td><?= $parada_onibus->getId_parada_onibus() ?></td>
+ -->                  <td><?= $parada_onibus->getNumeroParada() ?> </td>
+                  <td><?= $parada_onibus->getLocal() ?>  </td>
+                  <td><?= $parada_onibus->getComplemento() ?>  </td>
+                  <td><i class="fas fas-eye"><a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('parada-onibus/editar/id/'. $parada_onibus['id_parada']) ?>" >Editar </a></i></td>
+                </tr>
+              <? endforeach; ?>
+            </tbody>
+          </table>
         </div>
-
-    </div>
+      </div>
+    </form>
+    <div class="col-lg-2"></div>
+  </div>
 </div>

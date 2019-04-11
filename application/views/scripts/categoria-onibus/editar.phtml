@@ -1,65 +1,76 @@
 <div class="container">
 	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
   <div class="row">
- 	<div class="col-lg-2"></div>
-  	<div class="col-lg-8">
-       <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
-                <li>
-                  <a href="<?= $this->baseUrl('menuinicial') ?>">
-                    menuinicial/
-                    </a>
-                    <a href="<?= $this->baseUrl('parada-onibus') ?>">
-                    parada_onibus/
-                    </a>
-                </li>
-                <li class="active">
-                     editar
-                </li>
-            </ol>
-<form method="POST">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+     <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.7);">
+      <li>
+        <a href="<?= $this->baseUrl('menuinicial') ?>">
+          menuinicial/
+        </a>
+        <a href="<?= $this->baseUrl('categoria-onibus') ?>">
+          categoria_onibus/
+        </a>
+      </li>
+      <li class="active">
+       editar
+     </li>
+   </ol>
+   <form method="POST">
 
 
  <script>//Validar somente numero
-    function somenteNumeros(num) {
-        var er = /[^0-9.]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
-        }
-    }
- </script>
+ function somenteNumeros(num) {
+  var er = /[^0-9.]/;
+  er.lastIndex = 0;
+  var campo = num;
+  if (er.test(campo.value)) {
+    campo.value = "";
+  }
+}
+</script>
 
 
 
-  <div class="card mb-3" style="background-color:rgba(0,0,0,0.8);">
+<div class="card mb-3" style="background-color:rgba(0,0,0,0.7);">
   <div class="card-body"> 
-  <div class="form-group">
-    <input type="hidden" id="id_categoria_onibus" name="id_categoria_onibus" value="<?php echo $this->categoria->getId_categoria_onibus(); ?>">
+    <div class="form-group">
+      <input type="hidden" id="id_categoria_onibus" name="id_categoria_onibus" value="<?php echo $this->categoria->getId_categoria_onibus(); ?>">
       <label for="">Descrição</label>
       <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição" required value="<?php echo $this->categoria->getDescricao(); ?>">
-  </div>
+    </div>
+    <div class="alert alert-danger descricao" style="display: none;" role="alert">
+      O campo descrição é obrigatório!
+    </div>  
 
-  <div class="input-group xmb-3">
-  <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">R$</span>
+    <div class="input-group xmb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">R$</span>
       </div>
       <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="3" id="tarifa" name="tarifa" placeholder="Digite a tarifa" required value="<?php echo $this->categoria->getTarifa(); ?>">
+    </div>
+    <br>
+    <div class="alert alert-danger tarifa" style="display: none;" role="alert">
+      O campo valor da tarifa é obrigatório!
+    </div> 
+
+
+    <div class="alert alert-success" style="display: none;" role="alert">
+      Edição efetuada com sucesso!
+    </div>
+    <br>
+    <button type="button" class="col-lg-2 btn  btn-primary editarTarifa">Salvar</button>
+    <a href="<?= $this->baseUrl('categoria-onibus') ?>" class="col-lg-2 btn btn-primary">Voltar</a>
+
+
+
+  </div>
 </div>
 
-<br>
-  <button type="submit" class="btn btn-block btn-primary">Editar</button>
-  <a href="<?= $this->baseUrl('parada-onibus') ?>" class="btn btn-block btn-danger btn-primary">Voltar</a>
 
-
-
-</div>
-</div>
-
-  
 </form>
 
- </div>
+</div>
 <div class="col-lg-2"></div>
 </div>
 </div>

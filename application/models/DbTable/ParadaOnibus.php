@@ -3,7 +3,7 @@
 class Application_Model_DbTable_ParadaOnibus extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'parada_onibus';
+    protected $_name = 'parada';
     protected $_rowClass = "Application_Model_ParadaOnibus";
     
     public function cadastrarParadaOnibus($dados)
