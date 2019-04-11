@@ -2,20 +2,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <ol class="breadcrumb">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
                 <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ônibus Urbanos</li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Ônibus Urbanos</li>
             </ol>
         </div>
 
-        <div class="col-lg-12">
-            <div class="card">
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
                 <div class="card-header">
                     <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form class="jumbotron" method="post" enctype="multipart/form-data">
+                    <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.2); color: white;">
                         <!--                <div class="alert alert-success" role="alert">
                                             Cadastro realizado com sucesso!
                                         </div>-->
@@ -127,8 +127,8 @@
             </div>
         </div>
 
-        <div class="col-lg-12" style="margin-top: 2%">
-            <table class="table table-bordered dataTable">
+        <div class="col-lg-12" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Placa</th>
@@ -140,6 +140,9 @@
                 </thead>
                 <tbody>
                     <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                        <? if ($onibus === NULL) { ?>
+                            Nenhum resultado
+                        <? } ?>
                         <tr>
                             <td> <?= $onibus['placa'] ?></td>
                             <td> <?= $onibus['chassi'] ?></td>

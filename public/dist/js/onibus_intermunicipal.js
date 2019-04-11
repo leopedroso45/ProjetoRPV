@@ -32,7 +32,7 @@ $(document).on('click', '.clickable', function (e) {
 
     }
 });
-
+//ok
 $('#placa').blur(function () {
 
     if (this.value.length === 0) {
@@ -49,6 +49,7 @@ $('#placa').blur(function () {
     }
 });
 
+//ok
 $('#ano').blur(function () {
     if (this.value.length === 0) {
         $('.ano').removeAttr("style");
@@ -68,7 +69,7 @@ $('#ano').blur(function () {
 $('#numero_passageiros').blur(function () {
     var numero_assentos = document.getElementById("numero_assentos").value;
     var numero_passageiros = document.getElementById("numero_passageiros").value;
-    
+
     if (this.value.length === 0) {
         $('.numero_passageiros').removeAttr("style");
         $('.numero_passageiros_maximo').attr("style", "display: none");
@@ -86,7 +87,7 @@ $('#numero_passageiros').blur(function () {
 $('#numero_assentos').blur(function () {
     var numero_passageiros = document.getElementById("numero_passageiros").value;
     var numero_assentos = document.getElementById("numero_assentos").value;
-    
+
     if (this.value.length === 0) {
         $('.numero_assentos').removeAttr("style");
         $('.numero_assentos_maximo').attr("style", "display: none");
@@ -163,7 +164,31 @@ $('#modelo').blur(function () {
     }
 });
 
-$(".cadastrar-onibus-urbano").click(function ()
+$('#banheiro').blur(function () {
+    if (this.value.length === 0) {
+        $('.banheiro').removeAttr("style");
+    } else {
+        $('.banheiro').attr("style", "display: none");
+    }
+});
+
+$('#arcondicionado').blur(function () {
+    if (this.value.length === 0) {
+        $('.arcondicionado').removeAttr("style");
+    } else {
+        $('.arcondicionado').attr("style", "display: none");
+    }
+});
+
+$('#andares').blur(function () {
+    if (this.value.length === 0) {
+        $('.andares').removeAttr("style");
+    } else {
+        $('.andares').attr("style", "display: none");
+    }
+});
+
+$(".cadastrar-onibus-intermunicipal").click(function ()
 {
     $('.img-loading').removeClass("hidden");
 
@@ -177,15 +202,54 @@ $(".cadastrar-onibus-urbano").click(function ()
     var cor = $("#cor").val();
     var marca = $("#marca").val();
     var modelo = $("#modelo").val();
+    var banheiro = $("#banheiro").val();
+    var arcondicionado = $("#arcondicionado").val();
+    var andares = $("#andares").val();
 
 
 
     if (placa.length === 0) {
-
+        $('.placa').removeAttr("style");
+        $('.placa_tamanho').attr("style", "display: none");
+    } else if (placa.length < 7) {
+        $('.placa_tamanho').removeAttr("style");
+    } else if (ano.length === 0) {
+        $('.ano').removeAttr("style");
+    } else if (ano.length < 4) {
+        $('.ano_tamanho').removeAttr("style");
+    } else if (numero_passageiros.length === 0) {
+        $('.numero_passageiros').removeAttr("style");
+    } else if (numero_passageiros < numero_assentos) {
+        $('.numero_assentos_maximo').removeAttr("style");
+        $('.numero_passageiros_maximo').removeAttr("style");
+    } else if (numero_assentos.length === 0) {
+        $('.numero_assentos').removeAttr("style");
+    } else if (chassi.length === 0) {
+        $('.chassi').attr("style", "display: none");
+    } else if (chassi.length < 17) {
+        $('.chassi_tamanho').removeAttr("style");
+    } else if (km.length === 0) {
+        $('.km').removeAttr("style");
+    } else if (renavam.length === 0) {
+        $('.renavam').removeAttr("style");
+    } else if (renavam.length < 7) {
+        $('.renavam_tamanho').removeAttr("style");
+    } else if (cor.length === 0) {
+        $('.cor').removeAttr("style");
+    } else if (marca.length === 0) {
+        $('.marca').removeAttr("style");
+    } else if (modelo.length === 0) {
+        $('.modelo').removeAttr("style");
+    } else if (banheiro.length === 0) {
+        $('.banheiro').removeAttr("style");
+    } else if (arcondicionado.length === 0) {
+        $('.arcondicionado').removeAttr("style");
+    } else if (andares.length === 0) {
+        $('.andares').removeAttr("style");
     } else {
         $.ajax({
             type: "POST",
-            url: baseUrl + 'onibus-urbano/index',
+            url: baseUrl + 'onibus-intermunicipal/index',
             async: false,
             data: {placa: placa, ano: ano, numero_passageiros: numero_passageiros,
                 numero_assentos: numero_assentos, chassi: chassi, km: km,
