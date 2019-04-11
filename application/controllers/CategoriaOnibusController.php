@@ -5,7 +5,7 @@ class CategoriaOnibusController extends Zend_Controller_Action
 
     public function init()
     {
-        $this->_helper->layout->setLayout('layout_admin_local');
+        /* Initialize action controller here */
     }
 
     public function indexAction()
