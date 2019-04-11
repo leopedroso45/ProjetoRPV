@@ -121,7 +121,7 @@
                             <form method="post">
                                 <div class="col-xs-8 date">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" >Extensão</label>
+                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Extensão</label>
                                         <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="">   	    	
                                                 <input type="text" class="form-control" placeholder="Quantos km de extensão?" required="required" title="Extensão por quilômetros?" 
@@ -136,7 +136,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" >Data de Inicio</label>										    	
+                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Data de Inicio</label>										    	
                                         <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="datePicker">
                                                 <input type="text" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
@@ -148,7 +148,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Data Final</label>										        <div class="col-xs-8 date">
+                                        <label class="col-sm-4 col-form-label"><label style="color:red">*</label> Data Final</label>										        <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="datePicker2">
                                                 <input type="text" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
                                                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -225,7 +225,6 @@
 
                                 if (extensao.length === 0) {
                                     $('.extensao').removeClass('hidden');
-
                                 } else if (dataInicio.length === 0) {
                                     $('.dataInicio').removeClass('hidden');
                                 } else if (dataFim.length === 0) {
