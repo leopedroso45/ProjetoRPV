@@ -67,18 +67,15 @@
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
                                                     <label> Celular: </label>
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
-                                                    <label>Conceder Benefício:</label>
-                                                    <button class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <label class="btn btn-outline-dark">
-                                                            <input type="radio" name="options" id="nenhum" name="nenhum" autocomplete="off"> Nenhum
-                                                        </label>
-                                                        <label class="btn btn-outline-dark">
-                                                            <input type="radio" name="options" id="meiaPassagem" name="meiaPassagem" autocomplete="off"> Meia-Passagem
-                                                        </label>
-                                                        <label class="btn btn-outline-dark">
-                                                            <input type="radio" name="options" id="isencao" name="isencao" autocomplete="off"> Isenção
-                                                    </button>
-                                                    <br><button type="submit" name="botaoConceder" id="botaoConceder" class="btn btn-success">Salvar</button>		
+                                                    <label>Benefício Concedido:</label>
+                                                    <br><select name="beneficio" id="beneficio">
+                                                        <option value="0">Nenhum</option>
+                                                        <option value="1">Meia Passagem</option>
+                                                        <option value="2">Isenção</option>
+                                                    </select>
+                                                    <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
+                                                                    onclick="editarBeneficio(<?= $solicitacaobeneficio['id_solicitacao'] ?>, beneficio.value)">Salvar
+                                                    </button>		
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <label> Rua: </label>
@@ -120,6 +117,25 @@
                 </div>
             </div>
         <? endforeach; ?>
+        <script type="text/javascript">
 
+            function editarBeneficio(id, situacao) {
+                var id1 = id;
+                var situacao1 = situacao;
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/ProjetoRPV/public/update.php?id="+id1+"&situacao="+situacao1+"",
+                    async: false,
+                    data: {id: id,
+                        situacao: situacao
+                    },
+                    success: function () {
+                        location.reload();
+                    },
+                    error: function () {
+                    }
+                });
+            }
+        </script>
 
 </body>

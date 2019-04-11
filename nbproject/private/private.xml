@@ -4,8 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Beneficio.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/Beneficio.php</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/BeneficioController.php</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/concessaoTrajeto.js</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/beneficio/deficiente.phtml</file>
         </group>
     </open-files>

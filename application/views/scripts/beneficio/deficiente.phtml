@@ -66,9 +66,9 @@
                                                     <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
                                                     <label>Benefício Concedido:</label>
                                                     <br><select name="beneficio" id="beneficio">
-                                                        <option value="nenhum">Nenhum</option>
-                                                        <option value="meiaPassagem">Meia Passagem</option>
-                                                        <option value="isencao">Isenção</option>
+                                                        <option value="0">Nenhum</option>
+                                                        <option value="1">Meia Passagem</option>
+                                                        <option value="2">Isenção</option>
                                                     </select>
                                                     <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
                                                                     onclick="editarBeneficio(<?= $solicitacaobeneficio['id_solicitacao'] ?>, beneficio.value)">Salvar
@@ -112,18 +112,19 @@
         <script type="text/javascript">
 
             function editarBeneficio(id, situacao) {
+                var id1 = id;
+                var situacao1 = situacao;
                 $.ajax({
                     type: "POST",
-                    url: baseUrl + 'beneficio/editarbeneficio',
+                    url: "http://localhost/ProjetoRPV/public/update.php?id="+id1+"&situacao="+situacao1+"",
                     async: false,
                     data: {id: id,
                         situacao: situacao
                     },
                     success: function () {
-                        alert("SUCESSO! id = " + id + ", status = " + situacao);
+                        location.reload();
                     },
                     error: function () {
-                        alert("ERRO! id = " + id + ", status = " + situacao);
                     }
                 });
             }
