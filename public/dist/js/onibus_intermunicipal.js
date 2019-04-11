@@ -128,7 +128,7 @@ $('#km').blur(function () {
 $('#renavam').blur(function () {
     if (this.value.length === 0) {
         $('.renavam').removeAttr("style");
-        $('.renavam').attr("style", "display: none");
+        $('.renavam_tamanho').attr("style", "display: none");
 
     } else if (this.value.length < 11) {
         $('.renavam').attr("style", "display: none");
