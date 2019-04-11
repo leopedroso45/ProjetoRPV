@@ -6,6 +6,7 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
     public function init()
     {
         $this->_helper->layout->setLayout('layout_secretario');
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/onibus_intermunicipal.js'));
     }
 
     public function indexAction()
