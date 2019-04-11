@@ -2,6 +2,12 @@ body {
 	background-image: url("../img/fundo.png");
 	width: 100%;
 }
+
+.hidden {
+    display: none;
+    
+}
+
 .botao
 {
 background: url("../img/edicao.png");
