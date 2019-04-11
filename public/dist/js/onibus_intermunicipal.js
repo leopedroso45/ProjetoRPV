@@ -190,8 +190,9 @@ $('#andares').blur(function () {
 
 $(".cadastrar-onibus-intermunicipal").click(function ()
 {
-    $('.img-loading').removeClass("hidden");
+    $('.img-loading-intermunicipal').removeClass("hidden");
 
+    var id_categoria_onibus = $("#id_categoria_onibus").val();
     var placa = $("#placa").val();
     var ano = $("#ano").val();
     var numero_passageiros = $("#numero_passageiros").val();
@@ -206,46 +207,122 @@ $(".cadastrar-onibus-intermunicipal").click(function ()
     var arcondicionado = $("#arcondicionado").val();
     var andares = $("#andares").val();
 
+    if (placa.length === 0 && ano.length === 0 && numero_passageiros.length === 0 &&
+            numero_assentos.length === 0 && chassi.length === 0 && km.length === 0 &&
+            renavam.length === 0 && cor.length === 0 && marca.length === 0 &&
+            modelo.length === 0 && banheiro.length === 0 && arcondicionado.length === 0 &&
+            andares.length === 0) {
+        setTimeout(function () {
+            $('.placa').removeAttr("style");
+            $('.ano').removeAttr("style");
+            $('.numero_passageiros').removeAttr("style");
+            $('.numero_assentos').removeAttr("style");
+            $('.chassi').removeAttr("style", "display: none");
+            $('.km').removeAttr("style");
+            $('.renavam').removeAttr("style");
+            $('.cor').removeAttr("style");
+            $('.marca').removeAttr("style");
+            $('.modelo').removeAttr("style");
+            $('.banheiro').removeAttr("style");
+            $('.arcondicionado').removeAttr("style");
+            $('.andares').removeAttr("style");
+            setTimeout(function () {
+                $('.img-loading-intermunicipal').addClass("hidden");
+            }, 1000);
+        }, 1000);
 
-
-    if (placa.length === 0) {
+    } else if (placa.length === 0) {
         $('.placa').removeAttr("style");
         $('.placa_tamanho').attr("style", "display: none");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (placa.length < 7) {
         $('.placa_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (ano.length === 0) {
         $('.ano').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (ano.length < 4) {
         $('.ano_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (numero_passageiros.length === 0) {
         $('.numero_passageiros').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (numero_passageiros < numero_assentos) {
         $('.numero_assentos_maximo').removeAttr("style");
         $('.numero_passageiros_maximo').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (numero_assentos.length === 0) {
         $('.numero_assentos').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (chassi.length === 0) {
-        $('.chassi').attr("style", "display: none");
+        $('.chassi').removeAttr("style", "display: none");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (chassi.length < 17) {
         $('.chassi_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (km.length === 0) {
         $('.km').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (renavam.length === 0) {
         $('.renavam').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (renavam.length < 7) {
         $('.renavam_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (cor.length === 0) {
         $('.cor').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (marca.length === 0) {
         $('.marca').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (modelo.length === 0) {
         $('.modelo').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (banheiro.length === 0) {
         $('.banheiro').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (arcondicionado.length === 0) {
         $('.arcondicionado').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else if (andares.length === 0) {
         $('.andares').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
     } else {
         $.ajax({
             type: "POST",
@@ -253,15 +330,16 @@ $(".cadastrar-onibus-intermunicipal").click(function ()
             async: false,
             data: {placa: placa, ano: ano, numero_passageiros: numero_passageiros,
                 numero_assentos: numero_assentos, chassi: chassi, km: km,
-                renavam: renavam, cor: cor, marca: marca, modelo: modelo
+                renavam: renavam, cor: cor, marca: marca, modelo: modelo,
+                banheiro: banheiro, andares: andares, arcondicionado: arcondicionado,
+                id_categoria_onibus: id_categoria_onibus
             },
             beforeSend: function () {
                 setTimeout(function () {
-                    $('.img-loading').addClass("hidden");
+                    $('.img-loading-intermunicipal').addClass("hidden");
                 }, 1000);
             },
             success: function () {
-//                setTimeout(function () {}, 2000);
 
                 bootbox.alert({
                     message: "Cadastro realizado com sucesso.",
@@ -271,7 +349,178 @@ $(".cadastrar-onibus-intermunicipal").click(function ()
                 });
             },
             error: function () {
-//                alert("nok");
+                alert("nok");
+            },
+            complete: function () {
+//                location.reload();
+            }
+        });
+    }
+});
+
+$(".editar-onibus-intermunicipal").click(function ()
+{
+    $('.img-loading-intermunicipal').removeClass("hidden");
+
+    var id = $("#id_onibus_intermunicipal").val();
+    var id_categoria_onibus = $("#id_categoria_onibus").val();
+    var placa = $("#placa").val();
+    var ano = $("#ano").val();
+    var numero_passageiros = $("#numero_passageiros").val();
+    var numero_assentos = $("#numero_assentos").val();
+    var chassi = $("#chassi").val();
+    var km = $("#km").val();
+    var renavam = $("#renavam").val();
+    var cor = $("#cor").val();
+    var marca = $("#marca").val();
+    var modelo = $("#modelo").val();
+    var banheiro = $("#banheiro").val();
+    var arcondicionado = $("#arcondicionado").val();
+    var andares = $("#andares").val();
+
+    if (placa.length === 0 && ano.length === 0 && numero_passageiros.length === 0 &&
+            numero_assentos.length === 0 && chassi.length === 0 && km.length === 0 &&
+            renavam.length === 0 && cor.length === 0 && marca.length === 0 &&
+            modelo.length === 0 && banheiro.length === 0 && arcondicionado.length === 0 &&
+            andares.length === 0) {
+        setTimeout(function () {
+            $('.placa').removeAttr("style");
+            $('.ano').removeAttr("style");
+            $('.numero_passageiros').removeAttr("style");
+            $('.numero_assentos').removeAttr("style");
+            $('.chassi').removeAttr("style", "display: none");
+            $('.km').removeAttr("style");
+            $('.renavam').removeAttr("style");
+            $('.cor').removeAttr("style");
+            $('.marca').removeAttr("style");
+            $('.modelo').removeAttr("style");
+            $('.banheiro').removeAttr("style");
+            $('.arcondicionado').removeAttr("style");
+            $('.andares').removeAttr("style");
+            setTimeout(function () {
+                $('.img-loading-intermunicipal').addClass("hidden");
+            }, 1000);
+        }, 1000);
+
+    } else if (placa.length === 0) {
+        $('.placa').removeAttr("style");
+        $('.placa_tamanho').attr("style", "display: none");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (placa.length < 7) {
+        $('.placa_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (ano.length === 0) {
+        $('.ano').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (ano.length < 4) {
+        $('.ano_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (numero_passageiros.length === 0) {
+        $('.numero_passageiros').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (numero_passageiros < numero_assentos) {
+        $('.numero_assentos_maximo').removeAttr("style");
+        $('.numero_passageiros_maximo').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (numero_assentos.length === 0) {
+        $('.numero_assentos').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (chassi.length === 0) {
+        $('.chassi').removeAttr("style", "display: none");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (chassi.length < 17) {
+        $('.chassi_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (km.length === 0) {
+        $('.km').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (renavam.length === 0) {
+        $('.renavam').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (renavam.length < 7) {
+        $('.renavam_tamanho').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (cor.length === 0) {
+        $('.cor').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (marca.length === 0) {
+        $('.marca').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (modelo.length === 0) {
+        $('.modelo').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (banheiro.length === 0) {
+        $('.banheiro').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (arcondicionado.length === 0) {
+        $('.arcondicionado').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else if (andares.length === 0) {
+        $('.andares').removeAttr("style");
+        setTimeout(function () {
+            $('.img-loading-intermunicipal').addClass("hidden");
+        }, 1000);
+    } else {
+        $.ajax({
+            type: "POST",
+            url: baseUrl + 'onibus-intermunicipal/editar',
+            async: false,
+            data: {placa: placa, ano: ano, numero_passageiros: numero_passageiros,
+                numero_assentos: numero_assentos, chassi: chassi, km: km,
+                renavam: renavam, cor: cor, marca: marca, modelo: modelo,
+                banheiro: banheiro, andares: andares, arcondicionado: arcondicionado,
+                id_categoria_onibus: id_categoria_onibus, id: id
+            },
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading-intermunicipal').addClass("hidden");
+                }, 1000);
+            },
+            success: function () {
+
+                bootbox.alert({
+                    message: "Alteração realizada com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+            },
+            error: function () {
+                alert("nok");
             },
             complete: function () {
 //                location.reload();

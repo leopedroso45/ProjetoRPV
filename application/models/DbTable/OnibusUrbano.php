@@ -36,7 +36,6 @@ class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
         $onibusUrbano->setModelo($dados['modelo']);
         $onibusUrbano->setRenavam($dados['renavam']);
         $onibusUrbano->setCor($dados['cor']);
-        $onibusUrbano->setSituacao($dados['situacao']);
         $onibusUrbano->setKm($dados['km']);
         $onibusUrbano->setNumero_assentos($dados['numero_assentos']);
         $onibusUrbano->setNumero_passageiros($dados['numero_passageiros']);

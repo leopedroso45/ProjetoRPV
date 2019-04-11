@@ -2,6 +2,7 @@
 
 class Application_Model_OnibusIntermunicipal extends Zend_Db_Table_Row_Abstract
 {
+//    private $id_onibus_viagem;
 //    private $id_categoria_onibus;
 //    private $placa;
 //    private $ano;
@@ -18,6 +19,11 @@ class Application_Model_OnibusIntermunicipal extends Zend_Db_Table_Row_Abstract
 //    private $banheiro;
 //    private $numero_andares;
     
+    function getId_onibus_viagem()
+    {
+        return $this->id_onibus_viagem;
+    }
+
     function getId_categoria_onibus()
     {
         return $this->id_categoria_onibus;
@@ -91,6 +97,11 @@ class Application_Model_OnibusIntermunicipal extends Zend_Db_Table_Row_Abstract
     function getNumero_andares()
     {
         return $this->numero_andares;
+    }
+
+    function setId_onibus_viagem($id_onibus_viagem)
+    {
+        $this->id_onibus_viagem = $id_onibus_viagem;
     }
 
     function setId_categoria_onibus($id_categoria_onibus)
@@ -167,7 +178,7 @@ class Application_Model_OnibusIntermunicipal extends Zend_Db_Table_Row_Abstract
     {
         $this->numero_andares = $numero_andares;
     }
-    
-    
+
+
 
 }

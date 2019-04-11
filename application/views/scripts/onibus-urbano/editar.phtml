@@ -1,76 +1,121 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
+        <div class="col-lg-12">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
                     <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Cadastrar Ônibus Urbano</li>
+                    <li class="breadcrumb-item active" style="color: white;" aria-current="page">Cadastrar Ônibus Urbano</li>
                 </ol>
-            </nav>
-            <form class="jumbotron" method="post" enctype="multipart/form-data">
-                <!--                <div class="alert alert-success" role="alert">
-                                    Cadastro realizado com sucesso!
-                                </div>-->
+            
+            <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.5); color: white;">
+                <input type="hidden" id="id_onibus_urbano" value="<? echo $this->onibusUrbano->getId_onibus_urbano() ?>">
                 <div class="row">
-                    <div class="col">
-                        <input type="hidden" class="form-control" name="id_onibus_urbano" id="id_onibus_urbano" value="<? echo $this->onibusUrbano->getId_onibus_urbano() ?>">
-                        <label>Placa</label>
-                        <input type="text" class="form-control" name="placa" id="placa" value="<? echo $this->onibusUrbano->getPlaca() ?>">
+                    <div class="col-lg-6">
+                        <label>Placa <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="placa" id="placa" value="<? echo $this->onibusUrbano->getPlaca() ?>" title="Placa do veículo">
+                        <div class="alert alert-danger placa" role="alert" style="display:none;">
+                            O campo <strong>Placa</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger placa_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Placa</strong> deve conter 7 dígitos.
+                        </div>
                     </div>
-                    <div class="col">
-                        <label>Ano</label>
-                        <input type="text" class="form-control" name="ano" id="ano" value="<? echo $this->onibusUrbano->getAno() ?>">
-                    </div>
-                    <div class="col">
-                        <label>Situação</label>
-                        <input type="text" class="form-control" name="situacao" id="situacao" value="<? echo $this->onibusUrbano->getSituacao() ?>">
-                    </div>
-                    <div class="col">
-                        <label>Nº Assentos</label>
-                        <input type="text" class="form-control" name="numero_assentos" id="numero_assentos" value="<? echo $this->onibusUrbano->getNumero_Assentos() ?>">
-                    </div>
-                    <div class="col">
-                        <label>Nº Passageiros</label>
-                        <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros" value="<? echo $this->onibusUrbano->getNumero_Passageiros() ?>">
+                    <div class="col-lg-6">
+                        <label>Ano <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="ano" id="ano" value="<? echo $this->onibusUrbano->getAno() ?>" title="Ano de fabricação do veículo">
+                        <div class="alert alert-danger ano" role="alert" style="display:none;">
+                            O campo <strong>Ano</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger ano_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Ano</strong> deve conter 4 dígitos.
+                        </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
-                    <div class="col">
-                        <label>Chassi</label>
-                        <input type="text" class="form-control" name="chassi" id="chassi" value="<? echo $this->onibusUrbano->getChassi() ?>">
+                    <div class="col-lg-6">
+                        <label>Capacidade máxima <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="numero_passageiros" value="<? echo $this->onibusUrbano->getNumero_passageiros() ?>" id="numero_passageiros" title="Capacidade máxima de passageiros">
+                        <div class="alert alert-danger numero_passageiros" role="alert" style="display:none;">
+                            O campo <strong>Capacidade máxima</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger numero_passageiros_maximo" role="alert" style="display:none;">
+                            A capacidade não pode ser menor que o nº de assentos.
+                        </div>
                     </div>
-                    <div class="col">
-                        <label>Km</label>
-                        <input type="text" class="form-control" name="km" id="km" value="<? echo $this->onibusUrbano->getKm() ?>">
-                    </div>
-                    <div class="col">
-                        <label>Renavam</label>
-                        <input type="text" class="form-control" name="renavam" id="renavam" value="<? echo $this->onibusUrbano->getRenavam() ?>">
+                    <div class="col-lg-6">
+                        <label>Número de Assentos <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="numero_assentos" value="<? echo $this->onibusUrbano->getNumero_assentos() ?>" id="numero_assentos" title="Quantidade de assentos no veículo">
+                        <div class="alert alert-danger numero_assentos" role="alert" style="display:none;">
+                            O campo <strong>Número de Assentos</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger numero_assentos_maximo" role="alert" style="display:none;">
+                            A nº de assentos não pode ser maior que a capacidade.
+                        </div>
                     </div>
                 </div>
-                <br>
                 <div class="row">
-                    <div class="col">
-                        <label>Cor</label>
-                        <input type="text" class="form-control" name="cor" id="cor" value="<? echo $this->onibusUrbano->getCor() ?>">
+                    <div class="col-lg-6">
+                        <label>Chassi <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="chassi" id="chassi" value="<? echo $this->onibusUrbano->getChassi() ?>" title="Chassi do veículo">
+                        <div class="alert alert-danger chassi" role="alert" style="display:none;">
+                            O campo <strong>Chassi</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger chassi_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Chassi</strong> deve conter 17 dígitos.
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Quilometragem <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="km" id="km" value="<? echo $this->onibusUrbano->getKm() ?>" title="Quilometragem do veículo">
+                        <div class="alert alert-danger km" role="alert" style="display:none;">
+                            O campo <strong>Quilometragem</strong> é obrigatório.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Renavam <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="renavam" id="renavam" value="<? echo $this->onibusUrbano->getRenavam() ?>" title="Renavam do veículo">
+                        <div class="alert alert-danger renavam" role="alert" style="display:none;">
+                            O campo <strong>Renavam</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger renavam_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Renavam</strong> deve conter 11 dígitos.
+                        </div>
                     </div>
 
-                    <div class="col">
-                        <label>Marca</label>
-                        <input type="text" class="form-control" name="marca" id="marca" value="<? echo $this->onibusUrbano->getMarca() ?>">
-                    </div>
-                    <div class="col">
-                        <label>Modelo</label>
-                        <input type="text" class="form-control" name="modelo" id="modelo" value="<? echo $this->onibusUrbano->getModelo() ?>">
+                    <div class="col-lg-6">
+                        <label>Cor <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="cor" id="cor" value="<? echo $this->onibusUrbano->getCor() ?>" title="Cor do veículo">
+                        <div class="alert alert-danger cor" role="alert" style="display:none;">
+                            O campo <strong>Cor</strong> é obrigatório.
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Marca <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="marca" id="marca" value="<? echo $this->onibusUrbano->getMarca() ?>" title="Fabricante/Marca do veículo">
+                        <div class="alert alert-danger marca" role="alert" style="display:none;">
+                            O campo <strong>Marca</strong> é obrigatório.
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Modelo <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="modelo" id="modelo" value="<? echo $this->onibusUrbano->getModelo() ?>" title="Modelo do veículo">
+                        <div class="alert alert-danger modelo" role="alert" style="display:none;">
+                            O campo <strong>Modelo</strong> é obrigatório.
+                        </div>
+                    </div>
+                </div>
+
                 <hr>
-                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                <button type="button" class="btn btn-primary btn-block editar-onibus-urbano">
+                    Confirmar
+                </button>
             </form>
         </div>
-        <div class="col-lg-2"></div>
     </div>
 </div>
 

@@ -19,7 +19,7 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         $onibusIntermunicipal->setModelo($dados['modelo']);
         $onibusIntermunicipal->setRenavam($dados['renavam']);
         $onibusIntermunicipal->setCor($dados['cor']);
-        $onibusIntermunicipal->setSituacao($dados['situacao']);
+        $onibusIntermunicipal->setSituacao('ATIVO');
         $onibusIntermunicipal->setKm($dados['km']);
         $onibusIntermunicipal->setBanheiro($dados['banheiro']);
         $onibusIntermunicipal->setArcondicionado($dados['arcondicionado']);
@@ -42,7 +42,6 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         $onibusIntermunicipal->setModelo($dados['modelo']);
         $onibusIntermunicipal->setRenavam($dados['renavam']);
         $onibusIntermunicipal->setCor($dados['cor']);
-        $onibusIntermunicipal->setSituacao($dados['situacao']);
         $onibusIntermunicipal->setKm($dados['km']);
         $onibusIntermunicipal->setBanheiro($dados['banheiro']);
         $onibusIntermunicipal->setArcondicionado($dados['arcondicionado']);

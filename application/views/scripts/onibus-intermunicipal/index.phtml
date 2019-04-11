@@ -1,4 +1,4 @@
-<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading-intermunicipal hidden" alt="carregando...">
 
 <div class="container">
     <div class="row">
@@ -16,9 +16,6 @@
                 </div>
                 <div class="card-body" style="display: none;">
                     <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.2); color: white;">
-                        <!--                <div class="alert alert-success" role="alert">
-                                            Cadastro realizado com sucesso!
-                                        </div>-->
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -65,16 +62,6 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label>Nº Assentos <strong title="Campo Obrigatório">*</strong></label>
-                                <input type="text" class="form-control" name="numero_assentos" id="numero_assentos">
-                                <div class="alert alert-danger numero_assentos" role="alert" style="display:none;">
-                                    O campo <strong>Número de Assentos</strong> é obrigatório.
-                                </div>
-                                <div class="alert alert-danger numero_assentos_maximo" role="alert" style="display:none;">
-                                    A nº de assentos não pode ser maior que a capacidade.
-                                </div>
-                            </div>
-                            <div class="col">
                                 <label>Capacidade máxima <strong title="Campo Obrigatório">*</strong></label>
                                 <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros">
                                 <div class="alert alert-danger numero_passageiros" role="alert" style="display:none;">
@@ -82,6 +69,16 @@
                                 </div>
                                 <div class="alert alert-danger numero_passageiros_maximo" role="alert" style="display:none;">
                                     A capacidade não pode ser menor que o nº de assentos.
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label>Nº Assentos <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="numero_assentos" id="numero_assentos">
+                                <div class="alert alert-danger numero_assentos" role="alert" style="display:none;">
+                                    O campo <strong>Número de Assentos</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger numero_assentos_maximo" role="alert" style="display:none;">
+                                    A nº de assentos não pode ser maior que a capacidade.
                                 </div>
                             </div>
                         </div>
@@ -121,7 +118,7 @@
                         <div class="row">
                             <div class="col">
                                 <label>Número de Andares <strong title="Campo Obrigatório">*</strong></label>
-                                <input type="text" class="form-control" name="andares" id="andares">
+                                <input type="text" class="form-control" name="andares" id="andares" autocomplete="off">
                                 <div class="alert alert-danger andares" role="alert" style="display:none;">
                                     O campo <strong>Número de Andares</strong> é obrigatório.
                                 </div>
