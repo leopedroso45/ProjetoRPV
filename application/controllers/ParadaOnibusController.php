@@ -5,7 +5,7 @@ class ParadaOnibusController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->_helper->layout->setLayout('layout_admin_local');
     }
 
     public function indexAction()
