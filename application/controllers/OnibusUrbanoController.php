@@ -36,5 +36,19 @@ class OnibusUrbanoController extends Zend_Controller_Action
 
         $this->view->onibusUrbano = $onibusUrbano;
     }
+    
+        public function editarStatusAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableOnibus = new Application_Model_DbTable_OnibusUrbano();
+        $onibus = $dbTableOnibus->getOnibusUrbanoPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableOnibus->editarStatus($id, $dados);
+        }
+        $this->view->onibus = $onibus;
+    }
 
 }

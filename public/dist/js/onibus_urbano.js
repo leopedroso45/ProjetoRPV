@@ -459,3 +459,22 @@ $(".editar-onibus-urbano").click(function ()
         });
     }
 });
+
+function editarSituacao(id, situacao) {
+//        alert(id + " " + status);
+
+    $.ajax({
+        type: "POST",
+        url: baseUrl + 'onibus-urbano/editar-situacao',
+        async: false,
+        data: {id: id,
+            situacao: situacao
+        },
+        success: function () {
+//                alert(id + " " + status);
+        },
+        error: function () {
+//                alert("error");
+        }
+    });
+}

@@ -51,6 +51,21 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         return $onibusIntermunicipal->save();
     }
     
+        public function editarStatus($id, $dados)
+    {
+        $this->find($id)->current();
+        $onibus = $this->getOnibusIntermunicipalPorId($id);
+        /* @var $onibus Application_Model_OnibusIntermunicipal */
+
+        if ($dados['status'] === 'ATIVO') {
+            $onibus->setSituacao('ATIVO');
+        } elseif ($dados['status'] === 'INATIVO') {
+            $onibus->setSituacao('INATIVO');
+        }
+
+        return $dados->save();
+    }
+    
         public function listarTodosOnibusIntermunicipais()
     {
         return $this->fetchAll();

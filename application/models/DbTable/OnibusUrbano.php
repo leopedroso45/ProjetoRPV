@@ -42,6 +42,21 @@ class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
 
         return $onibusUrbano->save();
     }
+    
+    public function editarStatus($id, $dados)
+    {
+        $this->find($id)->current();
+        $onibus = $this->getOnibusUrbanoPorId($id);
+        /* @var $onibus Application_Model_OnibusUrbano */
+
+        if ($dados['status'] === 'ATIVO') {
+            $onibus->setSituacao('ATIVO');
+        } elseif ($dados['status'] === 'INATIVO') {
+            $onibus->setSituacao('INATIVO');
+        }
+
+        return $dados->save();
+    }
 
     public function listarTodosOnibusUrbanos()
     {

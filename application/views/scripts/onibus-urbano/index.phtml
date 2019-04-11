@@ -132,6 +132,7 @@
                         <th>Chassi</th>
                         <th>Nº Passageiros</th>
                         <th>Nº Assentos</th>
+                        <th>Status</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -145,6 +146,33 @@
                             <td> <?= $onibus['chassi'] ?></td>
                             <td> <?= $onibus['numero_passageiros'] ?></td>
                             <td> <?= $onibus['numero_assentos'] ?></td>
+                            <td>
+                                <?php if ($onibus['situacao'] === 'ATIVO'): ?>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons" >
+                                        <label class="btn btn-default btn-on active" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'ATIVO')">
+                                            <input type="radio" name="switch" checked="checked">
+                                            ATIVO
+                                        </label>
+                                        <label class="btn btn-default btn-off" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'INATIVO')">
+                                            <input type="radio" name="switch">
+                                            INATIVO
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($onibus['situacao'] === 'INATIVO'): ?>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default btn-on" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'ATIVO')">
+                                            <input type="radio" name="switch" checked="checked">
+                                            ATIVO
+                                        </label>
+                                        <label class="btn btn-default btn-off active" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'INATIVO')">
+                                            <input type="radio" name="switch">
+                                            INATIVO
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
                             <td class="text-center">
                                 <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('/onibus-urbano/editar/id/' . $onibus['id_onibus_urbano']) ?>" >
                                     <span class="btn-label">
@@ -162,6 +190,7 @@
                         <th>Chassi</th>
                         <th>Nº Passageiros</th>
                         <th>Nº Assentos</th>
+                        <th>Status</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </tfoot>

@@ -36,4 +36,18 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
         $this->view->onibusIntermunicipal = $onibusIntermunicipal;
     }
 
+        public function editarStatusAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableOnibus = new Application_Model_DbTable_OnibusIntermunicipal();
+        $onibus = $dbTableOnibus->getOnibusIntermunicipalPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableOnibus->editarStatus($id, $dados);
+        }
+        $this->view->onibus = $onibus;
+    }
+
 }
