@@ -57,13 +57,13 @@ class Application_Model_DbTable_OnibusIntermunicipal extends Zend_Db_Table_Abstr
         $onibus = $this->getOnibusIntermunicipalPorId($id);
         /* @var $onibus Application_Model_OnibusIntermunicipal */
 
-        if ($dados['status'] === 'ATIVO') {
+        if ($dados['situacao'] === 'ATIVO') {
             $onibus->setSituacao('ATIVO');
-        } elseif ($dados['status'] === 'INATIVO') {
+        } elseif ($dados['situacao'] === 'INATIVO') {
             $onibus->setSituacao('INATIVO');
         }
 
-        return $dados->save();
+        return $onibus->save();
     }
     
         public function listarTodosOnibusIntermunicipais()

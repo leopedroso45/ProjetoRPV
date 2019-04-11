@@ -36,7 +36,7 @@ class OnibusIntermunicipalController extends Zend_Controller_Action
         $this->view->onibusIntermunicipal = $onibusIntermunicipal;
     }
 
-        public function editarStatusAction()
+        public function editarSituacaoAction()
     {
         $id = $this->getRequest()->getParam('id');
 

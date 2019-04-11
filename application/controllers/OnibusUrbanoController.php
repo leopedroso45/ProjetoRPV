@@ -37,7 +37,7 @@ class OnibusUrbanoController extends Zend_Controller_Action
         $this->view->onibusUrbano = $onibusUrbano;
     }
     
-        public function editarStatusAction()
+        public function editarSituacaoAction()
     {
         $id = $this->getRequest()->getParam('id');
 

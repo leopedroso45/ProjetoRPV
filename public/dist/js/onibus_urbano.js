@@ -460,7 +460,7 @@ $(".editar-onibus-urbano").click(function ()
     }
 });
 
-function editarSituacao(id, situacao) {
+function editarStatus(id, situacao) {
 //        alert(id + " " + status);
 
     $.ajax({

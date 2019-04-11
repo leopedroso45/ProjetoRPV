@@ -529,7 +529,7 @@ $(".editar-onibus-intermunicipal").click(function ()
     }
 });
 
-function editarSituacao(id, situacao) {
+function editarStatus(id, situacao) {
 //        alert(id + " " + status);
 
     $.ajax({
