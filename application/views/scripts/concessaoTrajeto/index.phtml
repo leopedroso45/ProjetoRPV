@@ -55,7 +55,7 @@
                                 <button class="btn" id="documentoAutorizacao">
                                     <i class="fa fa-download" style="color:black"></i>
                                     <label style="color: black">
-                                        <a style="color: black" href="autorizaconcessao/autorizacao.pdf"
+                                        <a style="color: black" href="dist/autorizaconcessao/autorizacao.pdf"
                                            download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
                                     </label>
                                 </button>
@@ -121,28 +121,40 @@
                             <form method="post">
                                 <div class="col-xs-8 date">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" >Extensão</label>
+                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Extensão</label>
                                         <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="">   	    	
-                                                <input type="text" class="form-control" placeholder="Quantos km de extensão?" title="Extensão por quilômetros?" id="extensao" name="extensao">
+                                                <input type="text" class="form-control" placeholder="Quantos km de extensão?" required="required" title="Extensão por quilômetros?" 
+                                                       onkeypress='return SomenteNumero(event)' required="required" data-validation-required-message="Somente números."
+                                                       id="extensao" name="extensao" data-validation-required-message="Por favor, digite seu nome.">
+                                                <p class="help-block text-danger"></p>
                                                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-road"></span></span>
+                                            </div>
+                                            <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                                Campo extensão é obrigatório.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" >Data de Inicio</label>										    	
+                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Data de Inicio</label>										    	
                                         <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="datePicker">
                                                 <input type="text" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
                                                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                                             </div>
+                                            <div class="alert alert-danger dataInicio hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                                Campo data inicio é obrigatório.
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Data Final</label>										        <div class="col-xs-8 date">
+                                        <label class="col-sm-4 col-form-label"><label style="color:red">*</label> Data Final</label>										        <div class="col-xs-8 date">
                                             <div class="input-group input-append date" id="datePicker2">
                                                 <input type="text" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
                                                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            </div>
+                                            <div class="alert alert-danger dataFim hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                                Campo data fim é obrigatório.
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +176,46 @@
                         </div>
 
                         </form>	
+                        <script src="js/somenteletra.js"></script>
+                        <script src="js/somentenumero.js"></script>
+                        <script src="js/valida_email.js"></script>
+                        <script src="js/nomecompleto.js"></script>
+                        <script src="js/numtelefone.js"></script>
+                        <script>
+                                                           function Ncompleto() {
+                                                               var nome = document.getElementById("S").value.length;
+                                                               if (nome < 9) {
+                                                                   document.getElementById("mensagem").innerHTML = "Erro! Escreva o seu nome e sobrenome."
+                                                                   document.getElementById('cadastro').disabled = true;
+                                                               } else {
+                                                                   document.getElementById("mensagem").innerHTML = ""
+                                                                   document.getElementById('cadastro').disabled = false;
+                                                               }
+                                                           }
+                        </script>
+                        <script>
+                            function SomenteNumero(e) {
+                                var tecla = (window.event) ? event.keyCode : e.which;
+                                if ((tecla > 47 && tecla < 58))
+                                    return true;
+                                else {
+                                    if (tecla == 8 || tecla == 0)
+                                        return true;
+                                    else
+                                        return false;
+                                }
+                            }
+                        </script>
                         <script type="text/javascript">
+                              $("#extensao").blur(function ()
+                            {
+                                var extensao = $("#extensao").val();
+                                if (extensao.length === 0) {
+                                    $('.extensao').removeClass('hidden');
+
+                                }
+                            });
+                            
                             $(".cadastrarConcessao").click(function ()
                             {
                                 var extensao = $("#extensao").val();
@@ -172,31 +223,30 @@
                                 var dataFim = $("#dataFim").val();
                                 var docAutorizacao = $("#docAutorizacao").val();
 
-                                // if (nome.length < 10) {
-                                //    $('.nome').removeClass('hidden');
-                                //    $('.alert-success').addClass('hidden');
+                                if (extensao.length === 0) {
+                                    $('.extensao').removeClass('hidden');
+                                } else if (dataInicio.length === 0) {
+                                    $('.dataInicio').removeClass('hidden');
+                                } else if (dataFim.length === 0) {
+                                    $('.dataFim').removeClass('hidden');
 
-                                // } else if (email.length < 10) {
-                                //    $('.nome').addClass('hidden');
-                                //    $('.email').removeClass('hidden');
-                                //    $('.alert-success').addClass('hidden');
+                                } else {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: baseUrl + 'concessaotrajeto/index',
+                                        async: false,
+                                        data: {extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
 
-                                //} else {
-                                $.ajax({
-                                    type: "POST",
-                                    url: baseUrl + 'concessaotrajeto/index',
-                                    async: false,
-                                    data: {extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
-
-                                    },
-                                    success: function () {
-                                        $(".alert-success").removeAttr("style");
-                                        location.reload();
-                                    },
-                                    error: function () {
-                                        alert("Error");
-                                    }
-                                });
+                                        },
+                                        success: function () {
+                                            $(".alert-success").removeAttr("style");
+                                            location.reload();
+                                        },
+                                        error: function () {
+                                            alert("Error");
+                                        }
+                                    });
+                                }
                             });
 
                             function editarStatus(id, status) {
@@ -234,7 +284,7 @@
                                         $('#eventForm').formValidation('revalidateField', 'date');
                                     });
 
-                        </script>						
+                        </script>	
                     </div>
                 </div>
             </div>

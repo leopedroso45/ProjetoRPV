@@ -5,7 +5,7 @@ class FormaPagamentoController extends Zend_Controller_Action
 
     public function init()
     {
-        $this->_helper->layout->setLayout('layout_admin_geral');
+        /* Initialize action controller here */
     }
 
     public function indexAction()

@@ -1,0 +1,155 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading-intermunicipal hidden" alt="carregando...">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Cadastrar Ônibus Intermunicipal</li>
+                </ol>
+            </nav>
+            <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.5); color: white;">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Categoria</label>
+                            <select class="form-control" name="id_categoria_onibus" id="id_categoria_onibus">
+                                <option value="1">Comum</option>
+                                <option value="2">Leito</option>
+                                <option value="3">Executivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="hidden" id="id_onibus_intermunicipal" value="<? echo $this->onibusIntermunicipal->getId_onibus_viagem() ?>">
+                        <label>Placa <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" id="placa" class="form-control" value="<? echo $this->onibusIntermunicipal->getPlaca() ?>">
+                        <div class="alert alert-danger placa" role="alert" style="display:none;">
+                            O campo <strong>Placa</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger placa_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Placa</strong> deve conter 7 dígitos.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Chassi <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="chassi" id="chassi" value="<? echo $this->onibusIntermunicipal->getChassi() ?>">
+                        <div class="alert alert-danger chassi" role="alert" style="display:none;">
+                            O campo <strong>Chassi</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger chassi_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Chassi</strong> deve conter 17 dígitos.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Ano <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="ano" id="ano" value="<? echo $this->onibusIntermunicipal->getAno() ?>">
+                        <div class="alert alert-danger ano" role="alert" style="display:none;">
+                            O campo <strong>Ano</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger ano_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Ano</strong> deve conter 4 dígitos.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Capacidade máxima <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros" value="<? echo $this->onibusIntermunicipal->getNumero_passageiros() ?>">
+                        <div class="alert alert-danger numero_passageiros" role="alert" style="display:none;">
+                            O campo <strong>Capacidade máxima</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger numero_passageiros_maximo" role="alert" style="display:none;">
+                            A capacidade não pode ser menor que o nº de assentos.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Nº Assentos <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="numero_assentos" id="numero_assentos" value="<? echo $this->onibusIntermunicipal->getNumero_assentos() ?>">
+                        <div class="alert alert-danger numero_assentos" role="alert" style="display:none;">
+                            O campo <strong>Número de Assentos</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger numero_assentos_maximo" role="alert" style="display:none;">
+                            A nº de assentos não pode ser maior que a capacidade.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Quilometragem <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="km" id="km" value="<? echo $this->onibusIntermunicipal->getKm() ?>">
+                        <div class="alert alert-danger km" role="alert" style="display:none;">
+                            O campo <strong>Quilometragem</strong> é obrigatório.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Banheiro(s) <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="banheiro" id="banheiro" value="<? echo $this->onibusIntermunicipal->getBanheiro() ?>">
+                        <div class="alert alert-danger banheiro" role="alert" style="display:none;">
+                            O campo <strong>Banheiro(s)</strong> é obrigatório.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Marca <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="marca" id="marca" value="<? echo $this->onibusIntermunicipal->getMarca() ?>">
+                        <div class="alert alert-danger marca" role="alert" style="display:none;">
+                            O campo <strong>Marca</strong> é obrigatório.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Modelo <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="modelo" id="modelo" value="<? echo $this->onibusIntermunicipal->getModelo() ?>">
+                        <div class="alert alert-danger modelo" role="alert" style="display:none;">
+                            O campo <strong>Modelo</strong> é obrigatório.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Número de Andares <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="andares" id="andares" autocomplete="off" value="<? echo $this->onibusIntermunicipal->getNumero_Andares() ?>">
+                        <div class="alert alert-danger andares" role="alert" style="display:none;">
+                            O campo <strong>Número de Andares</strong> é obrigatório.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Ar-condicionado <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="arcondicionado" id="arcondicionado" value="<? echo $this->onibusIntermunicipal->getArcondicionado() ?>">
+                        <div class="alert alert-danger arcondicionado" role="alert" style="display:none;">
+                            O campo <strong>Ar-condicionado</strong> é obrigatório.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Cor <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="cor" id="cor" value="<? echo $this->onibusIntermunicipal->getCor() ?>">
+                        <div class="alert alert-danger cor" role="alert" style="display:none;">
+                            O campo <strong>Cor</strong> é obrigatório.
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Renavam <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" name="renavam" id="renavam" value="<? echo $this->onibusIntermunicipal->getRenavam() ?>">
+                        <div class="alert alert-danger renavam" role="alert" style="display:none;">
+                            O campo <strong>Renavam</strong> é obrigatório.
+                        </div>
+                        <div class="alert alert-danger renavam_tamanho" role="alert" style="display:none;">
+                            O campo <strong>Renavam</strong> deve conter 11 dígitos.
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-primary btn-block editar-onibus-intermunicipal">
+                    Cadastrar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+

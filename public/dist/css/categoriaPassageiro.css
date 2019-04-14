@@ -2,6 +2,12 @@ body {
 	background-image: url("../img/fundo.png");
 	width: 100%;
 }
+
+.hidden {
+    display: none;
+    
+}
+
 .botao
 {
 background: url("../img/edicao.png");
@@ -23,13 +29,82 @@ background-image: url("../img/adicionar.png");
     width:52px;
     height:52px;
 }
-.botaoOnOff
-{
-background-image: url("../img/onoff.png");
-    text-indent:-9999px;
-    width:36px;
-    height:23px;
-}
 fundoTransparente{
-	background-color:rgba(0,0,0,0.5); color: white"
+	background-color:rgba(0,0,0,0.5); color: white;
 }
+
+
+
+
+<style type="text/css">
+  .onoff input.toggle {
+    display: none;
+}
+
+.onoff input.toggle + label {
+    display: inline-block;
+    position: relative;
+    box-shadow: inset 0 0 0px 1px #d5d5d5;
+    height: 20px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+.onoff input.toggle + label:before {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 50px;
+    border-radius: 10px;
+    background: rgba(19, 191, 17, 0);
+    transition: 0.1s ease-in-out;
+}
+
+.onoff input.toggle + label:after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    left: 0px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 0.1s ease-in-out;
+}
+
+.onoff input.toggle:checked + label:before {
+    width: 50px;
+    background: #13bf11;
+}
+
+.onoff input.toggle:checked + label:after {
+    left: 30px;
+    box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+     display: block; 
+    vertical-align: middle;
+    margin-bottom: 5%;
+}
+
+
+.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+
+.btn-default.btn-on-1.active{background-color: #006FFC;color: white;}
+.btn-default.btn-off-1.active{background-color: #DA4F49;color: white;}
+
+.btn-default.btn-on-2.active{background-color: #00D590;color: white;}
+.btn-default.btn-off-2.active{background-color: #A7A7A7;color: white;}
+
+.btn-default.btn-on-3.active{color: #5BB75B;font-weight:bolder;}
+.btn-default.btn-off-3.active{color: #DA4F49;font-weight:bolder;}
+
+.btn-default.btn-on-4.active{background-color: #006FFC;color: #5BB75B;}
+.btn-default.btn-off-4.active{background-color: #DA4F49;color: #DA4F49;}
+
+
+</style>

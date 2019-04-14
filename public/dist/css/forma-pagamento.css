@@ -1,12 +1,12 @@
 .btn-group, .btn-group-vertical {
     position: relative;
-    display: block; 
+     display: block; 
     vertical-align: middle;
     margin-bottom: 5%;
 }
 
-th, td, label{
-    color: white;
+.bootbox-body{
+  color: black;
 }
 
 .btn-default.btn-on.active{background-color: #5BB75B;color: white;}
@@ -16,16 +16,16 @@ th, td, label{
 
 
 [data-toggle=buttons]>.btn input[type=checkbox],
-[data-toggle=buttons]>.btn input[type=radio],
-[data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
-[data-toggle=buttons]>.btn-group>.btn input[type=radio] {
-    clip: rect(0,0,0,0.0);
-    position: absolute;
-    pointer-events: none;;
+ [data-toggle=buttons]>.btn input[type=radio],
+  [data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
+   [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
+	clip: rect(0,0,0,0.0);
+	position: absolute;
+	pointer-events: none;;
 }
 
 body{
-    background-position: 50% 0%;
+	background-position: 50% 0%;
     height: 100%;
     width:100%;
     margin:0;
@@ -34,38 +34,55 @@ body{
     background-repeat: no-repeat; 
 }
 .botao{
-    width: 100%
-        height: 100%;
+	width: 100%
+	height: 100%;
 }
 
-/*.navbar {
-    background: transparent !important;
-}*/
+.navbar {
+   background: transparent !important;
+}
 
 .fundotransparente{
-    background-color:rgba(0,0,0,0.5);
-    font-style: rgba(255,255,255,1);
+	background-color:rgba(0,0,0,0.5);
+	font-style: rgba(255,255,255,1);
 
 }
 
 .fonteTitulo{
-    font-style: font-weight:bold;
+	font-style: font-weight:bold;
 
 }
 .btn-custom {
-    padding: 1px 15px 3px 2px;
-    border-radius: 50px;
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
 }
 
 .btn-icon {
-    padding: 8px;
-    background: #ffffff;
+	padding: 8px;
+	background: #ffffff;
 }
 
 
 .btn-labeled { padding-top: 0; padding-bottom: 0; } 
 
 .btn-label { position: relative; left: -12px; display: inline-block; padding: 2px 12px; background: rgba(0,0,0,0.15); border-radius: 3px 0 0 3px; }
+
+
+/* Checkbox Hack */
+#toggle-1 {
+   display:none;
+}
+
+/* CSS padrão da div */
+#mostra {
+   display:none;
+}
+
+/* CSS quando o checkbox está marcado */
+#toggle-1:checked ~ #mostra {
+   display:block;
+}
+
 
 
 
