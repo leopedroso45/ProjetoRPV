@@ -17,7 +17,7 @@ class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
         $onibusUrbano->setModelo($dados['modelo']);
         $onibusUrbano->setRenavam($dados['renavam']);
         $onibusUrbano->setCor($dados['cor']);
-        $onibusUrbano->setSituacao('ATIVO');
+        $onibusUrbano->setSituacao($dados['situacao']);
         $onibusUrbano->setKm($dados['km']);
         $onibusUrbano->setNumero_assentos($dados['numero_assentos']);
         $onibusUrbano->setNumero_passageiros($dados['numero_passageiros']);
@@ -36,26 +36,12 @@ class Application_Model_DbTable_OnibusUrbano extends Zend_Db_Table_Abstract
         $onibusUrbano->setModelo($dados['modelo']);
         $onibusUrbano->setRenavam($dados['renavam']);
         $onibusUrbano->setCor($dados['cor']);
+        $onibusUrbano->setSituacao($dados['situacao']);
         $onibusUrbano->setKm($dados['km']);
         $onibusUrbano->setNumero_assentos($dados['numero_assentos']);
         $onibusUrbano->setNumero_passageiros($dados['numero_passageiros']);
 
         return $onibusUrbano->save();
-    }
-    
-    public function editarStatus($id, $dados)
-    {
-        $this->find($id)->current();
-        $onibus = $this->getOnibusUrbanoPorId($id);
-        /* @var $onibus Application_Model_OnibusUrbano */
-
-        if ($dados['situacao'] === 'ATIVO') {
-            $onibus->setSituacao('ATIVO');
-        } elseif ($dados['situacao'] === 'INATIVO') {
-            $onibus->setSituacao('INATIVO');
-        }
-
-        return $onibus->save();
     }
 
     public function listarTodosOnibusUrbanos()
