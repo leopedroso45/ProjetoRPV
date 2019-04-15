@@ -10,50 +10,53 @@
         </script>
         <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/") ?> />
         <!--Caminho da public "$this->baseUrl()-->
-        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-cerulean.css") ?> />
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed" style="position: fixed; top:0; right:0; left:0; z-index:1030;">
-            <a class="navbar-brand" href="<?= $this->baseUrl("") ?>">
-                PampaBus
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="position: fixed; top:0; right:0; left:0; z-index:1030;">
+            <div class="container">
+                <a class="navbar-brand" href="<?= $this->baseUrl("") ?>">
+                    PampaBus
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?= $this->baseUrl("") ?>">
-                            Início
-                            <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $this->baseUrl("/categoriapassageiro") ?>">
-                            Categ. Passageiros
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $this->baseUrl("/categoria-onibus") ?>">
-                            Categ. de Ônibus
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $this->baseUrl("/linha") ?>">
-                            Linhas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $this->baseUrl("/forma-pagamento") ?>">
-                            Formas de Pagamento
-                        </a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?= $this->baseUrl("admin-geral") ?>">
+                                <i class="fas fa-home"></i>
+                                Início
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("/categoriapassageiro") ?>">
+                                Categ. Passageiros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("/categoria-onibus") ?>">
+                                Categ. de Ônibus
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("/linha") ?>">
+                                Linhas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("/forma-pagamento") ?>">
+                                Formas de Pagamento
+                            </a>
+                        </li>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </nav>
 
