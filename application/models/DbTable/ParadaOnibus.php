@@ -10,7 +10,7 @@ class Application_Model_DbTable_ParadaOnibus extends Zend_Db_Table_Abstract
     {
         //var_dump($dados); die();
         $paradaOnibus = $this->createRow();
-        /*@var $paradaOnibus Application_Model_CategoriaOnibus*/
+        /*@var $paradaOnibus Application_Model_ParadaOnibus*/
         $paradaOnibus->setNumeroParada($dados['numeroParada']);
         $paradaOnibus->setLocal($dados['local']);
         $paradaOnibus->setComplemento($dados['complemento']);

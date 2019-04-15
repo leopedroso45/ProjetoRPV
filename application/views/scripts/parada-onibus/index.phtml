@@ -1,97 +1,82 @@
 <div class="container">
-	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- <script>
-  $(document).ready(function(){
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Paradas</li>
+            </ol>
+        </div>
 
-    $("div#oculto").hide();
-
-    $("button#botao").click(function(){
-      $("div#oculto").toggle("slow");
-    });
-  });
-</script>
-
-<div class="row">
-  <div class="col-lg-2"></div>
-  <div class="col-lg-8">
-    <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.7);">
-      <li>
-        <a href="<?= $this->baseUrl('menuinicial') ?>">
-          menuinicial/
-        </a>
-      </li>
-      <li class="active">
-        parada_onibus
-      </li>
-    </ol>
-
-    <form method="POST">
-      <div class="card mb-3" style="background-color:rgba(0,0,0,0.7);">
-        <div class="card-body" id="oculto">
-          <div class="input-group xmb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="numero">N°: </span>
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Número <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="numeroParada" name="numeroParada" placeholder="Informe o numero da parada" required/>
+                                <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                                    O campo numero de parada é obrigatório!
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Local <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="local" name="local" placeholder="Informe o local da parada" required/>
+                                <div class="alert alert-danger local" style="display: none;" role="alert">
+                                    O campo local é obrigatório!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Complementos <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Informe o complementos, se houver" />
+                            </div>
+                            <br>
+                            <div class="alert alert-success " style="display: none;" role="alert">
+                                Cadastro de parada realizado com sucesso!
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <button type="button" class="btn btn-info btn-block cadastrarParada">Cadastrar</button>
+                    </form>
+                </div>
             </div>
-            <input type="text" class="form-control" id="numeroParada" name="numeroParada" placeholder="Digite o numero da parada" required/>
-          </div>
-          <br>
-          <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
-            O campo numero de parada é obrigatório!
-          </div>
-          <div class="input-group xmb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Local: </span>
-            </div>
-            <input type="text" class="form-control" id="local" name="local" placeholder="Digite o local da parada" required/>
-          </div>
-          <br>
-          <div class="alert alert-danger local" style="display: none;" role="alert">
-            O campo local é obrigatório!
-          </div>
-          <div class="input-group xmb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Complemento: </span>
-            </div>
-            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento, se houver" />
-          </div>
-          <br>
-          <div class="alert alert-success " style="display: none;" role="alert">
-            Cadastro de parada realizado com sucesso!
-          </div>
-          <button type="button" class="col-lg-2 btn btn-primary cadastrarParada">Salvar</button>
-          <a href="../public/menuinicial" class="col-lg-2  btn btn-primary">Voltar</a>
-          </div>
-          
+        </div>
+    </div>
 
-          <div>
-          <button type="button" id="botao" class="btn btn-block btn-primary">Nova parada</button>
-          <label><h2>Paradas Cadastradas:</h2></label>
-          <table class="table" >
-            <thead>
-              <tr>
-               <!-- <th scope="col">ID</th> -->
+
+    <table class="table" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+        <thead>
+            <tr>
+             <!-- <th scope="col">ID</th> -->
                 <th scope="col">N° da parada</th>
                 <th scope="col">Local</th>
                 <th scope="col">Complemento</th>
                 <th scope="col">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              <? foreach ($this->listarParadaOnibus  as $parada_onibus): ?>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($this->listarParadaOnibus as $parada_onibus): ?>
                 <tr>
-<!--                   <td><?= $parada_onibus->getId_parada_onibus() ?></td>
- -->                  <td><?= $parada_onibus->getNumeroParada() ?> </td>
-                  <td><?= $parada_onibus->getLocal() ?>  </td>
-                  <td><?= $parada_onibus->getComplemento() ?>  </td>
-                  <td><i class="fas fas-eye"><a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('parada-onibus/editar/id/'. $parada_onibus['id_parada']) ?>" >Editar </a></i></td>
+                    <td><?= $parada_onibus->getNumeroParada() ?> </td>
+                    <td><?= $parada_onibus->getLocal() ?>  </td>
+                    <td><?= $parada_onibus->getComplemento() ?>  </td>
+                    <td>
+                        <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('parada-onibus/editar/id/' . $parada_onibus['id_parada']) ?>">
+                            <span class="btn-label">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            Visualizar Detalhes
+                        </a>
+                    </td>
                 </tr>
-              <? endforeach; ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </form>
-    <div class="col-lg-2"></div>
-  </div>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
 </div>

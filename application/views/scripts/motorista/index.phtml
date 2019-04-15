@@ -1,230 +1,167 @@
-<!DOCTYPE html>
-<html lang="pt=br">
-<head>
-	<meta charset="UTF-8">
-	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/cobrador.css") ?> />
-	
-	<title>Motoristas</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Motoristas</li>
+            </ol>
+        </div>
 
-	<script>
-		$(document).ready(function(){
-			$("form").hide();
-			$("div#aviso").hide();
-			$("button#novo_motorista").click(function(){
-				$("form").toggle("slow");
-				$("button#fechar_aviso").click(function(){
-					$("div#aviso").hide("slow");
-				});
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
 
-			}); 
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo">
 
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="cpf">CPF</label>
+                                    <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
 
-		});
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="rg">RG</label>
+                                    <input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="carteiraTrabalho">Carteira de trabalho</label>
+                                    <input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da CT">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" class="form-control" id="email" placeholder="Digite o email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="pis">Número do PIS</label>
+                                    <input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="cnh">CNH</label>
+                                    <input type="text" name="cnh" class="form-control " id="cnh" placeholder="Digite a CNH">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="dataAdmissao">Data de admissão</label>
+                                    <input type="date" name="dataAdmissao" class="form-control date" id="dataAdmissao" placeholder="Digite a data de admissão">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 15px">
+                                    <div class="alert alert-danger nome" style="display:none;" role="alert">
+                                        O campo NOME é de preenchimento obrigatório!
+                                    </div>
 
-		$("button#gravar").click(function(){
-			setTimeout('location.reload();', 5000);
-		});
+                                    <div class="alert alert-danger cpf" style="display:none;" role="alert">
+                                        CPF inválido!
+                                    </div>
 
+                                    <div class="alert alert-danger telefone" style="display:none;" role="alert">
+                                        O campo TELEFONE é de preenchimento obrigatório!
+                                    </div>
 
+                                    <div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
+                                        O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
+                                    </div>
 
+                                    <div class="alert alert-danger rg" style="display:none;" role="alert">
+                                        O campo RG é de preenchimento obrigatório!
+                                    </div>
 
+                                    <div class="alert alert-danger pis" style="display:none;" role="alert">
+                                        O campo Nº do PIS é de preenchimento obrigatório!
+                                    </div>
 
+                                    <div class="alert alert-danger cnh" style="display:none;" role="alert">
+                                        O campo CNH é de preenchimento obrigatório!
+                                    </div>
 
-		var i =1;
+                                    <div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
+                                        O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
+                                    </div>
+                                </div>
+                            </div>
+                        </div><hr>
+                        <button class="btn btn-info btn-block cadastrar-motorista" type="button">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-		
-	</script>
+        <div class="col-lg-12">
+            <table class="table" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Data de admissão</th>
+                        <th scope="col" >Status</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosMotoristas as $motorista): ?>
 
+                        <tr>
 
-</head>
-<body  style="background-image: url(dist/imagens/fundo.png);">
+                            <td><?= $motorista->getNome() ?>	</td>
+                            <td><?= $motorista->getCpf() ?>	</td>
+                            <td><?= $motorista->getDataAdmissao() ?>	</td>
+                            <td>
+                                <input type="hidden" value="<?php $motorista->getAtivo(); ?>" >
+                                <?php if ($motorista->getAtivo() === 'ATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'ATIVO')">
 
-	<h1 id="titulo">
-		Motoristas
-	</h1>
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
 
-	<div class="container" style="background-color: rgba(0,0,0,0.8); padding-bottom: 0px;">
-		
-		<div class="row-fluid" style="padding: 10px;">
-			
-			<button class="btn btn-outline-primary btn-lt " type="button" id="novo_motorista" >
-			Novo Motorista</button>
-			
-		</div>
-		<form  method="post"  >
-			<div class="form-group" >
-				<h2 style="color:white">Cadastro de Motoristas</h2>
-				<div class="row" >
-					
-					
-					<div class="col-5" >
-						<label for="nome" id="label">Nome</label>
-						<input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo">
+                                <?php if ($motorista->getAtivo() === 'INATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
 
-					</div>
-					<div class="col-2" >
-						<label for="cpf" id="label">CPF</label>
-						<input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF">
+                            </td>
+                            <td><a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('motorista/editar/id/' . $motorista['id_motorista']) ?>">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar detalhes
+                                </a>	
+                            </td>
 
-					</div>
-					<div class="col-2" >
-						<label for="telefone" id="label">Telefone</label>
-						<input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
-
-					</div>
-					<div class="col-3" >
-						<label for="rg" id="label">RG</label>
-						<input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG">
-
-					</div>
-					
-
-				</div>
-				<div class="row">
-					
-					<div class="col-2" >
-						<label for="carteiraTrabalho" id="label">Carteira de trabalho</label>
-						<input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da CT">
-
-					</div>
-					<div class="col-3" >
-						<label for="email" id="label">Email</label>
-						<input type="text" name="email" class="form-control" id="email" placeholder="Digite o email">
-
-					</div>
-
-					<div class="col-2" >
-						<label for="pis" id="label">Número do PIS</label>
-						<input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS">
-
-					</div>
-					<div class="col-2" >
-						<label for="cnh" id="label">CNH</label>
-						<input type="text" name="cnh" class="form-control " id="cnh" placeholder="Digite a CNH">
-					</div>
-				
-					<div class="col-3" >
-						<label for="dataAdmissao" id="label">Data de admissão</label>
-						<input type="date" name="dataAdmissao" class="form-control date" id="dataAdmissao" placeholder="Digite a data de admissão">
-
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-12" style="padding: 15px">
-						
-
-						<div class="alert alert-danger nome" style="display:none;" role="alert">
-							O campo NOME é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger cpf" style="display:none;" role="alert">
-							CPF inválido!
-						</div>
-
-						<div class="alert alert-danger telefone" style="display:none;" role="alert">
-							O campo TELEFONE é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
-							O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger rg" style="display:none;" role="alert">
-							O campo RG é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger pis" style="display:none;" role="alert">
-							O campo Nº do PIS é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger cnh" style="display:none;" role="alert">
-							O campo CNH é de preenchimento obrigatório!
-						</div>
-
-						<div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
-							O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
-						</div>
-						
-
-						<button class="btn btn-outline-success btn-lg btn-block cadastrar-motorista" type="button" id="gravar">
-							Gravar
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-<div class="container" style="background-color: rgba(0,0,0,0.8); color:white; ">
-
-	<table class="table" >
-		<thead>
-			<tr>
-				<th scope="col">Nome</th>
-				<th scope="col">CPF</th>
-				<th scope="col">Data de admissão</th>
-				<th scope="col">Status</th>
-				<th scope="col">Detalhes</th>
-
-
-
-
-			</tr>
-		</thead>
-		<tbody>
-			<? foreach ($this->listaDosMotoristas as $motorista): ?>
-
-				<tr>
-
-					<td><?= $motorista->getNome() ?>	</td>
-					<td><?= $motorista->getCpf() ?>	</td>
-					<td><?= $motorista->getDataAdmissao() ?>	</td>
-					<td>
-						<input type="hidden" value="<?php $motorista->getAtivo(); ?>" >
-						<?php if ($motorista->getAtivo() === 'ATIVO'): ?>
-							<div class="btn-group" id="status" data-toggle="buttons">
-								<label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'ATIVO')">
-
-									<input type="radio" name="plug" checked="checked">ATIVO</label>
-									<label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'INATIVO')">
-										<input type="radio" name="plug">INATIVO</label>
-									</div>
-								<?php endif; ?>
-
-								<?php if ($motorista->getAtivo() === 'INATIVO'): ?>
-									<div class="btn-group" id="status" data-toggle="buttons">
-										<label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $motorista->getId_motorista()?>, 'ATIVO')">
-											<input type="radio" name="plug" checked="checked">ATIVO</label>
-											<label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $motorista->getId_motorista()?>, 'INATIVO')">
-												<input type="radio" name="plug">INATIVO</label>
-											</div>
-										<?php endif; ?>
-
-									</td>
-									<td><a class="btn btn-info btn-labeled" href="<?= $this->baseUrl('motorista/editar/id/' . $motorista['id_motorista']) ?>">
-										<span class="btn-label">
-											<i class="fas fa-eye"></i>
-										</span>
-										Visualizar dados
-									</a>	
-								</td>
-
-							</tr>
-						<? endforeach; ?>
-					</tbody>
-				</table>
-			</div>		
-
-			<script>
-
-			</script>
-
-		</div>
-	</div>
-
-</body>
-</html>
