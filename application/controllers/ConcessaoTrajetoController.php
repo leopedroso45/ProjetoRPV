@@ -6,6 +6,9 @@ class ConcessaoTrajetoController extends Zend_Controller_Action
     public function init()
     {
         $this->_helper->layout->setLayout("layout_admin_local");
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/concessaoTrajeto.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/bootstrap-datepicker.js'));
     }
 
     public function indexAction()
@@ -13,12 +16,13 @@ class ConcessaoTrajetoController extends Zend_Controller_Action
         $dbTableConcessaoTrajeto = new Application_Model_DbTable_ConcessaoTrajeto();
         $lista = $dbTableConcessaoTrajeto->listarTodasConcessoes();
         $this->view->listarTodasConcessoes = $lista;
-        
+
         if ($this->getRequest()->isPost()) {
-                $dados = $this->getRequest()->getParams();
-                $dbTableConcessaoTrajeto = new Application_Model_DbTable_ConcessaoTrajeto();
-                $dbTableConcessaoTrajeto->cadastrarConcessaoTrajeto($dados);
-        }}
+            $dados = $this->getRequest()->getParams();
+            $dbTableConcessaoTrajeto = new Application_Model_DbTable_ConcessaoTrajeto();
+            $dbTableConcessaoTrajeto->cadastrarConcessaoTrajeto($dados);
+        }
+    }
 
     public function editarStatusAction()
     {
@@ -34,9 +38,5 @@ class ConcessaoTrajetoController extends Zend_Controller_Action
         }
         $this->view->concessaoTrajeto = $concessaoTrajeto;
     }
-
-
-
-
 
 }

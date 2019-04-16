@@ -3,7 +3,9 @@
 class BeneficioController extends Zend_Controller_Action {
 
     public function init() {
-        $this->_helper->layout->setLayout("layout_admin_local");
+        $this->_helper->layout->setLayout("layout_admin_geral");
+                $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/beneficio.js'));
     }
 
     public function indexAction() {

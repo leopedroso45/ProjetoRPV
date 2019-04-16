@@ -1,8 +1,9 @@
-
-$('#pis').mask('9999999999');
-$('#cnh').mask('999999999999');
-$('#rg').mask('AAAAAAAAAAAAA');
-$('#cpf').mask('999999999-99');
+$(document).ready(function () {
+    $('#pis').mask('9999999999');
+    $('#cnh').mask('999999999999');
+    $('#rg').mask('AAAAAAAAAAAAA');
+    $('#cpf').mask('999999999-99');
+});
 
 $(".cadastrar-motorista").click(function ()
 {

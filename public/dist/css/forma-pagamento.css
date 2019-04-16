@@ -1,40 +1,11 @@
-.btn-group, .btn-group-vertical {
-    position: relative;
-     display: block; 
-    vertical-align: middle;
-    margin-bottom: 5%;
-}
+
 
 .bootbox-body{
   color: black;
 }
 
-.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
-.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
-.btn-default{border-color: #FFFFFF;background-color: ;color: white;}
-
-
-
-[data-toggle=buttons]>.btn input[type=checkbox],
- [data-toggle=buttons]>.btn input[type=radio],
-  [data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
-   [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
-	clip: rect(0,0,0,0.0);
-	position: absolute;
-	pointer-events: none;;
-}
-
-body{
-	background-position: 50% 0%;
-    height: 100%;
-    width:100%;
-    margin:0;
-    background-image:url(../img/fundo.png);
-    background-size: cover;
-    background-repeat: no-repeat; 
-}
 .botao{
-	width: 100%
+	width: 100%;
 	height: 100%;
 }
 
@@ -48,10 +19,6 @@ body{
 
 }
 
-.fonteTitulo{
-	font-style: font-weight:bold;
-
-}
 .btn-custom {
 	padding: 1px 15px 3px 2px;
 	border-radius: 50px;

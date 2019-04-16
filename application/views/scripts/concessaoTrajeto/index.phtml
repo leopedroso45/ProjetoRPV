@@ -1,42 +1,25 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="js/jquery-3.3.1.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="<?= $this->baseUrl('dist/js/concessaoTrajeto.js') ?>"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
-
-
-
-<div class="container fundo">
-
-
-</div><br>
-<div class="row">
-    <div class="col-sm-2" > 
-
-    </div>
-
-    <div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
-        <div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
-            <center><H3>Concessão de Trajetos </H3></center>
-            <div class="row"> 
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
-                    <i class="fas fa-plus-square" style="color:black"></i>
-                    <label style="color:black"> Nova Concessão </label>
-                </button>
-            </div>
-            <br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Concessões de Trajetos</li>
+            </ol>
         </div>
-        <div class="row"> 
-            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
-                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12"> 
+            <table class="table table-hover table-bordered dataTable" style="background-color:rgba(0,0,0,0.5); color: white; margin-top: 2%; width:100%;">
+                <thead class="fundoTransparente">
                     <tr>
                         <th>Extensão</th>
                         <th>Data de Inicio</th>
@@ -52,18 +35,13 @@
                             <td> <?= $concessaotrajeto['data_inicio'] ?></td>
                             <td> <?= $concessaotrajeto['data_fim'] ?></td>
                             <td>
-                                <button class="btn" id="documentoAutorizacao">
-                                    <i class="fa fa-download" style="color:black"></i>
-                                    <label style="color: black">
-                                        <a style="color: black" href="dist/autorizaconcessao/autorizacao.pdf"
-                                           download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
-                                    </label>
+                                <button class="btn btn-default" id="documentoAutorizacao">
+                                    <i class="fa fa-download"></i>
+                                    <a style="color:black;" href="dist/autorizaconcessao/autorizacao.pdf"
+                                       download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
                                 </button>
                             </td>
                             <td>
-
-
-
                                 <?php if ($concessaotrajeto['status_concessao'] === 'ATIVO'): ?>
                                     <div class="btn-group" id="status" data-toggle="buttons">
                                         <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
@@ -88,17 +66,6 @@
             </table>
         </div>
     </div>
-
-
-</div>
-</div>
-
-
-<div class="col-sm-2">
-
-</div>
-
-</div>
 </div>
 
 <!-- Modal -->
@@ -112,183 +79,76 @@
                 </button>
             </div>
             <div class="modal-body">
-
-                <div class="container-fluid"> 
+                <div class="container"> 
                     <div class="row">
-                        <div class="table-responsive">
-
-
-                            <form method="post">
-                                <div class="col-xs-8 date">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Extensão</label>
-                                        <div class="col-xs-8 date">
-                                            <div class="input-group input-append date" id="">   	    	
-                                                <input type="text" class="form-control" placeholder="Quantos km de extensão?" required="required" title="Extensão por quilômetros?" 
-                                                       onkeypress='return SomenteNumero(event)' required="required" data-validation-required-message="Somente números."
-                                                       id="extensao" name="extensao" data-validation-required-message="Por favor, digite seu nome.">
-                                                <p class="help-block text-danger"></p>
-                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-road"></span></span>
-                                            </div>
-                                            <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
-                                                Campo extensão é obrigatório.
-                                            </div>
-                                        </div>
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                        <form class="jumbotron" method="post">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Extensão <strong style="color: red;" title="Campo Obrigatório">*</strong></label>
+                                <div class="col-lg-8">
+                                    <div class="input-group input-append date" id="">   	    	
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Quantos km de extensão?" required="required" title="Extensão por quilômetros?" 
+                                               onkeypress='return SomenteNumero(event)' required="required" data-validation-required-message="Somente números."
+                                               id="extensao" name="extensao" data-validation-required-message="Por favor, digite seu nome.">
+                                        <p class="help-block text-danger"></p>
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-road"></span></span>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Data de Inicio</label>										    	
-                                        <div class="col-xs-8 date">
-                                            <div class="input-group input-append date" id="datePicker">
-                                                <input type="text" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
-                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                                            </div>
-                                            <div class="alert alert-danger dataInicio hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
-                                                Campo data inicio é obrigatório.
-                                            </div>
-                                        </div>
+                                    <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo extensão é obrigatório.
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label"><label style="color:red">*</label> Data Final</label>										        <div class="col-xs-8 date">
-                                            <div class="input-group input-append date" id="datePicker2">
-                                                <input type="text" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
-                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
-                                            </div>
-                                            <div class="alert alert-danger dataFim hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
-                                                Campo data fim é obrigatório.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label" >Doc. de Autorização</label>
-                                        <div class="col-xs-8 date">
-                                            <input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="alert alert-success" role="alert" style="display: none">
-                                        Cadastro realizado com sucesso! :)
-                                    </div>
-                                    <button type="button" class="btn btn-primary cadastrarConcessao" id="cadastrar">Adicionar</button>
-
-
                                 </div>
-                        </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" >Data de Inicio <strong style="color: red;" title="Campo Obrigatório">*</strong></label>										    	
+                                <div class="col-lg-8 date">
+                                    <div class="input-group input-append date" id="datePicker">
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <div class="alert alert-danger dataInicio hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo data inicio é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Data Final <strong style="color: red;" title="Campo Obrigatório">*</strong></label>
+                                <div class="col-lg-8 date">
+                                    <div class="input-group input-append date" id="datePicker2">
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <div class="alert alert-danger dataFim hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo data fim é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" >Doc. de Autorização</label>
+                                <div class="col-lg-8 date">
+                                    <input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
+                                </div>
+                            </div>
 
-                        </form>	
-                        <script src="js/somenteletra.js"></script>
+
+                            <div class="alert alert-success" role="alert" style="display: none">
+                                Cadastro realizado com sucesso! :)
+                            </div>
+                            <hr>
+                            <button type="button" class="btn btn-primary btn-block cadastrarConcessao" id="cadastrar">
+                                Cadastrar
+                            </button>
+                        </form>
+                        </div>
+                        <div class="col-lg-1"></div>
+<!--                        <script src="js/somenteletra.js"></script>
                         <script src="js/somentenumero.js"></script>
                         <script src="js/valida_email.js"></script>
                         <script src="js/nomecompleto.js"></script>
-                        <script src="js/numtelefone.js"></script>
-                        <script>
-                                                           function Ncompleto() {
-                                                               var nome = document.getElementById("S").value.length;
-                                                               if (nome < 9) {
-                                                                   document.getElementById("mensagem").innerHTML = "Erro! Escreva o seu nome e sobrenome."
-                                                                   document.getElementById('cadastro').disabled = true;
-                                                               } else {
-                                                                   document.getElementById("mensagem").innerHTML = ""
-                                                                   document.getElementById('cadastro').disabled = false;
-                                                               }
-                                                           }
-                        </script>
-                        <script>
-                            function SomenteNumero(e) {
-                                var tecla = (window.event) ? event.keyCode : e.which;
-                                if ((tecla > 47 && tecla < 58))
-                                    return true;
-                                else {
-                                    if (tecla == 8 || tecla == 0)
-                                        return true;
-                                    else
-                                        return false;
-                                }
-                            }
-                        </script>
-                        <script type="text/javascript">
-                              $("#extensao").blur(function ()
-                            {
-                                var extensao = $("#extensao").val();
-                                if (extensao.length === 0) {
-                                    $('.extensao').removeClass('hidden');
-
-                                }
-                            });
-                            
-                            $(".cadastrarConcessao").click(function ()
-                            {
-                                var extensao = $("#extensao").val();
-                                var dataInicio = $("#dataInicio").val();
-                                var dataFim = $("#dataFim").val();
-                                var docAutorizacao = $("#docAutorizacao").val();
-
-                                if (extensao.length === 0) {
-                                    $('.extensao').removeClass('hidden');
-                                } else if (dataInicio.length === 0) {
-                                    $('.dataInicio').removeClass('hidden');
-                                } else if (dataFim.length === 0) {
-                                    $('.dataFim').removeClass('hidden');
-
-                                } else {
-                                    $.ajax({
-                                        type: "POST",
-                                        url: baseUrl + 'concessaotrajeto/index',
-                                        async: false,
-                                        data: {extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
-
-                                        },
-                                        success: function () {
-                                            $(".alert-success").removeAttr("style");
-                                            location.reload();
-                                        },
-                                        error: function () {
-                                            alert("Error");
-                                        }
-                                    });
-                                }
-                            });
-
-                            function editarStatus(id, status) {
-
-                                //            alert('contate a manutenção');
-                                //		   alert("id = " + id + ", status = " + status);
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: baseUrl + 'concessaotrajeto/editar-status',
-                                    async: false,
-                                    data: {id: id,
-                                        status: status
-                                    },
-                                    success: function () {
-                                    },
-                                    error: function () {
-                                    }
-                                });
-                            }
-
-                            $('#datePicker2').datepicker({
-                                format: 'dd/mm/yyyy'
-                            })
-                                    .on('changeDate', function (e) {
-                                        // Revalidate the date field
-                                        $('#eventForm').formValidation('revalidateField', 'date');
-                                    });
-
-                            $('#datePicker').datepicker({
-                                format: 'dd/mm/yyyy'
-                            })
-                                    .on('changeDate', function (e) {
-                                        // Revalidate the date field
-                                        $('#eventForm').formValidation('revalidateField', 'date');
-                                    });
-
-                        </script>	
+                        <script src="js/numtelefone.js"></script>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

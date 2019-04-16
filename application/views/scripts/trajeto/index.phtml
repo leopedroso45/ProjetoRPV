@@ -1,424 +1,257 @@
-<!DOCTYPE html>
-<html lang="pt=br"
-<head>
-	<meta charset="UTF-8">
-	<link href="../ProjetoRPV/public/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/trajeeto.css" rel="stylesheet">
-	<title>Document</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-	<script>
-		$(document).ready(function(){
-			$("div#cad_trajeto").hide();
-			$("div#aviso").hide();
-			$("button#novo_trajeto").click(function(){
-				$("div#cad_trajeto").toggle("slow");
-				$("button#fechar_aviso").click(function(){
-					$("div#aviso").hide("slow");
-				});
-			});    
-		});
-		var i =1;
-
-
-
-		
-	</script>
-
-
-</head>
-<body style="background-image: url(dist/imagens/fundo.png);">
-
-	<h1 id="titulo">
-		Trajetos
-	</h1>
-
-	<div class="container" style="background-color: rgba(0,0,0,0.8);">
-		
-		<div class="row" style="padding: 15px;">
-			
-
-			
-			<button class="btn btn-outline-primary btn-lt" type="button" id="novo_trajeto" >
-			Novo Trajeto</button>
-
-			
-
-
-		</div>
-	</div>
-	
-	<div class="container" style="background-color: rgba(0,0,0,0.8);" id="cad_trajeto">
-		<form action="TrajetoController.php" method="post">
-			<div class="form-group">
-				<div class="row" style="padding-bottom: 10px;" >
-
-					<div class="col-6">
-
-						<label for="descricao" id="label">Descrição</label>
-						<input type="text" class="form-control" id="descricao1">
-					</div>
-					<div class="col-5">
-						<input type="hidden" id="id-onibus">
-						<label for="descricao-onibus" id="label"> Alocar ônibus</label>
-						<input type="text" class="form-control" disabled id="descricao-onibus">
-
-
-					</div>
-					<div class="col-1" style="padding-top: 31px; padding-left: 0px;">
-						<button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-o">
-							<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-
-						</button>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-5">
-						<input type="hidden" id="id-motorista">
-						<label for="descricao" id="label">Alocar Motorista</label>
-						<input type="text" class="form-control" disabled id="descricao-motorista">
-
-					</div>
-					<div class="col-1"style="padding-top: 31px; padding-left: 0px;">
-						<button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-m" >
-							<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-
-						</button>
-
-					</div>
-					<div class="col-5">
-						<input type="hidden" id="id-cobrador">
-						<label for="descricao" id="label">Alocar Cobrador</label>
-						<input type="text" class="form-control" disabled id="descricao-cobrador">
-
-					</div>
-					<div class="col-1"style="padding-top: 31px; padding-left: 0px;">
-						<button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-c">
-							<i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-
-						</button>
-
-
-					</div>
-
-				</div>	
-
-
-
-
-
-
-
-
-
-				<div class="modal fade" id="exampleModalCenter-m" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Selecione o Motorista</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-
-
-								<select multiple class="form-control" id="sel5" style="height: 270px;">
-									<? foreach ($this->listaDosMotoristas as $motorista): ?>
-
-										<option  value="<?= $motorista['id_motorista'] ?>"><?=  $motorista['nome']; ?></option>
-									<? endforeach; ?>
-
-
-								</select>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success" id="alocar-motorista" data-dismiss="modal">Alocar</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Modal cobrador -->
-				<div class="modal fade" id="exampleModalCenter-c" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Selecione o Cobrador</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-
-
-								<select multiple class="form-control" id="sel4" style="height: 270px;">
-									<? foreach ($this->listaDosCobradores as $cobrador): ?>
-
-										<option  value="<?= $cobrador['id_cobrador'] ?>"><?=  $cobrador['nome']; ?></option>
-									<? endforeach; ?>
-
-
-								</select>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success" id="alocar-cobrador" data-dismiss="modal">Alocar</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- FIM Modal cobrador -->
-
-				<!-- INICIO Modal onibus -->
-
-				<div class="modal fade" id="exampleModalCenter-o" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Selecione o Ônibus</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-
-
-								<select multiple class="form-control" id="sel6" style="height: 270px;">
-									<? foreach ($this->listaDosOnibus as $onibus): ?>
-
-										<option  value="<?= $onibus['id_onibus_urbano'] ?>"><?=  $onibus['placa']; ?></option>
-									<? endforeach; ?>
-
-
-								</select>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Alocar</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-
-
-
-
-
-
-
-
-			</div>	
-			<div class="row" id="aviso" style="padding-right: 50px;">
-				<div class="col-3">
-
-				</div>
-				<div class="col-4" id="col-aviso" >
-
-					Selecione uma parada! 
-					<button type="button" class="close" id="fechar_aviso" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-
-
-				</div>
-
-			</div>
-
-			<div class="row" style="padding-left: 10px;" >
-				<div class="col-5" id="teste11" >
-
-					<label for="par1" id="label">Paradas selecionadas:</label>
-					<div class="row"  id="teste1" style="height: 270px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
-
-					</div>
-
-				</div>
-				<div class="col-2" style="padding-top: 60px; padding-left: 30px;  ">
-					<div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; ">
-						<div class="seta-1" id="seta1"></div>
-					</div>
-					<div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; padding-bottom: 20px;">
-						<div class="seta-2" id="seta2"></div>
-					</div>
-
-
-				</div>
-				<div class="col-5" >
-					<div class="form-group">
-						<label for="sel3" id="label">Paradas:</label>
-						<select multiple class="form-control" id="sel3" style="height: 270px;">
-							<? foreach ($this->listaDasParadas as $parada): ?>
-
-								<option  value="<?= $parada['id_parada'] ?>"><?=  $parada['local']; ?></option>
-							<? endforeach; ?>
-
-
-						</select>
-					</div>
-				</div>
-
-			</div>	
-
-
-
-
-			<div class="row" style="padding: 15px;">
-
-
-
-				<button class="btn btn-outline-success btn-lg btn-block cadastrar-trajeto" type="button"   >
-					Gravar
-				</button>
-
-				<button class="btn btn-outline-danger btn-lg btn-block" type="button" id="cancelar"  >
-					Cancelar
-				</button>
-
-
-			</div>
-		</div>  
-	</form>
-</div>			<!-- fim container form-->
-
-<div class="container" style="background-color: rgba(0,0,0,0.8); color: white">
-
-	<table class="table" >
-		<thead >
-			<tr>
-				<th scope="col">Descrição</th>
-				<th scope="col">Ônibus</th>
-				<th scope="col">Motorista</th>
-				<th scope="col">Cobrador</th>
-				<th scope="col">Número de paradas</th>
-				<th scope="col">Status</th>
-				<th scope="col">Detalhes</th>
-
-
-
-
-			</tr>
-		</thead>
-		<tbody>
-
-
-
-<? foreach ($this->listaDosTrajetos as $trajeto): ?>
-
-				<tr>
-
-					<td><?= $trajeto['descricao'] ?>	</td>
-					<td>	<?= $trajeto['PLACA'] ?></td>
-					<td>	<?= $trajeto['NOME'] ?></td>
-					<td>	<?= $trajeto['nome'] ?></td>
-					<td><?= $trajeto['num_paradas'] ?>	</td>
-					<td>
-
-
-
-
-
-						<input type="hidden" value="<?php $trajeto->getSituacao(); ?>" >
-						<?php if ($trajeto->getSituacao() === 'ATIVO'): ?>
-							<div class="btn-group" id="status" data-toggle="buttons">
-								<label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'ATIVO')">
-
-									<input type="radio" name="plug" checked="checked">ATIVO</label>
-									<label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'INATIVO')">
-										<input type="radio" name="plug">INATIVO</label>
-									</div>
-								<?php endif; ?>
-
-								<?php if ($trajeto->getSituacao() === 'INATIVO'): ?>
-									<div class="btn-group" id="status" data-toggle="buttons">
-										<label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $trajeto->getIdTrajeto()?>, 'ATIVO')">
-											<input type="radio" name="plug" checked="checked">ATIVO</label>
-											<label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $trajeto->getIdTrajeto()?>, 'INATIVO')">
-												<input type="radio" name="plug">INATIVO</label>
-											</div>
-										<?php endif; ?>
-
-
-
-
-
-						</td>
-					<td>	
-						
-					<button class="btn btn-info btn-labeled" data-toggle="modal"  data-target="<?= '#myModal' . $trajeto['id_trajeto'] ?>" >
-										<span class="btn-label">
-											<i class="fas fa-eye"></i>
-										</span>
-										Visualizar dados
-									</button>	
-
-
-					</td>
-
-							</tr>
-						<? endforeach; ?>
-
-		</tbody>
-	</table>
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Trajetos</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label for="descricao" id="label">Descrição</label>
+                                    <input type="text" class="form-control" id="descricao1">
+                                </div><div class="col-lg-1"></div>
+                                <div class="col-lg-5">
+                                    <input type="hidden" id="id-onibus">
+                                    <label for="descricao-onibus" id="label"> Alocar ônibus</label>
+                                    <input type="text" class="form-control" disabled id="descricao-onibus">
+                                </div>
+                                <div class="col-lg-1" style="padding-top: 31px; padding-left: 0px;">
+                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-o">
+                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <input type="hidden" id="id-motorista">
+                                    <label for="descricao" id="label">Alocar Motorista</label>
+                                    <input type="text" class="form-control" disabled id="descricao-motorista">
+                                </div>
+                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
+                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-m" >
+                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                    </button>
+                                </div>
+                                <div class="col-lg-5">
+                                    <input type="hidden" id="id-cobrador">
+                                    <label for="descricao" id="label">Alocar Cobrador</label>
+                                    <input type="text" class="form-control" disabled id="descricao-cobrador">
+                                </div>
+                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
+                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-c">
+                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                    </button>
+                                </div>
+                            </div>	
+                            <div class="modal fade" id="exampleModalCenter-m" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Motorista</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <select multiple class="form-control" id="sel5" style="height: 270px;">
+                                                <? foreach ($this->listaDosMotoristas as $motorista): ?>
+                                                    <option  value="<?= $motorista['id_motorista'] ?>"><?= $motorista['nome']; ?></option>
+                                                <? endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="alocar-motorista" data-dismiss="modal">Alocar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal cobrador -->
+                            <div class="modal fade" id="exampleModalCenter-c" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Cobrador</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <select multiple class="form-control" id="sel4" style="height: 270px;">
+                                                <? foreach ($this->listaDosCobradores as $cobrador): ?>
+                                                    <option  value="<?= $cobrador['id_cobrador'] ?>"><?= $cobrador['nome']; ?></option>
+                                                <? endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="alocar-cobrador" data-dismiss="modal">Alocar</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIM Modal cobrador -->
+                            <!-- INICIO Modal onibus -->
+                            <div class="modal fade" id="exampleModalCenter-o" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Ônibus</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <select multiple class="form-control" id="sel6" style="height: 270px;">
+                                                <? foreach ($this->listaDosOnibus as $onibus): ?>
+                                                    <option  value="<?= $onibus['id_onibus_urbano'] ?>"><?= $onibus['placa']; ?></option>
+                                                <? endforeach; ?>
+                                            </select>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Alocar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>	
+                        <div class="row" id="aviso" style="padding-right: 50px;">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-4" id="col-aviso" style="display:none;">
+                                Selecione uma parada! 
+                                <button type="button" class="close" id="fechar_aviso" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-left: 10px;" >
+                            <div class="col-lg-5" id="teste11">
+
+                                <label for="par1" id="label">Paradas selecionadas:</label>
+                                <div class="row"  id="teste1" style="height: 270px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
+                                </div>
+                            </div>
+                            <div class="col-lg-2" style="padding-top: 60px; padding-left: 30px;  ">
+                                <div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; ">
+                                    <div class="seta-1" id="seta1"></div>
+                                </div>
+                                <div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; padding-bottom: 20px;">
+                                    <div class="seta-2" id="seta2"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label for="sel3" id="label">Paradas:</label>
+                                    <select multiple class="form-control" id="sel3" style="height: 270px;">
+                                        <? foreach ($this->listaDasParadas as $parada): ?>
+                                            <option  value="<?= $parada['id_parada'] ?>"><?= $parada['local']; ?></option>
+                                        <? endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>	
+                        <hr>
+                        <button class="btn btn-info btn-block cadastrar-trajeto" type="button">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- fim container form-->
+        <div class="col-lg-12">
+            <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px; color: white;">
+                <thead >
+                    <tr>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Ônibus</th>
+                        <th scope="col">Motorista</th>
+                        <th scope="col">Cobrador</th>
+                        <th scope="col">Número de paradas</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Detalhes</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <? foreach ($this->listaDosTrajetos as $trajeto): ?>
+                        <tr>
+                            <td><?= $trajeto['descricao'] ?>	</td>
+                            <td>	<?= $trajeto['PLACA'] ?></td>
+                            <td>	<?= $trajeto['NOME'] ?></td>
+                            <td>	<?= $trajeto['nome'] ?></td>
+                            <td><?= $trajeto['num_paradas'] ?>	</td>
+                            <td>
+                                <input type="hidden" value="<?php $trajeto->getSituacao(); ?>" >
+                                <?php if ($trajeto->getSituacao() === 'ATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'ATIVO')">
+
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($trajeto->getSituacao() === 'INATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $trajeto->getIdTrajeto() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td>	
+                                <button class="btn btn-primary btn-labeled" data-toggle="modal"  data-target="<?= '#myModal' . $trajeto['id_trajeto'] ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </button>	
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-				
-			<!-- FIM Modal onibus -->
-			<!-- INICIO Modal TRAJETO -->
-			<? foreach ($this->listarParadasDosTrajetos as $trajeto): ?>
 
-			<div class="modal fade" id="<?= 'myModal' . $trajeto['id_trajeto'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLongTitle">Paradas</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-
-
-								<select multiple class="form-control" id="sel4" style="height: 270px;">
-									
-
-										<option ><?=  $trajeto['complemento']; ?></option>
-									
-
-
-								</select>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-success" id="alocar-cobrador" data-dismiss="modal">Alocar</button>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<? endforeach; ?>
-				<!-- FIM Modal TRAJETO -->
-
-<script>
-	$("button#cancelar").click(function(){
-		location.href = baseUrl + 'trajeto';
-	});
-</script>
-
-
-
-</div>
-</div>
-
-</body>
-</html>
+<!-- FIM Modal onibus -->
+<!-- INICIO Modal TRAJETO -->
+<? foreach ($this->listarParadasDosTrajetos as $trajeto): ?>
+    <div class="modal fade" id="<?= 'myModal' . $trajeto['id_trajeto'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Paradas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select multiple class="form-control" id="sel4" style="height: 270px;">
+                        <option ><?= $trajeto['complemento']; ?></option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="alocar-cobrador" data-dismiss="modal">Alocar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<? endforeach; ?>
+<!-- FIM Modal TRAJETO -->

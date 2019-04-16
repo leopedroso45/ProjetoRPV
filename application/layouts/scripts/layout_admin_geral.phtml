@@ -13,7 +13,8 @@
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-cerulean.css") ?> />
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/style.css") ?> />
+        <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
 
     </head>
     <body>
@@ -35,22 +36,12 @@
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->baseUrl("/categoriapassageiro") ?>">
-                                Categ. Passageiros
+                            <a class="nav-link" href="<?= $this->baseUrl("beneficio") ?>">
+                                Benefícios
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->baseUrl("/categoria-onibus") ?>">
-                                Categ. de Ônibus
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->baseUrl("/linha") ?>">
-                                Linhas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= $this->baseUrl("/forma-pagamento") ?>">
+                            <a class="nav-link" href="<?= $this->baseUrl("forma-pagamento") ?>">
                                 Formas de Pagamento
                             </a>
                         </li>
@@ -68,7 +59,6 @@
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.min.js') ?>"></script>
-        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/categoria.js') ?>"></script>
         <?= $this->headScript(); ?>
     </body>
 </html>

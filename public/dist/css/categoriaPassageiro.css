@@ -1,4 +1,4 @@
-body {
+/*body {
 	background-image: url("../img/fundo.png");
 	width: 100%;
 }
@@ -8,13 +8,6 @@ body {
     
 }
 
-.botao
-{
-background: url("../img/edicao.png");
-width: 30px;  // coloca a largura do botao
-height: 30px; // coloca a altura do botao
-border: none;
-}
 .botaoInformacao
 {
 background: url("../img/informacao.png");
@@ -36,7 +29,6 @@ fundoTransparente{
 
 
 
-<style type="text/css">
   .onoff input.toggle {
     display: none;
 }
@@ -83,28 +75,4 @@ fundoTransparente{
     box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.btn-group, .btn-group-vertical {
-    position: relative;
-     display: block; 
-    vertical-align: middle;
-    margin-bottom: 5%;
-}
-
-
-.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
-.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
-
-.btn-default.btn-on-1.active{background-color: #006FFC;color: white;}
-.btn-default.btn-off-1.active{background-color: #DA4F49;color: white;}
-
-.btn-default.btn-on-2.active{background-color: #00D590;color: white;}
-.btn-default.btn-off-2.active{background-color: #A7A7A7;color: white;}
-
-.btn-default.btn-on-3.active{color: #5BB75B;font-weight:bolder;}
-.btn-default.btn-off-3.active{color: #DA4F49;font-weight:bolder;}
-
-.btn-default.btn-on-4.active{background-color: #006FFC;color: #5BB75B;}
-.btn-default.btn-off-4.active{background-color: #DA4F49;color: #DA4F49;}
-
-
-</style>
+*/
