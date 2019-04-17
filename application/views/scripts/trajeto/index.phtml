@@ -19,39 +19,69 @@
                                 <div class="col-lg-5">
                                     <label for="descricao" id="label">Descrição</label>
                                     <input type="text" class="form-control" id="descricao1">
-                                </div><div class="col-lg-1"></div>
+                                </div>
+                                <div class="col-lg-2"></div>
                                 <div class="col-lg-5">
                                     <input type="hidden" id="id-onibus">
-                                    <label for="descricao-onibus" id="label"> Alocar ônibus</label>
-                                    <input type="text" class="form-control" disabled id="descricao-onibus">
+                                    <label for="descricao-onibus" id="label">Ônibus</label>
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-o">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" disabled id="descricao-onibus">
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-lg-1" style="padding-top: 31px; padding-left: 0px;">
-                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-o">
-                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-                                    </button>
-                                </div>
+                                <!--                                <div class="col-lg-1" style="padding-top: 31px; padding-left: 0px;">
+                                                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-o">
+                                                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                                                    </button>
+                                                                </div>-->
                             </div>
                             <div class="row">
                                 <div class="col-lg-5">
                                     <input type="hidden" id="id-motorista">
-                                    <label for="descricao" id="label">Alocar Motorista</label>
-                                    <input type="text" class="form-control" disabled id="descricao-motorista">
+                                    <label for="descricao" id="label">Motorista</label>
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-m">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" disabled id="descricao-motorista">
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
-                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-m" >
-                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-                                    </button>
-                                </div>
+                                <!--                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
+                                                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-m" >
+                                                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                                                    </button>
+                                                                </div>-->
+                                <!--                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
+                                                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-c">
+                                                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
+                                                                    </button>
+                                                                </div>-->
+                                <div class="col-lg-2"></div>
                                 <div class="col-lg-5">
                                     <input type="hidden" id="id-cobrador">
-                                    <label for="descricao" id="label">Alocar Cobrador</label>
-                                    <input type="text" class="form-control" disabled id="descricao-cobrador">
+                                    <label for="descricao" id="label">Cobrador</label>
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-c">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" disabled id="descricao-cobrador">
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-lg-1"style="padding-top: 31px; padding-left: 0px;">
-                                    <button class=" btn btn-outline-primary" type="button" data-toggle="modal" data-target="#exampleModalCenter-c">
-                                        <i class='fas fa-plus-circle' style="font-size: 22px;"></i>
-                                    </button>
-                                </div>
+
                             </div>	
                             <div class="modal fade" id="exampleModalCenter-m" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -138,21 +168,21 @@
                             <div class="col-lg-5" id="teste11">
 
                                 <label for="par1" id="label">Paradas selecionadas:</label>
-                                <div class="row"  id="teste1" style="height: 270px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
+                                <div class="row"  id="teste1" style="height: 150px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
                                 </div>
                             </div>
                             <div class="col-lg-2" style="padding-top: 60px; padding-left: 30px;  ">
-                                <div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; ">
+                                <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; ">
                                     <div class="seta-1" id="seta1"></div>
                                 </div>
-                                <div class="row" style="padding-left: 45%;background-color: rgba(255,255,255,0.5); padding-top: 20px; padding-bottom: 20px;">
+                                <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; padding-bottom: 20px;">
                                     <div class="seta-2" id="seta2"></div>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group">
                                     <label for="sel3" id="label">Paradas:</label>
-                                    <select multiple class="form-control" id="sel3" style="height: 270px;">
+                                    <select multiple class="form-control" id="sel3" style="height: 150px;">
                                         <? foreach ($this->listaDasParadas as $parada): ?>
                                             <option  value="<?= $parada['id_parada'] ?>"><?= $parada['local']; ?></option>
                                         <? endforeach; ?>

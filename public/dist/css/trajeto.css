@@ -23,13 +23,13 @@ body {
 	color: white;
 }*/
 .seta-1{ 
-	border-right: 40px solid blue;
+	border-right: 40px solid white;
 	border-top: 15px solid transparent;  
 	border-bottom: 15px solid transparent; 
 	float:left;
 }
 .seta-2{ 
-	border-left: 40px solid #C00; 
+	border-left: 40px solid white; 
 	border-top: 15px solid transparent;  
 	border-bottom: 15px solid transparent; 
 	float:left;

@@ -1,3 +1,48 @@
+$("#seta1").click(function ()
+{
+    var id_parada = $("#sel3 option:selected").val();
+    var local = $("#sel3 option:selected").text();
+
+    if (id_parada == null) {
+        $("div#aviso").show("slow");
+
+    } else {
+        $("#teste1").append('<div class="row" id="paradax" style="padding: 10px; padding-bottom: 0px;">' +
+                '<div class="col-9">' +
+                '<a class="form-control ids" at=' + id_parada + ' type="text" name="parada[]"  disabled style="color: black; width: 305px; padding-left: 10px;">' + local + ' </a>' +
+                '</div>' +
+                '<div class="col-3"  style="padding-botton: 0px; padding-left: 5px; " >' +
+                '<input class="form-control horarios" name="horarios[]"  type="time" style="width: 100px; padding-bottom: 0px;">' +
+                '</div>' +
+                '</div>'
+                );
+        // document.getElementById(id_parada).value = local;
+    }
+});
+
+$("#alocar-cobrador").click(function () {
+    var id_cobrador = $("#sel4 option:selected").val();
+    var nome = $("#sel4 option:selected").text();
+
+    document.getElementById("id-cobrador").value = id_cobrador;
+    document.getElementById("descricao-cobrador").value = nome;
+});
+
+$("#alocar-motorista").click(function () {
+    var id_motorista = $("#sel5 option:selected").val();
+    var nome = $("#sel5 option:selected").text();
+
+    document.getElementById("id-motorista").value = id_motorista;
+    document.getElementById("descricao-motorista").value = nome;
+});
+
+$("#alocar-onibus").click(function () {
+    var id_onibus = $("#sel6 option:selected").val();
+    var placa = $("#sel6 option:selected").text();
+
+    document.getElementById("id-onibus").value = id_onibus;
+    document.getElementById("descricao-onibus").value = placa;
+});
 
 $(".cadastrar-trajeto").click(function () {
 
