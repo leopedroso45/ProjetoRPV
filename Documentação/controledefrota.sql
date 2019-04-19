@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Abr-2019 às 00:25
+-- Generation Time: 19-Abr-2019 às 02:08
 -- Versão do servidor: 10.1.36-MariaDB
 -- versão do PHP: 5.6.38
 
@@ -21,6 +21,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `controledefrota`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `apolice`
+--
+
+CREATE TABLE `apolice` (
+  `id_apolice` int(11) NOT NULL,
+  `descricao` varchar(45) DEFAULT NULL,
+  `data_inicio` varchar(45) DEFAULT NULL,
+  `data_fim` varchar(45) DEFAULT NULL,
+  `valor` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `apolice_urbano`
+--
+
+CREATE TABLE `apolice_urbano` (
+  `id_apolice` int(11) NOT NULL,
+  `id_onibus_urbano` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `apolice_viagem`
+--
+
+CREATE TABLE `apolice_viagem` (
+  `id_onibus_viagem` int(11) NOT NULL,
+  `id_apolice` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -169,6 +205,19 @@ CREATE TABLE `funcionario` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `horario`
+--
+
+CREATE TABLE `horario` (
+  `id_horario` int(11) NOT NULL,
+  `dia_semana` varchar(45) DEFAULT NULL,
+  `horario_inicio` varchar(45) DEFAULT NULL,
+  `horario_chegada` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `linha`
 --
 
@@ -202,6 +251,7 @@ CREATE TABLE `linha_trecho` (
 CREATE TABLE `manutencao_urbano` (
   `id_manutencao` int(11) NOT NULL,
   `id_onibus_urbano` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
   `data_entrada` varchar(45) DEFAULT NULL,
   `data_saida` varchar(45) DEFAULT NULL,
   `motivo` varchar(255) DEFAULT NULL,
@@ -218,6 +268,7 @@ CREATE TABLE `manutencao_urbano` (
 CREATE TABLE `manutencao_viagem` (
   `id_manutencao_viagem` int(11) NOT NULL,
   `id_onibus_viagem` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
   `data_entrada` varchar(45) DEFAULT NULL,
   `data_saida` varchar(45) DEFAULT NULL,
   `motivo` varchar(45) DEFAULT NULL,
@@ -482,34 +533,6 @@ INSERT INTO `pessoa_idosa` (`id_idoso`, `carteira_idoso`, `idf_pessoa`, `comprov
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `seguro_urbano`
---
-
-CREATE TABLE `seguro_urbano` (
-  `id_seguro` int(11) NOT NULL,
-  `id_onibus_urbano` int(11) NOT NULL,
-  `data_inicio` varchar(45) DEFAULT NULL,
-  `data_fim` varchar(45) DEFAULT NULL,
-  `valor` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `seguro_viagem`
---
-
-CREATE TABLE `seguro_viagem` (
-  `id_seguro_viagem` int(11) NOT NULL,
-  `id_onibus_viagem` int(11) NOT NULL,
-  `data_inicio` varchar(45) DEFAULT NULL,
-  `data_fim` varchar(45) DEFAULT NULL,
-  `valor` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `solicitacaobeneficio`
 --
 
@@ -663,6 +686,27 @@ INSERT INTO `usuario` (`id_usuario`, `id_perfil`, `nome_usuario`, `senha`) VALUE
 --
 
 --
+-- Indexes for table `apolice`
+--
+ALTER TABLE `apolice`
+  ADD PRIMARY KEY (`id_apolice`);
+
+--
+-- Indexes for table `apolice_urbano`
+--
+ALTER TABLE `apolice_urbano`
+  ADD PRIMARY KEY (`id_apolice`,`id_onibus_urbano`),
+  ADD KEY `fk_apolice_urbano_apolice1_idx` (`id_apolice`),
+  ADD KEY `fk_apolice_urbano_onibus_urbano1_idx` (`id_onibus_urbano`);
+
+--
+-- Indexes for table `apolice_viagem`
+--
+ALTER TABLE `apolice_viagem`
+  ADD PRIMARY KEY (`id_onibus_viagem`,`id_apolice`),
+  ADD KEY `fk_apolice_viagem_apolice1_idx` (`id_apolice`);
+
+--
 -- Indexes for table `categoria_onibus`
 --
 ALTER TABLE `categoria_onibus`
@@ -706,6 +750,12 @@ ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id_funcionario`),
   ADD KEY `fk_funcionario_cidade1_idx` (`id_cidade`),
   ADD KEY `fk_funcionario_perfil1_idx` (`id_perfil`);
+
+--
+-- Indexes for table `horario`
+--
+ALTER TABLE `horario`
+  ADD PRIMARY KEY (`id_horario`);
 
 --
 -- Indexes for table `linha`
@@ -814,20 +864,6 @@ ALTER TABLE `pessoa_idosa`
   ADD KEY `fk_pessoa_idosa_pessoa1_idx` (`idf_pessoa`);
 
 --
--- Indexes for table `seguro_urbano`
---
-ALTER TABLE `seguro_urbano`
-  ADD PRIMARY KEY (`id_seguro`),
-  ADD KEY `fk_seguro_urbano_onibus_urbano1_idx` (`id_onibus_urbano`);
-
---
--- Indexes for table `seguro_viagem`
---
-ALTER TABLE `seguro_viagem`
-  ADD PRIMARY KEY (`id_seguro_viagem`),
-  ADD KEY `fk_seguro_viagem_onibus_viagem1_idx` (`id_onibus_viagem`);
-
---
 -- Indexes for table `solicitacaobeneficio`
 --
 ALTER TABLE `solicitacaobeneficio`
@@ -881,6 +917,12 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `apolice`
+--
+ALTER TABLE `apolice`
+  MODIFY `id_apolice` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `categoria_onibus`
 --
 ALTER TABLE `categoria_onibus`
@@ -921,6 +963,12 @@ ALTER TABLE `forma_pagamento`
 --
 ALTER TABLE `funcionario`
   MODIFY `id_funcionario` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `horario`
+--
+ALTER TABLE `horario`
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `linha`
@@ -983,18 +1031,6 @@ ALTER TABLE `pessoa_com_deficiencia`
   MODIFY `id_pessoa_com_deficiencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `seguro_urbano`
---
-ALTER TABLE `seguro_urbano`
-  MODIFY `id_seguro` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `seguro_viagem`
---
-ALTER TABLE `seguro_viagem`
-  MODIFY `id_seguro_viagem` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `solicitacaobeneficio`
 --
 ALTER TABLE `solicitacaobeneficio`
@@ -1039,6 +1075,20 @@ ALTER TABLE `usuario`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `apolice_urbano`
+--
+ALTER TABLE `apolice_urbano`
+  ADD CONSTRAINT `fk_apolice_urbano_apolice1` FOREIGN KEY (`id_apolice`) REFERENCES `apolice` (`id_apolice`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_apolice_urbano_onibus_urbano1` FOREIGN KEY (`id_onibus_urbano`) REFERENCES `onibus_urbano` (`id_onibus_urbano`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `apolice_viagem`
+--
+ALTER TABLE `apolice_viagem`
+  ADD CONSTRAINT `fk_apolice_viagem_apolice1` FOREIGN KEY (`id_apolice`) REFERENCES `apolice` (`id_apolice`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_apolice_viagem_onibus_viagem1` FOREIGN KEY (`id_onibus_viagem`) REFERENCES `onibus_viagem` (`id_onibus_viagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `estudante`
@@ -1118,18 +1168,6 @@ ALTER TABLE `pessoa_com_deficiencia`
 --
 ALTER TABLE `pessoa_idosa`
   ADD CONSTRAINT `fk_pessoa_idosa_pessoa1` FOREIGN KEY (`idf_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `seguro_urbano`
---
-ALTER TABLE `seguro_urbano`
-  ADD CONSTRAINT `fk_seguro_urbano_onibus_urbano1` FOREIGN KEY (`id_onibus_urbano`) REFERENCES `onibus_urbano` (`id_onibus_urbano`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `seguro_viagem`
---
-ALTER TABLE `seguro_viagem`
-  ADD CONSTRAINT `fk_seguro_viagem_onibus_viagem1` FOREIGN KEY (`id_onibus_viagem`) REFERENCES `onibus_viagem` (`id_onibus_viagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `solicitacaobeneficio`
