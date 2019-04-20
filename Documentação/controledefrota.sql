@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Abr-2019 às 02:08
+-- Generation Time: 21-Abr-2019 às 00:20
 -- Versão do servidor: 10.1.36-MariaDB
 -- versão do PHP: 5.6.38
 
@@ -224,8 +224,10 @@ CREATE TABLE `horario` (
 CREATE TABLE `linha` (
   `id_linha` int(11) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
+  `origem` varchar(45) DEFAULT NULL,
+  `destino` varchar(45) DEFAULT NULL,
+  `tempo` varchar(45) DEFAULT NULL,
   `num_trechos` varchar(45) DEFAULT NULL,
-  `km` varchar(45) DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -239,7 +241,10 @@ CREATE TABLE `linha_trecho` (
   `id_trecho` int(11) NOT NULL,
   `id_linha` int(11) NOT NULL,
   `id_motorista` int(11) NOT NULL,
-  `id_onibus_viagem` int(11) NOT NULL
+  `id_onibus_viagem` int(11) NOT NULL,
+  `local` varchar(45) DEFAULT NULL,
+  `tempo` varchar(45) DEFAULT NULL,
+  `situacao` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -651,9 +656,9 @@ INSERT INTO `trajeto` (`id_trajeto`, `id_trajetocobrador`, `id_trajetomotorista`
 CREATE TABLE `trecho` (
   `id_trecho` int(11) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
-  `chegada` varchar(45) DEFAULT NULL,
-  `partida` varchar(45) DEFAULT NULL,
-  `km` varchar(45) DEFAULT NULL
+  `horario_chegada` varchar(45) DEFAULT NULL,
+  `horario_partida` varchar(45) DEFAULT NULL,
+  `situacao` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1148,8 +1153,7 @@ ALTER TABLE `parada_trajeto`
 -- Limitadores para a tabela `passagem`
 --
 ALTER TABLE `passagem`
-  ADD CONSTRAINT `fk_pessoa_has_viagem_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pessoa_has_viagem_viagem1` FOREIGN KEY (`id_trecho`,`id_linha`) REFERENCES `linha_trecho` (`id_trecho`, `id_linha`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pessoa_has_viagem_pessoa1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `pessoa`
