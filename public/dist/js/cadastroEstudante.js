@@ -1,12 +1,5 @@
 $(document).ready(function () {
 
-    $("#extensao").blur(function ()
-    {
-        var extensao = $("#extensao").val();
-        if (extensao.length === 0) {
-            $('.extensao').removeClass('hidden');
-        }
-    });
 
     $(".cadastrarEstudante").click(function ()
     {
@@ -22,8 +15,8 @@ $(document).ready(function () {
         var bairro = $("#bairro").val();
 
 
-        if (extensao.length === 0) {
-            $('.extensao').removeClass('hidden');
+        if (nome_usuario.length === 0) {
+            $('.nome_usuario').removeClass('hidden');
         } else if (dataInicio.length === 0) {
             $('.dataInicio').removeClass('hidden');
         } else if (dataFim.length === 0) {

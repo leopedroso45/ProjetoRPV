@@ -1,18 +1,24 @@
 <?php
 
-class Application_Model_DbTable_Usuario extends Zend_Db_Table_Abstract {
+class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract {
 
-    protected $_name = 'usuario';
-    protected $_rowClass = "Application_Model_Usuario";
+    protected $_name = 'pessoa';
+    protected $_rowClass = "Application_Model_Pessoa";
 
-    
-    public function cadastrarUsuario($dados) {
-        $usuario = $this->createRow();
-        /* @var $usuario Application_Model_Usuario */
-        $usuario->setId_usuario($dados['id_usuario']);
-        $usuario->setId_perfil($dados['id_perfil']);
-        $usuario->setNome_usuario($dados['nome_usuario']);
-        $usuario->setSenha($dados['senha']);
+    public function cadastrarPessoa($dados) {
+        
+        $pessoa = $this->createRow();
+        /* @var $usuario Application_Model_Pessoa */
+        $pessoa->setId_pessoa($dados['id_pessoa']);
+        $pessoa->setId_usuario($dados['id_usuario']);
+        $pessoa->setNome($dados['nome']);
+        $pessoa->setCpf($dados['cpf']);
+        $pessoa->setRg($dados['rg']);
+        $pessoa->setNumero_casa($dados['numero_casa']);
+        $pessoa->setData_nascimento($dados['data_nascimento']);
+        $pessoa->setCelular($dados['celular']);
+        $pessoa->setRua($dados['rua']);
+        $pessoa->setBairro($dados['bairro']);
 
         return $usuario->save();
     }

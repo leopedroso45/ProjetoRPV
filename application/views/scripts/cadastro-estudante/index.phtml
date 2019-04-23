@@ -1,5 +1,7 @@
 <div class="container">
     <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
@@ -13,19 +15,23 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Usuário</label>
-                                <input type="email" class="form-control" id="nome_usuario" placeholder="Escolha um nome de usuário">
+                                <input type="text" class="form-control" id="nome_usuario" placeholder="Escolha um nome de usuário">
+                                <p class="help-block text-danger"></p>
+<!--                            <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                    Campo usuário é obrigatório! 
+                                </div>-->
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Senha</label>
-                                <input type="email" class="form-control" id="senha" placeholder="Escolha uma senha">
+                                <input type="password" class="form-control" id="senha" placeholder="Escolha uma senha">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Confirme a senha</label>
-                                <input type="email" class="form-control" id="confirmarSenha" placeholder="Confirme a senha">
+                                <input type="password" class="form-control" id="confirmarSenha" placeholder="Confirme a senha">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Nome Completo</label>
-                                <input type="password" class="form-control" id="nomeCompleto" placeholder="Digite o nome completo">
+                                <input type="text" class="form-control" id="nomeCompleto" placeholder="Digite o nome completo">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Data de Nascimento:</label>
@@ -33,27 +39,27 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">CPF:</label>
-                                <input type="password" class="form-control" id="cpf" placeholder="Digite o cpf">
+                                <input type="text" class="form-control" id="cpf" placeholder="Digite o cpf">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">RG:</label>
-                                <input type="password" class="form-control" id="rg" placeholder="Digite o RG">
+                                <input type="text" class="form-control" id="rg" placeholder="Digite o RG">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Celular:</label>
-                                <input type="password" class="form-control" id="celular" placeholder="Digite o celular">
+                                <input type="text" class="form-control" id="celular" placeholder="Digite o celular">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Rua:</label>
-                                <input type="password" class="form-control" id="rua" placeholder="Digite a rua em que reside">
+                                <input type="text" class="form-control" id="rua" placeholder="Digite a rua em que reside">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">N°:</label>
-                                <input type="password" class="form-control" id="numeroCasa" placeholder="N° da casa">
+                                <input type="text" class="form-control" id="numeroCasa" placeholder="N° da casa">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Bairro:</label>
-                                <input type="password" class="form-control" id="bairro" placeholder="Bairro">
+                                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Anexe o Comprovante de Residência:</label>
