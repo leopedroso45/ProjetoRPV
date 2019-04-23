@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Apólices</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label>Descrição:</label>
+                                    <textarea id="descricao" class="form-control" rows="2"></textarea>
+                                </div>
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-3">
+                                    <label>Data de término:</label>
+                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="from" data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                </div>
+                                <div class="col-lg-2"></div>
+                            </div>
+                            <hr>
+                            <div class="row" style="padding-left: 10px;" >
+                                <div class="col-lg-5" id="teste11">
+                                    <label for="par1" id="label">Ônibus selecionados:</label>
+                                    <div class="row"  id="teste1" style="height: 150px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="padding-top: 60px; padding-left: 30px;  ">
+                                    <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; ">
+                                        <div class="seta-1" id="seta1"></div>
+                                    </div>
+                                    <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; padding-bottom: 20px;">
+                                        <div class="seta-2" id="seta2"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <label for="sel3" id="label">Ônibus:</label>
+                                        <select multiple class="form-control" id="sel3" style="height: 150px;">
+                                            <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                                                <option  value="<?= $onibus['id_onibus_urbano'] ?>"><?= $onibus['placa']; ?></option>
+                                            <? endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>	
+                            <hr>
+                            <button class="btn btn-info btn-block cadastrar-apolice" type="button">
+                                Cadastrar
+                            </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- fim container form-->
+            <div class="col-lg-12">
+                <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.2); padding: 0px; color: white;">
+                    <thead >
+                        <tr>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Data de inicio</th>
+                            <th scope="col">Data de término</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <? foreach ($this->listaDasApolices as $apolice): ?>
+                            <tr>
+                                <td><?= $apolice['descricao'] ?>	</td>
+                                <td><?= $apolice['data_inicio'] ?></td>
+                                <td><?= $apolice['data_termino'] ?></td>
+                                <td><?= $apolice['valor'] ?></td>
+                            </tr>
+                        <? endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
