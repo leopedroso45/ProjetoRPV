@@ -9,15 +9,26 @@ class CadastroEstudanteController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        
+
+        $dbtableUsuario = new Application_Model_DbTable_Usuario();
+        $dbtablePessoa = new Application_Model_DbTable_Pessoa();
+        $dbtableEstudante = new Application_Model_DbTable_Estudante();
+
+        if ($this->getRequest()->isPost()) {
+            
+            $dados = $this->getRequest()->getParams();
+            
+            $id_usuario = $dbtableUsuario->cadastrarUsuario($dados);
+            $id_pessoa = $dbtablePessoa->cadastrarPessoa($dados);
+            $id_estudante = $dbtableEstudante->cadastrarEstudante($dados);
+            
+            $dbtablePessoa->cadastrarPessoa($id_usuario, $dados);
+            $dbtableEstudante->cadastrarEstudante($id_pessoa, $dados);
+        }
     }
 
     public function cadastrarUsuarioAction() {
-        if ($this->getRequest()->isPost()) {
-            $dados = $this->getRequest()->getParams();
-            $dbtableUsuario = new Application_Model_DbTable_Usuario();
-            $id_usuario = $dbtableUsuario->cadastrarUsuario($dados, $id);
-        }
+        
     }
 
     public function cadastrarPessoaAction($id) {

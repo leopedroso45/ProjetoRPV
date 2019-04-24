@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-    $(".cadastrarEstudante").click(function ()
+    $(".cadastrar").click(function ()
     {
         var nome_usuario = $("#nome_usuario").val();
         var senha = $("#senha").val();
@@ -13,7 +13,9 @@ $(document).ready(function () {
         var rua = $("#rua").val();
         var numeroCasa = $("#numeroCasa").val();
         var bairro = $("#bairro").val();
-
+        var comprovanteResidencia = $("#comprovanteResidencia").val();
+        var comprovanteMatricula = $("#comprovanteMatricula").val();
+       
 
         if (nome_usuario.length === 0) {
             $('.nome_usuario').removeClass('hidden');
@@ -28,9 +30,12 @@ $(document).ready(function () {
                 url: baseUrl + 'cadastro-estudante/index',
                 async: false,
                 data: {nome_usuario: nome_usuario, senha: senha, nomeCompleto: nomeCompleto, dataNascimento: dataNascimento,
-                    cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro
-
+                    cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovanteResidencia: comprovanteResidencia,
+                    comprovanteMatricula: comprovanteMatricula
                 },
+                
+         
+    
                 success: function () {
                     $(".alert-success").removeAttr("style");
                     location.reload();
