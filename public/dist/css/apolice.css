@@ -1,0 +1,62 @@
+.dataTables_length{
+    display: none;
+}
+
+.dataTables_filter input{
+    border-radius: 0.25rem;
+}
+
+.dataTables_filter{
+    margin-left: 92px;
+}
+    
+
+#DataTables_Table_0_wrapper .row .col-sm-5{
+    margin-top: 50px;
+}
+
+#DataTables_Table_0_wrapper > div:nth-child(2){
+        margin-left: 16px;
+    width: 487px;
+}
+
+.list-group{
+    color: black;
+}
+
+tr.active{
+    z-index: 2;
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+td{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+span{
+    color: black;
+}
+
+.fas, .far{
+    color: black;
+}
+
+.dual-list .list-group {
+    margin-top: 8px;
+}
+
+.list-left li, .list-right li , .fa-circle-notch, .fa-check-circle{
+    cursor: pointer;
+}
+
+.list-arrows {
+    padding-top: 100px;
+}
+
+.list-arrows button {
+    margin-bottom: 20px;
+}
+
