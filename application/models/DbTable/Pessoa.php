@@ -5,22 +5,21 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract {
     protected $_name = 'pessoa';
     protected $_rowClass = "Application_Model_Pessoa";
 
-    public function cadastrarPessoa($dados) {
+    public function cadastrarPessoa($dados, $id_usuario) {
         
         $pessoa = $this->createRow();
-        /* @var $usuario Application_Model_Pessoa */
-        $pessoa->setId_pessoa($dados['id_pessoa']);
-        $pessoa->setId_usuario($dados['id_usuario']);
-        $pessoa->setNome($dados['nome']);
+        /* @var $pessoa Application_Model_Pessoa */
+        $pessoa->setId_usuario($id_usuario);
+        $pessoa->setNome($dados['nomeCompleto']);
         $pessoa->setCpf($dados['cpf']);
         $pessoa->setRg($dados['rg']);
-        $pessoa->setNumero_casa($dados['numero_casa']);
-        $pessoa->setData_nascimento($dados['data_nascimento']);
+        $pessoa->setNumero_casa($dados['numeroCasa']);
+        $pessoa->setData_nascimento($dados['dataNascimento']);
         $pessoa->setCelular($dados['celular']);
         $pessoa->setRua($dados['rua']);
         $pessoa->setBairro($dados['bairro']);
 
-        return $usuario->save();
+        return $pessoa->save();
     }
 
 //    

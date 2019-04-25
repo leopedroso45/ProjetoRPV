@@ -7,10 +7,10 @@ class Application_Model_DbTable_Usuario extends Zend_Db_Table_Abstract {
 
     
     public function cadastrarUsuario($dados) {
+        
         $usuario = $this->createRow();
         /* @var $usuario Application_Model_Usuario */
-        $usuario->setId_usuario($dados['id_usuario']);
-        $usuario->setId_perfil($dados['id_perfil']);
+        $usuario->setId_perfil(2);
         $usuario->setNome_usuario($dados['nome_usuario']);
         $usuario->setSenha($dados['senha']);
 

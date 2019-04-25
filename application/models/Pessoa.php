@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Usuario extends Zend_Db_Table_Row_Abstract {
+class Application_Model_Pessoa extends Zend_Db_Table_Row_Abstract {
 
 //    private $id_pessoa;
 //    private $id_usuario;

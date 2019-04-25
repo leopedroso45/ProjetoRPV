@@ -5,14 +5,13 @@ class Application_Model_DbTable_Estudante extends Zend_Db_Table_Abstract {
     protected $name = 'estudante';
     protected $_rowClass = "Application_Model_Estudante";
 
-    public function cadastrarEstudante($dados) {
+    public function cadastrarEstudante($dados, $id_pessoa) {
 
         $estudante = $this->createRow();
-        /* @var $categoriaOnibus Application_Model_Estudante */
-        $estudante->setId_estudante($dados['id_estudante']);
-        $estudante->setComprovante_matricula($dados['comprovante_matricula']);
-        $estudante->setIdf_pessoa($dados['idf_pessoa']);
-        $estudante->setComprovante_residencia($dados['comprovante_residencia']);
+        /* @var $estudante Application_Model_Estudante */
+        $estudante->setComprovante_matricula($dados['comprovanteMatricula']);
+        $estudante->setIdf_pessoa($id_pessoa);
+        $estudante->setComprovante_residencia($dados['comprovanteResidencia']);
 
         return $estudante->save();
     }

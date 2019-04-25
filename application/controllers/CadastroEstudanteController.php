@@ -5,7 +5,7 @@ class CadastroEstudanteController extends Zend_Controller_Action {
     public function init() {
         $this->_helper->layout->setLayout("layout_admin_geral");
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
-        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/beneficio.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastroEstudante.js'));
     }
 
     public function indexAction() {
@@ -18,12 +18,11 @@ class CadastroEstudanteController extends Zend_Controller_Action {
             
             $dados = $this->getRequest()->getParams();
             
+//            var_dump($dados);die();
             $id_usuario = $dbtableUsuario->cadastrarUsuario($dados);
-            $id_pessoa = $dbtablePessoa->cadastrarPessoa($dados);
-            $id_estudante = $dbtableEstudante->cadastrarEstudante($dados);
+            $id_pessoa = $dbtablePessoa->cadastrarPessoa($dados, $id_usuario);
+            $dbtableEstudante->cadastrarEstudante($dados, $id_pessoa);
             
-            $dbtablePessoa->cadastrarPessoa($id_usuario, $dados);
-            $dbtableEstudante->cadastrarEstudante($id_pessoa, $dados);
         }
     }
 

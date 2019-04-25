@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     $(".cadastrar").click(function ()
     {
+        alert();
         var nome_usuario = $("#nome_usuario").val();
         var senha = $("#senha").val();
         var nomeCompleto = $("#nomeCompleto").val();
@@ -15,16 +16,7 @@ $(document).ready(function () {
         var bairro = $("#bairro").val();
         var comprovanteResidencia = $("#comprovanteResidencia").val();
         var comprovanteMatricula = $("#comprovanteMatricula").val();
-       
 
-        if (nome_usuario.length === 0) {
-            $('.nome_usuario').removeClass('hidden');
-        } else if (dataInicio.length === 0) {
-            $('.dataInicio').removeClass('hidden');
-        } else if (dataFim.length === 0) {
-            $('.dataFim').removeClass('hidden');
-
-        } else {
             $.ajax({
                 type: "POST",
                 url: baseUrl + 'cadastro-estudante/index',
@@ -33,17 +25,14 @@ $(document).ready(function () {
                     cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovanteResidencia: comprovanteResidencia,
                     comprovanteMatricula: comprovanteMatricula
                 },
-                
-         
-    
+
                 success: function () {
                     $(".alert-success").removeAttr("style");
-                    location.reload();
+//                    location.reload();
                 },
                 error: function () {
                     alert("Error");
                 }
             });
-        }
     });
 });
