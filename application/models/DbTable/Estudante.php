@@ -2,7 +2,7 @@
 
 class Application_Model_DbTable_Estudante extends Zend_Db_Table_Abstract {
 
-    protected $name = 'estudante';
+    protected $_name = 'estudante';
     protected $_rowClass = "Application_Model_Estudante";
 
     public function cadastrarEstudante($dados, $id_pessoa) {

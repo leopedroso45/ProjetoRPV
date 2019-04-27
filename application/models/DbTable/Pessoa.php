@@ -6,7 +6,7 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract {
     protected $_rowClass = "Application_Model_Pessoa";
 
     public function cadastrarPessoa($dados, $id_usuario) {
-        
+
         $pessoa = $this->createRow();
         /* @var $pessoa Application_Model_Pessoa */
         $pessoa->setId_usuario($id_usuario);
@@ -18,6 +18,8 @@ class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract {
         $pessoa->setCelular($dados['celular']);
         $pessoa->setRua($dados['rua']);
         $pessoa->setBairro($dados['bairro']);
+        $pessoa->setBeneficio('Nenhum');
+        
 
         return $pessoa->save();
     }
