@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('.datedropper').dateDropper({
         lang: 'pt'
     });
-    
+
     $('.onibus').DataTable();
 
 //    $("#seta1").click(function ()
@@ -24,39 +24,62 @@ $(document).ready(function () {
 //
 //    });
 
+    $("#form-apolices").submit(function (event) {
+        event.preventDefault();
+
+        var id_onibus;
+        var onibus = [];
+
+        $('.ids').each(function () {
+            onibus.push($(this).attr("at"));
+        });
+        
+        id_onibus = onibus.toString();
+        
+        alert("id_onibus = "+id_onibus);
+
+    });
+
 
 });
 
 $(function () {
-
+    
     $('body').on('click', 'tbody tr', function () {
+        id = $(this).attr('id');
         $(this).toggleClass('active');
     });
-    
+
     $('.list-arrows button').click(function () {
         var $button = $(this), actives = '';
+
         if ($button.hasClass('move-left')) {
             actives = $('.list-right table tr.active');
             actives.clone().appendTo('.list-left table');
+//            document.getElementById(id).src = id;
+            $(".list-left table").append('<a type="text" at='+ id +' class="ids" name="onibus[]" style="display: none;"></a>');
             actives.remove();
+
         } else if ($button.hasClass('move-right')) {
             actives = $('.list-left table tr.active');
             actives.clone().appendTo('.list-right table');
+            
+            document.getElementsByClassName("ids")[0].remove();
             actives.remove();
         }
     });
-    
+
     $('.dual-list .selector').click(function () {
         var $checkBox = $(this);
         if (!$checkBox.hasClass('selected')) {
-            $checkBox.addClass('selected').closest('.well').find('table tr:not(.active)').addClass('active');
+            $checkBox.addClass('selected').closest('.well').find('table tbody tr:not(.active)').addClass('active');
             $checkBox.children('i').removeClass('fa-circle-notch').addClass('fa-check-circle');
         } else {
-            $checkBox.removeClass('selected').closest('.well').find('table tr.active').removeClass('active');
+            $checkBox.removeClass('selected').closest('.well').find('table tbody tr.active').removeClass('active');
             $checkBox.children('i').removeClass('fa-check-circle').addClass('fa-circle-notch');
         }
     });
-    
+
     $('[name="SearchDualList"]').keyup(function (e) {
         var code = e.keyCode || e.which;
         if (code == '9')

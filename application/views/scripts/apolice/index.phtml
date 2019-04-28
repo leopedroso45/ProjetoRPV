@@ -13,7 +13,7 @@
                     <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
                 </div>
                 <div class="card-body" style="display: none;">
-                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                    <div class="jumbontron" method="post" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-5">
@@ -37,23 +37,38 @@
                                 <div class="dual-list list-left col-md-5">
                                     <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
                                         <div class="row">
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 <div class="input-group">
-                                                    <span class="input-group-text fas fa-search"></span>
-                                                    <input type="text" name="SearchDualList" class="form-control" placeholder="pesquisar" />
+                                                    <!--<span class="input-group-text fas fa-search"></span>-->
+                                                    <input style="border-radius: 0.25rem;" type="text" name="SearchDualList" class="form-control" />
+                                                    <label style="padding-top: 9px; padding-left: 7px;">Pesquisar</label>
                                                 </div>
                                             </div>
+                                            <div class="col-md-2"></div>
                                             <div class="col-md-2">
                                                 <div class="btn-group">
                                                     <a class="btn btn-default selector" title="Selecionar todos"><i class="fas fa-circle-notch"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <table class="table" align="center" style="background-color: white; border-radius: 0.25rem;">
-                                            <tbody>
-                                                
-                                            </tbody>
-                                        </table>
+
+                                        <form id="form-apolices" method="post">
+                                            <table class="table" align="center" style="background-color: white; border-radius: 0.25rem;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Placa</th>
+                                                        <th>Ano</th>
+                                                        <th>Tipo</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-info btn-block cadastrar-apolice" type="submit">
+                                                Cadastrar
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -70,11 +85,11 @@
                                 <div class="dual-list list-right col-md-6">
                                     <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
                                         <div class="row">
-<!--                                            <div class="col-md-2">
-                                                <div class="btn-group">
+                                            <div class="col-md-2">
+                                                <div class="btn-group" style="cursor: pointer;">
                                                     <a class="btn btn-default selector" title="Selecionar todos"><i class="fas fa-circle-notch"></i></a>
                                                 </div>
-                                            </div>
+                                            </div><!--
                                             <div class="col-md-10">
                                                 <div class="input-group">
                                                     <input type="text" name="SearchDualList" class="form-control" placeholder="pesquisar" />
@@ -92,13 +107,13 @@
                                             </thead>
                                             <tbody>
                                                 <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
-                                                    <tr style="cursor: pointer;">
-                                                        <td value="<?= $onibus['id'] ?>"><?= $onibus['placa'] ?></td>
+                                                    <tr id="<?= $onibus['id'] ?>" style="cursor: pointer;">
+                                                        <td><?= $onibus['placa'] ?></td>
                                                         <td><?= $onibus['ano'] ?></td>
                                                         <td><?= $onibus['tipo'] ?></td>
                                                     </tr>
                                                 <? endforeach; ?>
-<br>
+                                            <br>
                                             </tbody>
                                         </table>
                                     </div>
@@ -124,46 +139,44 @@
                                                                     <label for="sel3" id="label">Ônibus:</label>
                                                                         <select multiple class="form-control" id="sel3" style="height: 150px;">
                             <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
-                                                                                                        <option  value="<?= $onibus['id'] ?>"><?= $onibus['placa']; ?> <?= $onibus['ano']; ?> <?= $onibus['tipo']; ?></option>
+                                                                                                                        <option  value="<?= $onibus['id'] ?>"><?= $onibus['placa']; ?> <?= $onibus['ano']; ?> <?= $onibus['tipo']; ?></option>
                             <? endforeach; ?>
                                                                         </select>
                                                                 </div>
                                                             </div>
                                                         </div>	-->
                             <hr>
-                            <button class="btn btn-info btn-block cadastrar-apolice" type="button">
-                                Cadastrar
-                            </button>
-                    </form>
 
+
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- fim container form-->
-            <div class="col-lg-12">
-                <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.2); padding: 0px; color: white;">
-                    <thead >
-                        <tr>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Data de inicio</th>
-                            <th scope="col">Data de término</th>
-                            <th scope="col">Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <? foreach ($this->listaDasApolices as $apolice): ?>
+                <!-- fim container form-->
+                <div class="col-lg-12">
+                    <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.2); padding: 0px; color: white;">
+                        <thead >
                             <tr>
-                                <td><?= $apolice['descricao'] ?>	</td>
-                                <td><?= $apolice['data_inicio'] ?></td>
-                                <td><?= $apolice['data_termino'] ?></td>
-                                <td><?= $apolice['valor'] ?></td>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Data de inicio</th>
+                                <th scope="col">Data de término</th>
+                                <th scope="col">Valor</th>
                             </tr>
-                        <? endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+
+                            <? foreach ($this->listaDasApolices as $apolice): ?>
+                                <tr>
+                                    <td><?= $apolice['descricao'] ?>	</td>
+                                    <td><?= $apolice['data_inicio'] ?></td>
+                                    <td><?= $apolice['data_termino'] ?></td>
+                                    <td><?= $apolice['valor'] ?></td>
+                                </tr>
+                            <? endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

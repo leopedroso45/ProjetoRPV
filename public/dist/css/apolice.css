@@ -6,8 +6,25 @@
     border-radius: 0.25rem;
 }
 
+.form-apolices{
+    margin-top: 32px;
+}
+
 .dataTables_filter{
+    /*display: none;*/
     margin-left: 92px;
+}
+
+.dataTables_info{
+    margin-left: 125px;
+}
+
+#DataTables_Table_0_wrapper > div:nth-child(1) > div:nth-child(2){
+    margin-top: -65px;
+}
+
+body > div:nth-child(2) > div > div > div:nth-child(2) > div > div.card-body > div > div > div:nth-child(3) > div.dual-list.list-right.col-md-6 > div > div.row > div > div{
+    margin-left: 31px;
 }
     
 
