@@ -15,6 +15,7 @@ $(document).ready(function () {
         var bairro = $("#bairro").val();
         var comprovanteResidencia = $("#comprovanteResidencia").val();
         var comprovanteMatricula = $("#comprovanteMatricula").val();
+        var data_solicitacao = $("dataatual").val();
 
         $.ajax({
             type: "POST",

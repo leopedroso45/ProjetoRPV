@@ -13,16 +13,17 @@ class CadastroEstudanteController extends Zend_Controller_Action {
         $dbtableUsuario = new Application_Model_DbTable_Usuario();
         $dbtablePessoa = new Application_Model_DbTable_Pessoa();
         $dbtableEstudante = new Application_Model_DbTable_Estudante();
+        $dbtableBeneficio = new Application_Model_DbTable_Beneficio();
 
         if ($this->getRequest()->isPost()) {
-            
+
             $dados = $this->getRequest()->getParams();
-            
+
 //            var_dump($dados);die();
             $id_usuario = $dbtableUsuario->cadastrarUsuario($dados);
             $id_pessoa = $dbtablePessoa->cadastrarPessoa($dados, $id_usuario);
             $dbtableEstudante->cadastrarEstudante($dados, $id_pessoa);
-            
+            $dbtableBeneficio->cadastrarSolicitacaoBeneficioAction($dados, $id_pessoa, '0');
         }
     }
 
@@ -42,7 +43,15 @@ class CadastroEstudanteController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbtableEstudante = new Application_Model_DbTable_Estudante();
-            $id_estudante = $dbtableEstudante->cadastrarEstudante($dados, $id);
+            $dbtableEstudante->cadastrarEstudante($dados, $id);
+        }
+    }
+
+    public function cadastrarSolicitacaoBeneficioAction($id) {
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+            $dbTableBeneficio->cadastrarSolicitacaoBeneficio($dados, $id);
         }
     }
 

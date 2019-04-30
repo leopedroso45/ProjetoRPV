@@ -105,24 +105,16 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
         return $beneficio->save();
     }
 
-    /*
-      public function editarUsuario($id,$dados)
-      {
-      $usuario = $this->getUsuarioPorId($id);
-      @var $usuario Application_Model_Usuario
-      $usuario->setLogin($dados['login']);
-      $usuario->setSenha($dados['senha']);
+    public function cadastrarSolicitacaoBeneficioAction($dados, $idf_pessoa, $idf_situacao_solicitacao) {
 
-      return $usuario->save();
-      }
-      public function getUsuarioPorId($id){
-      $select = $this->select()->where('cod_usuario = ?',$id);
-      return $this->fetchRow($select);
-      }
+        $beneficio = $this->createRow();
+        
+        
+        $beneficio->setData_solicitacao(date('d/m/Y'));
+        $beneficio->setIdf_situacao_solicitacao($idf_situacao_solicitacao);
+        $beneficio->setIdf_pessoa($idf_pessoa);
 
-      public function getUsuarioPorLogin($login){
-      $select = $this->select()->where('login = ?',$login);
-      return $this->fetchRow($select);
-      }
-     */
+        return $beneficio->save();
+    }
+
 }
