@@ -2,6 +2,45 @@
     display: none;
 }
 
+.urbano, .intermunicipal, button, .selector{
+    cursor: pointer;
+}
+
+.table-insert thead th {
+    border:0px;
+}
+
+.tbody-fix{
+    border-top: 2px solid #dee2e6;
+}
+
+.table-insert .tbody-fix, .table-insert thead{
+    display: block;
+}
+
+.tbody-fix{
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.table-insert td, .table-insert th{
+    /*text-align: center;*/
+    width: 20%;
+}
+
+.table-insert{
+     background-color: white;
+     border-radius: 0.25rem;
+     margin-top: 31px;
+}
+
+.btn-sm, .btn-group-sm>.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
 .dataTables_filter input{
     border-radius: 0.25rem;
 }
@@ -26,14 +65,14 @@
 body > div:nth-child(2) > div > div > div:nth-child(2) > div > div.card-body > div > div > div:nth-child(3) > div.dual-list.list-right.col-md-6 > div > div.row > div > div{
     margin-left: 31px;
 }
-    
+
 
 #DataTables_Table_0_wrapper .row .col-sm-5{
     margin-top: 50px;
 }
 
 #DataTables_Table_0_wrapper > div:nth-child(2){
-        margin-left: 16px;
+    margin-left: 16px;
     width: 487px;
 }
 

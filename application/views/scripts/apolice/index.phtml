@@ -20,14 +20,42 @@
                                     <label>Descrição:</label>
                                     <textarea id="descricao" class="form-control" rows="2"></textarea>
                                 </div>
-                                <div class="col-lg-2"></div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+                                    <label>Data de início:</label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <!--data-lock="form"-->
+                                </div>
+                                <div class="col-lg-2">
                                     <label>Data de término:</label>
-                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="from" data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style">
                                 </div>
                                 <div class="col-lg-2">
                                     <label>Valor:</label>
                                     <input type="text" class="form-control" id="valor">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <br>
+                                    <div class="alert alert-danger descricao" role="alert" style="display: none;">
+                                        O campo <strong>Descrição</strong> é obrigatório.
+                                    </div>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-6">
+                                    <div class="alert alert-danger dia" role="alert" style="display: none;">
+                                        Verifique o <strong>dia</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger mes" role="alert" style="display: none;">
+                                        Verifique o <strong>mês</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger ano" role="alert" style="display: none;">
+                                        Verifique o <strong>ano</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger data" role="alert" style="display: none;">
+                                        Verifique a <strong>data</strong> correta para término!
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -53,19 +81,19 @@
                                         </div>
 
                                         <form id="form-apolices" method="post">
-                                            <table class="table" align="center" style="background-color: white; border-radius: 0.25rem;">
+                                            <table class="table table-insert" align="center">
                                                 <thead>
                                                     <tr>
                                                         <th>Placa</th>
-                                                        <th>Ano</th>
-                                                        <th>Tipo</th>
+                                                        <th style="text-align: center;">Ano</th>
+                                                        <th style="text-align: right;">Tipo</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="tbody-fix">
 
                                                 </tbody>
                                             </table>
-                                            <button class="btn btn-info btn-block cadastrar-apolice" type="submit">
+                                            <button class="btn btn-info btn-block cadastrar-apolice" type="button">
                                                 Cadastrar
                                             </button>
                                         </form>
@@ -86,16 +114,10 @@
                                     <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <div class="btn-group" style="cursor: pointer;">
+                                                <div class="btn-group" style="cursor: pointer; margin-left: 55%;">
                                                     <a class="btn btn-default selector" title="Selecionar todos"><i class="fas fa-circle-notch"></i></a>
                                                 </div>
-                                            </div><!--
-                                            <div class="col-md-10">
-                                                <div class="input-group">
-                                                    <input type="text" name="SearchDualList" class="form-control" placeholder="pesquisar" />
-                                                    <span class="input-group-text fas fa-search"></span>
-                                                </div>
-                                            </div>-->
+                                            </div>
                                         </div>
                                         <table class="table onibus" align="center" style="background-color: white; border-radius: 0.25rem;">
                                             <thead>
@@ -107,7 +129,7 @@
                                             </thead>
                                             <tbody>
                                                 <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
-                                                    <tr id="<?= $onibus['id'] ?>" style="cursor: pointer;">
+                                                    <tr id="<?= $onibus['id'] ?>" class="<?= $onibus['tipo'] ?>">
                                                         <td><?= $onibus['placa'] ?></td>
                                                         <td><?= $onibus['ano'] ?></td>
                                                         <td><?= $onibus['tipo'] ?></td>
@@ -119,35 +141,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--                            <div class="row" style="padding-left: 10px;" >
-                                                            <div class="col-lg-5" id="teste11">
-                                                                <label for="par1" id="label">Ônibus selecionados:</label>
-                                                                <div class="row"  id="teste1" style="height: 150px; overflow: auto; border-style: solid; border-width: thin; border-radius:3%; border-color: rgba(255,255,255,0.3); ">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-2" style="padding-top: 60px; padding-left: 30px;  ">
-                                                                <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; ">
-                                                                    <div class="seta-1" id="seta1"></div>
-                                                                </div>
-                                                                <div class="row" style="padding-left: 45%; background-color:rgba(0,0,0,0.2); padding-top: 20px; padding-bottom: 20px;">
-                                                                    <div class="seta-2" id="seta2"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-5">
-                                                                <div class="form-group">
-                                                                    <label for="sel3" id="label">Ônibus:</label>
-                                                                        <select multiple class="form-control" id="sel3" style="height: 150px;">
-                            <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
-                                                                                                                        <option  value="<?= $onibus['id'] ?>"><?= $onibus['placa']; ?> <?= $onibus['ano']; ?> <?= $onibus['tipo']; ?></option>
-                            <? endforeach; ?>
-                                                                        </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>	-->
                             <hr>
-
-
                         </div>
                     </div>
                 </div>

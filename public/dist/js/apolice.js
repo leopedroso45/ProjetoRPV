@@ -5,46 +5,112 @@ $(document).ready(function () {
 
     $('.onibus').DataTable();
 
-//    $("#seta1").click(function ()
-//    {
-//        var id = $("#sel3 option:selected").val();
-//        var placa = $("#sel3 option:selected").text();
-//
-//
-//        if (id == null) {
-//            $("div#aviso").show("slow");
-//
-//        } else {
-//            $("#teste1").append('<div class="col-lg-12" id="onibusx" style="padding: 10px; padding-bottom: 0px;">' +
-//                    '<a class="form-control ids" at=' + id + ' type="text" name="onibus[]"  disabled style="color: black; padding-left: 10px;">' + placa + ' </a>' +
-//                    '</div>'
-//                    );
-//            // document.getElementById(id_parada).value = local;
-//        }
-//
-//    });
-
-    $("#form-apolices").submit(function (event) {
-        event.preventDefault();
+    $(".cadastrar-apolice").click(function () {
 
         var id_onibus;
+        var descricao = $("#descricao").val();
+        var data_inicio = $("#data_inicio").val();
+        var data_fim = $("#data_fim").val();
+        var valor = $("#valor").val();
         var onibus = [];
+        var cont = 0;
+        var num_onibus = 0;
 
+        var dataInicio = data_inicio.split("/");
+        var dataFim = data_fim.split("/");
+
+//            Data nok
+        if (dataInicio[2] > dataFim[2] && dataInicio[1] > dataFim[1]) {
+            $('.data').removeAttr("style");
+            $('.dia').attr("style", "display: none");
+            $('.mes').attr("style", "display: none");
+            $('.ano').attr("style", "display: none");
+
+
+//            Ano nok
+        } else if (dataInicio[2] > dataFim[2]) {
+            $('.ano').removeAttr("style");
+            $('.dia').attr("style", "display: none");
+            $('.mes').attr("style", "display: none");
+            $('.data').attr("style", "display: none");
+
+//            Ano ok, mês nok
+        } else if (dataInicio[2] < dataFim[2] && dataInicio[1] > dataFim[1] ||
+                dataInicio[2] === dataFim[2] && dataInicio[1] > dataFim[1]) {
+            $('.mes').removeAttr("style");
+            $('.dia').attr("style", "display: none");
+            $('.data').attr("style", "display: none");
+            $('.ano').attr("style", "display: none");
+
+//            Ano ok, Mês ok, dia nok
+        } else if (dataInicio[2] < dataFim[2] && dataInicio[1] < dataFim[1] && dataInicio[0] > dataFim[0] ||
+                dataInicio[2] === dataFim[2] && dataInicio[1] === dataFim[1] && dataInicio[0] > dataFim[0]) {
+            $('.dia').removeAttr("style");
+            $('.data').attr("style", "display: none");
+            $('.mes').attr("style", "display: none");
+            $('.ano').attr("style", "display: none");
+        }
+
+//        Coletando todos onibus selecionados
         $('.ids').each(function () {
-            onibus.push($(this).attr("at"));
+            onibus.push($(this).attr("id"));
+            cont++;
         });
-        
-        id_onibus = onibus.toString();
-        
-        alert("id_onibus = "+id_onibus);
 
+        num_onibus = cont;
+        id_onibus = onibus.toString();
+
+//        alert("id_onibus = " + id_onibus + " onibus = " + num_onibus);
+
+//        $.ajax({
+//            type: 'POST',
+//            url: baseUrl + 'apolice/index',
+//            data: {id_onibus: id_onibus, descricao: descricao,
+//                data_inicio: data_inicio, data_fim: data_fim, valor: valor
+//            },
+//            async: false,
+//            success: function () {
+//                var dialog = bootbox.dialog({
+//                    title: 'Mensagem',
+//                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+//                    closeButton: false,
+//                    buttons: {
+//                        ok: {
+//                            label: "OK",
+//                            className: 'btn-primary',
+//                            callback: function () {
+//                                // window.location = baseUrl + '';
+//                            }
+//                        }
+//                    }
+//                });
+//                dialog.init(function () {
+//                    setTimeout(function () {
+//
+//                        dialog.find('.bootbox-body').html('Apolice cadastrado com sucesso!');
+//                    }, 2000);
+//
+//                });
+//
+//            },
+//            error: function () {
+////                alert('error');
+//            }
+//        });
     });
 
 
 });
 
 $(function () {
-    
+
+    var id = "";
+    var onibus = [];
+    var cont = "";
+    var id_bus = "";
+    var length = 0;
+    var $checkBox = $(this);
+
     $('body').on('click', 'tbody tr', function () {
         id = $(this).attr('id');
         $(this).toggleClass('active');
@@ -54,27 +120,75 @@ $(function () {
         var $button = $(this), actives = '';
 
         if ($button.hasClass('move-left')) {
-            actives = $('.list-right table tr.active');
-            actives.clone().appendTo('.list-left table');
-//            document.getElementById(id).src = id;
-            $(".list-left table").append('<a type="text" at='+ id +' class="ids" name="onibus[]" style="display: none;"></a>');
-            actives.remove();
+            length = $('.list-right table .active').length;
+//            alert(length);
+
+            if (length === 1) {
+
+                actives = $('.list-right table tr.active');
+                actives.clone().appendTo('.list-left table');
+                actives.remove();
+                $('.list-left #' + id).addClass('ids');
+                $('.list-left #' + id).attr("name", "onibus[]");
+
+
+            } else {
+                $('.list-right div div div div a i').removeClass('fa-check-circle');
+                $('.list-right div div div div a i').addClass('fa-circle-notch');
+
+                $('.list-right .active').each(function () {
+                    onibus.push($(this).attr("id"));
+                    cont++;
+                });
+
+                id = onibus.toString();
+                id_bus = id.split(" ");
+                id_bus = id.split(",");
+//            alert(id_bus.length);
+                actives = $('.list-right table tr.active');
+                actives.clone().appendTo('.list-left table');
+                actives.remove();
+
+                for (var i = 0; i < id_bus.length; i++) {
+                    $('.list-left #' + id_bus[i]).addClass('ids');
+                    $('.list-left #' + id_bus[i]).attr("name", "onibus[]");
+                }
+            }
+
 
         } else if ($button.hasClass('move-right')) {
+
+            $('.list-left .active').each(function () {
+                onibus.push($(this).attr("id"));
+                cont++;
+            });
+
+            id = onibus.toString();
+            id_bus = id.split(" ");
+            id_bus = id.split(",");
             actives = $('.list-left table tr.active');
             actives.clone().appendTo('.list-right table');
-            
-            document.getElementsByClassName("ids")[0].remove();
             actives.remove();
+
+            for (var i = 0; i < id_bus.length; i++) {
+                $('.list-right #' + id_bus[i]).removeClass('ids');
+                $('.list-right #' + id_bus[i]).removeAttr("name", "onibus[]");
+            }
         }
     });
 
     $('.dual-list .selector').click(function () {
         var $checkBox = $(this);
+
         if (!$checkBox.hasClass('selected')) {
+            id = $(this).attr('id');
+
             $checkBox.addClass('selected').closest('.well').find('table tbody tr:not(.active)').addClass('active');
             $checkBox.children('i').removeClass('fa-circle-notch').addClass('fa-check-circle');
+
         } else {
+            id = $(this).attr('id');
+
             $checkBox.removeClass('selected').closest('.well').find('table tbody tr.active').removeClass('active');
             $checkBox.children('i').removeClass('fa-check-circle').addClass('fa-circle-notch');
         }
@@ -94,3 +208,17 @@ $(function () {
         }).hide();
     });
 });
+
+
+
+//function printChecked() {
+//    var paradas = [];
+//    var cont = "";
+//
+//    $('.active').each(function () {
+//        paradas.push($(this).attr("id"));
+//        cont++;
+//    });
+//
+//    alert(paradas.toString());
+//}

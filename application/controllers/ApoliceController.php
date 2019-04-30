@@ -28,17 +28,19 @@ class ApoliceController extends Zend_Controller_Action
         $listaApolices = $dbTableApolice->listarTodasApolices();
         $this->view->listaDasApolices = $listaApolices;
 
-//        if ($this->getRequest()->isPost()) {
-//            $dados = $this->getRequest()->getParams();
-//            $dbTableApolice = new Application_Model_DbTable_Apolice();
-//            $dbTableOnibusApolice = new Application_Model_DbTable_ApoliceUrbano();
-//            $id_apolice = $dbTableApolice->cadastrarApolice($dados);
-//            $onibus = explode(',', $dados['id_onibus_urbano']);
-//
-//            for ($i = 0; $i < sizeof($onibus); $i++) {
-//                $dbTableOnibusApolice->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
-//            }
-//        }
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            
+            $dbTableApolice = new Application_Model_DbTable_Apolice();
+            $dbTableOnibusApolice = new Application_Model_DbTable_ApoliceUrbano();
+            
+            $id_apolice = $dbTableApolice->cadastrarApolice($dados);
+            $onibus = explode(',', $dados['id_onibus_urbano']);
+
+            for ($i = 0; $i < sizeof($onibus); $i++) {
+                $dbTableOnibusApolice->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
+            }
+        }
     }
 
 }
