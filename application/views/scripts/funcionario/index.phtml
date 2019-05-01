@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-email-input" class="col-2 col-form-label">Salario</label>
+                            <label class="col-2 col-form-label">Salario</label>
                             <div class="col-xs-9">
                                 <input class="form-control" type="number" value="998" min="998" max="10000" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="" required>
                             </div>
@@ -41,64 +41,64 @@
                         <h6>Do funcionário</h6>
                         <Center>
                         <div class="form-group row">
-                            <label for="example-url-input" class="col-2 col-form-label">Nome</label>
+                            <label class="col-2 col-form-label">Nome</label>
                             <div class="col-xs-9">
                                 <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-tel-input" class="col-2 col-form-label">Data de Nascimento</label>
+                            <label class="col-2 col-form-label">Data de Nascimento</label>
                             <div class="col-xs-9">
-                                <input type="date" class="form-control" placeholder="dd/mm/aaaa" id="" required>
+                                <input type="date" name="data" id="data" class="form-control" placeholder="dd/mm/aaaa" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-password-input" class="col-2 col-form-label">CPF</label>
+                            <label class="col-2 col-form-label">CPF</label>
                             <div class="col-xs-9">
                             <input type="text" name="cpf" id="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-password-input" class="col-2 col-form-label">CPF</label>
+                            <label class="col-2 col-form-label">RG</label>
                             <div class="col-xs-9">
-                            <input type="text" name="rgeaa" id="rgeaa" placeholder="XXX.XXX.XXX-XX" class="form-control" required>
+                            <input type="text" name="rge" id="rg" placeholder="XXXXXXXXXX" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-datetime-local-input" class="col-2 col-form-label">CTPS</label>
+                            <label class="col-2 col-form-label">CTPS</label>
                             <div class="col-xs-9">
                                 <input type="text" name="ctps" id="ctps" placeholder="Número Série UF" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-date-input" class="col-2 col-form-label">PIS</label>
+                            <label class="col-2 col-form-label">PIS</label>
                             <div class="col-xs-9">
                                 <input type="text" name="pis" id="pis" placeholder="XXX.XXXXX.XX-X" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-month-input" class="col-2 col-form-label">CNH</label>
+                            <label class="col-2 col-form-label">CNH</label>
                             <div class="col-xs-9">
-                                <input type="text" name="cnh" id="cnh" placeholder="" class="form-control" required>
+                                <input type="text" name="cnh" id="cnh" placeholder="XXXXXXXXXXX" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="example-week-input" class="col-2 col-form-label">Telefone</label>
+                            <label class="col-2 col-form-label">Telefone</label>
                             <div class="col-xs-9">
-                                <input class="form-control" type="week" value="2011-W33" id="example-week-input">
+                                <input type="text" name="telefone" id="telefone" placeholder="(XX)XXXXX-XXXX"class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-time-input" class="col-2 col-form-label">E-mail</label>
+                            <label class="col-2 col-form-label">E-mail</label>
                             <div class="col-xs-9">
-                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                                <input type="text" name="email" id="email" placeholder="nome@mail.com" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-color-input" class="col-2 col-form-label">Data de Admissão</label>
+                            <label class="col-2 col-form-label">Data de Admissão</label>
                             <div class="col-xs-9">
-                                <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+                                <input type="date" name="dataAdmissao" id="dataAdmissao" placeholder="dd/mm/aaaa" class="form-control" required>
                             </div>
                         </div>
                         </Center>
@@ -119,15 +119,15 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-       // $("#rg").mask("9999999999");
-        $("#rgeaa").mask("999.999.999-99");
-        alert('a')
+        $("#data").mask("99/99/9999");
+        $("#rg").mask("9999999999");
 		$("#cpf").mask("999.999.999-99");
-        alert('b')
-        //$('#ctps').mask('9999999 9999 AA/9999999 99999 AA');
+        $('#ctps').mask('9999999 99999 SS');
         $('#pis').mask('999.99999.99-9');
-        alert('c')
+        $('#cnh').mask('99999999999');
+        $("#telefone").mask("(99) 99999-9999");
+        $('#dataAdmissao').mask('99/99/9999');
 
-        $("#telefone").mask("(99) 9999-9999");
+        
 	});
 </script>
