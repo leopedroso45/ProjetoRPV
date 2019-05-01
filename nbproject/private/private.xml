@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/cadastroEstudante.js</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Beneficio.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/layouts/scripts/layout_admin_geral.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/moment.js</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/layouts/scripts/layout.phtml</file>
         </group>
     </open-files>
 </project-private>
