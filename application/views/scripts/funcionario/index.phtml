@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row">
+        <!-- Div para o link de caminho! -->
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Motoristas</li>
+            </ol>
+        </div>
+        <!-- Div para o corpo da página! -->
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="container">
+                    <form action="/html/tags/html_form_tag_action.cfm">
+                        <!-- Conjunto de divs-linha para cada campo do form-->
+                        
+                        <h6>Do cargo</h6>
+                        <Center>    
+                        <div class="form-group row">
+                            <label for="example-search-input" class="col-2 col-form-label">Cargo</label>
+                            <div class="col-xs-9">
+                                <select class="custom-select" id="inputGroupSelect01" required>
+                                    <option selected label="Selecione um cargo." disabled></option>
+                                    <option value="1">Administrador Local</option>
+                                    <option value="2">Administrador Local</option>
+                                    <option value="3">Cobrador</option>
+                                    <option value="4">Gerente de Recursos Humanos</option>
+                                    <option value="5">Motorista</option>
+                                    <option value="6">Secretário</option>
+                                    <option value="7">Vendedor</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-email-input" class="col-2 col-form-label">Salario</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="number" value="998" min="998" max="10000" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="" required>
+                            </div>
+                        </div>
+                        </Center>
+                        <h6>Do funcionário</h6>
+                        <Center>
+                        <div class="form-group row">
+                            <label for="example-url-input" class="col-2 col-form-label">Nome</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-tel-input" class="col-2 col-form-label">Data de Nascimento</label>
+                            <div class="col-xs-9">
+                                <input type="date" class="form-control" placeholder="dd/mm/aaaa" id="" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-password-input" class="col-2 col-form-label">CPF</label>
+                            <div class="col-xs-9">
+                            <input type="text" name="cpf" id="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-password-input" class="col-2 col-form-label">CPF</label>
+                            <div class="col-xs-9">
+                            <input type="text" name="rgeaa" id="rgeaa" placeholder="XXX.XXX.XXX-XX" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-datetime-local-input" class="col-2 col-form-label">CTPS</label>
+                            <div class="col-xs-9">
+                                <input type="text" name="ctps" id="ctps" placeholder="Número Série UF" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-date-input" class="col-2 col-form-label">PIS</label>
+                            <div class="col-xs-9">
+                                <input type="text" name="pis" id="pis" placeholder="XXX.XXXXX.XX-X" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-month-input" class="col-2 col-form-label">CNH</label>
+                            <div class="col-xs-9">
+                                <input type="text" name="cnh" id="cnh" placeholder="" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-week-input" class="col-2 col-form-label">Telefone</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="week" value="2011-W33" id="example-week-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-time-input" class="col-2 col-form-label">E-mail</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-color-input" class="col-2 col-form-label">Data de Admissão</label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+                            </div>
+                        </div>
+                        </Center>
+
+                        <!-- Div do botão!
+                        <div class="form-group row">
+                            <div class="offset-xs-3 col-xs-9">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                        -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+       // $("#rg").mask("9999999999");
+        $("#rgeaa").mask("999.999.999-99");
+        alert('a')
+		$("#cpf").mask("999.999.999-99");
+        alert('b')
+        //$('#ctps').mask('9999999 9999 AA/9999999 99999 AA');
+        $('#pis').mask('999.99999.99-9');
+        alert('c')
+
+        $("#telefone").mask("(99) 9999-9999");
+	});
+</script>
