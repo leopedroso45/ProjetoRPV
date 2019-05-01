@@ -1,8 +1,3 @@
-$(document).ready(function () {
-
-
-});
-
 function editarBeneficio(id, situacao) {
     var id1 = id;
     var situacao1 = situacao;
@@ -17,6 +12,7 @@ function editarBeneficio(id, situacao) {
             location.reload();
         },
         error: function () {
+            alert(Error);
         }
     });
 }

@@ -110,7 +110,7 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
         $beneficio = $this->createRow();
         
         
-        $beneficio->setData_solicitacao(date('d/m/Y'));
+        $beneficio->setData_solicitacao($dados['data_solicitacao']);
         $beneficio->setIdf_situacao_solicitacao($idf_situacao_solicitacao);
         $beneficio->setIdf_pessoa($idf_pessoa);
 

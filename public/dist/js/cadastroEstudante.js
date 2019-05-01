@@ -15,7 +15,8 @@ $(document).ready(function () {
         var bairro = $("#bairro").val();
         var comprovanteResidencia = $("#comprovanteResidencia").val();
         var comprovanteMatricula = $("#comprovanteMatricula").val();
-        var data_solicitacao = $("dataatual").val();
+        var data_solicitacao = new Date();
+        alert(data_solicitacao);
 
         $.ajax({
             type: "POST",
@@ -23,7 +24,7 @@ $(document).ready(function () {
             async: false,
             data: {nome_usuario: nome_usuario, senha: senha, nomeCompleto: nomeCompleto, dataNascimento: dataNascimento,
                 cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovanteResidencia: comprovanteResidencia,
-                comprovanteMatricula: comprovanteMatricula
+                comprovanteMatricula: comprovanteMatricula, data_solicitacao: data_solicitacao
             },
 
             success: function () {
