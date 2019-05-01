@@ -5,7 +5,7 @@ class FuncionarioController extends Zend_Controller_Action
 
     public function init()
     {
-        $this->_helper->layout->setLayout('layout_secretario');
+        $this->_helper->layout->setLayout('layout_gerenterh');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cobrador.js'));
     }
