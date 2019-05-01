@@ -3,15 +3,19 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
+    $('#valor').mask('99,999.99');
+
     $('.onibus').DataTable();
 
     $(".cadastrar-apolice").click(function () {
 
         var id_onibus;
+        var tipo_onibus;
         var descricao = $("#descricao").val();
         var data_inicio = $("#data_inicio").val();
         var data_fim = $("#data_fim").val();
         var valor = $("#valor").val();
+        var tipo = [];
         var onibus = [];
         var cont = 0;
         var num_onibus = 0;
@@ -54,49 +58,55 @@ $(document).ready(function () {
 //        Coletando todos onibus selecionados
         $('.ids').each(function () {
             onibus.push($(this).attr("id"));
+            tipo.push($(this).attr("itemtype"));
             cont++;
         });
 
         num_onibus = cont;
         id_onibus = onibus.toString();
+        tipo_onibus = tipo.toString();
 
-//        alert("id_onibus = " + id_onibus + " onibus = " + num_onibus);
+//        for (var i = 0; i < id_onibus.length; i++) {
+            alert("id_onibus = " + id_onibus + " tipo = " + tipo_onibus);
+//        }
 
-//        $.ajax({
-//            type: 'POST',
-//            url: baseUrl + 'apolice/index',
-//            data: {id_onibus: id_onibus, descricao: descricao,
-//                data_inicio: data_inicio, data_fim: data_fim, valor: valor
-//            },
-//            async: false,
-//            success: function () {
-//                var dialog = bootbox.dialog({
-//                    title: 'Mensagem',
-//                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
-//                    closeButton: false,
-//                    buttons: {
-//                        ok: {
-//                            label: "OK",
-//                            className: 'btn-primary',
-//                            callback: function () {
-//                                // window.location = baseUrl + '';
-//                            }
-//                        }
-//                    }
-//                });
-//                dialog.init(function () {
-//                    setTimeout(function () {
-//
-//                        dialog.find('.bootbox-body').html('Apolice cadastrado com sucesso!');
-//                    }, 2000);
-//
-//                });
-//
-//            },
-//            error: function () {
-////                alert('error');
-//            }
-//        });
+        alert(" onibus = " + num_onibus);
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'apolice/index',
+            data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
+                data_inicio: data_inicio, data_fim: data_fim, valor: valor
+            },
+            async: false,
+            success: function () {
+                var dialog = bootbox.dialog({
+                    title: 'Mensagem',
+                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+                    closeButton: false,
+                    buttons: {
+                        ok: {
+                            label: "OK",
+                            className: 'btn-primary',
+                            callback: function () {
+                                // window.location = baseUrl + '';
+                            }
+                        }
+                    }
+                });
+                dialog.init(function () {
+                    setTimeout(function () {
+
+                        dialog.find('.bootbox-body').html('Apolice cadastrado com sucesso!');
+                    }, 2000);
+
+                });
+
+            },
+            error: function () {
+//                alert('error');
+            }
+        });
     });
 
 
@@ -109,7 +119,7 @@ $(function () {
     var cont = "";
     var id_bus = "";
     var length = 0;
-    var $checkBox = $(this);
+//    var $checkBox = $(this);
 
     $('body').on('click', 'tbody tr', function () {
         id = $(this).attr('id');
@@ -208,17 +218,3 @@ $(function () {
         }).hide();
     });
 });
-
-
-
-//function printChecked() {
-//    var paradas = [];
-//    var cont = "";
-//
-//    $('.active').each(function () {
-//        paradas.push($(this).attr("id"));
-//        cont++;
-//    });
-//
-//    alert(paradas.toString());
-//}

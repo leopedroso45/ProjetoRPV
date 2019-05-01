@@ -129,7 +129,7 @@
                                             </thead>
                                             <tbody>
                                                 <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
-                                                    <tr id="<?= $onibus['id'] ?>" class="<?= $onibus['tipo'] ?>">
+                                                <tr id="<?= $onibus['id'] ?>" itemtype="<?= $onibus['tipo'] ?>" class="<?= $onibus['tipo'] ?>">
                                                         <td><?= $onibus['placa'] ?></td>
                                                         <td><?= $onibus['ano'] ?></td>
                                                         <td><?= $onibus['tipo'] ?></td>
@@ -163,7 +163,7 @@
                                 <tr>
                                     <td><?= $apolice['descricao'] ?>	</td>
                                     <td><?= $apolice['data_inicio'] ?></td>
-                                    <td><?= $apolice['data_termino'] ?></td>
+                                    <td><?= $apolice['data_fim'] ?></td>
                                     <td><?= $apolice['valor'] ?></td>
                                 </tr>
                             <? endforeach; ?>
