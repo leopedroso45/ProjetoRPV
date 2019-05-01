@@ -17,7 +17,6 @@ $(document).ready(function () {
         var comprovanteMatricula = $("#comprovanteMatricula").val();
         moment.locale('pt-br');
         var data_solicitacao = moment().format('LLL'); 
-        alert(data_solicitacao);
 
         $.ajax({
             type: "POST",
@@ -31,7 +30,7 @@ $(document).ready(function () {
             success: function () {
                 $(".alert-success").removeAttr("style");
                 location.reload();
-                alert('xd');
+                alert('Cadastrado!');
             },
             error: function () {
                 alert("Error");

@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/cadastroEstudante.js</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Beneficio.php</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/layouts/scripts/layout_admin_geral.phtml</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/moment.js</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/layouts/scripts/layout.phtml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
