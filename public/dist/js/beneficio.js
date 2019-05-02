@@ -11,7 +11,6 @@ function editarBeneficio(id, situacao) {
         },
         success: function () {
             location.reload();
-            alert("silvi1o" + id1 + "," + situacao1);
         },
         error: function () {
             alert(Error);

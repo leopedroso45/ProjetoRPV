@@ -19,7 +19,7 @@ class CadastroEstudanteController extends Zend_Controller_Action {
 
             $dados = $this->getRequest()->getParams();
 
-//            var_dump($dados);die();
+//          var_dump($dados);die();
             $id_usuario = $dbtableUsuario->cadastrarUsuario($dados);
             $id_pessoa = $dbtablePessoa->cadastrarPessoa($dados, $id_usuario);
             $dbtableEstudante->cadastrarEstudante($dados, $id_pessoa);
