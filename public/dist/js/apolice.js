@@ -67,7 +67,7 @@ $(document).ready(function () {
         tipo_onibus = tipo.toString();
 
 //        for (var i = 0; i < id_onibus.length; i++) {
-            alert("id_onibus = " + id_onibus + " tipo = " + tipo_onibus);
+        alert("id_onibus = " + id_onibus + " tipo = " + tipo_onibus);
 //        }
 
         alert(" onibus = " + num_onibus);
@@ -121,7 +121,7 @@ $(function () {
     var length = 0;
 //    var $checkBox = $(this);
 
-    $('body').on('click', 'tbody tr', function () {
+    $('body').on('click', '.list-left tbody tr, .list-right tbody tr', function () {
         id = $(this).attr('id');
         $(this).toggleClass('active');
     });
@@ -218,3 +218,24 @@ $(function () {
         }).hide();
     });
 });
+
+
+
+
+function onibusPorIdApolice(id_apolice) {
+    var id = id_apolice;
+    
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'apolice/index',
+        data: {id: id
+        },
+        async: false,
+        success: function () {
+
+        },
+        error: function () {
+
+        }
+    });
+}
