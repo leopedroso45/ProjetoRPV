@@ -7,6 +7,7 @@ $("#seta1").click(function ()
         $("div#aviso").show("slow");
 
     } else {
+       
         $("#teste1").append('<div class="row" id="paradax" style="padding: 10px; padding-bottom: 0px;">' +
                 '<div class="col-9">' +
                 '<a class="form-control ids" at=' + id_parada + ' type="text" name="parada[]"  disabled style="color: black; width: 305px; padding-left: 10px;">' + local + ' </a>' +
@@ -19,6 +20,16 @@ $("#seta1").click(function ()
         // document.getElementById(id_parada).value = local;
     }
 });
+
+    
+  
+  
+
+    
+
+                           
+     
+
 
 $("#alocar-cobrador").click(function () {
     var id_cobrador = $("#sel4 option:selected").val();

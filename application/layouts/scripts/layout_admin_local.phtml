@@ -17,6 +17,28 @@
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/trajeto.css") ?> />
         <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/style.css") ?> />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script>
+    $(".moveup").on("click", function() {
+    var elem = $(this).closest("div");
+    elem.prev().before(elem);
+});
+
+$(".movedown").on("click", function() {
+    var elem = $(this).closest("div");
+    elem.next().after(elem);
+});
+
+$(".movetop").on("click", function() {
+    var elem = $(this).closest("div");
+    elem.siblings().first().before(elem);
+});
+
+$(".movebottom").on("click", function() {
+    var elem = $(this).closest("div");
+    elem.siblings().last().after(elem);
+});
+</script>
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="position: fixed; top:0; right:0; left:0; z-index:1030;">
@@ -42,6 +64,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("linha") ?>">
+                                Linhas
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?= $this->baseUrl("concessaotrajeto") ?>">
                                 Concessões
                             </a>
@@ -59,6 +86,8 @@
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.min.js') ?>"></script>
+            <script type="text/javascript" src="<?= $this->baseUrl('dist/js/mask.js') ?>"></script>
+        
         <?= $this->headScript(); ?>
     </body>
 </html>
