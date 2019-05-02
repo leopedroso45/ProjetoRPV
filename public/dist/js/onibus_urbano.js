@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 $('#placa').mask('SSSAAAA');
 $('#ano').mask('9999');
 $('#km').mask('99999999');
