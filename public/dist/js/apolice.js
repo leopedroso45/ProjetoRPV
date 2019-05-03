@@ -82,14 +82,14 @@ $(document).ready(function () {
             success: function () {
                 var dialog = bootbox.dialog({
                     title: 'Mensagem',
-                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+                    message: '<p><i class="fa fa-spin fa-spinner"></i> Cadastro realizado com sucesso!</p>',
                     closeButton: false,
                     buttons: {
                         ok: {
                             label: "OK",
                             className: 'btn-primary',
                             callback: function () {
-                                // window.location = baseUrl + '';
+                                 location.reload();
                             }
                         }
                     }

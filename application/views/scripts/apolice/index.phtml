@@ -128,7 +128,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                                                <? foreach ($this->listaDosOnibus as $onibus): ?>
                                                     <tr id="<?= $onibus['id'] ?>" itemtype="<?= $onibus['tipo'] ?>" class="<?= $onibus['tipo'] ?>">
                                                         <td><?= $onibus['placa'] ?></td>
                                                         <td><?= $onibus['ano'] ?></td>
@@ -167,7 +167,7 @@
                                     <td><?= $apolice['data_fim'] ?></td>
                                     <td><?= $apolice['valor'] ?></td>
                                     <td>
-                                        <a href="<?= '#myModal' . $apolice['id_apolice'] ?>" onclick="onibusPorIdApolice(<?=$apolice['id_apolice'] ?>)" class="btn btn-primary btn-labeled" data-toggle="modal">
+                                        <a  href="<?= '#myModal' . $apolice['id_apolice'] ?>" onclick="onibusPorIdApolice(<?=$apolice['id_apolice'] ?>)" class="btn btn-primary btn-labeled" data-toggle="modal" style="cursor: pointer;">
                                             <span class="btn-label">
                                                 <i class="fas fa-eye" style="color: white;"></i>
                                             </span>
@@ -190,8 +190,8 @@
                                             <div class="container-fluid"> 
                                                 <div class="row">
                                                     <? foreach ($this->listarOnibusPorIdApolice as $onibusApolice): ?>
-                                                    <?= $onibusApolice['placa'] ?><br>
-                                                    <?= $onibusApolice['PLACA'] ?>
+                                                    <?= $onibusApolice['placa'] ?>
+                                                    <?= $onibusApolice["PLACA"] ?>
                                                      <? endforeach; ?>
                                                 </div>
                                             </div>

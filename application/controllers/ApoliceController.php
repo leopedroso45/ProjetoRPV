@@ -19,49 +19,48 @@ class ApoliceController extends Zend_Controller_Action
     {
         $dbTableApolice = new Application_Model_DbTable_Apolice();
 
-//        if ($this->getRequest()->isPost()) {
-//            $id = $this->getRequest()->getParam('id');
+        if ($this->getRequest()->isPost()) {
+            $id = $this->getRequest()->getParam('id');
 //            var_dump($id);die();
-//            $listaApolicePorIdApolice = $dbTableApolice->listarOnibusPorIdApolice($id);
-//            $this->view->listarOnibusPorIdApolice = $listaApolicePorIdApolice;
-//        }
+            $listaApolicePorIdApolice = $dbTableApolice->listarOnibusPorIdApolice($id);
+            var_dump($listaApolicePorIdApolice);die();
+            $this->view->listarOnibusPorIdApolice = $listaApolicePorIdApolice;
+        }
 
         $listaApolices = $dbTableApolice->listarTodasApolices();
         $this->view->listaDasApolices = $listaApolices;
 
         $dbTableOnibusUrbano = new Application_Model_DbTable_OnibusUrbano();
         $lista = $dbTableOnibusUrbano->listarTodosOnibus();
-        $this->view->listaDosOnibusUrbanos = $lista;
+        $this->view->listaDosOnibus = $lista;
 
-        if ($this->getRequest()->isPost()) {
-            $dados = $this->getRequest()->getParams();
-            
+//        if ($this->getRequest()->isPost()) {
+//            $dados = $this->getRequest()->getParams();
+//            
 //            if ($dados['descricao'] === NULL) {
 //                
 //            } else {
-
-                $onibus = explode(',', $dados['id_onibus']);
-
-                $dbTableApolice = new Application_Model_DbTable_Apolice();
-                $id_apolice = $dbTableApolice->cadastrarApolice($dados);
-
-//            var_dump(sizeof($onibus));die();
-
-                for ($i = 0; $i < sizeof($onibus); $i++) {
-//                var_dump("<b><br><hr>data:<pre> ". print_r($onibus[0])."</pre><hr><br><b>");
-
-                    if ($dados['tipo'][$i] === 'urbano') {
-                        $dbTableOnibusUrbano = new Application_Model_DbTable_ApoliceUrbano();
-                        $dbTableOnibusUrbano->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
-                    }
-
-                    if ($dados['tipo'][$i] === 'intermunicipal') {
-                        $dbTableOnibusIntermunicipal = new Application_Model_DbTable_ApoliceIntermunicipal();
-                        $dbTableOnibusIntermunicipal->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
-                    }
-                }
+//
+//                $onibus = explode(',', $dados['id_onibus']);
+//
+//                $dbTableApolice = new Application_Model_DbTable_Apolice();
+//                $id_apolice = $dbTableApolice->cadastrarApolice($dados);
+//
+//
+//                for ($i = 0; $i < sizeof($onibus); $i++) {
+//
+//                    if ($dados['tipo'][$i] === 'urbano') {
+//                        $dbTableOnibusUrbano = new Application_Model_DbTable_ApoliceUrbano();
+//                        $dbTableOnibusUrbano->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
+//                    }
+//
+//                    if ($dados['tipo'][$i] === 'intermunicipal') {
+//                        $dbTableOnibusIntermunicipal = new Application_Model_DbTable_ApoliceIntermunicipal();
+//                        $dbTableOnibusIntermunicipal->cadastrarOnibusApolice($id_apolice, $onibus[$i]);
+//                    }
+//                }
 //            }
-        }
+//        }
     }
 
 }
