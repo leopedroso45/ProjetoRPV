@@ -89,6 +89,43 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
 
         return $this->fetchAll($select);
     }
+        public function listarEstudanteAprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('EST' => 'ESTUDANTE'), array('EST.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 1');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarEstudanteReprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('EST' => 'ESTUDANTE'), array('EST.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 2');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
 
     public function editarBeneficioAction($id, $dados) {
         $this->find($id)->current();

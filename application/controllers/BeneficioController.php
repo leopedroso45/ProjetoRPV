@@ -49,6 +49,28 @@ class BeneficioController extends Zend_Controller_Action {
             $dbTableBeneficio->editarBeneficios($id, $dados);
         }
     }
+    
+        public function estudanteaprovadoAction() {
+        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+        $listaEstudante = $dbTableBeneficio->listarEstudanteAprovado();
+        $this->view->listarBeneficios = $listaEstudante;
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableBeneficio->editarBeneficios($id, $dados);
+        }
+    }
+    
+            public function estudantereprovadoAction() {
+        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
+        $listaEstudante = $dbTableBeneficio->listarEstudanteReprovado();
+        $this->view->listarBeneficios = $listaEstudante;
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableBeneficio->editarBeneficios($id, $dados);
+        }
+    }
 
     public function editarbeneficioAction() {
         //echo("teste");
