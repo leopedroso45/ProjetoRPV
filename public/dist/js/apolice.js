@@ -7,6 +7,28 @@ $(document).ready(function () {
 
     $('.onibus').DataTable();
 
+    $('#data_inicio, body').click(function () {
+
+        var data_inicio = $("#data_inicio").val();
+        var data_fim = $("#data_fim").val();
+
+        var dataInicio = data_inicio.split("/");
+        var anoInicioString = dataInicio[2];
+        var anoInicioInt = parseInt(anoInicioString, 10);
+
+        var dataFim = data_fim.split("/");
+        var diaFimString = dataFim[0];
+        var mesFimString = dataFim[1];
+        var anoFimString = dataFim[2];
+        var anoFimInt = parseInt(anoFimString, 10);
+
+        anoFimInt = anoInicioInt + 1;
+
+        var datafinal = (diaFimString + "/" + mesFimString + "/" + anoFimInt);
+
+        $("#data_fim").val(datafinal);
+    });
+
     $(".cadastrar-apolice").click(function () {
 
         var id_onibus;
@@ -89,7 +111,7 @@ $(document).ready(function () {
                             label: "OK",
                             className: 'btn-primary',
                             callback: function () {
-                                 location.reload();
+                                location.reload();
                             }
                         }
                     }
@@ -224,7 +246,7 @@ $(function () {
 
 function onibusPorIdApolice(id_apolice) {
     var id = id_apolice;
-    
+
     $.ajax({
         type: 'POST',
         url: baseUrl + 'apolice/index',

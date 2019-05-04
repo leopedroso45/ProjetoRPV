@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Apolice.php</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/apolice/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/apolice/visualizar.phtml</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/apolice.js</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/onibus-intermunicipal/index.phtml</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/ApoliceController.php</file>
         </group>
     </open-files>
