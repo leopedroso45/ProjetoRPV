@@ -23,47 +23,47 @@ class Application_Model_DbTable_Apolice extends Zend_Db_Table_Abstract
         return $this->fetchAll();
     }
 
-//    public function listarOnibusPorIdApolice($id)
-//    {
-//        
-//        $adapter = new Zend_Db_Adapter_Pdo_Mysql(array(
-//            'driver' => 'pdo_mysql',
-//            'dbname' => 'controledefrota',
-//            'username' => 'root',
-//            'password' => '',
-//            'charset' => 'utf8'
-//        ));
+    public function listarOnibusPorIdApolice($id)
+    {
+        
+        $adapter = new Zend_Db_Adapter_Pdo_Mysql(array(
+            'driver' => 'pdo_mysql',
+            'dbname' => 'controledefrota',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8'
+        ));
 //var_dump($id);die();
-//        $stmt = $adapter->query(
-//                "SELECT onibus_viagem.placa, onibus_urbano.PLACA
-//
-//                FROM apolice, onibus_viagem, apolice_viagem, onibus_urbano, apolice_urbano WHERE
-//
-//                onibus_viagem.id_onibus_viagem = apolice_viagem.id_onibus_viagem AND
-//                apolice_viagem.id_apolice = apolice.id_apolice AND
-//
-//                onibus_urbano.id_onibus_urbano = apolice_urbano.id_onibus_urbano AND
-//                apolice_urbano.id_apolice = apolice.id_apolice AND
-//
-//                apolice.id_apolice = '" . $id . "' ");
+        $stmt = $adapter->query(
+                "SELECT onibus_urbano.id_onibus_urbano AS id,
+                (CASE WHEN onibus_urbano.id_onibus_urbano THEN 'urbano' ELSE 'intermunicipal' END) AS tipo,  
+                onibus_urbano.placa, onibus_urbano.ano
+                FROM onibus_urbano, apolice, apolice_urbano WHERE
+                onibus_urbano.id_onibus_urbano = apolice_urbano.id_onibus_urbano AND
+                apolice_urbano.id_apolice = apolice.id_apolice AND
+                apolice.id_apolice = '" . $id . "'
+                
+                GROUP BY id
+                UNION
+
+                SELECT onibus_viagem.id_onibus_viagem AS id,
+                (CASE WHEN onibus_viagem.id_onibus_viagem THEN 'intermunicipal' ELSE 'urbano' END) AS tipo,  
+                onibus_viagem.placa, onibus_viagem.ano
+                FROM onibus_viagem, apolice, apolice_viagem WHERE
+                onibus_viagem.id_onibus_viagem = apolice_viagem.id_onibus_viagem AND
+                apolice_viagem.id_apolice = apolice.id_apolice AND
+                
+                apolice.id_apolice = '" . $id . "' ");
 //        var_dump($stmt->__toString());die();
-//
-//        $rows = $stmt->fetchAll();
-//
-//        return $rows;
-//    }
+
+        $rows = $stmt->fetchAll();
+
+        return $rows;
+    }
     
-        public function listarOnibusPorIdApolice($id) {
+        public function getApolicePorId($id) {
         $select = $this->select()->setIntegrityCheck(false);
-        $select->from(array('AP' => 'APOLICE'), array('AP.ID_APOLICE'))
-                ->from(array('BUS_VG' => 'ONIBUS_VIAGEM'), array('BUS_VG.placa'))
-                ->from(array('BUS_UB' => 'ONIBUS_URBANO'), array('BUS_UB.PLACA'))
-                ->from(array('AP_VG' => 'APOLICE_VIAGEM'), array('AP_VG.ID_APOLICE_VIAGEM'))
-                ->from(array('AP_UB' => 'APOLICE_URBANO'), array('AP_UB.ID_APOLICE_URBANO'))
-                ->where('BUS_UB.ID_ONIBUS_URBANO = AP_UB.ID_ONIBUS_URBANO')
-                ->where('BUS_VG.ID_ONIBUS_VIAGEM = AP_VG.ID_ONIBUS_VIAGEM')
-                ->where('AP_UB.ID_APOLICE = AP.ID_APOLICE')
-                ->where('AP_VG.ID_APOLICE = AP.ID_APOLICE')
+                $select->from(array('AP' => 'APOLICE'), array('AP.*'))
                 ->where('AP.ID_APOLICE = "' . $id . '" ');
 
 //               var_dump($select->__toString());die();
