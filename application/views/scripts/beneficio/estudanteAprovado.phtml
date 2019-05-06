@@ -7,13 +7,19 @@
                 <li class="breadcrumb-item active" style="color: white;" aria-current="page">Estudantes</li>
             </ol>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-12">
             <div class="form-group">
-                <span id="box_icone_busca">
-                    <a href="<?= $this->baseUrl("beneficio/estudante") ?>"> <button id="icone_busca" class="fa fa-search" > Pendentes </button></a>
-                    <a href="<?= $this->baseUrl("beneficio/estudantereprovado") ?>"> <button id="icone_busca" class="fa fa-search" > Reprovados </button></a>
-                    
-                </span>
+                <a href="<?= $this->baseUrl("beneficio/estudante") ?>"> <button id="0" class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Pendentes </button></a>
+                <a href="<?= $this->baseUrl("beneficio/estudanteaprovado") ?>"> <button id="1" class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Aprovados </button></a>
+                <a href="<?= $this->baseUrl("beneficio/estudantereprovado") ?>"> <button id="2" class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Reprovados </button></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Digite o CPF com os números e traços. Ex: 000.000.000-00" class="btn btn-default" style="width:41%;">
+                <a href=""> <button id="" class="btn btn-default" align="right">
+                        <i class="fas fa-search" style="color:black"></i>Buscar</button></a>           
             </div>
         </div>
 
