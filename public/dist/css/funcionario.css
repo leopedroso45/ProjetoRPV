@@ -83,3 +83,8 @@ label > strong{
 .labelsForm{
     color: white;
 }
+
+.espacamento{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

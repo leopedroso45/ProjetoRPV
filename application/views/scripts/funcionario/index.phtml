@@ -8,9 +8,9 @@
                             <Center> 
                             <!-- Conjunto de divs-linha para cada campo do form-->                      
                             <h6>Do cargo</h6> 
-                            <div class="form-group form-control-sm row">
+                            <div class="form-group form-control-sm row ">
                                 <label for="example-search-input" class="col-6 col-form-label">Cargo</label>
-                                <div class="col-xs-9">
+                                <div class="col-xs-9 ">
                                     <select class="custom-select" id="inputGroupSelect01" required>
                                         <option selected label="Selecione um cargo." disabled></option>
                                         <option value="1">Administrador Local</option>
@@ -165,9 +165,17 @@
                                 <input type="password" name="pass" id="pass" placeholder="Sua senha denovo" class="form-control" required>
                                 </div>
                             </div>
+
+                            <!--
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Arquivo</label>
+                                <div class="col-xs-9">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">                                </div>
+                            </div> -->
+                            <br>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <button type="submit" class="btn btn-success btn-sm btn-block">Pronto</button>
+                                    <button type="submit" for="exampleFormControlFile1" class="btn btn-success btn-sm btn-block">Pronto</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="submit" class="btn btn-warning btn-sm btn-block">Voltar</button> 
@@ -180,16 +188,12 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div> -->
-                            
+                            <br>
                             </Center>
                         </form>
                     </div>
                 </div>
-            </div>
-        <!-- Div para o corpo da página! -->
-        
-
-            
+            </div>      
         </div>
     </div>
 </div>
@@ -203,8 +207,6 @@
         $('#pis').mask('999.99999.99-9');
         $('#cnh').mask('99999999999');
         $("#telefone").mask("(99) 99999-9999");
-        $('#dataAdmissao').mask('99/99/9999');
-
-        
+        $('#dataAdmissao').mask('99/99/9999');     
 	});
 </script>
