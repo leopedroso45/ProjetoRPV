@@ -3,7 +3,7 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
-    $('#valor').mask('99,999.99');
+//    $('#valor').mask('99,999.99');
 
     $('.onibus').DataTable();
 
@@ -29,7 +29,33 @@ $(document).ready(function () {
         $("#data_fim").val(datafinal);
     });
 
+    $('#descricao').blur(function () {
+        if (this.value.length === 0) {
+            $('.descricao').removeAttr("style");
+        } else {
+            $('.descricao').attr("style", "display: none");
+        }
+    });
+
+    $('#valor').blur(function () {
+        if (this.value.length === 0) {
+            $('.valor').removeAttr("style");
+        } else {
+            $('.valor').attr("style", "display: none");
+        }
+    });
+
+    $('#valor').blur(function () {
+        if (this.value.length > 0 && this.value.length < 4) {
+            $('.valor-incorreto').removeAttr("style");
+        } else {
+            $('.valor-incorreto').attr("style", "display: none");
+        }
+    });
+
     $(".cadastrar-apolice").click(function () {
+
+        $('.img-loading').removeClass("hidden");
 
         var id_onibus;
         var tipo_onibus;
@@ -40,7 +66,7 @@ $(document).ready(function () {
         var tipo = [];
         var onibus = [];
         var cont = 0;
-        var num_onibus = 0;
+//        var num_onibus = 0;
 
         var dataInicio = data_inicio.split("/");
         var dataFim = data_fim.split("/");
@@ -52,6 +78,9 @@ $(document).ready(function () {
             $('.mes').attr("style", "display: none");
             $('.ano').attr("style", "display: none");
 
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
 
 //            Ano nok
         } else if (dataInicio[2] > dataFim[2]) {
@@ -59,6 +88,10 @@ $(document).ready(function () {
             $('.dia').attr("style", "display: none");
             $('.mes').attr("style", "display: none");
             $('.data').attr("style", "display: none");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
 
 //            Ano ok, mês nok
         } else if (dataInicio[2] < dataFim[2] && dataInicio[1] > dataFim[1] ||
@@ -68,6 +101,10 @@ $(document).ready(function () {
             $('.data').attr("style", "display: none");
             $('.ano').attr("style", "display: none");
 
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
 //            Ano ok, Mês ok, dia nok
         } else if (dataInicio[2] < dataFim[2] && dataInicio[1] < dataFim[1] && dataInicio[0] > dataFim[0] ||
                 dataInicio[2] === dataFim[2] && dataInicio[1] === dataFim[1] && dataInicio[0] > dataFim[0]) {
@@ -75,60 +112,92 @@ $(document).ready(function () {
             $('.data').attr("style", "display: none");
             $('.mes').attr("style", "display: none");
             $('.ano').attr("style", "display: none");
-        }
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else if (descricao.length === 0 && valor.length === 0) {
+            $('.descricao').removeAttr("style");
+            $('.valor').removeAttr("style");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else if (descricao.length === 0 &&
+                valor.length > 0 && valor.length < 4) {
+            $('.descricao').removeAttr("style");
+            $('.valor-incorreto').removeAttr("style");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else if (descricao.length === 0) {
+            $('.descricao').removeAttr("style");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else if (valor.length === 0) {
+            $('.valor').removeAttr("style");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else if (valor.length > 0 && valor.length < 5) {
+            $('.valor-incorreto').removeAttr("style");
+
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
+
+        } else {
+
 
 //        Coletando todos onibus selecionados
-        $('.ids').each(function () {
-            onibus.push($(this).attr("id"));
-            tipo.push($(this).attr("itemtype"));
-            cont++;
-        });
+            $('.ids').each(function () {
+                onibus.push($(this).attr("id"));
+                tipo.push($(this).attr("itemtype"));
+                cont++;
+            });
 
-        num_onibus = cont;
-        id_onibus = onibus.toString();
-        tipo_onibus = tipo.toString();
+//        num_onibus = cont;
+            id_onibus = onibus.toString();
+            tipo_onibus = tipo.toString();
 
-//        for (var i = 0; i < id_onibus.length; i++) {
-        alert("id_onibus = " + id_onibus + " tipo = " + tipo_onibus);
-//        }
+//        alert("id_onibus = " + id_onibus + " tipo = " + tipo_onibus);
+//        alert(" onibus = " + num_onibus);
 
-        alert(" onibus = " + num_onibus);
-
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + 'apolice/index',
-            data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
-                data_inicio: data_inicio, data_fim: data_fim, valor: valor
-            },
-            async: false,
-            success: function () {
-                var dialog = bootbox.dialog({
-                    title: 'Mensagem',
-                    message: '<p><i class="fa fa-spin fa-spinner"></i> Cadastro realizado com sucesso!</p>',
-                    closeButton: false,
-                    buttons: {
-                        ok: {
-                            label: "OK",
-                            className: 'btn-primary',
-                            callback: function () {
-                                location.reload();
-                            }
-                        }
-                    }
-                });
-                dialog.init(function () {
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'apolice/index',
+                async: false,
+                data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
+                    data_inicio: data_inicio, data_fim: data_fim, valor: valor
+                },
+                beforeSend: function () {
                     setTimeout(function () {
+                        $('.img-loading').addClass("hidden");
+                    }, 1000);
+                },
+                success: function () {
+                    bootbox.alert({
+                        message: "Cadastro realizado com sucesso.",
+                        callback: function () {
+                            location.reload();
+                        }
+                    });
 
-                        dialog.find('.bootbox-body').html('Apolice cadastrado com sucesso!');
-                    }, 2000);
-
-                });
-
-            },
-            error: function () {
+                },
+                error: function () {
 //                alert('error');
-            }
-        });
+                }
+            });
+        }
     });
 
 

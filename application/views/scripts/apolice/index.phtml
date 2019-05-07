@@ -1,3 +1,5 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12" style="padding: 0px;">
@@ -23,12 +25,12 @@
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
                                     <label>Data de início:</label>
-                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
                                     <!--data-lock="form"-->
                                 </div>
                                 <div class="col-lg-2">
                                     <label>Data de término:</label>
-                                    <input type="text" disabled="on" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2020">
+                                    <input type="text" disabled="on" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
                                 </div>
                                 <div class="col-lg-2">
                                     <label>Valor:</label>
@@ -44,6 +46,12 @@
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-6">
+                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
+                                        O campo <strong>Valor</strong> é obrigatório.
+                                    </div>
+                                    <div class="alert alert-danger valor-incorreto" role="alert" style="display: none;">
+                                        O campo <strong>Valor</strong> deve conter no mínimo 5 digitos.
+                                    </div>
                                     <div class="alert alert-danger dia" role="alert" style="display: none;">
                                         Verifique o <strong>dia</strong> correto para data de término!
                                     </div>
@@ -58,9 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-
-
+                            <!--<hr>-->
                             <div class="row">
                                 <div class="dual-list list-left col-md-5">
                                     <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
@@ -175,7 +181,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                        <? endforeach; ?>
+                            <? endforeach; ?>
                         </tbody>
                     </table>
                 </div>
