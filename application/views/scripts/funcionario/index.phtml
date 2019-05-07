@@ -74,31 +74,13 @@
                                     <input type="text" name="cnh" id="cnh" placeholder="XXXXXXXXXXX" class="form-control" required>
                                 </div>
                             </div>
-
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Telefone</label>
                                 <div class="col-xs-9">
                                     <input type="text" name="telefone" id="telefone" placeholder="(XX)XXXXX-XXXX"class="form-control" required>
                                 </div>
                             </div>
-                            <div class="form-group form-control-sm row">
-                                <label class="col-6 col-form-label">E-mail</label>
-                                <div class="col-xs-9">
-                                    <input type="text" name="email" id="email" placeholder="nome@mail.com" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group form-control-sm row">
-                                <label class="col-6 col-form-label">Data de Admissão</label>
-                                <div class="col-xs-9">
-                                    <input type="date" name="dataAdmissao" id="dataAdmissao" placeholder="dd/mm/aaaa" class="form-control" required>
-                                </div>
-                            </div>
-                            <!-- Div do botão!
-                            <div class="form-group row">
-                                <div class="offset-xs-3 col-xs-9">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div> -->
+                            <br>
                             </Center>
                         
                     </div>
@@ -110,38 +92,46 @@
                         
                             <Center> 
                             <!-- Conjunto de divs-linha para cada campo do form-->
-                            <h6></h6>                          
+                            <h6></h6> 
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">E-mail</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="email" id="email" placeholder="nome@mail.com" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Data de Admissão</label>
+                                <div class="col-xs-9">
+                                    <input type="date" name="dataAdmissao" id="dataAdmissao" placeholder="dd/mm/aaaa" class="form-control" required>
+                                </div>
+                            </div>                         
                             <div class="form-group form-control-sm row">
                                 <label for="example-search-input" class="col-6 col-form-label">Cidade</label>
                                 <div class="col-xs-9">
                                     <select class="custom-select" id="inputGroupSelect01" required>
-                                        <option selected label="Selecione um cargo." disabled></option>
-                                        <option value="1">Administrador Local</option>
-                                        <option value="2">Administrador Local</option>
-                                        <option value="3">Cobrador</option>
-                                        <option value="4">Gerente de Recursos Humanos</option>
-                                        <option value="5">Motorista</option>
-                                        <option value="6">Secretário</option>
-                                        <option value="7">Vendedor</option>
+                                        <option selected label="Selecione a cidade." disabled></option>
+                                        <option value="1">Alegrete</option>
+                                        <option value="2">Cachoeira do Sul</option>
+                                        <option value="3">Porto Alegre</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Endereço</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
+                                    <input class="form-control" type="text" maxlength="30" placeholder="Digite o endereço" id="" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Numero da casa</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="number" value="998" min="998" max="10000" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="" required>
+                                    <input class="form-control" type="number" min="0" id="" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Bairro</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
+                                    <input class="form-control" type="text" maxlength="30" placeholder="Digite o bairro" id="" required>
                                 </div>
                             </div>
 
@@ -150,44 +140,30 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Nome de usuário</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
+                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Senha</label>
                                 <div class="col-xs-9">
-                                <input type="password" name="pass" id="pass" placeholder="Sua senha" class="form-control" required>
+                                <input type="password" name="pass" id="pass" maxlength="30" placeholder="Sua senha" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Confirme a senha</label>
                                 <div class="col-xs-9">
-                                <input type="password" name="pass" id="pass" placeholder="Sua senha denovo" class="form-control" required>
+                                <input type="password" name="pass" id="pass" maxlength="30" placeholder="Sua senha denovo" class="form-control" required>
                                 </div>
                             </div>
-
-                            <!--
-                            <div class="form-group form-control-sm row">
-                                <label class="col-6 col-form-label">Arquivo</label>
-                                <div class="col-xs-9">
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">                                </div>
-                            </div> -->
                             <br>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <button type="submit" for="exampleFormControlFile1" class="btn btn-success btn-sm btn-block">Pronto</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <button type="submit" class="btn btn-warning btn-sm btn-block">Voltar</button> 
+                                    <button type="reset" class="btn btn-warning btn-sm btn-block" >Limpar campos</button> 
                                 </div>
                             </div>
-                            
-                            <!-- Div do botão!
-                            <div class="form-group row">
-                                <div class="offset-xs-3 col-xs-9">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div> -->
                             <br>
                             </Center>
                         </form>
