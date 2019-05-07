@@ -9,88 +9,81 @@ $(document).ready(function(){
     $('#dataAdmissao').mask('99/99/9999');     
 });
  
-$(".cadastrar-cobrador").click(function ()
-{
-    var nome = $("#nome").val();
-    var cpf = $("#cpf").val();
-    var cnh = $("#cnh").val();
-    var pis = $("#pis").val();
-    var carteiraTrabalho = $("#carteiraTrabalho").val();
-    var rg = $("#rg").val();
-    var dataAdmissao = $("#dataAdmissao").val();
-    var telefone = $("#telefone").val();
-    var email = $("#email").val();
+$(".cadastrar-funcionario").click(function () {
 
-    if (nome.length === 0) {
-        $('.nome').removeAttr("style");
+    var id_parada;
+    var id_motorista = $("#id-motorista").val();
+    var id_cobrador = $("#id-cobrador").val();
+    var horario;
+    var descricao = $("#descricao1").val();
+    var num_paradas;
+    id_onibus_urbano = $("#id-onibus").val();
+    // var id_cobrador = $("#id_cobrador").val();
+    // var id_onibus = $("#id_onibus").val();
 
-    } else if (cpf.length < 12) {
-        $('.cpf').removeAttr("style");
+    var paradas = [];
+    var horarios = [];
+    var cont = 0;
 
-        $('.nome').attr("style", "display:none");
-    } else if (telefone.length < 1) {
-        $('.telefone').removeAttr("style");
-
-        $('.nome').attr("style", "display:none");
-        $('.cpf').attr("style", "display:none");
-    } else if (rg.length < 1) {
-        $('.rg').removeAttr("style");
-
-        $('.nome').attr("style", "display:none");
-        $('.cpf').attr("style", "display:none");
-        $('.telefone').attr("style", "display:none");
-    } else if (carteiraTrabalho.length < 1) {
-        $('.carteiraTrabalho').removeAttr("style");
-
-        $('.nome').attr("style", "display:none");
-        $('.cpf').attr("style", "display:none");
-        $('.telefone').attr("style", "display:none");
-        $('.rg').attr("style", "display:none");
-    } else if (pis.length < 1) {
-        $('.pis').removeAttr("style");
-
-        $('.nome').attr("style", "display:none");
-        $('.cpf').attr("style", "display:none");
-        $('.telefone').attr("style", "display:none");
-        $('.rg').attr("style", "display:none");
-        $('.carteiraTrabalho').attr("style", "display:none");
-    } else if (dataAdmissao.length < 10) {
-        $('.dataAdmissao').removeAttr("style");
-
-        $('.nome').attr("style", "display:none");
-        $('.cpf').attr("style", "display:none");
-        $('.telefone').attr("style", "display:none");
-        $('.rg').attr("style", "display:none");
-        $('.carteiraTrabalho').attr("style", "display:none");
-        $('.pis').attr("style", "display:none");
-    } else {
-        $.ajax({
-            type: "POST",
-            url: baseUrl + 'cobrador/index',
-            async: false,
-            data: {
-                nome: nome, cpf: cpf,
-                rg: rg, carteiraTrabalho: carteiraTrabalho, pis: pis,
-                dataAdmissao: dataAdmissao, cnh: cnh, email: email,
-                telefone: telefone
-            },
-            success: function () {
-                //$('.alert-success').removeAttr("style");
-                bootbox.alert("Cadastro realizado com sucesso!", function () {
-
-                    location.reload();
-                });
+    alert("id cobrador = " + id_cobrador);
+    alert("id motorista = " + id_motorista);
+    alert("id onibus = " + id_onibus_urbano);
 
 
-            },
-            error: function () {
+//        Coletando todos cnaes selecionados
+    $('.ids').each(function () {
+
+        paradas.push($(this).attr("at"));
 
 
-            }
-        });
-    }
+        cont++;
+
+    });
 
 
+
+    num_paradas = cont;
+    id_parada = paradas.toString();
+
+    //alert("id_parada = " + id_parada+" num_paradas = " + num_paradas );
+
+
+
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'trajeto/index',
+        data: {id_parada: id_parada, descricao: descricao, num_paradas: num_paradas,
+            id_motorista: id_motorista, id_cobrador: id_cobrador, id_onibus_urbano: id_onibus_urbano
+        },
+        async: false,
+        success: function () {
+            var dialog = bootbox.dialog({
+                title: 'Mensagem',
+                message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+                closeButton: false,
+                buttons: {
+                    ok: {
+                        label: "OK",
+                        className: 'btn-primary',
+                        callback: function () {
+                            // window.location = baseUrl + '';
+                        }
+                    }
+                }
+            });
+            dialog.init(function () {
+                setTimeout(function () {
+
+                    dialog.find('.bootbox-body').html('Trajeto cadastrado com sucesso!');
+                }, 2000);
+
+            });
+
+        },
+        error: function () {
+//                alert('error');
+        }
+    });
 });
 
 
