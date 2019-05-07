@@ -10,8 +10,12 @@
                             <h6>Do cargo</h6>
                             <div class="form-group form-control-sm row ">
                                 <label for="example-search-input" class="col-6 col-form-label">Cargo</label>
-                                <div class="col-xs-9 ">
+                                <div class="col-sm-5 ">
                                     <select class="custom-select" id="inputGroupSelect01" required>
+                                    <? foreach ($this->listaDePerfis as $perfil): ?>
+                                        <option  value="<?= $perfil['id_perfil'] ?>"><?= $perfil['descricao']; ?></option>
+                                    <? endforeach; ?>
+                                    <!--
                                         <option selected label="Selecione um cargo." disabled></option>
                                         <option value="1">Administrador Local</option>
                                         <option value="2">Administrador Local</option>
@@ -19,7 +23,7 @@
                                         <option value="4">Gerente de Recursos Humanos</option>
                                         <option value="5">Motorista</option>
                                         <option value="6">Secretário</option>
-                                        <option value="7">Vendedor</option>
+                                        <option value="7">Vendedor</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -107,14 +111,19 @@
                             </div>                         
                             <div class="form-group form-control-sm row">
                                 <label for="example-search-input" class="col-6 col-form-label">Cidade</label>
-                                <div class="col-xs-9">
-                                    <select class="custom-select" id="inputCidade" required>
-                                        <option selected label="Selecione a cidade." disabled></option>
-                                        <option value="1">Alegrete</option>
-                                        <option value="2">Cachoeira do Sul</option>
-                                        <option value="3">Porto Alegre</option>
-                                    </select>
+                                
+                                <a class="col-sm-5" data-toggle="modal" data-target="#exampleModalCenter-o">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                            Selecionar
+                                        </span>
+                                    </div>
+                                        <input type="text" class="form-control" disabled id="descricao-motorista">
                                 </div>
+                                </a>
+
+
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Endereço</label>
@@ -174,35 +183,49 @@
     </div>
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-        $("#data").mask("99/99/9999");
-        $("#rg").mask("9999999999");
-		$("#cpf").mask("999.999.999-99");
-        $('#ctps').mask('9999999 99999 SS');
-        $('#pis').mask('999.99999.99-9');
-        $('#cnh').mask('99999999999');
-        $("#telefone").mask("(99) 99999-9999");
-        $('#dataAdmissao').mask('99/99/9999');     
-    });
-   
-<? foreach ($this->listaDeCidade as $cidade): ?>
-    
-        var para = document.createElement("option");
-        var textv = document.createTextNode(<?= $cidade->getNome() ?>);
-        var id = document.create
-        para.appendChild(textv);
 
-        var att = document.createAttribute("id");
-        att.value = <?= $cobrador->getId_cidade() ?>;
-        para.setAttributeNode(att);
+<div class="modal fade" id="exampleModalCenter-o" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a cidade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel6" style="height: 270px;">
+                    <? foreach ($this->listaDeCidade as $cidade): ?>
+                        <option  value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Escolher</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        var element = document.getElementById("inputCidade");
-        element.appendChild(para);
-
-        
-    
-<? endforeach; ?>
- 
-
-</script>
+<div class="modal fade" id="exampleModalCenter-e" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a cidade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel6" style="height: 270px;">
+                    <? foreach ($this->listaDeCidade as $cidade): ?>
+                        <option  value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Escolher</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,19 +12,17 @@ class FuncionarioController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $seilar = "teste";
         $dbTableCidade = new Application_Model_DbTable_Cidade();
         $listaCidade = $dbTableCidade->listarCidades();
 
-        //$dbTablePerfil = new Application_Model_Perfil();
-        //$listaPerfil = $dbTablePerfil->listarPerfis();
+        $dbTablePerfil = new Application_Model_DbTable_Perfil();
+        $listaPerfil = $dbTablePerfil->listarPerfis();
         
         //$dbTableCobrador = new Application_Model_DbTable_Cobrador();
         //$lista = $dbTableCobrador->listarTodosCobradores();
         //$this->view->listaDosCobradores = $lista;
-        $this->view->listaDeCidade = $seilar;
-        //$listaCidade
-        //$this->view->listaDePerfis = $listaPerfil;
+        $this->view->listaDeCidade = $listaCidade;
+        $this->view->listaDePerfis = $listaPerfil;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
