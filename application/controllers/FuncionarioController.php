@@ -7,15 +7,18 @@ class FuncionarioController extends Zend_Controller_Action
     {
         $this->_helper->layout->setLayout('layout_gerenterh');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
-        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cobrador.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/funcionario.js'));
     }
 
     public function indexAction()
     {
+        $dbTableCidade = new Application_Model_Cidade();
+        $listaCidade = $dbTableCidade->listarCidades();
 
-        $dbTableCobrador = new Application_Model_DbTable_Cobrador();
-        $lista = $dbTableCobrador->listarTodosCobradores();
-        $this->view->listaDosCobradores = $lista;
+        //$dbTableCobrador = new Application_Model_DbTable_Cobrador();
+        //$lista = $dbTableCobrador->listarTodosCobradores();
+        //$this->view->listaDosCobradores = $lista;
+        $this->view->listaDeCidade = $listaCidade;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();

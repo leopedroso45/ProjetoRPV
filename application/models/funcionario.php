@@ -14,6 +14,9 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
   //  private $telefone;
   //  private $email;  
     
+
+
+  
     /**
      * @return type $telefone
      */
@@ -48,9 +51,6 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
         return $this;
     }
 
-
-
-    
     public function getId_cobrador() {
         return $this->id_cobrador;
     }
@@ -63,9 +63,6 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
         return $this->cpf;
     }
 
-   
-
-    
     public function setId_cobrador($id_cobrador) {
         $this->id_cobrador = $id_cobrador;
     }
@@ -78,8 +75,6 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
         $this->cpf = ($cpf);
     }
     
-
-
     /**
      * @return mixed
      */

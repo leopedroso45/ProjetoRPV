@@ -108,7 +108,7 @@
                             <div class="form-group form-control-sm row">
                                 <label for="example-search-input" class="col-6 col-form-label">Cidade</label>
                                 <div class="col-xs-9">
-                                    <select class="custom-select" id="inputGroupSelect01" required>
+                                    <select class="custom-select" id="inputCidade" required>
                                         <option selected label="Selecione a cidade." disabled></option>
                                         <option value="1">Alegrete</option>
                                         <option value="2">Cachoeira do Sul</option>
@@ -184,5 +184,22 @@
         $('#cnh').mask('99999999999');
         $("#telefone").mask("(99) 99999-9999");
         $('#dataAdmissao').mask('99/99/9999');     
-	});
-</script>
+    });
+    
+<? foreach ($this->listaDeCidade as $cidade): ?>
+    
+        var para = document.createElement("option");
+        var textv = document.createTextNode(<?= $cidade->getNome() ?>);
+        var id = document.create
+        para.appendChild(textv);
+
+        var att = document.createAttribute("id");
+        att.value = <?= $cobrador->getId_cidade() ?>;
+        para.setAttributeNode(att);
+
+        var element = document.getElementById("inputCidade");
+        element.appendChild(para);
+         
+        </script>
+    
+<? endforeach; ?>
