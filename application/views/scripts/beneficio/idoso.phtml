@@ -7,6 +7,24 @@
                 <li class="breadcrumb-item active" style="color: white;" aria-current="page">Idosos</li>
             </ol>
         </div>
+        <div class="col-lg-12">
+            <div class="form-group" formatar SomenteNumero cpf>
+                <a href="<?= $this->baseUrl("beneficio/idoso") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Pendentes </button></a>
+                <a href="<?= $this->baseUrl("beneficio/idoso?tipo=1") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Aprovados </button></a>
+                <a href="<?= $this->baseUrl("beneficio/idoso?tipo=2") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Reprovados </button></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Digite o CPF" id="buscaCpf" name="buscaCpf" class="btn btn-default" style="width:20%;"
+                       maxlength="14" onchange="validaCPF()" OnKeyPress="formatar('###.###.###-##', this); return SomenteNumero(event)">
+                <button class="btn btn-default" align="right" onclick="window.location.href = 'idoso' + '?cpf=' + buscaCpf.value">
+                    <i class="fas fa-search" style="color:black"></i>Buscar</button>           
+            </div>      
+        </div>
 
         <div class="col-lg-12">
             <table class="table text-center" style="background-color:rgba(0,0,0,0.5); color: white">
@@ -74,7 +92,7 @@
                                                 <option value="2">Isenção</option>
                                             </select>
                                             <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
-                                                            onclick="editarBeneficio(<?= $solicitacaobeneficio['id_solicitacao'] ?>, beneficio.value)">Salvar
+                                                            onclick="editarBeneficio(<?= $solicitacaobeneficio['idf_pessoa'] ?>, beneficio.value)">Salvar
                                             </button>		
                                         </div>
                                         <div class="col-sm-6">

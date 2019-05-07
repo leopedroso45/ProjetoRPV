@@ -13,18 +13,18 @@ $(document).ready(function () {
         var rua = $("#rua").val();
         var numeroCasa = $("#numeroCasa").val();
         var bairro = $("#bairro").val();
-        var comprovanteResidencia = $("#comprovanteResidencia").val();
-        var comprovanteMatricula = $("#comprovanteMatricula").val();
+        var comprovante_residencia = $("#comprovante_residencia").val();
+        var carteira_idoso = $("#carteira_idoso").val();
         moment.locale('pt-br');
         var data_solicitacao = moment().format('LLL'); 
 
         $.ajax({
             type: "POST",
-            url: baseUrl + 'cadastro-estudante/index',
+            url: baseUrl + 'cadastro-idoso/index',
             async: false,
             data: {nome_usuario: nome_usuario, senha: senha, nomeCompleto: nomeCompleto, dataNascimento: dataNascimento,
-                cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovanteResidencia: comprovanteResidencia,
-                comprovanteMatricula: comprovanteMatricula, data_solicitacao: data_solicitacao
+                cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovante_residencia: comprovante_residencia,
+                carteira_idoso: carteira_idoso, data_solicitacao: data_solicitacao
             },
 
             success: function () {
