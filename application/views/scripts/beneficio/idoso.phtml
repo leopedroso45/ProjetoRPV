@@ -69,69 +69,63 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container-fluid"> 
+                    <form method="post">
                         <div class="row">
-                            <div class="table-responsive">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <div class="col-sm-6">
-                                            <label >Nome completo:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['nome'] ?> " name="nomeCompleto" id="nomeCompleto">
-                                            <label >Data de nascimento:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['data_nascimento'] ?>" name="dataNascimento" id="dataNascimento">
-                                            <label >CPF:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['cpf'] ?>" name="cpf" id="cpf">
-                                            <label >RG:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
-                                            <label> Celular: </label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
-                                            <label>Benefício Concedido:</label>
-                                            <br><select name="beneficio" id="beneficio">
-                                                <option value="0">Nenhum</option>
-                                                <option value="1">Meia Passagem</option>
-                                                <option value="2">Isenção</option>
-                                            </select>
-                                            <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
-                                                            onclick="editarBeneficio(<?= $solicitacaobeneficio['idf_pessoa'] ?>, beneficio.value)">Salvar
-                                            </button>		
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label> Rua: </label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rua'] ?>" name="rua" id="rua">
-                                            <label> Nº: </label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['numero_casa'] ?>" name="numeroCasa" id="numeroCasa">									
-                                            <label> Bairro: </label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['bairro'] ?>" name="bairro" id="bairro">									
-                                            <label >Carteira do Idoso:</label>
-                                            <br>
-                                            <button class="btn" value="<?= $solicitacaobeneficio['carteira_idoso'] ?>" id="carteiraIdoso" name="carteiraIdoso">
-                                                <i class="fa fa-download" style="color:black"></i>
-                                                <label style="color:black">
-                                                    <a style="color:black" href="dist/autorizaconcessao/carteiraidoso.pdf"
-                                                       download="CarteiraIdoso">Download </a>
-                                                </label>
-                                            </button>
-                                            <br>
-                                            <label >Comprovante de Residência:</label>
-                                            <br>
-                                            <button class="btn" value="<?= $solicitacaobeneficio['comprovante_residencia'] ?>" name="comprovanteResidencia" id="comprovanteResidencia">
-                                                <i class="fa fa-download" style="color:black"></i>
-                                                <label style="color:black">
-                                                    <a style="color:black" href="dist/autorizaconcessao/comprovanteresidencia.pdf"
-                                                       download="resid">Download </a>
-                                                </label>
-                                            </button>
-
-                                        </div>
-                                    </div>
-
-                                </form>							
+                            <div class="col-sm-6">
+                                <label >Nome completo:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['nome'] ?> " name="nomeCompleto" id="nomeCompleto">
+                                <label >Data de nascimento:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['data_nascimento'] ?>" name="dataNascimento" id="dataNascimento">
+                                <label >CPF:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['cpf'] ?>" name="cpf" id="cpf">
+                                <label >RG:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
+                                <label> Celular: </label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
+                                <label>Benefício Concedido:</label>
+                                <br><select name="beneficio" id="beneficio">
+                                    <option value="0">Nenhum</option>
+                                    <option value="1">Meia Passagem</option>
+                                    <option value="2">Isenção</option>
+                                </select>
+                                <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
+                                                onclick="editarBeneficio(<?= $solicitacaobeneficio['idf_pessoa'] ?>, beneficio.value)">Salvar
+                                </button>		
                             </div>
-                        </div>
-                    </div>			 
-                </div>
+                            <div class="col-sm-6">
+                                <label> Rua: </label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rua'] ?>" name="rua" id="rua">
+                                <label> Nº: </label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['numero_casa'] ?>" name="numeroCasa" id="numeroCasa">									
+                                <label> Bairro: </label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['bairro'] ?>" name="bairro" id="bairro">									
+                                <label >Carteira do Idoso:</label>
+                                <br>
+                                <button class="btn" value="<?= $solicitacaobeneficio['carteira_idoso'] ?>" id="carteiraIdoso" name="carteiraIdoso">
+                                    <i class="fa fa-download" style="color:black"></i>
+                                    <label style="color:black">
+                                        <a style="color:black" href="dist/autorizaconcessao/carteiraidoso.pdf"
+                                           download="CarteiraIdoso">Download </a>
+                                    </label>
+                                </button>
+                                <br>
+                                <label >Comprovante de Residência:</label>
+                                <br>
+                                <button class="btn" value="<?= $solicitacaobeneficio['comprovante_residencia'] ?>" name="comprovanteResidencia" id="comprovanteResidencia">
+                                    <i class="fa fa-download" style="color:black"></i>
+                                    <label style="color:black">
+                                        <a style="color:black" href="dist/autorizaconcessao/comprovanteresidencia.pdf"
+                                           download="resid">Download </a>
+                                    </label>
+                                </button>
 
+                            </div>
+
+                    </form>							
+                </div>		 
             </div>
+
         </div>
+    </div>
     </div>
 <? endforeach; ?>
