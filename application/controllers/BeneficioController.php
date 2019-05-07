@@ -4,7 +4,7 @@ class BeneficioController extends Zend_Controller_Action {
 
     public function init() {
         $this->_helper->layout->setLayout("layout_admin_geral");
-                $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/beneficio.js'));
     }
 
@@ -41,34 +41,29 @@ class BeneficioController extends Zend_Controller_Action {
 
     public function estudanteAction() {
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $listaEstudante = $dbTableBeneficio->listarEstudante();
-        $this->view->listarBeneficios = $listaEstudante;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbTableBeneficio->editarBeneficios($id, $dados);
-        }
-    }
-    
-        public function estudanteaprovadoAction() {
-        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $listaEstudante = $dbTableBeneficio->listarEstudanteAprovado();
-        $this->view->listarBeneficios = $listaEstudante;
-
-        if ($this->getRequest()->isPost()) {
+        } else if ($this->getRequest()->isGet()) {
             $dados = $this->getRequest()->getParams();
-            $dbTableBeneficio->editarBeneficios($id, $dados);
-        }
-    }
-    
-            public function estudantereprovadoAction() {
-        $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
-        $listaEstudante = $dbTableBeneficio->listarEstudanteReprovado();
-        $this->view->listarBeneficios = $listaEstudante;
 
-        if ($this->getRequest()->isPost()) {
-            $dados = $this->getRequest()->getParams();
-            $dbTableBeneficio->editarBeneficios($id, $dados);
+            if (@$dados['tipo'] == 1) {
+                $listaEstudante = $dbTableBeneficio->listarEstudanteAprovado();
+                $this->view->listarBeneficios = $listaEstudante;
+            } else if (@$dados['tipo'] == 2) {
+                $listaEstudante = $dbTableBeneficio->listarEstudanteReprovado();
+                $this->view->listarBeneficios = $listaEstudante;
+            } else {
+                @$cpf = $dados['cpf'];
+                if (isset($cpf) && strlen($cpf) == 14 )  {
+                    $listaEstudante = $dbTableBeneficio->listarEstudantePorCPF($cpf);
+                    $this->view->listarBeneficios = $listaEstudante;
+                } else {
+                    $listaEstudante = $dbTableBeneficio->listarEstudante();
+                    $this->view->listarBeneficios = $listaEstudante;
+                }
+            }
         }
     }
 
@@ -81,7 +76,7 @@ class BeneficioController extends Zend_Controller_Action {
 
         $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
         // $beneficio = $dbTableBeneficio->getBeneficioPorId($id);
-        
+
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             //var_dump($dados); die();
