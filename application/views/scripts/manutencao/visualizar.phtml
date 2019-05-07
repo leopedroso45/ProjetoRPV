@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("manutencao") ?>">Menutenção</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Visualizar</li>
+                </ol>
+            </nav>
+            <? foreach ($this->listarOnibusPorIdManutencao as $onibusManutencao): ?>
+                <?= $onibusManutencao['placa'] ?><br>
+                <?= $onibusManutencao['PLACA'] ?>
+            <? endforeach; ?>            
+        </div>
+    </div>
+</div>
