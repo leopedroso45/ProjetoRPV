@@ -1,0 +1,208 @@
+<div class="col-lg-12" style="padding: 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                    <div class="container labelsForm">
+                        <form>
+                            <Center> 
+                            <!-- Conjunto de divs-linha para cada campo do form-->                      
+                            <h6>Do cargo</h6>
+                            <div class="form-group form-control-sm row ">
+                                <label for="example-search-input" class="col-6 col-form-label">Cargo</label>
+                                <div class="col-sm-5 ">
+                                    <select class="custom-select" id="inputGroupSelect01" required>
+                                    <? foreach ($this->listaDePerfis as $perfil): ?>
+                                        <option  value="<?= $perfil['id_perfil'] ?>"><?= $perfil['descricao']; ?></option>
+                                    <? endforeach; ?>
+                                    <!--
+                                        <option selected label="Selecione um cargo." disabled></option>
+                                        <option value="1">Administrador Local</option>
+                                        <option value="2">Administrador Geral</option>
+                                        <option value="3">Cobrador</option>
+                                        <option value="4">Gerente de Recursos Humanos</option>
+                                        <option value="5">Motorista</option>
+                                        <option value="6">Secretário</option>
+                                        <option value="7">Vendedor</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Salario</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="number" value="998" min="998" max="10000" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="" required>
+                                </div>
+                            </div>
+                                         
+                            <h6>Do funcionário</h6>
+                            
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Nome</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" placeholder="Digite o nome" id="nome" name="nome" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Data de Nascimento</label>
+                                <div class="col-xs-9">
+                                    <input type="date" name="dataN" id="dataN" class="form-control" placeholder="dd/mm/aaaa" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">CPF</label>
+                                <div class="col-xs-9">
+                                <input type="text" name="cpf" id="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">RG</label>
+                                <div class="col-xs-9">
+                                <input type="text" name="rge" id="rg" placeholder="XXXXXXXXXX" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">CTPS</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="ctps" id="ctps" placeholder="Número Série UF" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">PIS</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="pis" id="pis" placeholder="XXX.XXXXX.XX-X" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">CNH</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="cnh" id="cnh" placeholder="XXXXXXXXXXX" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Telefone</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="telefone" id="telefone" placeholder="(XX)XXXXX-XXXX"class="form-control" required>
+                                </div>
+                            </div>
+                            <br>
+                            </Center>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                    <div class="container labelsForm">
+                        
+                            <Center> 
+                            <!-- Conjunto de divs-linha para cada campo do form-->
+                            <h6></h6> 
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">E-mail</label>
+                                <div class="col-xs-9">
+                                    <input type="text" name="email" id="email" placeholder="nome@mail.com" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Data de Admissão</label>
+                                <div class="col-xs-9">
+                                    <input type="date" name="dataAdmissao" id="dataAdmissao" placeholder="dd/mm/aaaa" class="form-control" required>
+                                </div>
+                            </div>                         
+                            <div class="form-group form-control-sm row">
+                                <label for="example-search-input" class="col-6 col-form-label">Cidade</label>
+                                
+                                <a class="col-sm-5" data-toggle="modal" data-target="#exampleModalCenter-o">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                            Selecionar
+                                        </span>
+                                    </div>
+                                        <input type="text" class="form-control" disabled id="cidade">
+                                </div>
+                                </a>
+
+
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Endereço</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" name="endereco" id="endereco" type="text" maxlength="30" placeholder="Digite o endereço" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Numero da casa</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" name="numCasa" id="numCasa" type="number" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Bairro</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" name="bairro" id="bairro" type="text" maxlength="30" placeholder="Digite o bairro" required>
+                                </div>
+                            </div>
+
+                            <h6>Do acesso</h6>
+
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Nome de usuário</label>
+                                <div class="col-xs-9">
+                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="usuario" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Senha</label>
+                                <div class="col-xs-9">
+                                <input type="password" name="pass" id="pass" maxlength="30" placeholder="Sua senha" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group form-control-sm row">
+                                <label class="col-6 col-form-label">Confirme a senha</label>
+                                <div class="col-xs-9">
+                                <input type="password" name="pass" id="pass1" maxlength="30" placeholder="Sua senha denovo" class="form-control" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button type="submit" for="exampleFormControlFile1" class="btn btn-success btn-sm btn-block cadastrar-funcionario" >Pronto</button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button type="reset" class="btn btn-warning btn-sm btn-block" >Limpar campos</button> 
+                                </div>
+                            </div>
+                            <br>
+                            </Center>
+                        </form>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter-o" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a cidade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel6" style="height: 270px;">
+                    <? foreach ($this->listaDeCidade as $cidade): ?>
+                        <option  value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Escolher</button>
+            </div>
+        </div>
+    </div>
+</div>
