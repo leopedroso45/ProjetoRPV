@@ -11,28 +11,7 @@ $(document).ready(function(){
  
 $(".cadastrar-funcionario").click(function () {
 
-
-    //Usuario
-    var nome_usuario = $("#nome").val();;
-    var senha = $("#nome").val();;
-
-    //Funcionario
     var nome = $("#nome").val();
-    var dataN = $("#id-cobrador").val();
-    var cpf = $("#id-cobrador").val();
-    var rg = $("#id-cobrador").val();
-    var ctps = $("#id-cobrador").val();
-    var pis = $("#id-cobrador").val();
-    var cnh = $("#id-cobrador").val();
-    var telefone = $("#id-cobrador").val();
-    var salario = $("#id-cobrador").val();
-    var email = $("#id-cobrador").val();
-    var dataAdmissao = $("#id-cobrador").val(); 
-    var cidade = $("#id-cobrador").val();
-    var endereco = $("#id-cobrador").val();
-    var numCasa = $("#id-cobrador").val();
-    var bairro = $("#id-cobrador").val();
-
     var id_cobrador = $("#id-cobrador").val();
 
 

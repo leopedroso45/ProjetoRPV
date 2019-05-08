@@ -2,6 +2,7 @@
 
 class Application_Model_Perfil extends Zend_Db_Table_Row_Abstract
 {
+    
 //    private $id_perfil;
 //    private $descricao;
 

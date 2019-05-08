@@ -39,13 +39,13 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Nome</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" placeholder="Digite o nome" id="" required>
+                                    <input class="form-control" type="text" placeholder="Digite o nome" id="nome" name="nome" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Data de Nascimento</label>
                                 <div class="col-xs-9">
-                                    <input type="date" name="data" id="data" class="form-control" placeholder="dd/mm/aaaa" required>
+                                    <input type="date" name="dataN" id="dataN" class="form-control" placeholder="dd/mm/aaaa" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
@@ -119,7 +119,7 @@
                                             Selecionar
                                         </span>
                                     </div>
-                                        <input type="text" class="form-control" disabled id="descricao-motorista">
+                                        <input type="text" class="form-control" disabled id="cidade">
                                 </div>
                                 </a>
 
@@ -128,19 +128,19 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Endereço</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" maxlength="30" placeholder="Digite o endereço" id="" required>
+                                    <input class="form-control" name="endereco" id="endereco" type="text" maxlength="30" placeholder="Digite o endereço" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Numero da casa</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="number" min="0" id="" required>
+                                    <input class="form-control" name="numCasa" id="numCasa" type="number" min="0" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Bairro</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" maxlength="30" placeholder="Digite o bairro" id="" required>
+                                    <input class="form-control" name="bairro" id="bairro" type="text" maxlength="30" placeholder="Digite o bairro" required>
                                 </div>
                             </div>
 
@@ -149,7 +149,7 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Nome de usuário</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="" required>
+                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="usuario" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
@@ -161,7 +161,7 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Confirme a senha</label>
                                 <div class="col-xs-9">
-                                <input type="password" name="pass" id="pass" maxlength="30" placeholder="Sua senha denovo" class="form-control" required>
+                                <input type="password" name="pass" id="pass1" maxlength="30" placeholder="Sua senha denovo" class="form-control" required>
                                 </div>
                             </div>
                             <br>
@@ -185,29 +185,6 @@
 
 
 <div class="modal fade" id="exampleModalCenter-o" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a cidade</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <select multiple class="form-control" id="sel6" style="height: 270px;">
-                    <? foreach ($this->listaDeCidade as $cidade): ?>
-                        <option  value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
-                    <? endforeach; ?>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Escolher</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModalCenter-e" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
