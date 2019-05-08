@@ -23,7 +23,7 @@
     </div>
 
     <div class="col-sm-8" style="background-color:rgba(0,0,0,0.8); color: white">
-        <div class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+        <div class="fundoTransparente" style="color: white">
             <center><H3>Concessão de Trajetos </H3></center>
             <div class="row"> 
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,9 +35,10 @@
             <br>
         </div>
         <div class="row"> 
-            <table class="table table-hover table-bordered dataTable" style="width: 100%;">
-                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5); color: white">
+            <table class="table table-bordered dataTable">
+                <thead class="fundoTransparente" style="background-color:rgba(0,0,0,0.5);">
                     <tr>
+                        <th>Nome</th>
                         <th>Extensão</th>
                         <th>Data de Inicio</th>
                         <th>Data de Vigência</th>
@@ -48,6 +49,7 @@
                 <tbody>
                     <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
                         <tr>
+                            <td> <?= $concessaotrajeto['nome'] ?></td>
                             <td> <?= $concessaotrajeto['extensao'] ?></td>
                             <td> <?= $concessaotrajeto['data_inicio'] ?></td>
                             <td> <?= $concessaotrajeto['data_fim'] ?></td>
@@ -120,6 +122,23 @@
 
                             <form method="post">
                                 <div class="col-xs-8 date">
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Nome</label>
+                                        <div class="col-xs-8 date">
+                                            <div class="input-group input-append date" id="">   	    	
+                                                <input type="text" class="form-control" placeholder="Qual o nome da concessão?" required="required" title="Qual o nome da concessão?" 
+                                                       required="required"
+                                                       id="nome" name="nome" data-validation-required-message="Por favor, digite seu nome.">
+                                                <p class="help-block text-danger"></p>
+                                                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-asterisk"></span></span>
+                                            </div>
+                                            <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                                Campo extensão é obrigatório.
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label" ><label style="color:red">*</label> Extensão</label>
                                         <div class="col-xs-8 date">
@@ -207,7 +226,7 @@
                             }
                         </script>
                         <script type="text/javascript">
-                              $("#extensao").blur(function ()
+                            $("#extensao").blur(function ()
                             {
                                 var extensao = $("#extensao").val();
                                 if (extensao.length === 0) {
@@ -215,15 +234,18 @@
 
                                 }
                             });
-                            
+
                             $(".cadastrarConcessao").click(function ()
                             {
+                                var nome = $("#nome").val();
                                 var extensao = $("#extensao").val();
                                 var dataInicio = $("#dataInicio").val();
                                 var dataFim = $("#dataFim").val();
                                 var docAutorizacao = $("#docAutorizacao").val();
 
-                                if (extensao.length === 0) {
+                                if (nome.lenght === 0) {
+                                    $('.nome').removeClass('hidden');
+                                } else if (extensao.length === 0) {
                                     $('.extensao').removeClass('hidden');
                                 } else if (dataInicio.length === 0) {
                                     $('.dataInicio').removeClass('hidden');
@@ -235,7 +257,7 @@
                                         type: "POST",
                                         url: baseUrl + 'concessaotrajeto/index',
                                         async: false,
-                                        data: {extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
+                                        data: {nome: nome, extensao: extensao, dataInicio: dataInicio, dataFim: dataFim, docAutorizacao: docAutorizacao
 
                                         },
                                         success: function () {
