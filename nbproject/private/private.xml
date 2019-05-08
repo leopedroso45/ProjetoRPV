@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>application/models/DbTable/Estudante.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< remotes/origin/estoria_23
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/onibus-intermunicipal/editar.phtml</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/onibus-intermunicipal/index.phtml</file>
-=======
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/beneficio/deficiente.phtml</file>
->>>>>>> local
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/concessaoTrajeto/index.phtml</file>
         </group>
     </open-files>
 </project-private>
