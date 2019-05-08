@@ -1,20 +1,27 @@
 <?php
 
-class Application_Model_DbTable_Usuario extends Zend_Db_Table_Abstract {
+class Application_Model_DbTable_Pessoa extends Zend_Db_Table_Abstract {
 
-    protected $_name = 'usuario';
-    protected $_rowClass = "Application_Model_Usuario";
+    protected $_name = 'pessoa';
+    protected $_rowClass = "Application_Model_Pessoa";
 
-    
-    public function cadastrarUsuario($dados) {
+    public function cadastrarPessoa($dados, $id_usuario) {
+
+        $pessoa = $this->createRow();
+        /* @var $pessoa Application_Model_Pessoa */
+        $pessoa->setId_usuario($id_usuario);
+        $pessoa->setNome($dados['nomeCompleto']);
+        $pessoa->setCpf($dados['cpf']);
+        $pessoa->setRg($dados['rg']);
+        $pessoa->setNumero_casa($dados['numeroCasa']);
+        $pessoa->setData_nascimento($dados['dataNascimento']);
+        $pessoa->setCelular($dados['celular']);
+        $pessoa->setRua($dados['rua']);
+        $pessoa->setBairro($dados['bairro']);
+        $pessoa->setBeneficio('Nenhum');
         
-        $usuario = $this->createRow();
-        /* @var $usuario Application_Model_Usuario */
-        $usuario->setId_perfil(2);
-        $usuario->setNome_usuario($dados['nome_usuario']);
-        $usuario->setSenha($dados['senha']);
 
-        return $usuario->save();
+        return $pessoa->save();
     }
 
 //    

@@ -51,13 +51,70 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
 
         return $this->fetchAll($select);
     }
+    
+        public function listarDeficienteAprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('DEF' => 'PESSOA_COM_DEFICIENCIA'), array('DEF.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = DEF.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 1');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarDeficienteReprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('DEF' => 'PESSOA_COM_DEFICIENCIA'), array('DEF.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = DEF.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 2');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarDeficientePorCPF($cpf) {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('DEF' => 'PESSOA_COM_DEFICIENCIA'), array('DEF.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = DEF.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where("PESS.CPF = '$cpf'");
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
 
     public function listarIdoso() {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
                 ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
                 ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
-                ->from(array('IDOSO' => 'PESSOA_IDOSA'), array('IDOSO.*'))
+                ->from(array('IDOSO' => 'IDOSO'), array('IDOSO.*'))
                 ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
                 ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
                 ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
@@ -70,7 +127,83 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
 
         return $this->fetchAll($select);
     }
+    
+        public function listarIdosoAprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('IDOSO' => 'IDOSO'), array('IDOSO.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = IDOSO.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 1');
 
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarIdosoReprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('IDOSO' => 'IDOSO'), array('IDOSO.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = IDOSO.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 2');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarIdosoPorCpf($cpf) {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('IDOSO' => 'IDOSO'), array('IDOSO.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = IDOSO.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where("PESS.CPF = '$cpf'");
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+
+    public function listarEstudantePorCPF($cpf) {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('EST' => 'ESTUDANTE'), array('EST.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where("PESS.CPF = '$cpf'");
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
     public function listarEstudante() {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
@@ -83,6 +216,43 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
                 ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
                 ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
                 ->where('SIT.ID_SITUACAO = 0');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+        public function listarEstudanteAprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('EST' => 'ESTUDANTE'), array('EST.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 1');
+
+        //       var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+    
+        public function listarEstudanteReprovado() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('BEN' => 'SOLICITACAOBENEFICIO'), array('BEN.*'))
+                ->from(array('PESS' => 'PESSOA'), array('PESS.*'))
+                ->from(array('USUA' => 'USUARIO'), array('USUA.*'))
+                ->from(array('EST' => 'ESTUDANTE'), array('EST.*'))
+                ->from(array('SIT' => 'SOLICITACAO_SITUACAO'), array('SIT.*'))
+                ->where('PESS.ID_USUARIO = USUA.ID_USUARIO')
+                ->where('PESS.ID_PESSOA = BEN.IDF_PESSOA')
+                ->where('PESS.ID_PESSOA = EST.IDF_PESSOA')
+                ->where('BEN.IDF_SITUACAO_SOLICITACAO = SIT.ID_SITUACAO')
+                ->where('SIT.ID_SITUACAO = 2');
 
         //       var_dump($select->__toString());die();
 //        o var_dump serve pra ti ver o resultado da instrução sql na página
@@ -105,24 +275,16 @@ class Application_Model_DbTable_Beneficio extends Zend_Db_Table_Abstract {
         return $beneficio->save();
     }
 
-    /*
-      public function editarUsuario($id,$dados)
-      {
-      $usuario = $this->getUsuarioPorId($id);
-      @var $usuario Application_Model_Usuario
-      $usuario->setLogin($dados['login']);
-      $usuario->setSenha($dados['senha']);
+    public function cadastrarSolicitacaoBeneficioAction($dados, $idf_pessoa, $idf_situacao_solicitacao) {
 
-      return $usuario->save();
-      }
-      public function getUsuarioPorId($id){
-      $select = $this->select()->where('cod_usuario = ?',$id);
-      return $this->fetchRow($select);
-      }
+        $beneficio = $this->createRow();
+        
+        
+        $beneficio->setData_solicitacao($dados['data_solicitacao']);
+        $beneficio->setIdf_situacao_solicitacao($idf_situacao_solicitacao);
+        $beneficio->setIdf_pessoa($idf_pessoa);
 
-      public function getUsuarioPorLogin($login){
-      $select = $this->select()->where('login = ?',$login);
-      return $this->fetchRow($select);
-      }
-     */
+        return $beneficio->save();
+    }
+
 }
