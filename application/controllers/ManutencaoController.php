@@ -40,28 +40,42 @@ class ManutencaoController extends Zend_Controller_Action
 //                
 //            } else {
 
-                $onibus = explode(',', $dados['id_onibus']);
+            $onibus = explode(',', $dados['id_onibus']);
 
-                $dbTableManutencao = new Application_Model_DbTable_Manutencao();
-                $id_manutencao = $dbTableManutencao->cadastrarManutencao($dados);
+            $dbTableManutencao = new Application_Model_DbTable_Manutencao();
+            $id_manutencao = $dbTableManutencao->cadastrarManutencao($dados);
 
 //            var_dump(sizeof($onibus));die();
 
-                for ($i = 0; $i < sizeof($onibus); $i++) {
+            for ($i = 0; $i < sizeof($onibus); $i++) {
 //                var_dump("<b><br><hr>data:<pre> ". print_r($onibus[0])."</pre><hr><br><b>");
 
-                    if ($dados['tipo'][$i] === 'urbano') {
-                        $dbTableOnibusUrbano = new Application_Model_DbTable_ManutencaoUrbano();
-                        $dbTableOnibusUrbano->cadastrarOnibusManutencao($id_manutencao, $onibus[$i]);
-                    }
-
-                    if ($dados['tipo'][$i] === 'intermunicipal') {
-                        $dbTableOnibusIntermunicipal = new Application_Model_DbTable_ManutencaoViagem();
-                        $dbTableOnibusIntermunicipal->cadastrarOnibusManutencao($id_manutencao, $onibus[$i]);
-                    }
+                if ($dados['tipo'][$i] === 'urbano') {
+                    $dbTableOnibusUrbano = new Application_Model_DbTable_ManutencaoUrbano();
+                    $dbTableOnibusUrbano->cadastrarOnibusManutencao($id_manutencao, $onibus[$i]);
                 }
+
+                if ($dados['tipo'][$i] === 'intermunicipal') {
+                    $dbTableOnibusIntermunicipal = new Application_Model_DbTable_ManutencaoViagem();
+                    $dbTableOnibusIntermunicipal->cadastrarOnibusManutencao($id_manutencao, $onibus[$i]);
+                }
+            }
 //            }
         }
     }
+
+    public function visualizarAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $dbTableManutencao = new Application_Model_DbTable_Manutencao();
+        $listaManutencaoPorIdManutencao = $dbTableManutencao->listarOnibusPorIdManutencao($id);
+        $this->view->listarOnibusPorIdManutencao = $listaManutencaoPorIdManutencao;
+        
+        $manutencaoPorIdManutencao = $dbTableManutencao->getManutencaoPorId($id);
+        $this->view->manutencaoPorId = $manutencaoPorIdManutencao;
+    }
+
+
+    
 
 }
