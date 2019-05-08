@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Abr-2019 às 00:20
+-- Generation Time: 08-Maio-2019 às 02:26
 -- Versão do servidor: 10.1.36-MariaDB
 -- versão do PHP: 5.6.38
 
@@ -36,6 +36,15 @@ CREATE TABLE `apolice` (
   `valor` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `apolice`
+--
+
+INSERT INTO `apolice` (`id_apolice`, `descricao`, `data_inicio`, `data_fim`, `valor`) VALUES
+(44, '', '30/04/2019', '30/04/2019', ''),
+(46, 'Seguro Total', '02/05/2019', '02/05/2019', '40,000'),
+(48, 'Seguro Total', '06/05/2019', '07/05/2020', '2.000');
+
 -- --------------------------------------------------------
 
 --
@@ -43,9 +52,20 @@ CREATE TABLE `apolice` (
 --
 
 CREATE TABLE `apolice_urbano` (
+  `id_apolice_urbano` int(11) NOT NULL,
   `id_apolice` int(11) NOT NULL,
   `id_onibus_urbano` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `apolice_urbano`
+--
+
+INSERT INTO `apolice_urbano` (`id_apolice_urbano`, `id_apolice`, `id_onibus_urbano`) VALUES
+(29, 44, 7),
+(30, 46, 7),
+(34, 48, 7),
+(35, 48, 1);
 
 -- --------------------------------------------------------
 
@@ -54,9 +74,18 @@ CREATE TABLE `apolice_urbano` (
 --
 
 CREATE TABLE `apolice_viagem` (
-  `id_onibus_viagem` int(11) NOT NULL,
-  `id_apolice` int(11) NOT NULL
+  `id_apolice_viagem` int(11) NOT NULL,
+  `id_apolice` int(11) NOT NULL,
+  `id_onibus_viagem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `apolice_viagem`
+--
+
+INSERT INTO `apolice_viagem` (`id_apolice_viagem`, `id_apolice`, `id_onibus_viagem`) VALUES
+(5, 44, 501),
+(6, 46, 501);
 
 -- --------------------------------------------------------
 
@@ -147,6 +176,17 @@ INSERT INTO `concessaotrajeto` (`codConcessao`, `data_inicio`, `extensao`, `data
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `dia`
+--
+
+CREATE TABLE `dia` (
+  `id_dia` int(11) NOT NULL,
+  `descricao` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `estudante`
 --
 
@@ -194,12 +234,22 @@ INSERT INTO `forma_pagamento` (`id_pagamento`, `descricao`, `status`) VALUES
 CREATE TABLE `funcionario` (
   `id_funcionario` int(11) NOT NULL,
   `id_cidade` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `cpf` varchar(45) DEFAULT NULL,
   `rg` varchar(45) DEFAULT NULL,
   `telefone` varchar(45) DEFAULT NULL,
   `local` varchar(255) DEFAULT NULL,
-  `id_perfil` int(11) NOT NULL
+  `dataN` varchar(45) DEFAULT NULL,
+  `ctps` varchar(45) DEFAULT NULL,
+  `pis` varchar(45) DEFAULT NULL,
+  `cnh` varchar(45) DEFAULT NULL,
+  `salario` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `dataAdmissao` varchar(45) DEFAULT NULL,
+  `endereco` varchar(45) DEFAULT NULL,
+  `numCasa` varchar(45) DEFAULT NULL,
+  `bairro` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -214,6 +264,27 @@ CREATE TABLE `horario` (
   `horario_inicio` varchar(45) DEFAULT NULL,
   `horario_chegada` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `idoso`
+--
+
+CREATE TABLE `idoso` (
+  `id_idoso` int(11) NOT NULL,
+  `carteira_idoso` varchar(45) DEFAULT NULL,
+  `idf_pessoa` int(11) NOT NULL,
+  `comprovante_residencia` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `idoso`
+--
+
+INSERT INTO `idoso` (`id_idoso`, `carteira_idoso`, `idf_pessoa`, `comprovante_residencia`) VALUES
+(1, 'carteiradoisoso.pdf', 4, 'contaluz.pdf'),
+(2, 'carteira.pdf', 6, 'comssk.pdf');
 
 -- --------------------------------------------------------
 
@@ -234,17 +305,45 @@ CREATE TABLE `linha` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `linha_dia`
+--
+
+CREATE TABLE `linha_dia` (
+  `id_dia` int(11) NOT NULL,
+  `id_linha` int(11) NOT NULL,
+  `id_motorista` int(11) NOT NULL,
+  `id_onibus_viagem` int(11) NOT NULL,
+  `horario_inicio` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `linha_trecho`
 --
 
 CREATE TABLE `linha_trecho` (
   `id_trecho` int(11) NOT NULL,
   `id_linha` int(11) NOT NULL,
-  `id_motorista` int(11) NOT NULL,
-  `id_onibus_viagem` int(11) NOT NULL,
   `local` varchar(45) DEFAULT NULL,
   `tempo` varchar(45) DEFAULT NULL,
   `situacao` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `manutencao`
+--
+
+CREATE TABLE `manutencao` (
+  `id_manutencao` int(11) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `data_inicio` varchar(45) DEFAULT NULL,
+  `data_fim` varchar(45) DEFAULT NULL,
+  `valor` varchar(45) DEFAULT NULL,
+  `motivo` varchar(45) DEFAULT NULL,
+  `oficina` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -254,14 +353,9 @@ CREATE TABLE `linha_trecho` (
 --
 
 CREATE TABLE `manutencao_urbano` (
-  `id_manutencao` int(11) NOT NULL,
+  `id_manutencao_urbano` int(11) NOT NULL,
   `id_onibus_urbano` int(11) NOT NULL,
-  `descricao` varchar(255) DEFAULT NULL,
-  `data_entrada` varchar(45) DEFAULT NULL,
-  `data_saida` varchar(45) DEFAULT NULL,
-  `motivo` varchar(255) DEFAULT NULL,
-  `oficina` varchar(255) DEFAULT NULL,
-  `valor` varchar(45) DEFAULT NULL
+  `id_manutencao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -273,12 +367,7 @@ CREATE TABLE `manutencao_urbano` (
 CREATE TABLE `manutencao_viagem` (
   `id_manutencao_viagem` int(11) NOT NULL,
   `id_onibus_viagem` int(11) NOT NULL,
-  `descricao` varchar(255) DEFAULT NULL,
-  `data_entrada` varchar(45) DEFAULT NULL,
-  `data_saida` varchar(45) DEFAULT NULL,
-  `motivo` varchar(45) DEFAULT NULL,
-  `oficina` varchar(255) DEFAULT NULL,
-  `valor` varchar(45) DEFAULT NULL
+  `id_manutencao` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -385,12 +474,12 @@ CREATE TABLE `onibus_viagem` (
 --
 
 INSERT INTO `onibus_viagem` (`id_onibus_viagem`, `id_categoria_onibus`, `placa`, `ano`, `marca`, `modelo`, `chassi`, `renavam`, `cor`, `situacao`, `km`, `numero_assentos`, `numero_passageiros`, `banheiro`, `arcondicionado`, `numero_andares`) VALUES
-(1, 2, 'dfsdfsd', '5345', 'dfgdfgdf', 'dfvdfvd', '45345345345345453', '43543543534', 'fdvdfvdv', 'INATIVO', '45435345', '44', '44', '4', '4', '4'),
-(2, 1, 'ivt5f78', '2011', 'marcopolo', 'marcopolo9000', '33454353454364564', '33423534543', 'vermelho', 'INATIVO', '20000', '50', '50', '2', '2', '2'),
-(3, 1, 'ivt6j89', '2011', 'Volkswagen', 'volks3434', '44373453453453453', '43434534525', 'branco', 'INATIVO', '200000', '70', '70', '2', '2', '2'),
-(4, 3, 'ivg6f78', '2009', 'marcopolo', 'marcopolo3344', '32423534645765756', '23524645645', 'prata', 'INATIVO', '200000', '55', '55', '2', '2', '2'),
-(5, 1, 'ivo4045', '2011', 'volkswagen', 'volks1044', '34546456745645645', '34534543346', 'verde', 'INATIVO', '2000', '30', '30', '2', '2', '2'),
-(6, 1, 'yrthtrh', '6456', 'fghghfghf', 'kkkkkkk', '54645645645645645', '64564564654', 'rhrtfhf', 'INATIVO', '45645645', '55', '55', '54', '4', '4');
+(501, 2, 'dfsdfsd', '5345', 'dfgdfgdf', 'dfvdfvd', '45345345345345453', '43543543534', 'fdvdfvdv', 'INATIVO', '45435345', '44', '44', '4', '4', '4'),
+(502, 1, 'ivt5f78', '2011', 'marcopolo', 'marcopolo9000', '33454353454364564', '33423534543', 'vermelho', 'INATIVO', '20000', '50', '50', '2', '2', '2'),
+(503, 1, 'ivt6j89', '2011', 'Volkswagen', 'volks3434', '44373453453453453', '43434534525', 'branco', 'INATIVO', '200000', '70', '70', '2', '2', '2'),
+(504, 3, 'ivg6f78', '2009', 'marcopolo', 'marcopolo3344', '32423534645765756', '23524645645', 'prata', 'INATIVO', '200000', '55', '55', '2', '2', '2'),
+(505, 1, 'ivo4045', '2011', 'volkswagen', 'volks1044', '34546456745645645', '34534543346', 'verde', 'INATIVO', '2000', '30', '30', '2', '2', '2'),
+(506, 1, 'yrthtrh', '6456', 'fghghfghf', 'kkkkkkk', '54645645645645645', '64564564654', 'rhrtfhf', 'INATIVO', '45645645', '55', '55', '54', '4', '4');
 
 -- --------------------------------------------------------
 
@@ -513,27 +602,6 @@ CREATE TABLE `pessoa_com_deficiencia` (
 INSERT INTO `pessoa_com_deficiencia` (`id_pessoa_com_deficiencia`, `tipo_deficiencia`, `atestado_medico`, `idf_pessoa`) VALUES
 (1, 'Perna quebrada', 'ahah.pdf', 1),
 (2, 'Mental', 'hasiadhu.pdf', 5);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pessoa_idosa`
---
-
-CREATE TABLE `pessoa_idosa` (
-  `id_idoso` int(11) NOT NULL,
-  `carteira_idoso` varchar(45) DEFAULT NULL,
-  `idf_pessoa` int(11) NOT NULL,
-  `comprovante_residencia` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `pessoa_idosa`
---
-
-INSERT INTO `pessoa_idosa` (`id_idoso`, `carteira_idoso`, `idf_pessoa`, `comprovante_residencia`) VALUES
-(1, 'carteiradoisoso.pdf', 4, 'contaluz.pdf'),
-(2, 'carteira.pdf', 6, 'comssk.pdf');
 
 -- --------------------------------------------------------
 
@@ -700,7 +768,7 @@ ALTER TABLE `apolice`
 -- Indexes for table `apolice_urbano`
 --
 ALTER TABLE `apolice_urbano`
-  ADD PRIMARY KEY (`id_apolice`,`id_onibus_urbano`),
+  ADD PRIMARY KEY (`id_apolice_urbano`),
   ADD KEY `fk_apolice_urbano_apolice1_idx` (`id_apolice`),
   ADD KEY `fk_apolice_urbano_onibus_urbano1_idx` (`id_onibus_urbano`);
 
@@ -708,7 +776,8 @@ ALTER TABLE `apolice_urbano`
 -- Indexes for table `apolice_viagem`
 --
 ALTER TABLE `apolice_viagem`
-  ADD PRIMARY KEY (`id_onibus_viagem`,`id_apolice`),
+  ADD PRIMARY KEY (`id_apolice_viagem`),
+  ADD KEY `fk_apolice_viagem_onibus_viagem1_idx` (`id_onibus_viagem`),
   ADD KEY `fk_apolice_viagem_apolice1_idx` (`id_apolice`);
 
 --
@@ -736,6 +805,12 @@ ALTER TABLE `concessaotrajeto`
   ADD PRIMARY KEY (`codConcessao`);
 
 --
+-- Indexes for table `dia`
+--
+ALTER TABLE `dia`
+  ADD PRIMARY KEY (`id_dia`);
+
+--
 -- Indexes for table `estudante`
 --
 ALTER TABLE `estudante`
@@ -754,7 +829,7 @@ ALTER TABLE `forma_pagamento`
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id_funcionario`),
   ADD KEY `fk_funcionario_cidade1_idx` (`id_cidade`),
-  ADD KEY `fk_funcionario_perfil1_idx` (`id_perfil`);
+  ADD KEY `fk_funcionario_usuario1_idx` (`id_usuario`);
 
 --
 -- Indexes for table `horario`
@@ -763,10 +838,26 @@ ALTER TABLE `horario`
   ADD PRIMARY KEY (`id_horario`);
 
 --
+-- Indexes for table `idoso`
+--
+ALTER TABLE `idoso`
+  ADD PRIMARY KEY (`id_idoso`),
+  ADD KEY `idf_pessoa` (`idf_pessoa`) USING BTREE;
+
+--
 -- Indexes for table `linha`
 --
 ALTER TABLE `linha`
   ADD PRIMARY KEY (`id_linha`);
+
+--
+-- Indexes for table `linha_dia`
+--
+ALTER TABLE `linha_dia`
+  ADD PRIMARY KEY (`id_dia`,`id_linha`),
+  ADD KEY `fk_linha_dia_linha1_idx` (`id_linha`),
+  ADD KEY `fk_linha_dia_motorista1_idx` (`id_motorista`),
+  ADD KEY `fk_linha_dia_onibus_viagem1_idx` (`id_onibus_viagem`);
 
 --
 -- Indexes for table `linha_trecho`
@@ -774,23 +865,29 @@ ALTER TABLE `linha`
 ALTER TABLE `linha_trecho`
   ADD PRIMARY KEY (`id_trecho`,`id_linha`),
   ADD KEY `fk_trecho_has_linha_linha1_idx` (`id_linha`),
-  ADD KEY `fk_trecho_has_linha_trecho1_idx` (`id_trecho`),
-  ADD KEY `fk_trecho_linha_motorista1_idx` (`id_motorista`),
-  ADD KEY `fk_linha_trecho_onibus_viagem1_idx` (`id_onibus_viagem`);
+  ADD KEY `fk_trecho_has_linha_trecho1_idx` (`id_trecho`);
+
+--
+-- Indexes for table `manutencao`
+--
+ALTER TABLE `manutencao`
+  ADD PRIMARY KEY (`id_manutencao`);
 
 --
 -- Indexes for table `manutencao_urbano`
 --
 ALTER TABLE `manutencao_urbano`
-  ADD PRIMARY KEY (`id_manutencao`),
-  ADD KEY `fk_manutencao_urbano_onibus_urbano1_idx` (`id_onibus_urbano`);
+  ADD PRIMARY KEY (`id_manutencao_urbano`),
+  ADD KEY `fk_manutencao_urbano_onibus_urbano1_idx` (`id_onibus_urbano`),
+  ADD KEY `fk_manutencao_urbano_manutencao1_idx` (`id_manutencao`);
 
 --
 -- Indexes for table `manutencao_viagem`
 --
 ALTER TABLE `manutencao_viagem`
   ADD PRIMARY KEY (`id_manutencao_viagem`),
-  ADD KEY `fk_manutencao_viagem_onibus_viagem1_idx` (`id_onibus_viagem`);
+  ADD KEY `fk_manutencao_viagem_onibus_viagem1_idx` (`id_onibus_viagem`),
+  ADD KEY `fk_manutencao_viagem_manutencao1_idx` (`id_manutencao`);
 
 --
 -- Indexes for table `motorista`
@@ -862,13 +959,6 @@ ALTER TABLE `pessoa_com_deficiencia`
   ADD KEY `fk_pessoa_com_deficiencia_pessoa1_idx` (`idf_pessoa`);
 
 --
--- Indexes for table `pessoa_idosa`
---
-ALTER TABLE `pessoa_idosa`
-  ADD PRIMARY KEY (`id_idoso`),
-  ADD KEY `fk_pessoa_idosa_pessoa1_idx` (`idf_pessoa`);
-
---
 -- Indexes for table `solicitacaobeneficio`
 --
 ALTER TABLE `solicitacaobeneficio`
@@ -925,7 +1015,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `apolice`
 --
 ALTER TABLE `apolice`
-  MODIFY `id_apolice` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_apolice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `apolice_urbano`
+--
+ALTER TABLE `apolice_urbano`
+  MODIFY `id_apolice_urbano` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `apolice_viagem`
+--
+ALTER TABLE `apolice_viagem`
+  MODIFY `id_apolice_viagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `categoria_onibus`
@@ -952,6 +1054,12 @@ ALTER TABLE `concessaotrajeto`
   MODIFY `codConcessao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `dia`
+--
+ALTER TABLE `dia`
+  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `estudante`
 --
 ALTER TABLE `estudante`
@@ -976,15 +1084,21 @@ ALTER TABLE `horario`
   MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `idoso`
+--
+ALTER TABLE `idoso`
+  MODIFY `id_idoso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `linha`
 --
 ALTER TABLE `linha`
   MODIFY `id_linha` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `manutencao_urbano`
+-- AUTO_INCREMENT for table `manutencao`
 --
-ALTER TABLE `manutencao_urbano`
+ALTER TABLE `manutencao`
   MODIFY `id_manutencao` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -1009,7 +1123,7 @@ ALTER TABLE `onibus_urbano`
 -- AUTO_INCREMENT for table `onibus_viagem`
 --
 ALTER TABLE `onibus_viagem`
-  MODIFY `id_onibus_viagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_onibus_viagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=507;
 
 --
 -- AUTO_INCREMENT for table `parada`
@@ -1106,27 +1220,42 @@ ALTER TABLE `estudante`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `fk_funcionario_cidade1` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_funcionario_perfil1` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_funcionario_usuario1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `idoso`
+--
+ALTER TABLE `idoso`
+  ADD CONSTRAINT `fk_pessoa_idosa_pessoa1` FOREIGN KEY (`idf_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `linha_dia`
+--
+ALTER TABLE `linha_dia`
+  ADD CONSTRAINT `fk_linha_dia_dia1` FOREIGN KEY (`id_dia`) REFERENCES `dia` (`id_dia`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_linha_dia_linha1` FOREIGN KEY (`id_linha`) REFERENCES `linha` (`id_linha`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_linha_dia_motorista1` FOREIGN KEY (`id_motorista`) REFERENCES `motorista` (`id_motorista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_linha_dia_onibus_viagem1` FOREIGN KEY (`id_onibus_viagem`) REFERENCES `onibus_viagem` (`id_onibus_viagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `linha_trecho`
 --
 ALTER TABLE `linha_trecho`
-  ADD CONSTRAINT `fk_linha_trecho_onibus_viagem1` FOREIGN KEY (`id_onibus_viagem`) REFERENCES `onibus_viagem` (`id_onibus_viagem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_trecho_has_linha_linha1` FOREIGN KEY (`id_linha`) REFERENCES `linha` (`id_linha`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_trecho_has_linha_trecho1` FOREIGN KEY (`id_trecho`) REFERENCES `trecho` (`id_trecho`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_trecho_linha_motorista1` FOREIGN KEY (`id_motorista`) REFERENCES `motorista` (`id_motorista`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_trecho_has_linha_trecho1` FOREIGN KEY (`id_trecho`) REFERENCES `trecho` (`id_trecho`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `manutencao_urbano`
 --
 ALTER TABLE `manutencao_urbano`
+  ADD CONSTRAINT `fk_manutencao_urbano_manutencao1` FOREIGN KEY (`id_manutencao`) REFERENCES `manutencao` (`id_manutencao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_manutencao_urbano_onibus_urbano1` FOREIGN KEY (`id_onibus_urbano`) REFERENCES `onibus_urbano` (`id_onibus_urbano`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `manutencao_viagem`
 --
 ALTER TABLE `manutencao_viagem`
+  ADD CONSTRAINT `fk_manutencao_viagem_manutencao1` FOREIGN KEY (`id_manutencao`) REFERENCES `manutencao` (`id_manutencao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_manutencao_viagem_onibus_viagem1` FOREIGN KEY (`id_onibus_viagem`) REFERENCES `onibus_viagem` (`id_onibus_viagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -1166,12 +1295,6 @@ ALTER TABLE `pessoa`
 --
 ALTER TABLE `pessoa_com_deficiencia`
   ADD CONSTRAINT `fk_pessoa_com_deficiencia_pessoa1` FOREIGN KEY (`idf_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `pessoa_idosa`
---
-ALTER TABLE `pessoa_idosa`
-  ADD CONSTRAINT `fk_pessoa_idosa_pessoa1` FOREIGN KEY (`idf_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `solicitacaobeneficio`
