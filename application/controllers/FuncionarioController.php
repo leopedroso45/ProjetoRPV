@@ -17,10 +17,9 @@ class FuncionarioController extends Zend_Controller_Action
 
         $dbTablePerfil = new Application_Model_DbTable_Perfil();
         $listaPerfil = $dbTablePerfil->listarPerfis();
-        
-        //$dbTableCobrador = new Application_Model_DbTable_Cobrador();
-        //$lista = $dbTableCobrador->listarTodosCobradores();
-        //$this->view->listaDosCobradores = $lista;
+
+        $dbTableFuncionario = new Application_Model_DbTable_Funcionario();
+
         $this->view->listaDeCidade = $listaCidade;
         $this->view->listaDePerfis = $listaPerfil;
 
