@@ -9,6 +9,25 @@
         </div>
 
         <div class="col-lg-12">
+            <div class="form-group" formatar SomenteNumero cpf>
+                <a href="<?= $this->baseUrl("beneficio/deficiente") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Pendentes </button></a>
+                <a href="<?= $this->baseUrl("beneficio/deficiente?tipo=1") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Aprovados </button></a>
+                <a href="<?= $this->baseUrl("beneficio/deficiente?tipo=2") ?>"> <button class="btn btn-default">
+                        <i class="fas fa-search" style="color:black"></i> Reprovados </button></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" placeholder="Digite o CPF" id="buscaCpf" name="buscaCpf" class="btn btn-default" style="width:20%;"
+                       maxlength="14" onchange="validaCPF()" OnKeyPress="formatar('###.###.###-##', this); return SomenteNumero(event)">
+                <button class="btn btn-default" align="right" onclick="window.location.href = 'deficiente' + '?cpf=' + buscaCpf.value">
+                    <i class="fas fa-search" style="color:black"></i>Buscar</button>           
+            </div>      
+        </div>
+
+        <div class="col-lg-12">
             <table class="table text-center" style="background-color:rgba(0,0,0,0.5); color: white">
                 <tr class="text-primary">
                     <th colspan="4">
@@ -16,7 +35,7 @@
                 </th>
                 </tr>
                 <tr>
-                <th><center>CPF</center></th>
+                    <th><center>CPF</center></th>
                 <th><center>Nome</center></th>
                 <th><center>Data de Solicitação</center></th>
                 <th><center>Situação</center></th>
@@ -49,60 +68,56 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="container-fluid"> 
+                    <form method="post">
                         <div class="row">
-                            <div class="table-responsive">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <div class="col-sm-6">
-                                            <label >Nome completo:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['nome'] ?> " name="nomeCompleto" id="nomeCompleto">
-                                            <label >Data de nascimento:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['data_nascimento'] ?>" name="dataNascimento" id="dataNascimento">
-                                            <label >CPF:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['cpf'] ?>" name="cpf" id="cpf">
-                                            <label >RG:</label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
-                                            <label> Celular: </label>
-                                            <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
-                                            <label>Benefício Concedido:</label>
-                                            <br><select name="beneficio" id="beneficio">
-                                                <option value="0">Nenhum</option>
-                                                <option value="1">Meia Passagem</option>
-                                                <option value="2">Isenção</option>
-                                            </select>
-                                            <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
-                                                            onclick="editarBeneficio(<?= $solicitacaobeneficio['id_solicitacao'] ?>, beneficio.value)">Salvar
-                                            </button>
+                            <div class="col-sm-6">
+                                <label >Nome completo:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['nome'] ?> " name="nomeCompleto" id="nomeCompleto">
+                                <label >Data de nascimento:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['data_nascimento'] ?>" name="dataNascimento" id="dataNascimento">
+                                <label >CPF:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['cpf'] ?>" name="cpf" id="cpf">
+                                <label >RG:</label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['rg'] ?>" name="rg" id="rg">
+                                <label> Celular: </label>
+                                <input type="text" disabled class="form-control" value="<?= $solicitacaobeneficio['celular'] ?>" name="celular" id="celular">
+                                <label>Benefício Concedido:</label>
+                                <br><select name="beneficio" id="beneficio">
+                                    <option value="0">Nenhum</option>
+                                    <option value="1">Meia Passagem</option>
+                                    <option value="2">Isenção</option>
+                                </select>
+                                <br><br><button type="button" name="conceder" value="Salvar" id="conceder" class="btn btn-success" 
+                                                onclick="editarBeneficio(<?= $solicitacaobeneficio['idf_pessoa'] ?>, beneficio.value)">Salvar
+                                </button>
 
-                                        </div>
-                                        <div class = "col-sm-6">
-                                            <label> Rua: </label>
-                                            <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['rua'] ?>" name = "rua" id = "rua">
-                                            <label> Nº: </label>
-                                            <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['numero_casa'] ?>" name = "numeroCasa" id = "numeroCasa">
-                                            <label> Bairro: </label>
-                                            <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['bairro'] ?>" name = "bairro" id = "bairro">
-                                            <label> Qual a deficiência?: </label>
-                                            <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['tipo_deficiencia'] ?> "name = "tipoDeficiencia" id = "tipoDeficiencia">
-                                            <label >Atestado Médico</label>
-                                            <br>
+                            </div>
+                            <div class = "col-sm-6">
+                                <label> Rua: </label>
+                                <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['rua'] ?>" name = "rua" id = "rua">
+                                <label> Nº: </label>
+                                <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['numero_casa'] ?>" name = "numeroCasa" id = "numeroCasa">
+                                <label> Bairro: </label>
+                                <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['bairro'] ?>" name = "bairro" id = "bairro">
+                                <label> Qual a deficiência?: </label>
+                                <input type = "text" disabled class = "form-control" value = "<?= $solicitacaobeneficio['tipo_deficiencia'] ?> "name = "tipoDeficiencia" id = "tipoDeficiencia">
+                                <label >Atestado Médico</label>
+                                <br>
 
-                                            <button class = "btn" name = "atestadoMedico" id = "atestadoMedico">
-                                                <i class = "fa fa-download" style = "color:black"></i>
-                                                <label style = "color:black">
-                                                    <a style = "color:black" href = "dist/autorizaconcessao/atestadomedico.pdf"
-                                                       download = "atestadomedico">Download </a>
-                                                </label>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <button class = "btn btn-dark" name = "atestadoMedico" id = "atestadoMedico">
+                                    <i class = "fa fa-download" style = "color:white"></i>
+                                    <label style = "color:white">
+                                        <a style = "color:white" href = "dist/autorizaconcessao/atestadomedico.pdf"
+                                           download = "atestadomedico">Download </a>
+                                    </label>
+                                </button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 <? endforeach; ?>
