@@ -13,7 +13,8 @@ class Application_Model_DbTable_Manutencao extends Zend_Db_Table_Abstract
         $manutencao->setDescricao($dados['descricao']);
         $manutencao->setData_inicio($dados['data_inicio']);
         $manutencao->setData_fim($dados['data_fim']);
-        $manutencao->setValor($dados['valor']);
+        $manutencao->setValor_inicio($dados['valor_inicio']);
+        $manutencao->setValor_final($dados['valor_final']);
         $manutencao->setMotivo($dados['motivo']);
         $manutencao->setOficina($dados['oficina']);
 
