@@ -35,11 +35,12 @@ $(".cadastrar-funcionario").click(function () {
     var salario = $("#salario").val();
     var email = $("#email").val();
     var dataAdmissao = $("#dataAdmissao").val();
-    var cidade = $("#cidade").val();
+    var cidade = $("#id-cidade").val();
     var endereco = $("#endereco").val();
     var numCasa = $("#numCasa").val();
     var bairro = $("#bairro").val();
 
+//alert();
 
     $.ajax({
         type: 'POST',
@@ -60,7 +61,7 @@ $(".cadastrar-funcionario").click(function () {
                         label: "OK",
                         className: 'btn-primary',
                         callback: function () {
-                            // window.location = baseUrl + '';
+                            window.location = baseUrl + '';
                         }
                     }
                 }
