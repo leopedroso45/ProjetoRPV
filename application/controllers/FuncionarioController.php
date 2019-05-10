@@ -18,14 +18,19 @@ class FuncionarioController extends Zend_Controller_Action
         $dbTablePerfil = new Application_Model_DbTable_Perfil();
         $listaPerfil = $dbTablePerfil->listarPerfis();
 
+        $dbTableUsuario = new Application_Model_DbTable_Usuario();
         $dbTableFuncionario = new Application_Model_DbTable_Funcionario();
+
 
         $this->view->listaDeCidade = $listaCidade;
         $this->view->listaDePerfis = $listaPerfil;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            $dbTableCobrador->cadastrarCobrador($dados);
+            var_dump($dados["id_perfil"]); die();
+            $id_usuario = $dbTableUsuario->cadastrarUsuarioF($dados);
+
+            $dbTableFuncionario->cadastrarFuncionario($id_usuario, $dados);
         }
     }
 

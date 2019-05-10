@@ -9,7 +9,7 @@ $(document).ready(function () {
     $('#dataAdmissao').mask('99/99/9999');
 });
 
-$("#myform").submit(function () {
+$(".cadastrar-funcionario").click(function () {
     if ($("#senha").val() !== $("#senha1").val()) {
         console.log("senhas divergentes")
         alert("As senhas não coincidem");
@@ -17,7 +17,7 @@ $("#myform").submit(function () {
     }
     //18 campos
     //Perfil/Cargo
-    var descricao = $("cargo").val();
+    var id_perfil = $("#id_perfil").val();
 
     //Usuario
     var nome_usuario = $("#usuario").val();
@@ -40,13 +40,15 @@ $("#myform").submit(function () {
     var numCasa = $("#numCasa").val();
     var bairro = $("#bairro").val();
 
+
     $.ajax({
         type: 'POST',
         url: baseUrl + 'funcionario/index',
-        data: $("#myform").serialize(),
-        //  {id_parada: id_parada, descricao: descricao, num_paradas: num_paradas,
-        //     id_motorista: id_motorista, id_cobrador: id_cobrador, id_onibus_urbano: id_onibus_urbano
-        // },
+        data:
+         {id_perfil: id_perfil, nome_usuario: nome_usuario, senha: senha, nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
+            telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao, cidade: cidade, endereco: endereco, numCasa: numCasa,
+            bairro: bairro
+         },
         async: false,
         success: function () {
             var dialog = bootbox.dialog({
@@ -77,7 +79,6 @@ $("#myform").submit(function () {
         }
     });
 });
-
 
 $(".edita").click(function () {
     //        alert();
@@ -172,7 +173,13 @@ $(".edita").click(function () {
 
 //});
 
+$("#alocar-cidade").click(function () {
+    var id_cidade = $("#sel4 option:selected").val();
+    var nome = $("#sel4 option:selected").text();
 
+    document.getElementById("id-cidade").value = id_cidade;
+    document.getElementById("nome-cidade").value = nome;
+});
 
 
 

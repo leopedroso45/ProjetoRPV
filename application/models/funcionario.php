@@ -3,7 +3,7 @@
 class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
 {
  
-	//private $id_funcionario;
+	//private $id;
     //private $nome;
     //private $dataN;
     //private $cpf;
@@ -20,12 +20,12 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
     //private $numCasa;
     //private $bairro;
 
-	public function getId_funcionario() {
-		return this.$id_funcionario;
+	public function getId_Usuario(){
+		return this.$id_usuario;
 	}
 
-	public function setId_funcionario($id_funcionario) {
-		this.$id_funcionario = $id_funcionario;
+	public function setId_Usuario(){
+		this.$id_usuario = $id_usuario;
 	}
 
 	public function getnome() {

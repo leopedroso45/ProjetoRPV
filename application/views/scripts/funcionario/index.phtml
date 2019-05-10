@@ -4,19 +4,18 @@
             <div class="col">
                 <div class="card" style="background-color:rgba(0,0,0,0.5);">
                     <div class="container labelsForm">
-                        <form id="myform">
+                        <form>
                             <Center> 
                             <!-- Conjunto de divs-linha para cada campo do form-->                      
                             <h6>Do cargo</h6>
                             <div class="form-group form-control-sm row ">
                                 <label for="example-search-input" class="col-6 col-form-label">Cargo</label>
                                 <div class="col-sm-5 ">
-                                    <select class="custom-select" id="inputGroupSelect01" required>
+                                    <select id="id_perfil" class="custom-select" required>
                                     <? foreach ($this->listaDePerfis as $perfil): ?>
                                         <option value="<?= $perfil['id_perfil'] ?>"><?= $perfil['descricao']; ?></option>
                                     <? endforeach; ?>
                                     <!--
-                                        <option selected label="Selecione um cargo." disabled></option>
                                         <option value="1">Administrador Local</option>
                                         <option value="2">Administrador Geral</option>
                                         <option value="3">Cobrador</option>
@@ -57,7 +56,7 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">RG</label>
                                 <div class="col-xs-9">
-                                <input type="text" name="rge" id="rg" placeholder="XXXXXXXXXX" class="form-control" required>
+                                <input type="text" name="rg" id="rg" placeholder="XXXXXXXXXX" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
@@ -119,7 +118,8 @@
                                             Selecionar
                                         </span>
                                     </div>
-                                        <input type="text" class="form-control" disabled id="cidade">
+                                    <input type="hidden" id="id-cidade">
+                                    <input type="text" class="form-control" disabled id="nome-cidade">
                                 </div>
                                 </a>
 
@@ -149,7 +149,7 @@
                             <div class="form-group form-control-sm row">
                                 <label class="col-6 col-form-label">Nome de usuário</label>
                                 <div class="col-xs-9">
-                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="usuario" required>
+                                    <input class="form-control" type="text" maxlength="15" placeholder="Digite o usuário" id="usuario" name="usuario" required>
                                 </div>
                             </div>
                             <div class="form-group form-control-sm row">
@@ -167,7 +167,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <button type="submit" for="exampleFormControlFile1" class="btn btn-success btn-sm btn-block" >Pronto</button>
+                                    <button type="button" for="exampleFormControlFile1" class="btn btn-success btn-sm btn-block cadastrar-funcionario" >Pronto</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="reset" class="btn btn-warning btn-sm btn-block" >Limpar campos</button> 
@@ -194,14 +194,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <select multiple class="form-control" id="sel6" style="height: 270px;">
+                <select multiple class="form-control" id="sel4" style="height: 270px;">
                     <? foreach ($this->listaDeCidade as $cidade): ?>
-                        <option  value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
+                        <option value="<?= $cidade['id_cidade'] ?>"><?= $cidade['nome']; ?></option>
                     <? endforeach; ?>
                 </select>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="alocar-onibus" data-dismiss="modal">Escolher</button>
+                <button type="button" class="btn btn-success" id="alocar-cidade" data-dismiss="modal">Escolher</button>
             </div>
         </div>
     </div>

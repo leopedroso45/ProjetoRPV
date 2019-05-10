@@ -9,10 +9,11 @@ class Application_Model_DbTable_Funcionario extends Zend_Db_Table_Abstract
 
     
     
-    public function cadastrarFuncionario($dados)
+    public function cadastrarFuncionario($id_usuario, $dados)
     {
         $funcionario = $this->createRow();
-        
+
+        $funcionario->setId_Usuario($id_usuario);         
         $funcionario->setNome($dados['nome']); 
         $funcionario->setDataN($dados['dataN']); 
         $funcionario->setCpf($dados['cpf']); 
@@ -27,7 +28,7 @@ class Application_Model_DbTable_Funcionario extends Zend_Db_Table_Abstract
         $funcionario->setCidade($dados['cidade']); 
         $funcionario->setEndereco($dados['endereco']); 
         $funcionario->setNumCasa($dados['numCasa']);
-        $funcionario->setBairro($dados['bairro']); 
+        $funcionario->setBairro($dados['bairro']);
 
 
         return $funcionario->save();
