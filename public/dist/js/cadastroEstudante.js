@@ -33,7 +33,7 @@ $(document).ready(function () {
                 alert('Cadastrado!');
             },
             error: function () {
-                alert("Error");
+//                alert("Error");
             }
         });
     });
