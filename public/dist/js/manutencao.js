@@ -93,10 +93,10 @@ $(document).ready(function () {
                             label: "OK",
                             className: 'btn-primary',
                             callback: function () {
-                                // window.location = baseUrl + '';
+                                location.reload();
                             }
                         }
-                    }
+                    } 
                 });
                 dialog.init(function () {
                     setTimeout(function () {
