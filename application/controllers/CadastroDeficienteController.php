@@ -6,6 +6,7 @@ class CadastroDeficienteController extends Zend_Controller_Action {
         $this->_helper->layout->setLayout("layout_admin_geral");
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastroDeficiente.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastrosGeral.js'));
     }
 
     public function indexAction() {
