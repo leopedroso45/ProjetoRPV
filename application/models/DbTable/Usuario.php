@@ -10,7 +10,7 @@ class Application_Model_DbTable_Usuario extends Zend_Db_Table_Abstract {
         
         $usuario = $this->createRow();
         /* @var $usuario Application_Model_Usuario */
-        $usuario->setId_perfil(2);
+        $usuario->setId_perfil(8);
         $usuario->setNome_usuario($dados['nome_usuario']);
         $usuario->setSenha($dados['senha']);
 
