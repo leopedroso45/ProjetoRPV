@@ -8,14 +8,16 @@ class LinhaController extends Zend_Controller_Action
         $this->_helper->layout->setLayout('layout_admin_local');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/linha.js'));
-        
     }
 
     public function indexAction()
     {
-       // implementar
+        // implementar
     }
 
     public function editarAtivoAction()
     {
+        
+    }
+
 }

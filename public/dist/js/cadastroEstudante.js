@@ -43,9 +43,9 @@ $(document).ready(function () {
                 });
 
             },
-            error: function () {
+//            error: function () {
 //                alert('error');
-            }
+//            }
         });
     });
 });

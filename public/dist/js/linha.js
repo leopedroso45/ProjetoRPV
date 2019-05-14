@@ -391,9 +391,9 @@ $(".cadastrar-linha").click(function () {
                     });
 
                 },
-                error: function () {
+//                error: function () {
 //                alert('error');
-                }
+//                }
             });
 
         }

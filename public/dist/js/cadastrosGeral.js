@@ -32,9 +32,9 @@ $(document).ready(function () {
                 location.reload();
                 alert('Cadastrado!');
             },
-            error: function () {
-                alert("Error");
-            }
+//            error: function () {
+//                alert("Error");
+//            }
         });
     });
 });
