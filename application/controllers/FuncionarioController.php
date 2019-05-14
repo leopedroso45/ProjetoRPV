@@ -20,10 +20,12 @@ class FuncionarioController extends Zend_Controller_Action
 
         $dbTableUsuario = new Application_Model_DbTable_Usuario();
         $dbTableFuncionario = new Application_Model_DbTable_Funcionario();
+        $listaFuncionario = $dbTableFuncionario->listarTodosFuncionarios();
 
 
         $this->view->listaDeCidade = $listaCidade;
         $this->view->listaDePerfis = $listaPerfil;
+        $this->view->listaDeFuncionarios = $listaFuncionario;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();

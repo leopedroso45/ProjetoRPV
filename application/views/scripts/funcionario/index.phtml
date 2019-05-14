@@ -167,7 +167,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-success btn-sm btn-block cadastrar-funcionario"> Pronto </button>
+                                    <button type="submit" class="btn btn-success btn-sm btn-block cadastrar-funcionario"> Pronto </button>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="reset" class="btn btn-warning btn-sm btn-block" >Limpar campos</button> 
@@ -178,8 +178,30 @@
                         </form>
                     </div>
                 </div>
-            </div>      
-        </div>
+            </div> 
+        </div>    
+        <div class="flex-row">
+            <table class="table table-dark">
+             <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Admissão</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">RG</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? foreach ($this->listaDeFuncionarios as $funcionario): ?>
+                    <tr>
+                        <th scope="row"><?= $funcionario['nome'] ?></th>
+                        <td><?= $funcionario['dataAdmissao'] ?></td>
+                        <td><?= $funcionario['cpf'] ?></td>
+                        <td><?= $funcionario['rg'] ?></td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+            </table>
+        </div>     
     </div>
 </div>
 
