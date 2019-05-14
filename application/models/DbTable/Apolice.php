@@ -37,11 +37,10 @@ class Application_Model_DbTable_Apolice extends Zend_Db_Table_Abstract
         $stmt = $adapter->query(
                 "SELECT onibus_urbano.id_onibus_urbano AS id,
                 (CASE WHEN onibus_urbano.id_onibus_urbano THEN 'urbano' ELSE 'intermunicipal' END) AS tipo,  
-                onibus_urbano.placa, onibus_urbano.ano, onibus_urbano.status
+                onibus_urbano.placa, onibus_urbano.ano
                 FROM onibus_urbano, apolice, apolice_urbano WHERE
                 onibus_urbano.id_onibus_urbano = apolice_urbano.id_onibus_urbano AND
                 apolice_urbano.id_apolice = apolice.id_apolice AND
-                onibus_urbano.status = 'ATIVO' AND
                 apolice.id_apolice = '" . $id . "'
                 
                 GROUP BY id
@@ -49,11 +48,10 @@ class Application_Model_DbTable_Apolice extends Zend_Db_Table_Abstract
 
                 SELECT onibus_viagem.id_onibus_viagem AS id,
                 (CASE WHEN onibus_viagem.id_onibus_viagem THEN 'intermunicipal' ELSE 'urbano' END) AS tipo,  
-                onibus_viagem.placa, onibus_viagem.ano, onibus_viagem.status
+                onibus_viagem.placa, onibus_viagem.ano
                 FROM onibus_viagem, apolice, apolice_viagem WHERE
                 onibus_viagem.id_onibus_viagem = apolice_viagem.id_onibus_viagem AND
                 apolice_viagem.id_apolice = apolice.id_apolice AND
-                onibus_viagem.status = 'ATIVO' AND
                 apolice.id_apolice = '" . $id . "' ");
 //        var_dump($stmt->__toString());die();
 
