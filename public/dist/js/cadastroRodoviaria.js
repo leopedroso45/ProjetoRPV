@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     $(".cadastrar").click(function ()
     {
+        
+        $('.img-loading').removeClass("hidden");
         var nome = $("#nome").val();
         var cidade = $("#cidade").val();
         var estado = $("#estado").val();
@@ -15,15 +17,23 @@ $(document).ready(function () {
             async: false,
             data: {nome:nome, cidade:cidade, estado:estado, data_inicio:data_inicio, responsavel:responsavel
             },
+                beforeSend: function () {
+                    setTimeout(function () {
+                        $('.img-loading').addClass("hidden");
+                    }, 1000);
+                },
+                success: function () {
+                    bootbox.alert({
+                        message: "Cadastro realizado com sucesso.",
+                        callback: function () {
+                            location.reload();
+                        }
+                    });
 
-            success: function () {
-                $(".alert-success").removeAttr("style");
-                location.reload();
-                alert('Cadastrado!');
-            },
-            error: function () {
-                alert("Error");
-            }
+                },
+                error: function () {
+//                alert('error');
+                }
         });
     });
 });

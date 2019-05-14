@@ -3,6 +3,9 @@ $(document).ready(function () {
 
     $(".cadastrar").click(function ()
     {
+        
+        $('.img-loading').removeClass("hidden");
+        
         var nome_usuario = $("#nome_usuario").val();
         var senha = $("#senha").val();
         var nomeCompleto = $("#nomeCompleto").val();
@@ -16,7 +19,7 @@ $(document).ready(function () {
         var comprovanteResidencia = $("#comprovanteResidencia").val();
         var comprovanteMatricula = $("#comprovanteMatricula").val();
         moment.locale('pt-br');
-        var data_solicitacao = moment().format('LLL'); 
+        var data_solicitacao = moment().format('LLL');
 
         $.ajax({
             type: "POST",
@@ -26,14 +29,22 @@ $(document).ready(function () {
                 cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, comprovanteResidencia: comprovanteResidencia,
                 comprovanteMatricula: comprovanteMatricula, data_solicitacao: data_solicitacao
             },
-
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
             success: function () {
-                $(".alert-success").removeAttr("style");
-                location.reload();
-                alert('Cadastrado!');
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+
             },
             error: function () {
-//                alert("Error");
+//                alert('error');
             }
         });
     });

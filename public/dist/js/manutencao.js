@@ -9,6 +9,8 @@ $(document).ready(function () {
     $('.onibus').DataTable();
 
     $(".cadastrar-manutencao").click(function () {
+        
+        $('.img-loading').removeClass("hidden");
 
         var id_onibus;
         var tipo_onibus;
@@ -82,28 +84,18 @@ $(document).ready(function () {
             data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
                 data_inicio: data_inicio, data_fim: data_fim, valor_inicio: valor_inicio, valor_final: valor_final, motivo: motivo, oficina: oficina
             },
-            async: false,
+            async: false, 
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
             success: function () {
-                var dialog = bootbox.dialog({
-                    title: 'Mensagem',
-                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
-                    closeButton: false,
-                    buttons: {
-                        ok: {
-                            label: "OK",
-                            className: 'btn-primary',
-                            callback: function () {
-                                location.reload();
-                            }
-                        }
-                    } 
-                });
-                dialog.init(function () {
-                    setTimeout(function () {
-
-                        dialog.find('.bootbox-body').html('Manutenção cadastrada com sucesso!');
-                    }, 2000);
-
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
                 });
 
             },
@@ -228,7 +220,7 @@ $(function () {
 
 function onibusPorIdManutencao(id_manutencao) {
     var id = id_manutencao;
-    
+
     $.ajax({
         type: 'POST',
         url: baseUrl + 'manutencao/index',

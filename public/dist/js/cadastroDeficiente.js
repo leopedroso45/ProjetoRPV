@@ -3,6 +3,8 @@ $(document).ready(function () {
 
     $(".cadastrar").click(function ()
     {
+        
+        $('.img-loading').removeClass("hidden");
         var nome_usuario = $("#nome_usuario").val();
         var senha = $("#senha").val();
         var nomeCompleto = $("#nomeCompleto").val();
@@ -26,15 +28,23 @@ $(document).ready(function () {
                 cpf: cpf, rg: rg, celular: celular, rua: rua, numeroCasa: numeroCasa, bairro: bairro, tipo_deficiencia: tipo_deficiencia,
                 atestado_medico: atestado_medico, data_solicitacao: data_solicitacao
             },
+                beforeSend: function () {
+                    setTimeout(function () {
+                        $('.img-loading').addClass("hidden");
+                    }, 1000);
+                },
+                success: function () {
+                    bootbox.alert({
+                        message: "Cadastro realizado com sucesso.",
+                        callback: function () {
+                            location.reload();
+                        }
+                    });
 
-            success: function () {
-                $(".alert-success").removeAttr("style");
-                location.reload();
-                alert('Cadastrado!');
-            },
-            error: function () {
-                alert("Error");
-            }
+                },
+                error: function () {
+//                alert('error');
+                }
         });
     });
 });
