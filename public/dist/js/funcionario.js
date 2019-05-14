@@ -35,7 +35,7 @@ $(".cadastrar-funcionario").click(function () {
     var salario = $("#salario").val();
     var email = $("#email").val();
     var dataAdmissao = $("#dataAdmissao").val();
-    var cidade = $("#id-cidade").val();
+    var id_cidade = $("#id_cidade").val();
     var endereco = $("#endereco").val();
     var numCasa = $("#numCasa").val();
     var bairro = $("#bairro").val();
@@ -51,7 +51,7 @@ $(".cadastrar-funcionario").click(function () {
             id_perfil: id_perfil, nome_usuario: nome_usuario, senha: senha,
             nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
             telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
-            cidade: cidade, endereco: endereco, numCasa: numCasa, bairro: bairro
+            id_cidade: id_cidade, endereco: endereco, numCasa: numCasa, bairro: bairro
          },
         success: function () {
             bootbox.alert("Cadastro realizado com sucesso!", function () {
