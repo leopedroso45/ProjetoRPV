@@ -47,23 +47,28 @@ $(".cadastrar-funcionario").click(function () {
         url: baseUrl + 'funcionario/index',
         async: false,
         data:
-         {
-            id_perfil: id_perfil, id_cidade: id_cidade, nome_usuario: nome_usuario, senha: senha,
-            nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
-            telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
-             endereco: endereco, numCasa: numCasa, bairro: bairro
-         },
-        success: function () {
-            bootbox.alert("Cadastro realizado com sucesso!", function () {
-                //location.reload();
-            });
+                {
+                    id_perfil: id_perfil, id_cidade: id_cidade, nome_usuario: nome_usuario, senha: senha,
+                    nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh,
+                    telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
+                    endereco: endereco, numCasa: numCasa, bairro: bairro
+                },
+        beforeSend: function () {
+            setTimeout(function () {
+                $('.img-loading').addClass("hidden");
+            }, 1000);
         },
-        error: function (error) {
-            alert(error);
-            console.log(error);
-         //   bootbox.alert("Algo de errado não está certo!", function () {
-                //location.reload();
-           // });
+        success: function () {
+            bootbox.alert({
+                message: "Cadastro realizado com sucesso.",
+                callback: function () {
+                    location.reload();
+                }
+            });
+
+        },
+        error: function () {
+//                alert('error');
         }
     });
 });
