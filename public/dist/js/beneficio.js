@@ -1,11 +1,7 @@
-$(document).ready(function () {
-
-
-});
-
 function editarBeneficio(id, situacao) {
     var id1 = id;
     var situacao1 = situacao;
+
     $.ajax({
         type: "POST",
         url: "http://localhost/ProjetoRPV/public/update.php?id=" + id1 + "&situacao=" + situacao1 + "",
@@ -17,6 +13,7 @@ function editarBeneficio(id, situacao) {
             location.reload();
         },
         error: function () {
+            alert(Error);
         }
     });
 }

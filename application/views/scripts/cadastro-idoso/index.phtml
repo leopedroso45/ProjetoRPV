@@ -1,0 +1,82 @@
+<div class="container">    
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form>
+                <br>
+
+                <div class="card bg-light mb-3">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+                        <div class="card-body">
+
+
+                            <div class="form-group validaUsuario">
+                                <label for="exampleInputEmail1">Usuário</label>
+                                <input type="text" class="form-control" id="nome_usuario" placeholder="Escolha um nome de usuário" onchange="validaUsuario()">
+                                <p id="mensagem2" style="color:red" ></p>
+                            </div>
+                            <div class="form-group verify minemaxlenght">
+                                <label for="exampleInputEmail1">Senha</label>
+                                <input type="password" class="form-control" id="senha" name=senha" placeholder="Escolha uma senha" onchange="minemaxlenght()" onchange=" verify()">
+                            </div>
+                            <div class="form-group verify minemaxlenght">
+                                <label for="exampleInputEmail1">Confirme a senha</label>
+                                <input type="password" class="form-control" id="confirmarSenha" name="confsenha" placeholder="Confirme a senha" onchange="verify()">
+                                <p id="mensagem" style="color:red" ></p>
+                            </div>
+                            <div class="form-group Ncompleto">
+                                <label for="exampleInputPassword1">Nome Completo</label>
+                                <input type="text" class="form-control" id="nomeCompleto" placeholder="Digite o nome completo" onchange="Ncompleto()">
+                                <p id="mensagem1" style="color:red" ></p>
+                            </div>
+                            <div class="form-group formatar">
+                                <label for="exampleInputPassword1">Data de Nascimento:</label>
+                                <input type="date" class="form-control" id="dataNascimento" placeholder="Digite a data de nascimento" maxlength="10" OnKeyPress="formatar('##/##/####', this)">
+                            </div>
+                            <div class="form-group formatar SomenteNumero cpf">
+                                <label for="exampleInputPassword1">CPF:</label>
+                                <input type="text" class="form-control" id="cpf" placeholder="Digite o cpf" maxlength="14" onchange="validaCPF()" OnKeyPress="formatar('###.###.###-##', this); return SomenteNumero(event)">
+                                <p id="mensagem3" style="color:red" ></p>
+                            </div>
+                            <div class="form-group SomenteNumero">
+                                <label for="exampleInputPassword1">RG:</label>
+                                <input type="text" class="form-control" id="rg" placeholder="Digite o RG" maxlength="10" required="required" onkeypress='return SomenteNumero(event)'>
+                            </div>
+                            <div class="form-group formatar SomenteNumero">
+                                <label for="exampleInputPassword1">Celular:</label>
+                                <input type="text" class="form-control" id="celular" placeholder="Digite o ddd+celular" maxlength="12" OnKeyPress="formatar('##-#########', this); return SomenteNumero(event)">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Rua:</label>
+                                <input type="text" class="form-control" id="rua" placeholder="Digite a rua em que reside">
+                            </div>
+                            <div class="form-group" SomenteNumero>
+                                <label for="exampleInputPassword1">N°:</label>
+                                <input type="text" class="form-control" id="numeroCasa" placeholder="N° da casa" maxlength="4" onkeypress="return SomenteNumero(event)">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Bairro:</label>
+                                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Anexe o Comprovante de Residência:</label>
+                                <input type="file" class="form-control" id="comprovante_residencia" placeholder="Anexo documento que comprove a residência">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Anexe a Carteira do Idoso:</label>
+                                <input type="file" class="form-control" id="carteira_idoso" placeholder="Anexe a carteira do idoso">
+                            </div>
+                            
+                            <p id="mensagem" style="color:red" ></p>
+                            <button type="button" id="cadastro" class="btn btn-block btn-primary cadastrar">Cadastrar</button>
+                            <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
+
+                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+
+    </div>
+
+</div>
