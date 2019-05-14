@@ -20,7 +20,7 @@ $(".cadastrar-funcionario").click(function () {
     var id_perfil = $("#id_perfil").val();
 
     //Usuario
-    var nome_usuario = $("#usuario").val();
+    var nome_usuario = $("#nome_usuario").val();
     var senha = $("#senha").val();
 
     //Funcionario
@@ -43,40 +43,27 @@ $(".cadastrar-funcionario").click(function () {
 //alert();
 
     $.ajax({
-        type: 'POST',
+        type: "POST",
         url: baseUrl + 'funcionario/index',
-        data:
-         {id_perfil: id_perfil, nome_usuario: nome_usuario, senha: senha, nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
-            telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao, cidade: cidade, endereco: endereco, numCasa: numCasa,
-            bairro: bairro
-         },
         async: false,
+        data:
+         {
+            id_perfil: id_perfil, nome_usuario: nome_usuario, senha: senha,
+            nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
+            telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
+            cidade: cidade, endereco: endereco, numCasa: numCasa, bairro: bairro
+         },
         success: function () {
-            var dialog = bootbox.dialog({
-                title: 'Mensagem',
-                message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
-                closeButton: false,
-                buttons: {
-                    ok: {
-                        label: "OK",
-                        className: 'btn-primary',
-                        callback: function () {
-                            window.location = baseUrl + '';
-                        }
-                    }
-                }
+            bootbox.alert("Cadastro realizado com sucesso!", function () {
+                //location.reload();
             });
-            dialog.init(function () {
-                setTimeout(function () {
-
-                    dialog.find('.bootbox-body').html('Funcionario cadastrado com sucesso!');
-                }, 2000);
-
-            });
-
         },
-        error: function () {
-            //                alert('error');
+        error: function (error) {
+            alert(error);
+            console.log(error);
+         //   bootbox.alert("Algo de errado não está certo!", function () {
+                //location.reload();
+           // });
         }
     });
 });

@@ -25,7 +25,7 @@ class Application_Model_DbTable_Funcionario extends Zend_Db_Table_Abstract
         $funcionario->setSalario($dados['salario']); 
         $funcionario->setEmail($dados['email']); 
         $funcionario->setDataAdmissao($dados['dataAdmissao']);
-        $funcionario->setCidade($dados['cidade']); 
+        $funcionario->setCidade($dados['id_cidade']); 
         $funcionario->setEndereco($dados['endereco']); 
         $funcionario->setNumCasa($dados['numCasa']);
         $funcionario->setBairro($dados['bairro']);

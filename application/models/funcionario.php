@@ -15,7 +15,7 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
     //private $salario;
     //private $email;
     //private $dataAdmissao;
-    //private $cidade;
+    //private $id_cidade;
     //private $endereco;
     //private $numCasa;
     //private $bairro;
@@ -117,11 +117,11 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
 	}
 
 	public function getCidade() {
-		return this.$cidade;
+		return this.$id_cidade;
 	}
 
-	public function setCidade($cidade) {
-		this.$cidade = $cidade;
+	public function setCidade($id_cidade) {
+		this.$id_cidade = $id_cidade;
 	}
 
 	public function getEndereco() {
