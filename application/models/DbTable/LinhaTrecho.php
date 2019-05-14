@@ -68,10 +68,7 @@ class Application_Model_DbTable_LinhaTrecho extends Zend_Db_Table_Abstract
         ));
 
         $stmt = $adapter->query(
-           "select t.descricao, lt.tempo, lt.km, l.descricao as descLinha"
-                . " from trecho as t, linha_trecho as lt, linha as l"
-                . " where t.id_trecho = lt.id_trecho AND"
-                . " l.id_linha = lt.id_linha and l.id_linha = ".$id.""
+           "select t.descricao, lt.tempo, lt.km, l.descricao as descLinha from trecho as t, linha_trecho as lt, linha as l where t.id_trecho = lt.id_trecho AND l.id_linha = lt.id_linha and l.id_linha = ".$id.""
 
         );
 
