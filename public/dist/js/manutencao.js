@@ -3,22 +3,18 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
-    $('#valor_inicio').mask('99.999,99');
-    $('#valor_final').mask('99.999,99');
+    $('#valor').mask('99,999.99');
 
     $('.onibus').DataTable();
 
     $(".cadastrar-manutencao").click(function () {
-        
-        $('.img-loading').removeClass("hidden");
 
         var id_onibus;
         var tipo_onibus;
         var descricao = $("#descricao").val();
         var data_inicio = $("#data_inicio").val();
         var data_fim = $("#data_fim").val();
-        var valor_inicio = $("#valor_inicio").val();
-        var valor_final = $("#valor_final").val();
+        var valor = $("#valor").val();
         var motivo = $("#motivo").val();
         var oficina = $("#oficina").val();
         var tipo = [];
@@ -82,20 +78,30 @@ $(document).ready(function () {
             type: 'POST',
             url: baseUrl + 'manutencao/index',
             data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
-                data_inicio: data_inicio, data_fim: data_fim, valor_inicio: valor_inicio, valor_final: valor_final, motivo: motivo, oficina: oficina
+                data_inicio: data_inicio, data_fim: data_fim, valor: valor, motivo: motivo, oficina: oficina
             },
-            async: false, 
-            beforeSend: function () {
-                setTimeout(function () {
-                    $('.img-loading').addClass("hidden");
-                }, 1000);
-            },
+            async: false,
             success: function () {
-                bootbox.alert({
-                    message: "Cadastro realizado com sucesso.",
-                    callback: function () {
-                        location.reload();
+                var dialog = bootbox.dialog({
+                    title: 'Mensagem',
+                    message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+                    closeButton: false,
+                    buttons: {
+                        ok: {
+                            label: "OK",
+                            className: 'btn-primary',
+                            callback: function () {
+                                // window.location = baseUrl + '';
+                            }
+                        }
                     }
+                });
+                dialog.init(function () {
+                    setTimeout(function () {
+
+                        dialog.find('.bootbox-body').html('Manutenção cadastrada com sucesso!');
+                    }, 2000);
+
                 });
 
             },
@@ -220,7 +226,7 @@ $(function () {
 
 function onibusPorIdManutencao(id_manutencao) {
     var id = id_manutencao;
-
+    
     $.ajax({
         type: 'POST',
         url: baseUrl + 'manutencao/index',

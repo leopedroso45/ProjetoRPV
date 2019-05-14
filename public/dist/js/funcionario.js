@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function(){
     $("#data").mask("99/99/9999");
     $("#rg").mask("9999999999");
     $("#cpf").mask("999.999.999-99");
@@ -6,67 +6,64 @@ $(document).ready(function () {
     $('#pis').mask('999.99999.99-9');
     $('#cnh').mask('99999999999');
     $("#telefone").mask("(99) 99999-9999");
-    $('#dataAdmissao').mask('99/99/9999');
+    $('#dataAdmissao').mask('99/99/9999');     
 });
-
+ 
 $(".cadastrar-funcionario").click(function () {
-    
-    $('.img-loading').removeClass("hidden");
-    
-    if ($("#senha").val() !== $("#senha1").val()) {
-        console.log("senhas divergentes")
-        alert("As senhas não coincidem");
-        return false;
-    }
-    //18 campos
-    //Perfil/Cargo
-    var id_perfil = $("#id_perfil").val();
+
 
     //Usuario
-    var nome_usuario = $("#nome_usuario").val();
-    var senha = $("#senha").val();
+    var nome_usuario = $("#nome").val();;
+    var senha = $("#nome").val();;
 
     //Funcionario
     var nome = $("#nome").val();
-    var dataN = $("#dataN").val();
-    var cpf = $("#cpf").val();
-    var rg = $("#rg").val();
-    var ctps = $("#ctps").val();
-    var pis = $("#pis").val();
-    var cnh = $("#cnh").val();
-    var telefone = $("#telefone").val();
-    var salario = $("#salario").val();
-    var email = $("#email").val();
-    var dataAdmissao = $("#dataAdmissao").val();
-    var id_cidade = $("#id_cidade").val();
-    var endereco = $("#endereco").val();
-    var numCasa = $("#numCasa").val();
-    var bairro = $("#bairro").val();
+    var dataN = $("#id-cobrador").val();
+    var cpf = $("#id-cobrador").val();
+    var rg = $("#id-cobrador").val();
+    var ctps = $("#id-cobrador").val();
+    var pis = $("#id-cobrador").val();
+    var cnh = $("#id-cobrador").val();
+    var telefone = $("#id-cobrador").val();
+    var salario = $("#id-cobrador").val();
+    var email = $("#id-cobrador").val();
+    var dataAdmissao = $("#id-cobrador").val(); 
+    var cidade = $("#id-cobrador").val();
+    var endereco = $("#id-cobrador").val();
+    var numCasa = $("#id-cobrador").val();
+    var bairro = $("#id-cobrador").val();
 
-//alert();
+    var id_cobrador = $("#id-cobrador").val();
+
 
     $.ajax({
-        type: "POST",
-        url: baseUrl + 'funcionario/index',
-        async: false,
-        data:
-                {
-                    id_perfil: id_perfil, id_cidade: id_cidade, nome_usuario: nome_usuario, senha: senha,
-                    nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh,
-                    telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
-                    endereco: endereco, numCasa: numCasa, bairro: bairro
-                },
-        beforeSend: function () {
-            setTimeout(function () {
-                $('.img-loading').addClass("hidden");
-            }, 1000);
+        type: 'POST',
+        url: baseUrl + 'trajeto/index',
+        data: {id_parada: id_parada, descricao: descricao, num_paradas: num_paradas,
+            id_motorista: id_motorista, id_cobrador: id_cobrador, id_onibus_urbano: id_onibus_urbano
         },
+        async: false,
         success: function () {
-            bootbox.alert({
-                message: "Cadastro realizado com sucesso.",
-                callback: function () {
-                    location.reload();
+            var dialog = bootbox.dialog({
+                title: 'Mensagem',
+                message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
+                closeButton: false,
+                buttons: {
+                    ok: {
+                        label: "OK",
+                        className: 'btn-primary',
+                        callback: function () {
+                            // window.location = baseUrl + '';
+                        }
+                    }
                 }
+            });
+            dialog.init(function () {
+                setTimeout(function () {
+
+                    dialog.find('.bootbox-body').html('Trajeto cadastrado com sucesso!');
+                }, 2000);
+
             });
 
         },
@@ -76,8 +73,10 @@ $(".cadastrar-funcionario").click(function () {
     });
 });
 
-$(".edita").click(function () {
-    //        alert();
+
+$(".edita").click(function ()
+{
+//        alert();
     var id = $("#id-cobrador").val();
     var nome = $("#nome").val();
     var cpf = $("#cpf").val();
@@ -136,14 +135,13 @@ $(".edita").click(function () {
     } else {
 
 
-        //        alert("id = " + id + ", status = " + status);
+//        alert("id = " + id + ", status = " + status);
 
         $.ajax({
             type: "POST",
-            url: baseUrl + 'funcionario/editar',
+            url: baseUrl + 'cobrador/editar-cobradorajax',
             async: false,
-            data: {
-                id: id,
+            data: {id: id,
                 nome: nome, cpf: cpf, rg: rg, carteiraTrabalho: carteiraTrabalho,
                 pis: pis, dataAdmissao: dataAdmissao, cnh: cnh, telefone: telefone, email: email
             },
@@ -152,14 +150,14 @@ $(".edita").click(function () {
 
                 bootbox.alert("Alteração realizada com sucesso!", function () {
 
-                    //                        location.reload();
+//                        location.reload();
                 });
 
             },
             error: function () {
                 bootbox.alert("Alteração realizada com sucesso!", function () {
 
-                    location.href = baseUrl + 'funcionario';
+                    location.href = baseUrl + 'cobrador';
                 });
             }
         });
@@ -169,13 +167,27 @@ $(".edita").click(function () {
 
 //});
 
-$("#alocar-cidade").click(function () {
-    var id_cidade = $("#sel4 option:selected").val();
-    var nome = $("#sel4 option:selected").text();
+function editarAtivo(id, ativo)
+{
 
-    document.getElementById("id_cidade").value = id_cidade;
-    document.getElementById("nome-cidade").value = nome;
+
+$.ajax({
+    type: "POST",
+    url: baseUrl + 'cobrador/editar-ativo',
+    async: false,
+    data: {id: id,
+        ativo: ativo
+    },
+    success: function () {
+
+    },
+    error: function () {
+
+//                $('.dataTable').reload();
+    }
 });
+}
+
 
 
 
