@@ -1,0 +1,67 @@
+
+
+.bootbox-body{
+  color: black;
+}
+
+.botao{
+	width: 100%;
+	height: 100%;
+}
+
+/*.navbar {
+   background: transparent !important;
+}*/
+
+.fundotransparente{
+	background-color:rgba(0,0,0,0.5);
+	font-style: rgba(255,255,255,1);
+
+}
+
+.btn-custom {
+	padding: 1px 15px 3px 2px;
+	border-radius: 50px;
+}
+
+.btn-icon {
+	padding: 8px;
+	background: #ffffff;
+}
+
+
+/*.btn-labeled { 
+    padding-top: 0;
+    padding-bottom: 0;
+} 
+
+.btn-label {
+    position: relative;
+            left: -12px;
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 3px 0 0 3px;
+}*/
+
+
+/* Checkbox Hack */
+#toggle-1 {
+   display:none;
+}
+
+/* CSS padrão da div */
+#mostra {
+   display:none;
+}
+
+/* CSS quando o checkbox está marcado */
+#toggle-1:checked ~ #mostra {
+   display:block;
+}
+
+
+
+
+
+

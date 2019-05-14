@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Formas de Pagamento</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Descrição </label>
+                                    <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a forma de pagamento" required/>
+                                </div>
+                                <div class="alert alert-danger descricao" style="display: none;" role="alert">
+                                    O campo descrição é obrigatório!
+                                </div>            
+                                <div class="alert alert-success" style="display: none;" role="alert"></div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info btn-block cadastrarFormaPagamento">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="table" style="background-color:rgba(0,0,0,0.5); color: white; margin-top: 2%;">
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? foreach ($this->listarFormaPagamento as $forma_pagamento): ?>
+                    <tr>
+                        <td><?= $forma_pagamento->getDescricao() ?> </td>
+                        <td>
+                            <?php if ($forma_pagamento['status'] === 'ATIVO'): ?>
+                                <div class="btn-group" id="status" data-toggle="buttons">
+                                    <label class="btn btn-default status-on btn-on aberto active" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>, 'ATIVO')">
+                                        <input type="radio" name="plug" checked="checked">
+                                        ATIVO
+                                    </label>
+                                    <label class="btn btn-default btn-off fechado" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>, 'INATIVO')">
+                                        <input type="radio" name="plug">
+                                        INATIVO
+                                    </label>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($forma_pagamento['status'] === 'INATIVO'): ?>
+                                <div class="btn-group" id="status" data-toggle="buttons">
+                                    <label class="btn btn-default btn-on aberto" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>, 'ATIVO')">
+                                        <input type="radio" name="plug" checked="checked">
+                                        ATIVO
+                                    </label>
+                                    <label class="btn btn-default btn-off fechado active" onclick="editarStatus(<?= $forma_pagamento['id_pagamento'] ?>, 'INATIVO')">
+                                        <input type="radio" name="plug">
+                                        INATIVO
+                                    </label>
+                                </div>
+                            <?php endif; ?>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('forma-pagamento/editar/id/' . $forma_pagamento->getId_pagamento()) ?>" >
+                                <span class="btn-label">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                                Visualizar Detalhes
+                            </a>
+                        </td>
+                    </tr>
+                <? endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,13 +1,39 @@
 <div class="container">
-    <div class="col-lg-12">
-        <div class="jumbotron">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </p>
-        </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+            <div class="col-lg-2">
+                <a href="<?= $this->baseUrl('/admin-local') ?>" accesskey="c" style="text-decoration: none;">
+                    <button class="btn btn-success btn-block btn-labeled" title="">
+                        <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
+                        <h6>
+                            Administrador<br>
+                            <u>L</u>ocal
+                        </h6>
+                    </button>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="<?= $this->baseUrl('admin-geral') ?>" accesskey="a" style="text-decoration: none;">
+                    <button class="btn btn-success btn-block btn-labeled" title="">
+                        <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
+                        <h6>
+                            Administrador<br>
+                            <u>G</u>eral
+                        </h6>
+                    </button>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="<?= $this->baseUrl('secretario') ?>" accesskey="a" style="text-decoration: none;">
+                    <button class="btn btn-success btn-block btn-labeled" title="">
+                        <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
+                        <h6>
+                            Administrador<br>
+                            <u>S</u>ecretário
+                        </h6>
+                    </button>
+                </a>
+            </div>
+            <div class="col-lg-6"></div>
     </div>
 </div>

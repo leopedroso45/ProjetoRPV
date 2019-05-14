@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Concessões de Trajetos</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info" id="botaoAdicionarConcessao" data-toggle="modal" data-target="#modal-mensagem"> 
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12"> 
+            <table class="table table-hover table-bordered dataTable" style="background-color:rgba(0,0,0,0.5); color: white; margin-top: 2%; width:100%;">
+                <thead class="fundoTransparente">
+                    <tr>
+                        <th>Extensão</th>
+                        <th>Data de Inicio</th>
+                        <th>Data de Vigência</th>
+                        <th>Autorização</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listarTodasConcessoes as $concessaotrajeto): ?>
+                        <tr>
+                            <td> <?= $concessaotrajeto['extensao'] ?></td>
+                            <td> <?= $concessaotrajeto['data_inicio'] ?></td>
+                            <td> <?= $concessaotrajeto['data_fim'] ?></td>
+                            <td>
+                                <button class="btn btn-default" id="documentoAutorizacao">
+                                    <i class="fa fa-download"></i>
+                                    <a style="color:black;" href="dist/autorizaconcessao/autorizacao.pdf"
+                                       download=<?= $concessaotrajeto['doc_autorizacao'] ?>>Download</a>
+                                </button>
+                            </td>
+                            <td>
+                                <?php if ($concessaotrajeto['status_concessao'] === 'ATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($concessaotrajeto['status_concessao'] === 'INATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default status-on btn-on plug aberto" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarStatus(<?= $concessaotrajeto['codConcessao'] ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-mensagem" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ADICIONAR CONCESSÃO DE TRAJETO</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container"> 
+                    <div class="row">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                        <form class="jumbotron" method="post">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Extensão <strong style="color: red;" title="Campo Obrigatório">*</strong></label>
+                                <div class="col-lg-8">
+                                    <div class="input-group input-append date" id="">   	    	
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Quantos km de extensão?" required="required" title="Extensão por quilômetros?" 
+                                               onkeypress='return SomenteNumero(event)' required="required" data-validation-required-message="Somente números."
+                                               id="extensao" name="extensao" data-validation-required-message="Por favor, digite seu nome.">
+                                        <p class="help-block text-danger"></p>
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-road"></span></span>
+                                    </div>
+                                    <div class="alert alert-danger extensao hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo extensão é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" >Data de Inicio <strong style="color: red;" title="Campo Obrigatório">*</strong></label>										    	
+                                <div class="col-lg-8 date">
+                                    <div class="input-group input-append date" id="datePicker">
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Data de início da concessão" id="dataInicio" name="date" />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <div class="alert alert-danger dataInicio hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo data inicio é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Data Final <strong style="color: red;" title="Campo Obrigatório">*</strong></label>
+                                <div class="col-lg-8 date">
+                                    <div class="input-group input-append date" id="datePicker2">
+                                        <input type="text" autocomplete="off" class="form-control" placeholder="Data final da concessão" id="dataFim" name="date" />
+                                        <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                    <div class="alert alert-danger dataFim hidden" role="alert" style="margin-top: 1%; margin-bottom: 0%">
+                                        Campo data fim é obrigatório.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" >Doc. de Autorização</label>
+                                <div class="col-lg-8 date">
+                                    <input type="file" class="form-control" id="docAutorizacao" name="docAutorizacao">
+                                </div>
+                            </div>
+
+
+                            <div class="alert alert-success" role="alert" style="display: none">
+                                Cadastro realizado com sucesso! :)
+                            </div>
+                            <hr>
+                            <button type="button" class="btn btn-primary btn-block cadastrarConcessao" id="cadastrar">
+                                Cadastrar
+                            </button>
+                        </form>
+                        </div>
+                        <div class="col-lg-1"></div>
+<!--                        <script src="js/somenteletra.js"></script>
+                        <script src="js/somentenumero.js"></script>
+                        <script src="js/valida_email.js"></script>
+                        <script src="js/nomecompleto.js"></script>
+                        <script src="js/numtelefone.js"></script>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

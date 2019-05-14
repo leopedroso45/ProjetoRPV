@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("parada-onibus") ?>">Paradas</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Editar</li>
+                </ol>
+            </nav>
+            <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.5); color: white;">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Número da Paradas <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="hidden" id="id_parada" name="id_parada" value="<?php echo $this->parada->getId_parada_onibus(); ?>">
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="numeroParada" name="numeroParada" placeholder="Digite o numero da parada" required value="<?php echo $this->parada->getNumeroParada(); ?>">
+                        <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                            O campo numero de parada é obrigatório!
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Local <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" id="local" name="local" placeholder="Digite o local da parada" required value="<?php echo $this->parada->getLocal(); ?>">
+                    </div>
+                    <div class="alert alert-danger local" style="display: none;" role="alert">
+                        O campo local é obrigatório!
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Complementos <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Digite o complemento, se houver" value="<?php echo $this->parada->getComplemento(); ?>">
+                    </div>
+                </div>
+                <div class="alert alert-success " style="display: none;" role="alert">
+                    Cadastro de parada realizado com sucesso!
+                </div>
+                <hr>
+                <button type="button" class="btn btn-primary btn-block editarParada">Confirmar</button>
+            </form>
+        </div>
+    </div>
+</div>

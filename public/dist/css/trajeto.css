@@ -1,0 +1,76 @@
+/*
+body {
+  
+  width: 100%;
+    
+  overflow-x:scroll;
+  background-size: cover;
+  background-attachment: fixed;
+  
+  background-repeat: no-repeat;
+  
+	
+  
+}
+
+#titulo{
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.8);
+}*/
+
+/*#label{
+	color: white;
+}*/
+.seta-1{ 
+	border-right: 40px solid white;
+	border-top: 15px solid transparent;  
+	border-bottom: 15px solid transparent; 
+	float:left;
+}
+.seta-2{ 
+	border-left: 40px solid white; 
+	border-top: 15px solid transparent;  
+	border-bottom: 15px solid transparent; 
+	float:left;
+
+}
+
+.hidden {
+    display: none;
+}
+/*#seta1:hover{
+	border-right: 40px solid #00038D;
+	border-top: 15px solid transparent;  
+	border-bottom: 15px solid transparent; 
+	float:left;
+	
+}
+#seta2:hover{
+	border-left: 40px solid #980000; 
+	border-top: 15px solid transparent;  
+	border-bottom: 15px solid transparent; 
+	float:left;
+	
+}
+#col-aviso{
+	background-color: rgba(255,36,36,0.4);  
+	text-align: center; 
+	border-radius: 4px; 
+	color:white;
+}
+
+#fechar_aviso:hover{
+	color:yellow;
+
+}
+
+
+.btn-default{
+	border: 1px solid;
+	border-color: rgba(255,255,255,0.5);
+}
+*/
+
+
+
