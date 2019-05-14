@@ -14,6 +14,30 @@ class Application_Model_LinhaTrecho extends Zend_Db_Table_Row_Abstract
 
     
 
+
+
+
+
+ /**
+     * @return mixed
+     */
+    public function getKm()
+    {
+        return $this->km;
+    }
+
+    /**
+     * @param mixed $km
+     *
+     * @return self
+     */
+    public function setKm($km)
+    {
+        $this->km = $km;
+
+        return $this;
+    }
+
     /**
      * @return mixed
      */

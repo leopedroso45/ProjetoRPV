@@ -19,7 +19,9 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 
         // atualização
         $linha->setOrigem($dados['inicio']);
-       // $linha->setTempo($dados['tempo']); 
+        $linha->setTempo($dados['tempoTotall']); 
+        $linha->setKm($dados['kmtotal']); 
+
 
 
       

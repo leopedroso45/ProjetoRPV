@@ -69,6 +69,16 @@
                                       Informe o tempo em minutos
                                   </div>
 
+                                  <div class="alert-lt alert-danger validaKm" align="center" style="display:none;" role="alert">
+                                      Informe a distância em quilômetros
+                                  </div>
+                                  <div class="alert-lt alert-danger validaInserirUmTrecho" align="center" style="display:none;" role="alert">
+                                      É obrigatório inserir ao menos um trecho
+                                  </div>
+                                  <div class="alert-lt alert-danger validaTrechovazio" align="center" style="display:none;" role="alert">
+                                      Você precisa preencher todos os campos dos trechos
+                                  </div>
+
                               </div>
                               <div class="col-2">
 
@@ -122,11 +132,16 @@
                     </div>	
 
                     <div class="row" style="font-size: 20px">
-                        <div class="col-3"></div>
-                        <div class="col-6" align="center">
-                            <label id="tempototal" >Tempo total estimado da linha: 0</label>
+                        <div class="col-5" align="center">
+                            <label  >Tempo total estimado da linha: </label><strong> <label id="tempototal"  style="font-size: 26px"> 00:00</label></strong>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-2" >
+                            
+                        </div>
+                        <div class="col-5" align="center">
+                            <label  >Extensão total da linha (km): </label> <strong> <label id="kmtotal"  style="font-size: 26px"> 0</label></strong>
+                            
+                        </div>
                         
                         
                     </div>
@@ -141,15 +156,18 @@
 
 
     <!-- fim container form-->
+
     <div class="col-lg-12">
-        <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
+        <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
             <thead >
                 <tr>
                     <th scope="col">Descrição</th>
-                    <th scope="col">Cidade de origem</th>
-                    <th scope="col">Cidade de destino</th>
-                    <th scope="col">Número de trechos</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Origem</th>
+                    <th scope="col">Tempo</th> <!-- implementar com moment  -->
+                    <th scope="col">Extensão (km)</th>
+                    
+                    
+                    <th scope="col" >Status</th>
                     <th scope="col">Trechos</th>
                 </tr>
             </thead>
@@ -158,24 +176,27 @@
                     <tr>
                         <td><?= $linha['descricao'] ?>    </td>
                         <td>    <?= $linha['origem'] ?></td>
-                        <td>    <?= $linha['id_linha'] ?></td>
-                        <td>    <?= $linha['num_trechos'] ?></td>
-                        <td>    <input type="hidden" value="<?php $linha->getSituacao(); ?>" >
+                        <td>    <?= $linha['tempo'] ?></td>
+                        <td>    <?= $linha['km'] ?></td>
+
+                        
+                       
+                        <td >    <input type="hidden" value="<?php $linha->getSituacao(); ?>" >
                             <?php if ($linha->getSituacao() === 'ATIVO'): ?>
                                 <div class="btn-group" id="status" data-toggle="buttons">
-                                    <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
+                                    <label style="font-size: 10px" class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
 
                                         <input type="radio" name="plug" checked="checked">ATIVO</label>
-                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
+                                        <label style="font-size: 10px" class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
                                             <input type="radio" name="plug">INATIVO</label>
                                         </div>
                                     <?php endif; ?>
 
                                     <?php if ($linha->getSituacao() === 'INATIVO'): ?>
                                         <div class="btn-group" id="status" data-toggle="buttons">
-                                            <label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
+                                            <label style="font-size: 10px" class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
                                                 <input type="radio" name="plug" checked="checked">ATIVO</label>
-                                                <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
+                                                <label style="font-size: 10px" class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
                                                     <input type="radio" name="plug">INATIVO</label>
                                                 </div>
                                             <?php endif; ?>
@@ -183,60 +204,14 @@
 
                                         <td>
 
-                                            <button class="btn btn-primary btn-labeled" data-toggle="modal" onclick="trechos(<?= $linha['id_linha'] ?>)" data-target="#trechoslinha<?= $linha['id_linha'] ?>" >
-                                                <span class="btn-label">
-                                                    <i class="fas fa-eye"></i>
-                                                </span>
-                                                Visualizar Trechos
-                                            </button>
+                                           <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('linha/linhaTrechos/id/' . $linha['id_linha']) ?>">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar detalhes
+                                </a>
 
-                                            <div class="modal fade" id="trechoslinha<?= $linha['id_linha'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-
-
-                                                            <h5 class="modal-title" id="exampleModalLongTitle">Trechos da linha <?= $linha['descricao']; ?></h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-
-                                                            <select multiple class="form-control"  style="height: 270px;text-align: left">
-                                                               
-                                                                <? foreach ($this->listaDasLinhast as $linhat): ?>
-
-
-                                                                    <option  >
-                                                                        _______________________________________________________________
-                                                                    </option> 
-                                                                    <option  >
-                                                                        <?= $linhat['descricao']; ?>
-                                                                    </option>   
-
-                                                                    <option  >
-                                                                     <?=  $linhat['tempo']." minutos"; ?>
-                                                                 </option>      
-
-
-
-
-
-
-
-
-                                                             <? endforeach; ?>
-                                                         </select>
-                                                     </div>
-                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-success" id="" data-dismiss="modal">Ok</button>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            
 
                                     </td>
 
@@ -249,6 +224,8 @@
                 </div>
             </div>
         </div>
+
+
 
 
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -301,85 +278,13 @@
             </div>
         </div>
 
-<!-- <div class="modal fade" id="trechoslinha" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                   
-                <h5 class="modal-title" id="exampleModalLongTitle">Trechos da linha</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                                
-                <select multiple class="form-control" id="sel7" style="height: 270px;text-align: left">
-                    
-                    <? foreach ($this->listaDasLinhast as $linha): ?>
-                        
-
-                        <option  >
-                                _______________________________________________________________
-                        </option> 
-                        <option  >
-                                <?= $linha['descricao']; ?>
-                        </option>   
-
-                        <option  >
-                               <?=  $linha['tempo']." minutos"; ?>
-                        </option>      
-                                
-
-                            
-                    
-                  
+        
 
 
-                           
-                    <? endforeach; ?>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="" data-dismiss="modal">Ok</button>
 
 
-            </div>
-        </div>
-    </div>
-</div> -->
+ 
 
 
-<!-- <button class="btn btn-danger esse" type="button">---</button> -->
-<!-- <div class="row">
-    <div class="col-sm-12 updownrow" style="background: lightblue;">
-        <button type="button" class="updownbtn movetop fa fa-angle-double-up"></button>
-        <button type="button" class="updownbtn moveup fa fa-angle-up"></button>
-        <button type="button" class="updownbtn movedown fa fa-angle-down"></button>
-        <button type="button" class="updownbtn movebottom fa fa-angle-double-down"></button>
-        Row 1
-    </div>
-    <div class="col-sm-12 updownrow" style="background: lightgreen;">
-        <button type="button" class="updownbtn movetop fa fa-angle-double-up"></button>
-        <button type="button" class="updownbtn moveup fa fa-angle-up"></button>
-        <button type="button" class="updownbtn movedown fa fa-angle-down"></button>
-        <button type="button" class="updownbtn movebottom fa fa-angle-double-down"></button>
-        Row 2
-    </div>
-    <div class="col-sm-12 updownrow" style="background: lightpink;">
-        <button type="button" class="updownbtn movetop fa fa-angle-double-up"></button>
-        <button type="button" class="updownbtn moveup fa fa-angle-up"></button>
-        <button type="button" class="updownbtn movedown fa fa-angle-down"></button>
-        <button type="button" class="updownbtn movebottom fa fa-angle-double-down"></button>
-        Row 3
-    </div>
-    <div class="col-sm-12 updownrow" style="background: lightseagreen;">
-        <button type="button" class="updownbtn movetop fa fa-angle-double-up"></button>
-        <button type="button" class="updownbtn moveup fa fa-angle-up"></button>
-        <button type="button" class="updownbtn movedown fa fa-angle-down"></button>
-        <button type="button" class="updownbtn movebottom fa fa-angle-double-down"></button>
-        Row 4
-    </div>
-</div> -->
 
 

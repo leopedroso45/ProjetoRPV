@@ -14,20 +14,38 @@ class LinhaController extends Zend_Controller_Action
     public function indexAction()
     {
 
-              $xx = 2;
-            $id = $this->getRequest()->getParam('id');
-            //var_dump($id);die();
-           // int $iid = $id;
-            $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
-            $listaLinhastrechos = $dbTableLinhaTrecho->listarTrechosPorId($xx);
-            $this->view->listaDasLinhast = $listaLinhastrechos;
            
-
+       
         $dbTableTrecho = new Application_Model_DbTable_Trecho();
         $listaTrechos = $dbTableTrecho->listarTodosTrechos();
         $this->view->listaDosTrechos = $listaTrechos;
+            $dbTableLinha = new Application_Model_DbTable_Linha();
 
-        $dbTableLinha = new Application_Model_DbTable_Linha();
+
+            if ($this->getRequest()->isPost()) {
+           
+             $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
+
+
+            $dados = $this->getRequest()->getParams();
+            
+                $id_linha = $dbTableLinha->cadastrarLinha($dados);
+             
+             $trechos = explode(',', $dados['id_trecho']);
+             $tempos = explode(',', $dados['tempo_trecho']);
+             $kms = explode(',', $dados['km_trecho']);
+             //var_dump($kms);
+
+            for ($i = 0; $i < sizeof($trechos); $i++) {
+                 $dbTableLinhaTrecho->cadastrarLinhaTrecho($id_linha, $trechos[$i], $tempos[$i], $kms[$i]);
+             }
+               $this->view->linha = $dados;
+
+     }
+
+
+
+        
          $listaLinhas = $dbTableLinha->listarTodasLinhas();
          $this->view->listaDasLinhas = $listaLinhas;
 
@@ -37,32 +55,52 @@ class LinhaController extends Zend_Controller_Action
 
         
 
-        if ($this->getRequest()->isPost()) {
+        //if ($this->getRequest()->isPost()) {
+            //    $xx = 2;
+            // $id = $this->getRequest()->getParam('idd');
+            //var_dump($id);die();
+           // int $iid = $id;
+            // $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
+            // $listaLinhastrechos = $dbTableLinhaTrecho->listarTrechosPorId($id);
+            // $this->view->listaDasLinhast = $listaLinhastrechos;
+           
 
 
 
 
 
+
+           
+            
+            
+        }
+
+        public function cadastrarAction(){
+
+            $dbTableLinha = new Application_Model_DbTable_Linha();
+             $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
 
 
             $dados = $this->getRequest()->getParams();
-            if(is_string($dados['descricao'])){
+            
                 $id_linha = $dbTableLinha->cadastrarLinha($dados);
              
              $trechos = explode(',', $dados['id_trecho']);
              $tempos = explode(',', $dados['tempo_trecho']);
+             $kms = explode(',', $dados['km_trecho']);
+             //var_dump($kms);
 
             for ($i = 0; $i < sizeof($trechos); $i++) {
-                 $dbTableLinhaTrecho->cadastrarLinhaTrecho($id_linha, $trechos[$i], $tempos[$i]);
+                 $dbTableLinhaTrecho->cadastrarLinhaTrecho($id_linha, $trechos[$i], $tempos[$i], $kms[$i]);
              }
-            }
-            
+               $this->view->linha = $dados;
+
         }
 
 
 
        
-    }
+    
 
     public function editarAtivoAction()
     {
@@ -82,22 +120,23 @@ class LinhaController extends Zend_Controller_Action
     }
 
 
-public function trechosAction()
+public function linhatrechosAction()
     {
-        $ids = 2;
-         $id = $this->getRequest()->getParam('idd');
-           // var_dump($id);die();
-            $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
-            $listaLinhastrechos = $dbTableLinhaTrecho->listarTrechosPorId($ids);
-            $this->view->listaDasLinhast = $listaLinhastrechos;
-    }
-           
+         $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
+           $xx = 2;
+            $id = $this->getRequest()->getParam('id');
+            //var_dump($id);die();
+           // int $iid = $id;
+            
+            $listaLinhastrechos = $dbTableLinhaTrecho->listarTrechosPorId($id);
+            //var_dump($listaLinhastrechos);
+            $this->view->listaDasLinhast = $listaLinhastrechos; 
 
      
 
        
     }
 
-
+}
 
 

@@ -6,13 +6,14 @@ class Application_Model_DbTable_LinhaTrecho extends Zend_Db_Table_Abstract
     protected $_name = 'linha_trecho';
     protected $_rowClass = "Application_Model_LinhaTrecho";
     
-    public function cadastrarLinhaTrecho($linha, $trecho, $tempo)
+    public function cadastrarLinhaTrecho($linha, $trecho, $tempo, $km)
     {
         $linhatrecho = $this->createRow();
         
         $linhatrecho->setIdLinha($linha);
         $linhatrecho->setIdTrecho($trecho);
         $linhatrecho->setTempo($tempo);
+         $linhatrecho->setKm($km);
         $linhatrecho->setSituacao("ATIVO");
 
 
@@ -67,7 +68,7 @@ class Application_Model_DbTable_LinhaTrecho extends Zend_Db_Table_Abstract
         ));
 
         $stmt = $adapter->query(
-           "select t.descricao, lt.tempo, l.descricao as desc_linha from trecho as t, linha_trecho as lt, linha as l where t.id_trecho = lt.id_trecho AND l.id_linha = lt.id_linha and l.id_linha = ".$id.""
+           "select t.descricao, lt.tempo, lt.km, l.descricao as descLinha from trecho as t, linha_trecho as lt, linha as l where t.id_trecho = lt.id_trecho AND l.id_linha = lt.id_linha and l.id_linha = ".$id.""
 
         );
 
