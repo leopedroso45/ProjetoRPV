@@ -116,11 +116,11 @@ class Application_Model_Funcionario extends Zend_Db_Table_Row_Abstract
 		$this->dataAdmissao = $dataAdmissao;
 	}
 
-	public function getCidade() {
+	public function getId_Cidade() {
 		return $this->id_cidade;
 	}
 
-	public function setCidade($id_cidade) {
+	public function setId_Cidade($id_cidade) {
 		$this->id_cidade = $id_cidade;
 	}
 

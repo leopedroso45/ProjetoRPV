@@ -13,6 +13,7 @@ class Application_Model_DbTable_Funcionario extends Zend_Db_Table_Abstract
     {
         $funcionario = $this->createRow();
 
+        /*@var $funcionario Application_Model_Funcionario*/
         $funcionario->setId_Usuario($id_usuario);         
         $funcionario->setNome($dados['nome']); 
         $funcionario->setDataN($dados['dataN']); 
@@ -25,12 +26,12 @@ class Application_Model_DbTable_Funcionario extends Zend_Db_Table_Abstract
         $funcionario->setSalario($dados['salario']); 
         $funcionario->setEmail($dados['email']); 
         $funcionario->setDataAdmissao($dados['dataAdmissao']);
-        $funcionario->setCidade($dados['id_cidade']); 
+        $funcionario->setId_Cidade($dados['id_cidade']); 
         $funcionario->setEndereco($dados['endereco']); 
         $funcionario->setNumCasa($dados['numCasa']);
         $funcionario->setBairro($dados['bairro']);
 
-        var_dump($funcionario); die;
+//        var_dump($funcionario); die;
         return $funcionario->save();
     }
 

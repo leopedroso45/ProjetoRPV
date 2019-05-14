@@ -48,10 +48,10 @@ $(".cadastrar-funcionario").click(function () {
         async: false,
         data:
          {
-            id_perfil: id_perfil, nome_usuario: nome_usuario, senha: senha,
+            id_perfil: id_perfil, id_cidade: id_cidade, nome_usuario: nome_usuario, senha: senha,
             nome: nome, dataN: dataN, cpf: cpf, rg: rg, ctps: ctps, pis: pis, cnh: cnh, 
             telefone: telefone, salario: salario, email: email, dataAdmissao: dataAdmissao,
-            id_cidade: id_cidade, endereco: endereco, numCasa: numCasa, bairro: bairro
+             endereco: endereco, numCasa: numCasa, bairro: bairro
          },
         success: function () {
             bootbox.alert("Cadastro realizado com sucesso!", function () {
@@ -165,7 +165,7 @@ $("#alocar-cidade").click(function () {
     var id_cidade = $("#sel4 option:selected").val();
     var nome = $("#sel4 option:selected").text();
 
-    document.getElementById("id-cidade").value = id_cidade;
+    document.getElementById("id_cidade").value = id_cidade;
     document.getElementById("nome-cidade").value = nome;
 });
 
