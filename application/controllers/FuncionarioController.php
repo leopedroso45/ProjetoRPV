@@ -27,8 +27,8 @@ class FuncionarioController extends Zend_Controller_Action
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            var_dump($dados);die();
-            
+            //var_dump($dados);die();
+
             $id_usuario = $dbTableUsuario->cadastrarUsuarioF($dados);
 
             $dbTableFuncionario->cadastrarFuncionario($id_usuario, $dados);
