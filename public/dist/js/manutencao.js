@@ -3,7 +3,8 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
-    $('#valor').mask('99,999.99');
+    $('#valor_inicio').mask('99.999,99');
+    $('#valor_final').mask('99.999,99');
 
     $('.onibus').DataTable();
 
@@ -14,7 +15,8 @@ $(document).ready(function () {
         var descricao = $("#descricao").val();
         var data_inicio = $("#data_inicio").val();
         var data_fim = $("#data_fim").val();
-        var valor = $("#valor").val();
+        var valor_inicio = $("#valor_inicio").val();
+        var valor_final = $("#valor_final").val();
         var motivo = $("#motivo").val();
         var oficina = $("#oficina").val();
         var tipo = [];
@@ -78,7 +80,7 @@ $(document).ready(function () {
             type: 'POST',
             url: baseUrl + 'manutencao/index',
             data: {id_onibus: id_onibus, descricao: descricao, tipo: tipo,
-                data_inicio: data_inicio, data_fim: data_fim, valor: valor, motivo: motivo, oficina: oficina
+                data_inicio: data_inicio, data_fim: data_fim, valor_inicio: valor_inicio, valor_final: valor_final, motivo: motivo, oficina: oficina
             },
             async: false,
             success: function () {
@@ -91,10 +93,10 @@ $(document).ready(function () {
                             label: "OK",
                             className: 'btn-primary',
                             callback: function () {
-                                // window.location = baseUrl + '';
+                                location.reload();
                             }
                         }
-                    }
+                    } 
                 });
                 dialog.init(function () {
                     setTimeout(function () {

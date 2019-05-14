@@ -10,7 +10,7 @@
         <div class="col-lg-12" style="padding: 0px;">
             <div class="card" style="background-color:rgba(0,0,0,0.5);">
                 <div class="card-header">
-                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                    <button class="btn btn-info btn-block clickable card-collapsed">Cadastrar nova manutenção executada</button>
                 </div>
                 <div class="card-body" style="display: none;">
                     <div class="jumbontron" method="post" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
@@ -19,23 +19,46 @@
                                 <div class="col-lg-5">
                                     <label>Motivo:</label>
                                     <input type="text" class="form-control" id="motivo">
+                                    <div class="alert alert-danger motibo" style="display: none;" role="alert">
+                                        O campo motivo é obrigatório!
+                                    </div>
                                     <label>Descrição:</label>
-                                    <textarea id="descricao" class="form-control" rows="2"></textarea>
+                                    <textarea id="descricao" class="form-control" rows="2" id="descricao"></textarea>
+                                </div>
+                                <div class="alert alert-danger descricao" style="display: none;" role="alert">
+                                    O campo descrição é obrigatório!
                                 </div>
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
                                     <!--data-lock="form"-->
                                     <label>Data de início:</label>
-                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style">  
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <div class="alert alert-danger data_inicio" style="display: none;" role="alert">
+                                        O campo data de início é obrigatório!
+                                    </div>  
+                                    <label>Valor orçado:</label>
+                                    <input type="text" class="form-control" id="valor_inicio">
+                                    <div class="alert alert-danger valor_inicio" style="display: none;" role="alert">
+                                        O campo oficina é obrigatório!
+                                    </div>
                                     <label>Oficina:</label>
-                                    <input type="text" class="form-control" id="oficina"> 
-                                    
+                                    <input type="text" class="form-control" id="oficina">
+                                    <div class="alert alert-danger oficina" style="display: none;" role="alert">
+                                        O campo oficina é obrigatório!
+                                    </div>
+
                                 </div>
                                 <div class="col-lg-2">
                                     <label>Data de término:</label>
-                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style"> 
-                                    <label>Valor:</label>
-                                    <input type="text" class="form-control" id="valor">  
+                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <div class="alert alert-danger data_fim" style="display: none;" role="alert">
+                                        O campo data de do término é obrigatório!
+                                    </div>   
+                                    <label>Valor final:</label>
+                                    <input type="text" class="form-control" id="valor_final">
+                                    <div class="alert alert-danger valor_final" style="display: none;" role="alert">
+                                        O campo valor é obrigatório!
+                                    </div>    
                                 </div>
                                 <div class="col-lg-2">                                
                                 </div>
@@ -101,6 +124,9 @@
 
                                                 </tbody>
                                             </table>
+                                            <div class="alert alert-success " style="display: none;" role="alert">
+                                                Cadastro de manutenção realizado com sucesso!
+                                            </div>
                                             <button class="btn btn-info btn-block cadastrar-manutencao" type="button">
                                                 Cadastrar
                                             </button>
@@ -170,7 +196,7 @@
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Data de inicio</th>
                                 <th scope="col">Data de término</th>
-                                <th scope="col">Valor</th>
+                                <th scope="col">Valor final</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -183,7 +209,7 @@
                                     <td><?= $manutencao['descricao'] ?>	</td>
                                     <td><?= $manutencao['data_inicio'] ?></td>
                                     <td><?= $manutencao['data_fim'] ?></td>
-                                    <td><?= $manutencao['valor'] ?></td>                                  
+                                    <td><?= $manutencao['valor_final'] ?></td>                                  
                                     <td>
                                         <a href="<?= $this->baseUrl('manutencao/visualizar/id/' . $manutencao['id_manutencao']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
                                             <span class="btn-label">

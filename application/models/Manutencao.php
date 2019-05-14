@@ -28,9 +28,14 @@ class Application_Model_Manutencao extends Zend_Db_Table_Row_Abstract {
             return $this->data_fim;
         }
 
-        function getValor()
+        function getValor_inicio()
         {
-            return $this->valor;
+            return $this->valor_inicio;
+        }
+
+        function getValor_final()
+        {
+            return $this->valor_final;
         }
 
         function getMotivo()
@@ -63,9 +68,14 @@ class Application_Model_Manutencao extends Zend_Db_Table_Row_Abstract {
             $this->data_fim = $data_fim;
         }
 
-        function setValor($valor)
+        function setValor_inicio($valor_inicio)
         {
-            $this->valor = $valor;
+            $this->valor_inicio = $valor_inicio;
+        }
+
+        function setValor_final($valor_final)
+        {
+            $this->valor_final = $valor_final;
         }
 
         function setMotivo($motivo)
