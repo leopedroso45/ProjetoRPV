@@ -10,6 +10,9 @@ $(document).ready(function () {
 });
 
 $(".cadastrar-funcionario").click(function () {
+    
+    $('.img-loading').removeClass("hidden");
+    
     if ($("#senha").val() !== $("#senha1").val()) {
         console.log("senhas divergentes")
         alert("As senhas não coincidem");
