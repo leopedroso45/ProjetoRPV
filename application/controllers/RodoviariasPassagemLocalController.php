@@ -1,14 +1,20 @@
 <?php
 
-class RodoviariasPassagemLocalController extends Zend_Controller_Action {
+class RodoviariasPassagemLocalController extends Zend_Controller_Action
+{
 
-    public function init() {
+    public function init()
+    {
         $this->_helper->layout->setLayout("layout_admin_geral");
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastroRodoviaria.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastrosGeral.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/moment.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/pt-br.js'));
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
 
         $dbtableRodoviaria = new Application_Model_DbTable_Rodoviaria();
         $listaRodoviaria = $dbtableRodoviaria->listarTodasRodoviarias();
@@ -37,7 +43,8 @@ class RodoviariasPassagemLocalController extends Zend_Controller_Action {
         }
     }
 
-    public function editarStatusAction() {
+    public function editarStatusAction()
+    {
         $id = $this->getRequest()->getParam('id');
 
         $dbTableRodoviaria = new Application_Model_DbTable_Rodoviaria();

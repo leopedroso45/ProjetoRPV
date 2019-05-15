@@ -1,8 +1,10 @@
-$(document).ready(function () {
+//$(document).ready(function () {
 
 
     $(".cadastrar").click(function ()
     {
+        alert("click");
+        
         var nome_usuario = $("#nome_usuario").val();
         var senha = $("#senha").val();
         var nomeCompleto = $("#nomeCompleto").val();
@@ -16,7 +18,9 @@ $(document).ready(function () {
         var comprovanteResidencia = $("#comprovanteResidencia").val();
         var comprovanteMatricula = $("#comprovanteMatricula").val();
         moment.locale('pt-br');
-        var data_solicitacao = moment().format('LLL'); 
+        var data_solicitacao = moment().format('LLL');
+        
+        alert(nome_usuario);
 
         $.ajax({
             type: "POST",
@@ -37,4 +41,4 @@ $(document).ready(function () {
             }
         });
     });
-});
+//});

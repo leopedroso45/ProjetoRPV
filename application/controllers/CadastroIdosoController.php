@@ -1,14 +1,20 @@
 <?php
 
-class CadastroIdosoController extends Zend_Controller_Action {
+class CadastroIdosoController extends Zend_Controller_Action
+{
 
-    public function init() {
+    public function init()
+    {
         $this->_helper->layout->setLayout("layout_admin_geral");
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastroIdoso.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/cadastrosGeral.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/moment.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/pt-br.js'));
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
 
         $dbtableUsuario = new Application_Model_DbTable_Usuario();
         $dbtablePessoa = new Application_Model_DbTable_Pessoa();
@@ -27,11 +33,13 @@ class CadastroIdosoController extends Zend_Controller_Action {
         }
     }
 
-    public function cadastrarUsuarioAction() {
+    public function cadastrarUsuarioAction()
+    {
         
     }
 
-    public function cadastrarPessoaAction($id) {
+    public function cadastrarPessoaAction($id)
+    {
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbtablePessoa = new Application_Model_DbTable_Pessoa();
@@ -39,7 +47,8 @@ class CadastroIdosoController extends Zend_Controller_Action {
         }
     }
 
-    public function cadastrarIdosoAction() {
+    public function cadastrarIdosoAction()
+    {
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbtableIdoso = new Application_Model_DbTable_Idoso();
@@ -47,7 +56,8 @@ class CadastroIdosoController extends Zend_Controller_Action {
         }
     }
 
-    public function cadastrarSolicitacaoBeneficioAction($id) {
+    public function cadastrarSolicitacaoBeneficioAction($id)
+    {
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbTableBeneficio = new Application_Model_DbTable_Beneficio();
