@@ -1,0 +1,229 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Manutenções</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info btn-block clickable card-collapsed">Cadastrar nova manutenção executada</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <div class="jumbontron" method="post" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label>Motivo:</label>
+                                    <input type="text" class="form-control" id="motivo">
+                                    <div class="alert alert-danger motibo" style="display: none;" role="alert">
+                                        O campo motivo é obrigatório!
+                                    </div>
+                                    <label>Descrição:</label>
+                                    <textarea id="descricao" class="form-control" rows="2" id="descricao"></textarea>
+                                </div>
+                                <div class="alert alert-danger descricao" style="display: none;" role="alert">
+                                    O campo descrição é obrigatório!
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+                                    <!--data-lock="form"-->
+                                    <label>Data de início:</label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <div class="alert alert-danger data_inicio" style="display: none;" role="alert">
+                                        O campo data de início é obrigatório!
+                                    </div>  
+                                    <label>Valor orçado:</label>
+                                    <input type="text" class="form-control" id="valor_inicio">
+                                    <div class="alert alert-danger valor_inicio" style="display: none;" role="alert">
+                                        O campo oficina é obrigatório!
+                                    </div>
+                                    <label>Oficina:</label>
+                                    <input type="text" class="form-control" id="oficina">
+                                    <div class="alert alert-danger oficina" style="display: none;" role="alert">
+                                        O campo oficina é obrigatório!
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Data de término:</label>
+                                    <input type="text" class="form-control datedropper" id="data_fim" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock="" data-translate-mode="true" data-lang="pt" data-theme="my-style">
+                                    <div class="alert alert-danger data_fim" style="display: none;" role="alert">
+                                        O campo data de do término é obrigatório!
+                                    </div>   
+                                    <label>Valor final:</label>
+                                    <input type="text" class="form-control" id="valor_final">
+                                    <div class="alert alert-danger valor_final" style="display: none;" role="alert">
+                                        O campo valor é obrigatório!
+                                    </div>    
+                                </div>
+                                <div class="col-lg-2">                                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <br>
+                                    <div class="alert alert-danger descricao" role="alert" style="display: none;">
+                                        O campo <strong>Descrição</strong> é obrigatório.
+                                    </div>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-6">
+                                    <div class="alert alert-danger dia" role="alert" style="display: none;">
+                                        Verifique o <strong>dia</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger mes" role="alert" style="display: none;">
+                                        Verifique o <strong>mês</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger ano" role="alert" style="display: none;">
+                                        Verifique o <strong>ano</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger data" role="alert" style="display: none;">
+                                        Verifique a <strong>data</strong> correta para término!
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="col-lg-1"></div>                          
+                            <div class="col-lg-3">                              
+                            </div>
+                            <div class="row">
+                                <div class="dual-list list-left col-md-5">
+                                    <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                                        <label><h5>Ônibus selecionados:</h5></label> 
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <!--<span class="input-group-text fas fa-search"></span>-->
+                                                    <input style="border-radius: 0.25rem;" type="text" name="SearchDualList" class="form-control" />
+                                                    <label style="padding-top: 5px; padding-left: 9px;">Pesquisar</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-2">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-default selector" title="Selecionar todos"><i class="fas fa-circle-notch"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <form id="form-apolices" method="post">
+                                            <table class="table table-insert" align="center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Placa</th>
+                                                        <th style="text-align: center;">Ano</th>
+                                                        <th style="text-align: right;">Tipo</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="tbody-fix">
+
+                                                </tbody>
+                                            </table>
+                                            <div class="alert alert-success " style="display: none;" role="alert">
+                                                Cadastro de manutenção realizado com sucesso!
+                                            </div>
+                                            <button class="btn btn-info btn-block cadastrar-manutencao" type="button">
+                                                Cadastrar
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="list-arrows col-md-1 text-center">
+                                    <button type="button" class="btn btn-default btn-sm move-left">
+                                        <span class="fas fa-angle-left"></span>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default btn-sm move-right">
+                                        <span class="fas fa-angle-right"></span>
+                                    </button>
+                                </div>
+
+
+                                <div class="dual-list list-right col-md-6">
+                                    <div class="well" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                                        <div class="col-lg-1">                                          
+                                        </div>
+                                        <label><h5>Selecione O(s) ônibus que foram manutenidos:</h5></label>
+                                        <div class="col-lg-3">                                           
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">                                               
+                                                <div class="btn-group" style="cursor: pointer; margin-left: 55%;">
+                                                    <a class="btn btn-default selector" title="Selecionar todos"><i class="fas fa-circle-notch"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>                                                                         
+                                        <table class="table onibus" align="center" style="background-color: white; border-radius: 0.25rem;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Placa</th>
+                                                    <th>Ano</th>
+                                                    <th>Tipo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                                                    <tr id="<?= $onibus['id'] ?>" itemtype="<?= $onibus['tipo'] ?>" class="<?= $onibus['tipo'] ?>">
+                                                        <td><?= $onibus['placa'] ?></td>
+                                                        <td><?= $onibus['ano'] ?></td>
+                                                        <td><?= $onibus['tipo'] ?></td>
+                                                    </tr>
+                                                <? endforeach; ?>
+                                                <br>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- fim container form-->
+                <div class="col-lg-12">
+                    <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.2); padding: 0px; color: white;">
+                        <thead >
+                            <tr>
+                                <th scope="col">Motivo</th>
+                                <th scope="col">Oficina</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Data de inicio</th>
+                                <th scope="col">Data de término</th>
+                                <th scope="col">Valor final</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <? foreach ($this->listaDasManutencoes as $manutencao): ?>
+                                <tr>
+                                    <td><?= $manutencao['motivo'] ?></td>
+                                    <td><?= $manutencao['oficina'] ?></td>
+                                    <td><?= $manutencao['descricao'] ?>	</td>
+                                    <td><?= $manutencao['data_inicio'] ?></td>
+                                    <td><?= $manutencao['data_fim'] ?></td>
+                                    <td><?= $manutencao['valor_final'] ?></td>                                  
+                                    <td>
+                                        <a href="<?= $this->baseUrl('manutencao/visualizar/id/' . $manutencao['id_manutencao']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
+                                            <span class="btn-label">
+                                                <i class="fas fa-eye" style="color: white;"></i>
+                                            </span>
+                                            Visualizar Detalhes
+                                        </a>
+                                    </td>
+                                </tr>
+                            <? endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
