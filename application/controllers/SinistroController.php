@@ -6,7 +6,6 @@ class SinistroController extends Zend_Controller_Action {
         $this->_helper->layout->setLayout('layout_admin_local');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/sinistro.js'));
-        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/moment.js'));
     }
 
     public function indexAction() {

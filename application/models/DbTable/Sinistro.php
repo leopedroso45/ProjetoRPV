@@ -13,11 +13,14 @@ class Application_Model_DbTable_Sinistro extends Zend_Db_Table_Abstract
     {
         $sinistro = $this->createRow();
 
-        // atributos do sinistro
+        /*@var $sinistro Application_Model_Sinistro*/
         $sinistro->setDescricao($dados['descricao']);
-        $sinistro->setDescricao($dados['causa']);
-        $sinistro->setDescricao($dados['culpado']);
-        $sinistro->setDescricao($dados['custo']);     
+        $sinistro->setCausa($dados['causa']);
+        $sinistro->setCulpado($dados['culpado']);
+        $sinistro->setCusto($dados['custo']);
+        $sinistro->setData($dados['data']);  
+        $sinistro->setHora($dados['hora']);  
+        $sinistro->setPagante($dados['pagante']);  
 
 
         return $sinistro->save();
