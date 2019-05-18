@@ -1,0 +1,170 @@
+  
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Sinistros</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Causa</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="causa" placeholder="Causa" >
+                                    </div>
+                                    <div class="alert-lt alert-danger validaCausa"  align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>                                                      
+
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Culpado</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="culpado" placeholder="Culpado" >
+                                    </div>
+                                    <div class="alert-lt alert-danger validaCulpado"  align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>                                                      
+
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Custo</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="custo" placeholder="Custo" >
+                                    </div>
+                                    <div class="alert-lt alert-danger validaCusto"  align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>                                                      
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <label for="descricao" id="label">Descrição</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <textarea name="descricao" id="descricao" rows="3" class="form-control" placeholder="Descrição"></textarea>
+                                    </div>
+
+                                    <div class="alert-lt alert-danger validaDescricao"  align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>
+                                <div class="col-lg-4" >
+                                    <label for="descricao" id="label">Ônibus</label><label  style="color:red" id="label">*</label>
+                                    <!-- <input type="text" class="form-control" id="inicio" placeholder="Local inicial da linha"> -->
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-inicio" id="validaInicio">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+
+                                            <input type="text" class="form-control" src=""  disabled id="descricao-trecho-inicio">
+                                        </div>
+                                    </a>
+                                    <div class="alert-lt alert-danger validaInicio" align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>
+                            </div>
+                        </div>	
+
+                        <hr>
+                        <button class="btn btn-info btn-block cadastrar" type="button">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- fim container form-->
+
+        <div class="col-lg-12">
+            <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
+                <thead >
+                    <tr>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Causa</th>
+                        <th scope="col">Culpado</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col">Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDeSinistros as $sinistro): ?>
+                        <tr>
+                            <td><?= $sinistro['descricao'] ?>    </td>
+                            <td>    <?= $sinistro['causa'] ?></td>
+                            <td>    <?= $sinistro['culpado'] ?></td>
+                            <td>    <?= $sinistro['custo'] ?></td>
+                            <td>
+                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('linha/linhaTrechos/id/' . $linha['id_linha']) ?>">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--// AQUI DEVE APARECER TODOS OS ÔNIBUS DISPONÍVEIS-->
+
+<div class="modal fade" id="exampleModalCenter-inicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Ônibus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel5" style="height: 270px;">
+                    <? foreach ($this->listaDosTrechos as $trecho): ?>
+                        <option  value="<?= $trecho['id_trecho'] ?>"><?= $trecho['descricao']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar-trecho-inicio" data-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
