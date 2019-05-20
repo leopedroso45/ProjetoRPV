@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/definirTarifa.css") ?> />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="js/jquery-3.3.1.js"></script>
+
+
+<div class="container fundo">
+    <div class="row">		
+        <div class="col-sm-12" style="background-color:rgba(0,0,0,0.4); color: white">
+            <center><H2>Definir Tarifas</h2></center>
+            <div class="row"> 
+                <div class="col">
+                    <Center><H4>Trajetos</H4></Center>
+                    <div class="alert alert-info">
+                        <div class="form">
+                            <div class="listaDeTrajetos">
+                                <!-- O name é justamente o nome do Trajeto! -->
+                                <form>
+                                    <? foreach ($this->listarTrajetos as $trajeto): ?>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="<?= $trajeto->getNome() ?>" value="<?= $trajeto->getId_trajeto() ?>" id="myCheck" onclick="selecionarCheckbox(this); return true;">
+                                                <?= $trajeto->getNome() ?>
+                                            </label>
+                                        </div>
+
+                                    <? endforeach; ?>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <Center><H4>Trajetos selecionados</H4></Center>
+                    <div class="list-group listaTrajetosSelecionados" id="div1"></div>
+
+                    <form>
+                        <Center><H4>Alterar Tarifa</H4>
+                            <div class="input-group validarReal">
+                                <span class="input-group-addon">R$</span>
+                                <input type="number" class="form-control" min="1" max="10" placeholder="Real" id="valor" required>
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                            <h4>Término da Vigência</h4>
+                            <div class="form-group">
+                                <div id="filterDate2">
+                                    <!-- Datepicker as text field -->         
+                                    <div class="input-group date" data-date-format="dd.mm.yyyy">
+                                        <input type="date" class="form-control" placeholder="dd.mm.yyyy" id="vigencia" required>
+                                        <div class="input-group-addon " >
+                                            <span class="glyphicon glyphicon-th" ></span>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div style="margin-bottom: 5%;">
+                                <button type="submit" class="btn btn-success btn-block cadastrarTarifa">Pronto</button>
+                            </div>
+                        </Center>
+                    </form>
+                </div>
+            </div>
+        </div>			
+    </div>
+</div>
+
+<script type="text/javascript">
+    var trajetos = [];
+    /** function doalert(obj) {
+        if (obj.getAttribute("id") == 1) {
+            obj.setAttribute("class", "list-group-item active");
+            obj.setAttribute("id", 0);
+            return false;
+        } else {
+            tobj.setAttribute("class", "list-group-item");
+            obj.setAttribute("id", 1);
+            obj.setAttribute("value", "list-group-item");
+            return true;
+        }
+    }
+    */
+
+    function selecionarCheckbox(obj) {
+        if (obj.checked == true) {
+            var para = document.createElement("a");
+            para.setAttribute("href", "");
+            para.setAttribute("class", "list-group-item ids trajetos");
+            para.setAttribute("id", 1);
+            var text = obj.getAttribute("name");
+            var textValue = obj.getAttribute("value");
+            para.setAttribute("name", "trajeto[]");
+            para.setAttribute("at", textValue);
+            para.setAttribute("onclick", "doalert(this); return false;");
+            var node = document.createTextNode(text);
+            para.appendChild(node);
+            var element = document.getElementById("div1");
+            element.appendChild(para);
+            trajetos.push(para);
+            return false;
+        } else {
+
+            var nome = obj.getAttribute("name");
+            for (var i = 0; i < document.getElementsByName(nome).length; i++) {
+                //document.getElementsByName(nome)[1].remove();
+                var classe = document.getElementsByClassName("trajetos")[0].remove();
+                for (j = 0; j < trajetos.length; j++) {
+                    var trajeto = trajetos[j].getAttribute("name");
+                    if (trajeto == nome) {
+                        //document.getElementsByName(nome)[1].remove();
+                        trajetos.pop(trajetos[j]);
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
+    function datepickerfunction() {
+        $('.input-group.date').datepicker({format: "dd.mm.yyyy"});
+    }
+
+
+
+
+
+</script>
