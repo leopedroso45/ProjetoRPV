@@ -45,3 +45,11 @@ $(document).ready(function () {
         });
     });
 });
+
+$("#alocar").click(function () {
+    var id_onibus = $("#sel5 option:selected").val();
+    var descricao = $("#sel5 option:selected").text();
+
+    document.getElementById("id_onibus").src = id_onibus;
+    document.getElementById("id_onibus").value = descricao;
+});
