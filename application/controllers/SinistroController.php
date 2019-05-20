@@ -9,17 +9,13 @@ class SinistroController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        $dbtableSinistro = new Application_Model_DbTable_Sinistro();
-        $listarSinistros = $dbtableSinistro->listarSinistros();
+        $dbTableSinistro = new Application_Model_DbTable_Sinistro();
+        $listarSinistros = $dbTableSinistro->listarSinistros();
         $this->view->listaDeSinistros = $listarSinistros;
-    }
-
-    public function cadastrarAction() {
-
-        if ($this->getRequest()->isPost()) {
+                if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            $dbtableSinistro = new Application_Model_DbTable_Sinistro();
-            $dbtableSinistro->cadastrarSinistro($dados);
+            $dbTableSinistro = new Application_Model_DbTable_Sinistro();
+            $dbTableSinistro->cadastrarSinistro($dados);
         }
     }
 

@@ -10,6 +10,15 @@ class Application_Model_Sinistro extends Zend_Db_Table_Row_Abstract {
 //    private $data;
 //    private $hora;
 //    private $pagante;
+//    private $onibus;
+
+    function getOnibus() {
+        return $this->onibus;
+    }
+
+    function setOnibus($onibus) {
+        $this->onibus = $onibus;
+    }
 
     function getPagante() {
         return $this->pagante;

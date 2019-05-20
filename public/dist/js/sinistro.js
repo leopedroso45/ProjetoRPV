@@ -10,7 +10,7 @@ $(document).ready(function () {
         var data = $("#data").val();
         var hora = $("#hora").val();
         var pagante = $("#pagante").val();
-        
+
         $.ajax({
             type: "POST",
             url: baseUrl + 'sinistro/index',
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 });
             },
             error: function () {
-//                alert('error');
+                alert('error');
             }
         });
     });
