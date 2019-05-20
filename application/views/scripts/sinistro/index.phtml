@@ -178,8 +178,12 @@
             </div>
             <div class="modal-body">
                 <select multiple class="form-control" id="sel5" style="height: 270px;">
-                    <? foreach ($this->listaDosTrechos as $trecho): ?>
-                        <option  value="<?= $trecho['id_trecho'] ?>"><?= $trecho['descricao']; ?></option>
+                    <? foreach ($this->listarTodosOnibusIntermunicipais as $onibus): ?>
+                        <option  value="<?= $onibus['id_onibus_viagem'] ?>"><?= $onibus['modelo'] . " " . $onibus['chassi']; ?></option>
+                    <? endforeach; ?>
+
+                    <? foreach ($this->listaDosOnibusUrbanos as $onibus1): ?>
+                        <option  value="<?= $onibus1['id_onibus_urbano'] ?>"><?= $onibus1['modelo'] . " " . $onibus1['chassi']; ?></option>
                     <? endforeach; ?>
                 </select>
             </div>

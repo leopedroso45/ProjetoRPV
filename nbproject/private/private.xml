@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/linha-dia/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/OnibusIntermunicipalController.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/FuncionarioController.php</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/SinistroController.php</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/js/sinistro.js</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/LinhaDiaController.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/Sinistro.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Sinistro.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/OnibusIntermunicipal.php</file>
             <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/sinistro/index.phtml</file>
         </group>
     </open-files>
