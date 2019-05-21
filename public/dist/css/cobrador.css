@@ -1,0 +1,110 @@
+
+body {
+  
+  width: 100%;
+    
+  /*overflow-x:scroll;*/
+  background-size: cover;
+  background-attachment: fixed;
+  
+  background-repeat: no-repeat;
+  
+}
+
+#titulo{
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.8);
+}
+
+#titulo-cadastro{
+	color:white;
+	text-align: center;
+
+}
+
+#label{
+	color: white;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#col-aviso{
+	background-color: rgba(255,36,36,0.4);  
+	text-align: center; 
+	border-radius: 4px; 
+	color:white;
+}
+
+#fechar_aviso:hover{
+	color:yellow;
+
+}
+
+.btn-label{
+	background-color: rgba(0,0,0,0.15);
+	position: relative;
+	left: -12px;
+	display: inline-block;
+	padding:6px 12px;
+}
+
+.btn-labeled{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+
+.btn-group, .btn-group-vertical {
+    position: relative;
+     display: block; 
+     color:white;
+
+    vertical-align: middle;
+    margin-bottom: 5%;
+}
+
+.btn-default{
+	border: 1px solid;
+	border-color: rgba(255,255,255,0.5);
+}
+
+
+.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+
+
+
+
+
+[data-toggle=buttons]>.btn input[type=checkbox],
+ [data-toggle=buttons]>.btn input[type=radio],
+  [data-toggle=buttons]>.btn-group>.btn input[type=checkbox],
+   [data-toggle=buttons]>.btn-group>.btn input[type=radio] {
+	position: absolute;
+	clip: rect(0,0,0,0);
+	pointer-events: none;
+
+}
+
+#novo_cobrador{
+	border: 2px solid blue;
+}
+
+#gravar{
+	border: 2px solid #33A233;
+}
+
+#voltar{
+	border: 2px solid #FF3535;
+
+}
+
+
+
+
+
+

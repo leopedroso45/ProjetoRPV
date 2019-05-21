@@ -1,0 +1,33 @@
+body{
+  font-family: Open Sans, Arial;
+}
+
+input{
+  padding: 10px;
+  width: 350px;
+  color: #000;
+}
+
+
+
+#email-label:before {
+  color: #ff0000;
+  content:"\f003";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 2px;
+  left: 10px;
+}
+
+#box_icone_busca{
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  position: relative;
+  left: -39px;
+  top: 1px;
+}
+#icone_busca {
+  color: #000;
+  cursor: pointer;
+}

@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Paradas</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Número <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="numeroParada" name="numeroParada" placeholder="Informe o numero da parada" required/>
+                                <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                                    O campo numero de parada é obrigatório!
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Local <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="local" name="local" placeholder="Informe o local da parada" required/>
+                                <div class="alert alert-danger local" style="display: none;" role="alert">
+                                    O campo local é obrigatório!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Complementos <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Informe o complementos, se houver" />
+                            </div>
+                            <br>
+                            <div class="alert alert-success " style="display: none;" role="alert">
+                                Cadastro de parada realizado com sucesso!
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                            <button type="button" class="btn btn-info btn-block cadastrarParada">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+        <thead>
+            <tr>
+             <!-- <th scope="col">ID</th> -->
+                <th scope="col">N° da parada</th>
+                <th scope="col">Local</th>
+                <th scope="col">Complemento</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <? foreach ($this->listarParadaOnibus as $parada_onibus): ?>
+                <tr>
+                    <td><?= $parada_onibus->getNumeroParada() ?> </td>
+                    <td><?= $parada_onibus->getLocal() ?>  </td>
+                    <td><?= $parada_onibus->getComplemento() ?>  </td>
+                    <td>
+                        <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('parada-onibus/editar/id/' . $parada_onibus['id_parada']) ?>">
+                            <span class="btn-label">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            Visualizar Detalhes
+                        </a>
+                    </td>
+                </tr>
+            <? endforeach; ?>
+        </tbody>
+    </table>
+</div>
+</div>

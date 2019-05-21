@@ -1,0 +1,79 @@
+
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="UTF-8">
+        <title>Controle de Frotas</title>
+        <script type="text/javascript">
+            var baseUrl = '<?= $this->baseUrl('/') ?>';
+        </script>
+        <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/") ?> />
+        <!--Caminho da public "$this->baseUrl()-->
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-cerulean.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/trajeto.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/style.css") ?> />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="position: fixed; top:0; right:0; left:0; z-index:1030;">
+            <div class="container">
+                <a class="navbar-brand" href="<?= $this->baseUrl("") ?>">
+                    PampaBus
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?= $this->baseUrl("") ?>">
+                                <i class="fas fa-home"></i>
+                                Início
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("beneficio") ?>">
+                                Benefícios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("forma-pagamento") ?>">
+                                Formas de Pagamento
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("cadastro-estudante") ?>">
+                                Estudantes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("cadastro-deficiente") ?>">
+                                Deficientes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("cadastro-idoso") ?>">
+                                Idosos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Conteudo das páginas-->
+        <div style="margin-top: 5%;">
+            <?php echo $this->layout()->content; ?>
+        </div>
+
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.min.js') ?>"></script>
+        <?= $this->headScript(); ?>
+    </body>
+</html>

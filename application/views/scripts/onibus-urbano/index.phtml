@@ -1,0 +1,200 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Ônibus Urbanos</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" enctype="multipart/form-data" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Placa <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="placa" id="placa" title="Placa do veículo">
+                                <div class="alert alert-danger placa" role="alert" style="display:none;">
+                                    O campo <strong>Placa</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger placa_tamanho" role="alert" style="display:none;">
+                                    O campo <strong>Placa</strong> deve conter 7 dígitos.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Ano <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="ano" id="ano" title="Ano de fabricação do veículo">
+                                <div class="alert alert-danger ano" role="alert" style="display:none;">
+                                    O campo <strong>Ano</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger ano_tamanho" role="alert" style="display:none;">
+                                    O campo <strong>Ano</strong> deve conter 4 dígitos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Capacidade máxima <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="numero_passageiros" id="numero_passageiros" title="Capacidade máxima de passageiros">
+                                <div class="alert alert-danger numero_passageiros" role="alert" style="display:none;">
+                                    O campo <strong>Capacidade máxima</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger numero_passageiros_maximo" role="alert" style="display:none;">
+                                    A capacidade não pode ser menor que o nº de assentos.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Número de Assentos <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="numero_assentos" id="numero_assentos" title="Quantidade de assentos no veículo">
+                                <div class="alert alert-danger numero_assentos" role="alert" style="display:none;">
+                                    O campo <strong>Número de Assentos</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger numero_assentos_maximo" role="alert" style="display:none;">
+                                    O nº de assentos não pode ser maior que a capacidade.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Chassi <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="chassi" id="chassi" title="Chassi do veículo">
+                                <div class="alert alert-danger chassi" role="alert" style="display:none;">
+                                    O campo <strong>Chassi</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger chassi_tamanho" role="alert" style="display:none;">
+                                    O campo <strong>Chassi</strong> deve conter 17 dígitos.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Quilometragem <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="km" id="km" title="Quilometragem do veículo">
+                                <div class="alert alert-danger km" role="alert" style="display:none;">
+                                    O campo <strong>Quilometragem</strong> é obrigatório.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Renavam <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="renavam" id="renavam" title="Renavam do veículo">
+                                <div class="alert alert-danger renavam" role="alert" style="display:none;">
+                                    O campo <strong>Renavam</strong> é obrigatório.
+                                </div>
+                                <div class="alert alert-danger renavam_tamanho" role="alert" style="display:none;">
+                                    O campo <strong>Renavam</strong> deve conter 11 dígitos.
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Cor <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="cor" id="cor" title="Cor do veículo">
+                                <div class="alert alert-danger cor" role="alert" style="display:none;">
+                                    O campo <strong>Cor</strong> é obrigatório.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Marca <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="marca" id="marca" title="Fabricante/Marca do veículo">
+                                <div class="alert alert-danger marca" role="alert" style="display:none;">
+                                    O campo <strong>Marca</strong> é obrigatório.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Modelo <strong title="Campo Obrigatório">*</strong></label>
+                                <input type="text" class="form-control" name="modelo" id="modelo" title="Modelo do veículo">
+                                <div class="alert alert-danger modelo" role="alert" style="display:none;">
+                                    O campo <strong>Modelo</strong> é obrigatório.
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-info btn-block cadastrar-onibus-urbano" data-loading-text="Cadastrando...">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th>Status</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosOnibusUrbanos as $onibus): ?>
+                        <? if ($onibus === NULL) { ?>
+                            Nenhum resultado
+                        <? } ?>
+                        <tr>
+                            <td> <?= $onibus['placa'] ?></td>
+                            <td> <?= $onibus['chassi'] ?></td>
+                            <td> <?= $onibus['numero_passageiros'] ?></td>
+                            <td> <?= $onibus['numero_assentos'] ?></td>
+                            <td>
+                                <?php if ($onibus['situacao'] === 'ATIVO'): ?>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons" >
+                                        <label class="btn btn-default btn-on active" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'ATIVO')">
+                                            <input type="radio" name="switch" checked="checked">
+                                            ATIVO
+                                        </label>
+                                        <label class="btn btn-default btn-off" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'INATIVO')">
+                                            <input type="radio" name="switch">
+                                            INATIVO
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($onibus['situacao'] === 'INATIVO'): ?>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default btn-on" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'ATIVO')">
+                                            <input type="radio" name="switch" checked="checked">
+                                            ATIVO
+                                        </label>
+                                        <label class="btn btn-default btn-off active" onclick="editarStatus(<?= $onibus['id_onibus_urbano'] ?>, 'INATIVO')">
+                                            <input type="radio" name="switch">
+                                            INATIVO
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('/onibus-urbano/editar/id/' . $onibus['id_onibus_urbano']) ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Chassi</th>
+                        <th>Nº Passageiros</th>
+                        <th>Nº Assentos</th>
+                        <th>Status</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

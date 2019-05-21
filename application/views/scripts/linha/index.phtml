@@ -1,0 +1,290 @@
+  
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Linhas</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label for="descricao" id="label">Descrição</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                    <input type="text" class="form-control" id="descricao" placeholder="Descrição" >
+                                        
+                                    </div>
+                                    
+                                    <div class="alert-lt alert-danger validaDescricao"  align="center" style="display:none" role="alert">
+                                       Campo obrigatório
+                                  </div>
+                                </div>
+                                <div class="col-lg-7" >
+                                    <label for="descricao" id="label">Local de Início</label><label  style="color:red" id="label">*</label>
+                                    <!-- <input type="text" class="form-control" id="inicio" placeholder="Local inicial da linha"> -->
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-inicio" id="validaInicio">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            
+                                            
+                                            <input type="text" class="form-control" src=""  disabled id="descricao-trecho-inicio">
+                                        </div>
+                                    </a>
+                                    <div class="alert-lt alert-danger validaInicio" align="center" style="display:none" role="alert">
+                                       Campo obrigatório
+                                  </div>
+
+                                </div>
+
+                            </div>
+                            <br>
+
+                            
+                            <div class="row" id="trechos" >
+
+
+                                <div class="col-2">
+
+                                </div>
+                                <div class="col-8">
+                                   <button type="button" style="margin-bottom: 15px" class="btn btn-block btn-success" id="add-trecho" >Adicionar trecho</button>
+                                   <div class="alert-lt alert-danger validaTrecho" align="center" style="display:none;" role="alert">
+                                      Selecione um trecho.
+                                  </div>
+                                  <div class="alert-lt alert-danger validaTempo" align="center" style="display:none;" role="alert">
+                                      Informe o tempo em minutos
+                                  </div>
+
+                                  <div class="alert-lt alert-danger validaKm" align="center" style="display:none;" role="alert">
+                                      Informe a distância em quilômetros
+                                  </div>
+                                  <div class="alert-lt alert-danger validaInserirUmTrecho" align="center" style="display:none;" role="alert">
+                                      É obrigatório inserir ao menos um trecho
+                                  </div>
+                                  <div class="alert-lt alert-danger validaTrechovazio" align="center" style="display:none;" role="alert">
+                                      Você precisa preencher todos os campos dos trechos
+                                  </div>
+
+                              </div>
+                              <div class="col-2">
+
+                              </div>
+
+
+                          </div>
+                          <fieldset  style="border: solid thin rgba(255,255,255,0.5); padding-bottom: 15px ">
+                            <legend style="border:none; width: 90px">Trechos</legend>
+
+
+                              <!--  <div class="row" id="a"  style="padding-left: 15px; padding-right: 15px">
+                                <div class="col-8" >
+
+
+
+
+
+
+
+
+                                    <label for="descricao" id="label">Local</label>
+
+                                    <a data-toggle="modal" data-target="#exampleModalCenter">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" disabled id="descricao-onibus">
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <div class="col-3">
+                                    <label for="descricao" id="label">Tempo (minutos)</label>
+                                    <input type="text" class="form-control" id="trecho1" placeholder="Duração do trecho">
+                                </div>
+                                <div class="col-1" style="padding-top: 30px">
+                                    <button type="button" class="btn btn-block btn-danger remove" id="xxx">X</button>
+                                </div>
+                            </div> -->
+
+
+
+                        </fieldset>
+                        <br>
+
+
+                    </div>	
+
+                    <div class="row" style="font-size: 20px">
+                        <div class="col-5" align="center">
+                            <label  >Tempo total estimado da linha: </label><strong> <label id="tempototal"  style="font-size: 26px"> 00:00</label></strong>
+                        </div>
+                        <div class="col-2" >
+                            
+                        </div>
+                        <div class="col-5" align="center">
+                            <label  >Extensão total da linha (km): </label> <strong> <label id="kmtotal"  style="font-size: 26px"> 0</label></strong>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    <hr>
+                    <button class="btn btn-info btn-block cadastrar-linha" type="button">
+                        Cadastrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- fim container form-->
+
+    <div class="col-lg-12">
+        <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
+            <thead >
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Origem</th>
+                    <th scope="col">Tempo</th> <!-- implementar com moment  -->
+                    <th scope="col">Extensão (km)</th>
+                    
+                    
+                    <th scope="col" >Status</th>
+                    <th scope="col">Trechos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? foreach ($this->listaDasLinhas as $linha): ?>
+                    <tr>
+                        <td><?= $linha['descricao'] ?>    </td>
+                        <td>    <?= $linha['origem'] ?></td>
+                        <td>    <?= $linha['tempo'] ?></td>
+                        <td>    <?= $linha['km'] ?></td>
+
+                        
+                       
+                        <td >    <input type="hidden" value="<?php $linha->getSituacao(); ?>" >
+                            <?php if ($linha->getSituacao() === 'ATIVO'): ?>
+                                <div class="btn-group" id="status" data-toggle="buttons">
+                                    <label style="font-size: 10px" class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
+
+                                        <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label style="font-size: 10px" class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if ($linha->getSituacao() === 'INATIVO'): ?>
+                                        <div class="btn-group" id="status" data-toggle="buttons">
+                                            <label style="font-size: 10px" class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'ATIVO')">
+                                                <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                                <label style="font-size: 10px" class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $linha->getIdLinha() ?>, 'INATIVO')">
+                                                    <input type="radio" name="plug">INATIVO</label>
+                                                </div>
+                                            <?php endif; ?>
+                                        </td>
+
+                                        <td>
+
+                                           <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('linha/linhaTrechos/id/' . $linha['id_linha']) ?>">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar detalhes
+                                </a>
+
+                                            
+
+                                    </td>
+
+
+                                </tr>
+                            <? endforeach; ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Trecho</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <select multiple class="form-control" id="sel4" style="height: 270px;">
+                            <? foreach ($this->listaDosTrechos as $trecho): ?>
+                                <option  value="<?= $trecho['id_trecho'] ?>"><?= $trecho['descricao']; ?></option>
+                            <? endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="alocar-trecho" data-dismiss="modal">Ok</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalCenter-inicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Trecho</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <select multiple class="form-control" id="sel5" style="height: 270px;">
+                            <? foreach ($this->listaDosTrechos as $trecho): ?>
+                                <option  value="<?= $trecho['id_trecho'] ?>"><?= $trecho['descricao']; ?></option>
+                            <? endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="alocar-trecho-inicio" data-dismiss="modal">Ok</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+
+ 
+
+
+
+

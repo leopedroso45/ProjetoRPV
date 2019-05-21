@@ -1,0 +1,17 @@
+body{
+	background-position: 50% 0%;
+    height: 100%;
+    width:100%;
+    margin:0;
+    background-image:url(../img/fundo.png); 
+
+.botao{
+	width: 100%
+	height: 100%;
+}
+.navbar {
+   background: transparent !important;
+}
+
+}
+

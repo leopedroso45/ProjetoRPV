@@ -1,0 +1,167 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Motoristas</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+
+                <div class="card-body" style="display: none;">
+                    <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.2); color: white;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="nome">Nome</label>
+                                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo">
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="cpf">CPF</label>
+                                    <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="telefone">Telefone</label>
+                                    <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone">
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="rg">RG</label>
+                                    <input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="carteiraTrabalho">Carteira de trabalho</label>
+                                    <input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da CT">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" class="form-control" id="email" placeholder="Digite o email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="pis">Número do PIS</label>
+                                    <input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="cnh">CNH</label>
+                                    <input type="text" name="cnh" class="form-control " id="cnh" placeholder="Digite a CNH">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="dataAdmissao">Data de admissão</label>
+                                    <input type="date" name="dataAdmissao" class="form-control date" id="dataAdmissao" placeholder="Digite a data de admissão">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="padding: 15px">
+                                    <div class="alert alert-danger nome" style="display:none;" role="alert">
+                                        O campo NOME é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger cpf" style="display:none;" role="alert">
+                                        CPF inválido!
+                                    </div>
+
+                                    <div class="alert alert-danger telefone" style="display:none;" role="alert">
+                                        O campo TELEFONE é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
+                                        O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger rg" style="display:none;" role="alert">
+                                        O campo RG é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger pis" style="display:none;" role="alert">
+                                        O campo Nº do PIS é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger cnh" style="display:none;" role="alert">
+                                        O campo CNH é de preenchimento obrigatório!
+                                    </div>
+
+                                    <div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
+                                        O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
+                                    </div>
+                                </div>
+                            </div>
+                        </div><hr>
+                        <button class="btn btn-info btn-block cadastrar-motorista" type="button">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <table class="table" style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px;">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Data de admissão</th>
+                        <th scope="col" >Status</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDosMotoristas as $motorista): ?>
+
+                        <tr>
+
+                            <td><?= $motorista->getNome() ?>	</td>
+                            <td><?= $motorista->getCpf() ?>	</td>
+                            <td><?= $motorista->getDataAdmissao() ?>	</td>
+                            <td>
+                                <input type="hidden" value="<?php $motorista->getAtivo(); ?>" >
+                                <?php if ($motorista->getAtivo() === 'ATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default plug status-on btn-on aberto active" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'ATIVO')">
+
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default plug status-off btn-off fechado" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($motorista->getAtivo() === 'INATIVO'): ?>
+                                    <div class="btn-group" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default status-on btn-on plug aberto" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'ATIVO')">
+                                            <input type="radio" name="plug" checked="checked">ATIVO</label>
+                                        <label class="btn btn-default status-off btn-off plug fechado active" onclick="editarAtivo(<?= $motorista->getId_motorista() ?>, 'INATIVO')">
+                                            <input type="radio" name="plug">INATIVO</label>
+                                    </div>
+                                <?php endif; ?>
+
+                            </td>
+                            <td><a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('motorista/editar/id/' . $motorista['id_motorista']) ?>">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar detalhes
+                                </a>	
+                            </td>
+
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

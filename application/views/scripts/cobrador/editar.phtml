@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("cobrador") ?>">Cobradores</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Editar</li>
+            </ol>
+
+            <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.5); color: white;">
+                <div class="form-group">
+                    <!-- fim cad velho -->
+                    <input type="hidden" id="id_cobrador" name="id_cobrador" value="<? echo $this->cobrador['id_cobrador'] ?>">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="hidden" id="id-cobrador" name="id-cobrador" value="<?php echo $this->cobrador->getId_cobrador(); ?>">
+
+                            <label for="nome-cobrador">Nome <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="nome" class="form-control" id="nome" placeholder="Insira o nome completo" value="<?php echo $this->cobrador->getNome(); ?>">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="cpf">CPF <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" value="<?php echo $this->cobrador->getCpf(); ?>">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="telefone">Telefone <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Digite o telefone" value="<?php echo $this->cobrador->getTelefone(); ?>">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="rg-cobrador">RG</label>
+                            <input type="text" name="rg" class="form-control" id="rg" placeholder="Digite o RG" value="<?php echo $this->cobrador->getRg(); ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="carteiraTrabalho-cobrador">Carteira de trabalho <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="carteiraTrabalho" class="form-control" id="carteiraTrabalho" placeholder="Digite o nº da Carteira de Trabalho" value="<?php echo $this->cobrador->getCarteiraTrabalho(); ?>">
+
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="pis">Número do PIS <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="pis" class="form-control" id="pis" placeholder="Digite o PIS" value="<?php echo $this->cobrador->getPis(); ?>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="cnh">CNH <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" name="cnh" class="form-control" id="cnh" placeholder="Digite a CNH" value="<?php echo $this->cobrador->getCnh(); ?>">
+
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email">Email <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="text" placeholder="Digite o email" name="email" class="form-control" id="email"  value="<?php echo $this->cobrador->getEmail(); ?>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="dataAdmissao-cobrador">Data de admissão <strong title="Campo Obrigatório">*</strong></label>
+                            <input type="date" name="dataAdmissao" class="form-control" id="dataAdmissao" placeholder="Digite a data de admissão" value="<?php echo $this->cobrador->getDataAdmissao(); ?>">
+                        </div>
+                    </div>
+
+                                        <div class="row">
+                                            <div class="col-12" style="padding: 15px">
+                                                <div class="row">
+                                                    <div class="col-3"></div>
+                                                    <div class="col-6">
+                                                        <div class="alert alert-danger nome" style="display:none;" role="alert">
+                                                            O campo NOME é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger cpf" style="display:none;" role="alert">
+                                                            CPF inválido!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger telefone" style="display:none;" role="alert">
+                                                            O campo TELEFONE é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger carteiraTrabalho" style="display:none;" role="alert">
+                                                            O campo CARTEIRA DE TRABALHO é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger rg" style="display:none;" role="alert">
+                                                            O campo RG é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger pis" style="display:none;" role="alert">
+                                                            O campo Nº do PIS é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger cnh" style="display:none;" role="alert">
+                                                            O campo CNH é de preenchimento obrigatório!
+                                                        </div>
+                    
+                                                        <div class="alert alert-danger dataAdmissao" style="display:none;" role="alert">
+                                                            O campo DATA DE ADMISSÃO é de preenchimento obrigatório!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                    <hr>
+                    <button class="btn btn-info btn-block edita" name="edita" type="button">
+                        Confirmar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
