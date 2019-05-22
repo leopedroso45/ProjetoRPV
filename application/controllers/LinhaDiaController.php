@@ -15,6 +15,8 @@ class LinhaDiaController extends Zend_Controller_Action
     {
 
         $dbTableLinhaDia = new Application_Model_DbTable_LinhaDia();
+        $listaLinhasDia= $dbTableLinhaDia->listarTodasLinhasDia();
+        $this->view->listaDasLinhasDia = $listaLinhasDia;
 
         $dbTableMotorista = new Application_Model_DbTable_Motorista();
         $listaMotoristas= $dbTableMotorista->listarTodosMotoristas();
@@ -34,14 +36,24 @@ class LinhaDiaController extends Zend_Controller_Action
             
 
 
-           $dados = $this->getRequest()->getParams();
+           $dbTableLinhaDia = new Application_Model_DbTable_LinhaDia();
 
-           $dbTableLinha->cadastrarLinhaDia($dados);
 
-           
+            $dados = $this->getRequest()->getParams();
+            
+                
+             $linha = $dados['id_linha'];
+             $dia = explode(',', $dados['dia']);
+             $inicio = explode(',', $dados['inicio']);
+             $motorista = explode(',', $dados['motorista']);
+             $bus = explode(',', $dados['bus']);
 
-           
-           $this->view->linhaDia = $dados;
+             //var_dump($inicio);die();
+
+            for ($i = 0; $i < sizeof($dia); $i++) {
+                 $dbTableLinhaDia->cadastrarLinhaDia($linha, $dia[$i], $inicio[$i], $motorista[$i], $bus[$i]);
+             }
+               $this->view->linhaDia = $dados;
 
        }
 
@@ -83,22 +95,28 @@ public function editarAtivoAction()
 }
 
 
-// public function linhatrechosAction()
-// {
-//    $dbTableLinhaTrecho = new Application_Model_DbTable_LinhaTrecho();
-//    $xx = 2;
-//    $id = $this->getRequest()->getParam('id');
-//             //var_dump($id);die();
-//            // int $iid = $id;
+public function linhadiasAction()
+    {
+         $dbTableLinhaDia = new Application_Model_DbTable_LinhaDia();
+          
+            $id = $this->getRequest()->getParams();
+            //var_dump($id);die();
+           // int $iid = $id;
+            $dia = $id['id_dia'];
+            $linha = $id['id_linha'];
+            $hora = $id['inicio'];
+            //var_dump($hora);die();
+            
+            $listaLinhastrechos = $dbTableLinhaDia->listarLinhasDiaPorId($dia, $linha, $hora);
+            //var_dump($listaLinhastrechos);
 
-//    $listaLinhastrechos = $dbTableLinhaTrecho->listarTrechosPorId($id);
-//             //var_dump($listaLinhastrechos);
-//    $this->view->listaDasLinhast = $listaLinhastrechos; 
 
+            $this->view->listaDasLinhash = $listaLinhastrechos; 
 
+     
 
-
-// }
+       
+    }
 
 }
 

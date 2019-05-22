@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("linha-dia") ?>">Linha Horários</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Detalhes da linha</li>
+                </ol>
+            </nav>
+
+            <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.8); padding: 0px; color: white; text-align: center; font-size: 20px">
+                <thead >
+                    <tr>
+                        <th scope="col">Trecho</th>
+                        <th scope="col">Horário de chegada</th>
+                        
+                        
+                    </tr>
+
+                </thead>
+                
+                
+                <?php $cont = 0; ?>
+
+                <? foreach ($this->listaDasLinhash as $linhaTrecho): ?>
+
+                    <?php if ($cont === 0) {
+                     ?>
+                     <div style="background-color: rgba(0,0,0,0.8); text-align: center">
+                         
+                     
+                     <h2><?= $linhaTrecho['descLinha'] ?> </h2>
+                     <h4>| Origem: <?= $linhaTrecho['origem'] ?> | Saída: <?= $linhaTrecho['horario_inicio'] ?> | Dia: <?= $linhaTrecho['dia'] ?> |</h4>
+                     </div>
+                     <tbody>
+                       <tr>
+                         
+                     <?php
+                     $cont++;
+                 } ?>
+
+                 
+                 <td>   <?= $linhaTrecho['descTrecho'] ?>  </td>
+                 
+                
+                 <td>  <?= $linhaTrecho['tempo'] ?>  </td>
+                 
+                 
+
+
+             </tr>
+
+         <? endforeach; ?>
+     </tbody>
+ </table>
+
+</div>
+</div>
+</div>
