@@ -1,91 +1,37 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('/admin-local') ?>" accesskey="c" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Administrador<br>
-                        <u>L</u>ocal
-                    </h6>
-                </button>
-            </a>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form class="jumbotron" method="post">
+                <h3>PampaBus</h3>
+                <hr>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Login</label>
+                    <div class="input-group"  style="padding-bottom: 5px">
+                        <div class="input-group-prepend" >
+                            <span class="input-group-text" id="validationTooltipUsernamePrepend">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" name="nome_usuario" autocomplete="off" maxlength="25">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Senha</label>
+                    <div class="input-group"  style="padding-bottom: 5px">
+                        <div class="input-group-prepend" >
+                            <span class="input-group-text" id="validationTooltipUsernamePrepend">
+                                <i class="fa fa-key"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" name="senha" autocomplete="off" maxlength="8">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Entrar</button>
+                </div>
+                <!--<a href="#">Cadastrar</a>-->
+            </form>
+
+            <div class="col-lg-4"></div>
         </div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('admin-geral') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Administrador<br>
-                        <u>G</u>eral
-                    </h6>
-                </button>
-            </a>
-        </div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('secretario') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Administrador<br>
-                        <u>S</u>ecretário
-                    </h6>
-                </button>
-            </a>
-        </div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('funcionario') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        <u>R</u>ecursos Humanos
-                    </h6>
-                </button>
-            </a>
-        </div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('cadastro-estudante') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Cadastrar <br>
-                        <u>E</u>studante <br>
-                    </h6>
-                </button>
-            </a>
-        </div>
-        <div class="col-lg-1"></div>
     </div>
-
-    <br>
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('cadastro-idoso') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Cadastrar <br>
-                        <u>I</u>doso <br>
-                    </h6>
-                </button>
-            </a>
-        </div>
-
-        <div class="col-lg-2">
-            <a href="<?= $this->baseUrl('cadastro-deficiente') ?>" accesskey="a" style="text-decoration: none;">
-                <button class="btn btn-success btn-block btn-labeled" title="">
-                    <span class="btn-label-secratario"><i class="fas fa-user"></i></span>
-                    <h6>
-                        Cadastrar <br>
-                        <u>D</u>eficiente <br>
-                    </h6>
-                </button>
-            </a>
-        </div>
-
-        <div class="col-lg-2"></div>
-    </div>
-
 </div>
