@@ -110,6 +110,13 @@ public function linhadiasAction()
             $listaLinhastrechos = $dbTableLinhaDia->listarLinhasDiaPorId($dia, $linha, $hora);
             //var_dump($listaLinhastrechos);
 
+            // for ($i = 0; $i < sizeof($listaLinhastrechos); $i++) {
+            //     $tempo_inicio = new DateTime($value['horario_inicio']);
+            //     $value
+            //     $listaLinhastrechos[$i]->set
+                
+            // }
+
 
             $this->view->listaDasLinhash = $listaLinhastrechos; 
 

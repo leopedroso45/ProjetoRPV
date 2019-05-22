@@ -69,7 +69,7 @@ class Application_Model_DbTable_LinhaDia extends Zend_Db_Table_Abstract
         ));
 
         $stmt = $adapter->query(
-           "select l.descricao as descLinha, l.origem, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia 
+           "select l.descricao as descLinha, l.origem, l.tempo as tempoLinha, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia 
 
                 from trecho as t, linha as l, linha_trecho as lt, linha_horarios as lh, dia as d
 
