@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    $('.datedropper').dateDropper({
+        lang: 'pt'
+    });
+});
+
 $(document).on('click', '.clickable', function (e) {
 //    alert();
     var $this = $(this);
