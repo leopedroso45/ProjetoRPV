@@ -10,13 +10,20 @@ $(document).ready(function () {
     $('#cpf-cobrador').mask('999999999-99');
 });
 
-$(".cadastrarParada").click(function ()
+$(".cadastrarSeguros").click(function ()
 {
-    var numeroParada = $("#numeroParada").val();
-    var local = $("#local").val();
-    var complemento = $("#complemento").val();
+    var numeroApolice = $("#numeroApolice").val();
+    var seguradora = $("#seguradora").val();
+    var nomeSegurado = $("#nomeSegurado").val();
+    var cpfSegurado = $("#cpfSegurado").val();
+    var valorMensal = $("#valorMensal").val();
+    var taxaFranquia = $("#taxaFranquia").val();
+    var premioMorte = $("#premioMorte").val();
+    var premioInvalidez = $("#premioInvalidez").val();
+    var dataInicial = $("#dataInicial").val();
+    var dataFinal = $("#dataFinal").val();
 
-    if (numeroParada.length === 0) {
+    if (numeroApolice.length === 0) {
         $(".numeroParada").removeAttr("style");
         $(".local").attr("style", "display:none");
 
@@ -48,12 +55,19 @@ $(".cadastrarParada").click(function ()
 });
 
 
-$(".editarParada").click(function ()
+$(".editarSeguros").click(function ()
 {
-    var id = $("#id_parada").val();
-    var numeroParada = $("#numeroParada").val();
-    var local = $("#local").val();
-    var complemento = $("#complemento").val();
+    var id = $("#id_seguro").val();
+    var numeroApolice = $("#numeroApolice").val();
+    var seguradora = $("#seguradora").val();
+    var nomeSegurado = $("#nomeSegurado").val();
+    var cpfSegurado = $("#cpfSegurado").val();
+    var valorMensal = $("#valorMensal").val();
+    var taxaFranquia = $("#taxaFranquia").val();
+    var premioMorte = $("#premioMorte").val();
+    var premioInvalidez = $("#premioInvalidez").val();
+    var dataInicial = $("#dataInicial").val();
+    var dataFinal = $("#dataFinal").val();
 
     if (numeroParada.length === 0) {
         $(".numeroParada").removeAttr("style");

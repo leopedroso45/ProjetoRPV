@@ -1,39 +1,39 @@
 <?php
 
-class ParadaOnibusController extends Zend_Controller_Action
+class SegurosController extends Zend_Controller_Action
 {
 
     public function init()
     {
         $this->_helper->layout->setLayout('layout_secretario');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
-        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/parada.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/Seguros.js'));
     }
 
     public function indexAction()
     {
-        $dbtableParada = new Application_Model_DbTable_ParadaOnibus();
-        $lista = $dbtableParada->listarParadaOnibus();
-        $this->view->listarParadaOnibus = $lista;
+        $dbtableSeguros = new Application_Model_DbTable_Seguros();
+        $lista = $dbtableSeguros->listarSeguros();
+        $this->view->listarSeguros = $lista;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            $dbtableParada->cadastrarParadaOnibus($dados);
+            $dbtableSeguros->cadastrarSeguros($dados);
         }
     }
 
     public function editarAction()
     {
         $id = $this->getRequest()->getParam('id');
-        $dbtableParada = new Application_Model_DbTable_ParadaOnibus();
-        $parada = $dbtableParada->getParadaOnibusPorId($id);
+        $dbtableSeguros = new Application_Model_DbTable_Seguros();
+        $Seguros = $dbtableSeguros->getSegurosPorId($id);
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            $dbtableParada->editarParadaOnibus($id, $dados);
+            $dbtableSeguros->editarSeguros($id, $dados);
         }
 
-        $this->view->parada = $parada;
+        $this->view->Seguros = $Seguros;
     }
 
 }

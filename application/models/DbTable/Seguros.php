@@ -1,43 +1,50 @@
 <?php
 
-class Application_Model_DbTable_ParadaOnibus extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_Seguros extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'parada';
-    protected $_rowClass = "Application_Model_ParadaOnibus";
+    protected $_name = 'seguros';
+    protected $_rowClass = "Application_Model_Seguros";
     
-    public function cadastrarParadaOnibus($dados)
+    public function cadastrarSeguros($dados)
     {
         //var_dump($dados); die();
-        $paradaOnibus = $this->createRow();
-        /*@var $paradaOnibus Application_Model_ParadaOnibus*/
-        $paradaOnibus->setNumeroParada($dados['numeroParada']);
-        $paradaOnibus->setLocal($dados['local']);
-        $paradaOnibus->setComplemento($dados['complemento']);
+        $seguros = $this->createRow();
+        /*@var $seguros Application_Model_seguros*/
+        $seguros->setNumeroapolice($dados['numeroApolice']);
+        $seguros->setSeguradora($dados['seguradora']);
+        $seguros->setNomeSegurado($dados['nomeSegurado']);
+        $seguros->setCpfSegurado($dados['cpfSegurado']);
+        $seguros->setValorMensal($dados['valorMensal']);
+        $seguros->setTaxaFranquia($dados['taxaFranquia']);
+        $seguros->setPremioMorte($dados['premioMorte']);
+        $seguros->setPremioInvalidez($dados['premioInvalidez']);
+        $seguros->setDataInicial($dados['dataInicial']);
+        $seguros->setDataFinal($dados['dataFinal']);
         
-        return $paradaOnibus->save();
+        return $seguros->save();
     }
     
-    public function editarParadaOnibus($id,$dados)
+    public function editarSeguros($id,$dados)
     {
         //var_dump($id, $dados); die();
-        $paradaOnibus = $this->find($id)->current();
-       /*@var $paradaOnibus Application_Model_CategoriaOnibus*/
-        $paradaOnibus->setNumeroParada($dados['numeroParada']);
-        $paradaOnibus->setLocal($dados['local']);
-        $paradaOnibus->setComplemento($dados['complemento']);
+        $seguros = $this->find($id)->current();
+       /*@var $seguros Application_Model_CategoriaOnibus*/
+        $seguros->setNumeroseguros($dados['numeroseguros']);
+        $seguros->setLocal($dados['local']);
+        $seguros->setComplemento($dados['complemento']);
 
-        return $paradaOnibus->save();
+        return $seguros->save();
     }
 
-    public function listarParadaOnibus()
+    public function listarSeguros()
     {
         return $this->fetchAll();
     }
     
-    public function getParadaOnibusPorId($id)
+    public function getSegurosPorId($id)
     {
-        $select = $this->select()->where('id_parada = ?', $id);
+        $select = $this->select()->where('id_seguro = ?', $id);
         //var_dump($select->__toString());die();
 
         return $this->fetchRow($select);

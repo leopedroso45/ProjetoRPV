@@ -1,36 +1,96 @@
 <?php
 
-class Application_Model_ParadaOnibus extends Zend_Db_Table_Row_Abstract
+class Application_Model_Seguros extends Zend_Db_Table_Row_Abstract
 {
     
-    function getId_parada_onibus() {
-        return $this->id_parada;
+    function getId_Seguro() {
+        return $this->id_Seguro;
     }
 
-    function getNumeroParada() {
-        return $this->numeroParada;
+    function getNumeroApolice() {
+        return $this->numeroApolice;
     }
     
-    function getLocal() {
-        return $this->local;
+    function getSeguradora() {
+        return $this->seguradora;
     }
 
-    function getComplemento() {
-        return $this->complemento;
+    function getNomeSegurado() {
+        return $this->nomeSegurado;
+    }
+
+    function getCpfSegurado() {
+        return $this->cpfSegurado;
+    }
+
+    function getValorMensal() {
+        return $this->valorMensal;
+    }
+
+    function getTaxaFranquia() {
+        return $this->taxaFranquia;
+    }
+
+    function getPremioMorte() {
+        return $this->premioMorte;
+    }
+
+    function getPremioInvalidez() {
+        return $this->premioInvalidez;
+    }
+
+    function getDataInicial() {
+        return $this->dataInicial;
+    }
+
+    function getDataFinal() {
+        return $this->dataFinal;
     }
 
 
-    function setNumeroParada($numeroParada) {
-        $this->numeroParada = $numeroParada;
+
+    function setId_Seguro() {
+        $this->id_Seguro;
+    }
+
+    function setNumeroApolice() {
+        $this->numeroApolice;
     }
     
-    function setLocal($local) {
-        $this->local = $local;
+    function setSeguradora() {
+        $this->seguradora;
     }
 
-    function setComplemento($complemento) {
-        $this->complemento = $complemento;
+    function setNomeSegurado() {
+        $this->nomeSegurado;
     }
-    
+
+    function setCpfSegurado() {
+        $this->cpfSegurado;
+    }
+
+    function setValorMensal() {
+        $this->valorMensal;
+    }
+
+    function setTaxaFranquia() {
+        $this->taxaFranquia;
+    }
+
+    function setPremioMorte() {
+        $this->premioMorte;
+    }
+
+    function setPremioInvalidez() {
+        $this->premioInvalidez;
+    }
+
+    function setDataInicial() {
+        $this->dataInicial;
+    }
+
+    function setDataFinal() {
+        $this->dataFinal;
+    }
 
 }
