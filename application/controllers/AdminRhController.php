@@ -1,11 +1,11 @@
 <?php
 
-class AdminController extends Zend_Controller_Action
+class AdminRhController extends Zend_Controller_Action
 {
 
     public function init()
     {
-        
+        $this->_helper->layout->setLayout('layout_gerente_rh');
     }
 
     public function indexAction()

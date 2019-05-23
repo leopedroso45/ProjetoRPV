@@ -8,7 +8,7 @@ label, h3{
 }
 
 .input-group-text{
-    /*color: white;*/
+    color: white;
     background: #2FA4E7;
     border-color: #2FA4E7;
 }
@@ -19,5 +19,5 @@ label, h3{
 }
 
 .btn-primary{
-    color:black;
+    /*color:black;*/
 }

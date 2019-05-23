@@ -55,9 +55,9 @@ class IndexController extends Zend_Controller_Action
                 $this->_redirect('/admin-secretario');
             }
             if ($usuario->getId_perfil() === '4') {
-                $this->_redirect('/admin-rh');
+                $this->_redirect('/funcionario');
             }
-            if ($usuario->getId_perfil() === '5') {
+            if ($usuario->getId_perfil() === '7') {
                 $this->_redirect('/admin-vendedor');
             }
         }

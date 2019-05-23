@@ -62,14 +62,46 @@
                             </a>
                         </li>
                     </ul>
+
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#Modal-sair" accesskey="s" title="(Alt+s) Sair">
+                                <u>S</u>air
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
         <!--Conteudo das páginas-->
-        <div style="margin-top: 5%;">
+        <main style="margin-top: 5%;">
             <?php echo $this->layout()->content; ?>
-        </div>
+        </main>
+
+        <div class="modal fade" id="Modal-sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title float-left" style="color:black;"></h5>
+                    </div>
+                    <div class="modal-body">
+                        <h5>
+                            Deseja realmente sair do sistema?
+                        </h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" href="<?= $this->baseUrl('/admin-secretario/sair') ?>">
+                            Confirmar
+                        </a>
+                        <a class="btn btn-dark" style="color: white; cursor: pointer;" data-dismiss="modal">
+                            Cancelar
+                        </a>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
         <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
