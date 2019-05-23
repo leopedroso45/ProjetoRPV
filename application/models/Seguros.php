@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 class Application_Model_Seguros extends Zend_Db_Table_Row_Abstract
 {
@@ -48,10 +48,6 @@ class Application_Model_Seguros extends Zend_Db_Table_Row_Abstract
     }
 
 
-
-    function setId_Seguro() {
-        $this->id_Seguro;
-    }
 
     function setNumeroApolice() {
         $this->numeroApolice;

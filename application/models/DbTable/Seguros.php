@@ -11,7 +11,7 @@ class Application_Model_DbTable_Seguros extends Zend_Db_Table_Abstract
         //var_dump($dados); die();
         $seguros = $this->createRow();
         /*@var $seguros Application_Model_seguros*/
-        $seguros->setNumeroapolice($dados['numeroApolice']);
+        $seguros->setNumeroApolice($dados['numeroApolice']);
         $seguros->setSeguradora($dados['seguradora']);
         $seguros->setNomeSegurado($dados['nomeSegurado']);
         $seguros->setCpfSegurado($dados['cpfSegurado']);

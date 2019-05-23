@@ -24,21 +24,21 @@ $(".cadastrarSeguros").click(function ()
     var dataFinal = $("#dataFinal").val();
 
     if (numeroApolice.length === 0) {
-        $(".numeroParada").removeAttr("style");
-        $(".local").attr("style", "display:none");
+        $(".numeroApolice").removeAttr("style");
+        $(".seguradora").attr("style", "display:none");
 
-    } else if (local.length === 0) {
+    /*} else if (local.length === 0) {
         $(".numeroParada").attr("style", "display:none");
-        $(".local").removeAttr("style");
+        $(".local").removeAttr("style");*/
 
     } else {
         $.ajax({
             type: "POST",
-            url: baseUrl + 'parada-onibus/index',
+            url: baseUrl + 'seguros/index',
             async: false,
             data: {
-                numeroParada: numeroParada, local: local,
-                complemento: complemento
+                numeroApolice: numeroApolice, seguradora: seguradora, nomeSegurado: nomeSegurado, cpfSegurado: cpfSegurado, valorMensal: valorMensal
+                taxaFranquia: taxaFranquia, premioMorte: premioMorte, premioInvalidez: premioInvalidez, dataInicial: dataInicial, dataFinal: dataFinal
             },
             success: function () {
                 bootbox.alert("Cadastro realizado com sucesso!", function () {
