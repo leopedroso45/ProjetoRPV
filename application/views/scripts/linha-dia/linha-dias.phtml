@@ -31,7 +31,8 @@
 
 
                            <h2><?= $linhaTrecho['descLinha'] ?> </h2>
-                           <h5>| Dia: <?= $linhaTrecho['dia'] ?> | Saída: <?= $linhaTrecho['horario_inicio'] ?> horas | Origem: <?= $linhaTrecho['origem'] ?> | Tempo total de viagem: <?= $linhaTrecho['tempoLinha'] ?> horas |</h5>
+                           <h5>| Dia: <?= $linhaTrecho['dia'] ?> | Saída: <?= $linhaTrecho['horario_inicio'] ?> | Origem: <?= $linhaTrecho['origem'] ?> | Tempo total de viagem: <?= $linhaTrecho['tempoLinha'] ?>  |</h5>
+                           <h5>| Motorista: <?= $linhaTrecho['nome'] ?> | Ônibus: <?= $linhaTrecho['modelo'] ?>  |</h5>
 
                            <?php $tempo_inicio = new DateTime($linhaTrecho['horario_inicio']); ?>
                            <?php $tempo_inicio->add(new DateInterval('PT00H'.$linhaTrecho['tempo'].'M')) ?>

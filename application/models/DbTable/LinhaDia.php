@@ -69,14 +69,16 @@ class Application_Model_DbTable_LinhaDia extends Zend_Db_Table_Abstract
         ));
 
         $stmt = $adapter->query(
-           "select l.descricao as descLinha, l.origem, l.tempo as tempoLinha, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia 
+           "select l.descricao as descLinha, l.origem, l.tempo as tempoLinha, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia, m.nome, o.modelo
 
-                from trecho as t, linha as l, linha_trecho as lt, linha_horarios as lh, dia as d
+                from trecho as t, linha as l, linha_trecho as lt, linha_horarios as lh, dia as d, motorista as m, onibus_viagem as o
 
                 where l.id_linha = lt.id_linha AND
                     l.id_linha = lh.id_linha  AND
                     lh.id_dia = d.id_dia AND
                     t.id_trecho = lt.id_trecho AND
+                    lh.id_onibus_viagem = o.id_onibus_viagem and
+                    lh.id_motorista = m.id_motorista and
                     d.id_dia = ".$dia." AND                 
                     l.id_linha =".$linha." AND               
                     lh.horario_inicio = '".$hora."'"      
@@ -94,20 +96,17 @@ class Application_Model_DbTable_LinhaDia extends Zend_Db_Table_Abstract
     }
 
 
-  // "select t.descricao, lt.tempo, l.descricao as desc_linha from trecho as t, linha_trecho as lt, linha as l where t.id_trecho = lt.id_trecho AND l.id_linha = lt.id_linha and l.id_linha = ".$id_linha.""
+  // "select l.descricao as descLinha, l.origem, l.tempo as tempoLinha, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia 
 
+  //               from trecho as t, linha as l, linha_trecho as lt, linha_horarios as lh, dia as d
 
-     // "select l.descricao as descLinha, l.origem, t.descricao as descTrecho, lt.tempo, lh.horario_inicio, d.descricao as dia 
-
-     //    from trecho as t, linha as l, linha_trecho as lt, linha_horarios as lh, dia as d
-
-     //        where l.id_linha = lt.id_linha AND
-     //              l.id_linha = lh.id_linha  AND
-     //              lh.id_dia = d.id_dia AND
-     //              t.id_trecho = lt.id_trecho AND
-     //              d.id_dia = ".$dia." AND                 
-     //              l.id_linha =".$linha." AND               
-     //              lh.horario_inicio = ".$hora.""
+  //               where l.id_linha = lt.id_linha AND
+  //                   l.id_linha = lh.id_linha  AND
+  //                   lh.id_dia = d.id_dia AND
+  //                   t.id_trecho = lt.id_trecho AND
+  //                   d.id_dia = ".$dia." AND                 
+  //                   l.id_linha =".$linha." AND               
+  //                   lh.horario_inicio = '".$hora."'"  
   
     public function listarTodasLinhasDia(){
 
@@ -124,7 +123,7 @@ class Application_Model_DbTable_LinhaDia extends Zend_Db_Table_Abstract
         ));
 
         $stmt = $adapter->query(
-           "SELECT lh.*, l.descricao, l.origem, l.id_linha, lh.horario_inicio, d.id_dia, d.descricao as dia FROM linha as l, linha_horarios as lh, dia as d where lh.id_linha = l.id_linha AND lh.id_dia = d.id_dia"
+           "SELECT lh.*, l.descricao, l.origem, l.id_linha, lh.horario_inicio, d.id_dia, d.descricao as dia FROM linha as l, linha_horarios as lh, dia as d where lh.id_linha = l.id_linha AND lh.id_dia = d.id_dia order by l.descricao"
 
 
 

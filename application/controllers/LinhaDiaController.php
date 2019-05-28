@@ -70,12 +70,6 @@ class LinhaDiaController extends Zend_Controller_Action
 
    }
 
-  
-
-
-
-
-
 
 public function editarAtivoAction()
 {
@@ -108,14 +102,7 @@ public function linhadiasAction()
             //var_dump($hora);die();
             
             $listaLinhastrechos = $dbTableLinhaDia->listarLinhasDiaPorId($dia, $linha, $hora);
-            //var_dump($listaLinhastrechos);
-
-            // for ($i = 0; $i < sizeof($listaLinhastrechos); $i++) {
-            //     $tempo_inicio = new DateTime($value['horario_inicio']);
-            //     $value
-            //     $listaLinhastrechos[$i]->set
-                
-            // }
+        
 
 
             $this->view->listaDasLinhash = $listaLinhastrechos; 
