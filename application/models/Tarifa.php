@@ -47,4 +47,14 @@ class Application_Model_Tarifa extends Zend_Db_Table_Row_Abstract
         $this->id_trajeto = $id_trajeto;
     }
 
+    function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
 }

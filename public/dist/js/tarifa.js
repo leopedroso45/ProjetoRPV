@@ -89,29 +89,16 @@ $(".cadastrarTarifa").click(function () {
         },
         async: false,
         success: function () {
-            var dialog = bootbox.dialog({
-                title: 'Mensagem',
-                message: '<p><i class="fa fa-spin fa-spinner"></i> Salvando...</p>',
-                closeButton: false,
-                buttons: {
-                    ok: {
-                        label: "OK",
-                        className: 'btn-primary',
-                        callback: function () {
-                            window.location = baseUrl + 'logradouro';
-                        }
-                    }
-                }
+            bootbox.alert("Cadastro realizado com sucesso!", function () {
+                //location.reload();
             });
-            dialog.init(function () {
-                setTimeout(function () {
-                    dialog.find('.bootbox-body').html('Cadastro realizado com sucesso!');
-                }, 3000);
-            });
-
         },
-        error: function () {
-//                alert('error');
+        error: function (error) {
+            //alert(error);
+            //console.log(error);
+            bootbox.alert("Algo de errado não está certo!" + error, function () {
+                //location.reload();
+            });
         }
     });
 });
