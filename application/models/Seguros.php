@@ -49,44 +49,44 @@ class Application_Model_Seguros extends Zend_Db_Table_Row_Abstract
 
 
 
-    function setNumeroApolice() {
-        $this->numeroApolice;
+    function setNumeroApolice($numeroApolice) {
+        $this->numeroApolice = $numeroApolice;
     }
     
-    function setSeguradora() {
-        $this->seguradora;
+    function setSeguradora($seguradora) {
+        $this->seguradora = $seguradora;
     }
 
-    function setNomeSegurado() {
-        $this->nomeSegurado;
+    function setNomeSegurado($nomeSegurado) {
+        $this->nomeSegurado = $nomeSegurado;
     }
 
-    function setCpfSegurado() {
-        $this->cpfSegurado;
+    function setCpfSegurado($cpfSegurado) {
+        $this->cpfSegurado = $cpfSegurado;
     }
 
-    function setValorMensal() {
-        $this->valorMensal;
+    function setValorMensal($valorMensal) {
+        $this->valorMensal = $valorMensal;
     }
 
-    function setTaxaFranquia() {
-        $this->taxaFranquia;
+    function setTaxaFranquia($taxaFranquia) {
+        $this->taxaFranquia = $taxaFranquia;
     }
 
-    function setPremioMorte() {
-        $this->premioMorte;
+    function setPremioMorte($premioMorte) {
+        $this->premioMorte = $premioMorte;
     }
 
-    function setPremioInvalidez() {
-        $this->premioInvalidez;
+    function setPremioInvalidez($premioInvalidez) {
+        $this->premioInvalidez = $premioInvalidez;
     }
 
-    function setDataInicial() {
-        $this->dataInicial;
+    function setDataInicial($dataInicial) {
+        $this->dataInicial = $dataInicial;
     }
 
-    function setDataFinal() {
-        $this->dataFinal;
+    function setDataFinal($dataFinal) {
+        $this->dataFinal = $dataFinal;
     }
 
 }
