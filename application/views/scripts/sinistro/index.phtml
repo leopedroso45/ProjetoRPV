@@ -23,8 +23,8 @@
                                     <div style="padding-bottom: 5px">
                                         <input type="text" class="form-control" id="causa" name="causa" placeholder="Causa" >
                                     </div>
-                                    <div class="alert-lt alert-danger causa"  align="center" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger causa hidden"  align="center" role="alert">
+                                        Campo causa obrigatório
                                     </div>
                                 </div>                                                      
 
@@ -33,18 +33,18 @@
                                     <div style="padding-bottom: 5px">
                                         <input type="text" class="form-control" id="culpado" name="culpado" placeholder="Culpado" >
                                     </div>
-                                    <div class="alert-lt alert-danger validaCulpado"  align="center" style="display:none" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger culpado hidden"  align="center" role="alert">
+                                        Campo culpado obrigatório
                                     </div>
                                 </div>                                                      
 
                                 <div class="col-lg-4">
                                     <label for="descricao" id="label">Custo</label><label  style="color:red" id="label">*</label>
                                     <div style="padding-bottom: 5px">
-                                        <input type="text" class="form-control" id="custo" name="custo" placeholder="Custo" >
+                                        <input type="text" class="form-control" id="custo" name="custo" placeholder="R$" >
                                     </div>
-                                    <div class="alert-lt alert-danger validaCusto"  align="center" style="display:none" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger custo hidden"  align="center" role="alert">
+                                        Campo custo obrigatório
                                     </div>
                                 </div>                                                      
                             </div>
@@ -55,8 +55,8 @@
                                     <div style="padding-bottom: 5px">
                                         <input type="text" class="form-control" id="pagante" name="pagante" placeholder="Quem paga" >
                                     </div>
-                                    <div class="alert-lt alert-danger validaPagador"  align="center" style="display:none" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger pagante hidden"  align="center" role="alert">
+                                        Campo pagador obrigatório
                                     </div>
                                 </div>                                                      
 
@@ -65,18 +65,18 @@
                                     <div style="padding-bottom: 5px">
                                         <input type="date" class="form-control" id="data" name="data" placeholder="Data" >
                                     </div>
-                                    <div class="alert-lt alert-danger validaData"  align="center" style="display:none" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger data hidden"  align="center" role="alert">
+                                        Campo data obrigatório
                                     </div>
                                 </div>                                                      
 
                                 <div class="col-lg-4">
-                                    <label for="descricao" id="label">Hora</label><label  style="color:red" id="label">*</label>
+                                    <label for="hora" id="label">Hora</label><label  style="color:red" id="label">*</label>
                                     <div style="padding-bottom: 5px">
                                         <input type="time" class="form-control" id="hora" name="hora" placeholder="Hora" >
                                     </div>
-                                    <div class="alert-lt alert-danger validaCusto"  align="center" style="display:none" role="alert">
-                                        Campo obrigatório
+                                    <div class="alert-lt alert-danger hora hidden"  align="center" role="alert">
+                                        Campo hora obrigatório
                                     </div>
                                 </div>                                                      
                             </div>
@@ -148,12 +148,12 @@
                             <td>    <?= $sinistro['causa'] ?></td>
                             <td>    <?= $sinistro['culpado'] ?></td>
                             <td>    <?= $sinistro['custo'] ?></td>
-                            <td>
-                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('linha/linhaTrechos/id/' . $linha['id_linha']) ?>">
+                            <td class="text-center">
+                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('/sinistro/editar/id/' . $sinistro['id_sinistro']) ?>" >
                                     <span class="btn-label">
                                         <i class="fas fa-eye"></i>
                                     </span>
-                                    Visualizar detalhes
+                                    Visualizar Detalhes
                                 </a>
                             </td>
                         </tr>
@@ -197,7 +197,47 @@
     </div>
 </div>
 
+<!-- Modal -->
+<? foreach ($this->listaDeSinistros as $sinistro): ?>
+    <div class="modal fade" id="<?= 'myModal' . $sinistro['id_sinistro'] ?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">VISUALIZAR SINISTRO</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="">Causa:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['causa'] ?> " name="causa" id="causa">
+                                <label >Data de nascimento:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['culpado'] ?>" name="culpado" id="culpado">
+                                <label >CPF:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['custo'] ?>" name="custo" id="custo">
+                                <label >RG:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['pagante'] ?>" name="pagante" id="pagante">
+                                <label> Celular: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['data'] ?>" name="data" id="data">
+                            </div>
+                            <div class="col-lg-6">
+                                <label> Rua: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['hora'] ?>" name="hora" id="hora">
+                                <label> Nº: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['descricao'] ?>" name="descricao" id="descricao">									
+                            </div>
+                        </div>
+                    </form>							
+                </div>			 
+            </div>
 
+        </div>
+    </div>
+    </div>
+<? endforeach; ?>
 
 
 

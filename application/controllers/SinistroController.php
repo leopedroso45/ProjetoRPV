@@ -30,19 +30,18 @@ class SinistroController extends Zend_Controller_Action {
         }
     }
 
-//    public function editarAtivoAction() {
-//
-//        $id = $this->getRequest()->getParam('id');
-//
-//        $dbTableLinha = new Application_Model_DbTable_Linha();
-//        $linha = $dbTableLinha->getlinhaPorId($id);
-//
-//
-//        if ($this->getRequest()->isPost()) {
-//            $dados = $this->getRequest()->getParams();
-//            $dbTableLinha->editarAtivo($id, $dados);
-//        }
-//
-//        $this->view->linha = $linha;
-//    }
+    public function editarAction() {
+        
+        $id = $this->getRequest()->getParam('id');
+
+        $dbTableSinistro = new Application_Model_DbTable_Sinistro();
+        $sinistro = $dbTableSinistro->getSinistroPorId($id);
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->getRequest()->getParams();
+            $dbTableSinistro->editar($id, $dados);
+        }
+
+        $this->view->sinistro = $sinistro;
+    }    
 }

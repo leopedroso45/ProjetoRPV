@@ -31,18 +31,19 @@ class Application_Model_DbTable_Sinistro extends Zend_Db_Table_Abstract {
         return $this->fetchRow($select);
     }
 
-//        public function editarAtivo($id, $dados)
-//    {
-//        $this->find($id)->current();
-//        $linha = $this->getlinhaPorId($id);
-//        /* @var $viabilidade Application_Model_Viabilidade */
-//
-//        if ($dados['ativo'] === 'ATIVO') {
-//            $linha->setSituacao('ATIVO');
-//        } elseif ($dados['ativo'] === 'INATIVO') {
-//            $linha->setSituacao('INATIVO');
-//        }
-//
-//        return $linha->save();
-//    }
+    public function editar($id, $dados)
+    {
+        $sinistro = $this->find($id)->current();
+        /* @var $onibusUrbano Application_Model_OnibusUrbano */
+        $sinistro->setDescricao($dados['descricao']);
+        $sinistro->setCausa($dados['causa']);
+        $sinistro->setCulpado($dados['culpado']);
+        $sinistro->setCusto($dados['custo']);
+        $sinistro->setData($dados['data']);
+        $sinistro->setHora($dados['hora']);
+        $sinistro->setPagante($dados['pagante']);
+        $sinistro->setOnibus($dados["ONIBUS"]);
+
+        return $sinistro->save();
+    }
 }
