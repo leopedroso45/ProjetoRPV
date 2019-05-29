@@ -6,9 +6,6 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
     protected $_name = 'linha';
     protected $_rowClass = "Application_Model_Linha";
 
-
-    
-    
     public function cadastrarLinha($dados)
     {
         $linha = $this->createRow();
@@ -19,50 +16,53 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 
         // atualização
         $linha->setOrigem($dados['inicio']);
-        $linha->setTempo($dados['tempoTotall']); 
-        $linha->setKm($dados['kmtotal']); 
+        $linha->setTempo($dados['tempoTotall']);
+        $linha->setKm($dados['kmtotal']);
 
 
 
-      
 
-      // implementar
-        
+
+        // implementar
+
         return $linha->save();
     }
 
+    public function listarTodosLinhas1()
+    {
 
-    public function listarTodosLinhas1(){
+        return $this->fetchAll();
+    }
 
-    return $this->fetchAll();
+    public function listarTodasLinhasAtivas()
+    {
 
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('L' => 'LINHA'), array('L.*'))
+                ->where('L.SITUACAO = "ATIVO"');
+
+//               var_dump($select->__toString());die();
+
+        return $this->fetchAll($select);
     }
 
     public function listarTodasLinhas()
     {
         // implementar
-                
-                
-        
+
+
+
         return $this->fetchAll();
-
-       
     }
-
-   
-
-
-
-
 
     public function getlinhaPorId($id)
     {
         $select = $this->select()->where('id_linha = ?', $id);
-        
+
         return $this->fetchRow($select);
     }
 
-        public function editarAtivo($id, $dados)
+    public function editarAtivo($id, $dados)
     {
         $this->find($id)->current();
         $linha = $this->getlinhaPorId($id);
@@ -77,6 +77,4 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
         return $linha->save();
     }
 
-    
-   
 }

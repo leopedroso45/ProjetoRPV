@@ -1,0 +1,280 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("compra") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Compra</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <div class="jumbontron" method="post" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                        <div class="form-group">
+                            <div class="row">
+                                <input type="text" class="form-control hidden" id="id_usuario" value="<?= Zend_Auth::getInstance()->getIdentity()->id_usuario ?>">
+                                <div class="col-lg-4">
+                                    <label>Destino:</label>
+                                    <a data-toggle="modal" data-target="#destinos" id="destino">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_destino">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Valor:</label>
+                                    <input type="text" class="form-control" id="valor">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Forma de Pagamento:</label>
+                                    <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_forma_pagamento">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Validade:</label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
+                                    <!--data-lock="form"-->
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Poltrona:</label>
+                                    <a data-toggle="modal" data-target="#poltronas" id="poltrona">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_poltrona">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Passageiro:</label>
+                                    <input type="text" class="form-control" id="passageiro">
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <label>Seguro:</label>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default btn-on" >
+                                            <input type="radio" name="switch" checked="checked">
+                                            SIM
+                                        </label>
+                                        <label class="btn btn-default btn-off active" >
+                                            <input type="radio" name="switch">
+                                            NÃO
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Passagem:</label>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default btn-online meia">
+                                            <input type="radio" name="switch" checked="checked">
+                                            MEIA
+                                        </label>
+                                        <label class="btn btn-default btn-afk inteira active">
+                                            <input type="radio" name="switch">
+                                            INTEIRA
+                                        </label>
+                                        <label class="btn btn-default btn-afk isenta">
+                                            <input type="radio" name="switch">
+                                            ISENTA
+                                        </label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-info btn-block cadastrar_compra" type="button">
+                                    Cadastrar
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <br>
+                                    <div class="alert alert-danger descricao" role="alert" style="display: none;">
+                                        O campo <strong>Descrição</strong> é obrigatório.
+                                    </div>
+                                </div>
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-6">
+                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
+                                        O campo <strong>Valor</strong> é obrigatório.
+                                    </div>
+                                    <div class="alert alert-danger valor-incorreto" role="alert" style="display: none;">
+                                        O campo <strong>Valor</strong> deve conter no mínimo 5 digitos.
+                                    </div>
+                                    <div class="alert alert-danger dia" role="alert" style="display: none;">
+                                        Verifique o <strong>dia</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger mes" role="alert" style="display: none;">
+                                        Verifique o <strong>mês</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger ano" role="alert" style="display: none;">
+                                        Verifique o <strong>ano</strong> correto para data de término!
+                                    </div>
+                                    <div class="alert alert-danger data" role="alert" style="display: none;">
+                                        Verifique a <strong>data</strong> correta para término!
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<hr>-->
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+            <!-- fim container form-->
+            <div class="col-lg-12">
+                <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px; color: white;">
+                    <thead >
+                        <tr>
+                            <th scope="col">Passageiro</th>
+                            <th scope="col">Poltrona</th>
+                            <th scope="col">Seguro</th>
+                            <th scope="col">Pagamento</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="destinos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione o destino do Passageiro(a)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel1" style="height: 270px;">
+                    <? foreach ($this->listaDasLinhas as $linha): ?>
+                        <option  value="<?= $linha['id_linha'] ?>"><?= $linha['descricao']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar_destino" data-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="poltronas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a(s) Poltrona(s) do Passageiro(a)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel2" style="height: 335px;">
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="Poltrona na janela" value="1">1</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="Poltrona no corredor" value="2">2</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="3">3</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="4">4</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="5">5</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="6">6</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="7">7</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="8">8</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="9">9</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="10">10</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="11">11</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="12">12</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="13">13</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="14">14</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">15</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">16</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">17</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="">18</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">19</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">20</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">21</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="">22</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">23</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">24</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">25</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="">26</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">27</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">28</option>
+
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">29</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="margin-right: 33%; height: 40px; padding: 7px;" title="" value="">30</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">31</option>
+                    <option class="btn btn-success btn-block btn-labeled col-lg-2 float-left poltrona" style="height: 40px; padding: 7px;" title="" value="">32</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar_poltrona" data-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="formas-pagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione a Forma de Pagamento da Venda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel3" style="height: 270px;">
+                    <? foreach ($this->listaDasFormasDePagamentos as $formaPagamento): ?>
+                        <option  value="<?= $formaPagamento['id_pagamento'] ?>"><?= $formaPagamento['descricao']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar_forma_pagamento" data-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

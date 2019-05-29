@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/public/dist/css/login.css</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/layouts/scripts/layout_secretario.phtml</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/IndexController.php</file>
-            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/index/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/models/DbTable/Apolice.php</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/apolice/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/views/scripts/venda/index.phtml</file>
+            <file>file:/C:/xampp/htdocs/ProjetoRPV/application/controllers/ApoliceController.php</file>
         </group>
     </open-files>
 </project-private>
