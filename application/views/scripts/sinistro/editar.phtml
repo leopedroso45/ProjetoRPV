@@ -5,7 +5,8 @@
         <div class="col-lg-12" style="padding: 0px;">
             <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
                 <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
-                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Editar Sinistro</li>
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("sinistro") ?>">Sinistros</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Visualizar</li>
             </ol>
         </div>
 
@@ -88,19 +89,10 @@
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled id="descricao" name="descricao" rows="3" value="<? echo $this->sinistro->getDescricao() ?>" class="form-control" placeholder="Descrição"></textarea>
                                 </div>
-                                <p class="help-block text-danger"></p>
-
-                                <div class="alert-lt alert-danger descricao hidden"  align="center" role="alert">
-                                    Campo obrigatório
-                                </div>
                             </div>
                         </div>
                     </div>	
 
-                    <hr>
-                    <button class="btn btn-info btn-block editar" type="button">
-                        Salvar alterações
-                    </button>
                 </form>
             </div>
         </div>
