@@ -4,7 +4,7 @@ class Application_Model_Seguros extends Zend_Db_Table_Row_Abstract
 {
     
     function getId_Seguro() {
-        return $this->id_Seguro;
+        return $this->id_seguro;
     }
 
     function getNumeroApolice() {

@@ -24,67 +24,48 @@
 							</div>
 							<div class="col-lg-6">
 								<label>Seguradora <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="seguradora" name="seguradora" placeholder="Informe o local da parada" required/>
+								<input type="text" class="form-control" id="seguradora" name="seguradora" placeholder="Informe o nome da seguradora" required/>
 								<div class="alert alert-danger local" style="display: none;" role="alert">
 									O campo local é obrigatório!
 								</div>
 							</div>
-						</div>
-						<div class="row">
+							<div class="col-lg-6">
+								<label>Cpf do Segurado<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="cpfSegurado" name="cpfSegurado" placeholder="Informe o cpf do segurado" />
+							</div>
 							<div class="col-lg-6">
 								<label>Nome do Segurado <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="nomeSegurado" name="nomeSegurado" placeholder="Informe o complementos, se houver" />
+								<input type="text" class="form-control" id="nomeSegurado" name="nomeSegurado" placeholder="Informe o nome do segurado" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Cpf do Segurado <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="cpfSegurado" name="cpfSegurado" placeholder="Informe o complementos, se houver" />
+								<label>Mensalidade<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="valorMensal" name="valorMensal" placeholder="Informe o valor da mensalidade" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Mensalidade <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="valorMensal" name="valorMensal" placeholder="Informe o complementos, se houver" />
+								<label>Taxa da Franquia<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="taxaFranquia" name="taxaFranquia" placeholder="Informe o valor da taxa de franquia" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Taxa da Franquia <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="taxaFranquia" name="taxaFranquia" placeholder="Informe o complementos, se houver" />
+								<label>Valor da indenização por morte<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="premioMorte" name="premioMorte" placeholder="Informe o valor da indenização a ser recebida por morte" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Premio por Morte<strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="premioMorte" name="premioMorte" placeholder="Informe o complementos, se houver" />
+								<label>Valor da indenização por invalidez<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="premioInvalidez" name="premioInvalidez" placeholder="Informe o valor da indenização a ser recebida por morte" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Premio Invalidez <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="premioInvalidez" name="premioInvalidez" placeholder="Informe o complementos, se houver" />
+								<label>Data da Adesão<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="dataInicial" name="dataInicial" placeholder="Informe a data de adesão do contrato" />
 							</div>
-						</div>
-						<div class="row">
 							<div class="col-lg-6">
-								<label>Data Inicial <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="dataInicial" name="dataInicial" placeholder="Informe o complementos, se houver" />
+								<label>Data do Vencimento<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="dataFinal" name="dataFinal" placeholder="Informe a data de vencimento do contrato" />
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-6">
-								<label>Data Final <strong title="Campo Obrigatório">*</strong></label>
-								<input type="text" class="form-control" id="dataFinal" name="dataFinal" placeholder="Informe o complementos, se houver" />
-							</div>
-						</div>
-						<br>
 						<div class="alert alert-success " style="display: none;" role="alert">
 							Cadastro de parada realizado com sucesso!
 						</div>
-
-						<div>
-							<hr>
+						</div>
+						<br>				
 							<button type="button" class="btn btn-info btn-block cadastrarSeguros">Cadastrar</button>
 						</form>
 					</div>	
