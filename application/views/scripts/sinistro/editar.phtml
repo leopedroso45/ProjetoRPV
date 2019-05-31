@@ -18,7 +18,7 @@
                         <input type="hidden" id="id_sinistro" value="<? echo $this->sinistro->getId_sinistro() ?>">
                         <div class="row">
                             <div class="col-lg-4">
-                                <label for="descricao" id="label">Causa</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Causa</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled class="form-control" id="causa" name="causa" value="<? echo $this->sinistro->getCausa() ?>" placeholder="Causa" >
                                 </div>
@@ -28,7 +28,7 @@
                             </div>                                                      
 
                             <div class="col-lg-4">
-                                <label for="descricao" id="label">Culpado</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Culpado</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled class="form-control" id="culpado" name="culpado" value="<? echo $this->sinistro->getCulpado() ?>" placeholder="Culpado" >
                                 </div>
@@ -38,7 +38,7 @@
                             </div>                                                      
 
                             <div class="col-lg-4">
-                                <label for="descricao" id="label">Custo</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Custo</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled class="form-control" id="custo" name="custo" value="<? echo $this->sinistro->getCusto() ?>" placeholder="R$" >
                                 </div>
@@ -50,7 +50,7 @@
 
                         <div class="row">
                             <div class="col-lg-4">
-                                <label for="descricao" id="label">Pagador</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Pagador</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled class="form-control" id="pagante" name="pagante" value="<? echo $this->sinistro->getPagante() ?>" placeholder="Quem paga" >
                                 </div>
@@ -60,7 +60,7 @@
                             </div>                                                      
 
                             <div class="col-lg-4">
-                                <label for="descricao" id="label">Data</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Data</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="text" disabled class="form-control" id="data" name="data" value="<? echo $this->sinistro->getData() ?>" placeholder="Data" >
                                 </div>
@@ -70,7 +70,7 @@
                             </div>                                                      
 
                             <div class="col-lg-4">
-                                <label for="hora" id="label">Hora</label><label  style="color:red" id="label">*</label>
+                                <label for="hora" id="label">Hora</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
                                     <input type="time" disabled class="form-control" id="hora" name="hora" value="<? echo $this->sinistro->getHora() ?>" placeholder="Hora" >
                                 </div>
@@ -85,12 +85,21 @@
 
                         <div class="row">
                             <div class="col-lg-7">
-                                <label for="descricao" id="label">Descrição</label><label  style="color:red" id="label">*</label>
+                                <label for="descricao" id="label">Descrição</label><label  style="color:red" id="label"></label>
                                 <div style="padding-bottom: 5px">
-                                    <input type="text" disabled id="descricao" name="descricao" rows="3" value="<? echo $this->sinistro->getDescricao() ?>" class="form-control" placeholder="Descrição"></textarea>
+                                <textarea id="descricao" disabled name="descricao" rows="3" class="form-control" placeholder="Descrição" data-validation-required-message="Somente números."><? echo $this->sinistro->getDescricao() ?></textarea>
                                 </div>
                             </div>
+
+                            <div class="col-lg-5">
+                                <label for="descricao" id="label">Ônibus (Modelo/Chassi)</label><label  style="color:red" id="label"></label>
+                                <div style="padding-bottom: 5px">
+                                    <input type="text" disabled id="descricao" name="descricao" rows="3" value="<? echo $this->sinistro->getOnibus() ?>" class="form-control" placeholder="Descrição"></textarea>
+                                </div>
+
+                            </div>
                         </div>
+
                     </div>	
 
                 </form>
@@ -112,26 +121,25 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <select multiple class="form-control" id="sel5" style="height: 270px;">
-                        <? foreach ($this->listarTodosOnibusIntermunicipais as $onibus): ?>
-                            <option  value="<?= $onibus['id_onibus_viagem'] ?>"><?= $onibus['modelo'] . " " . $onibus['chassi']; ?></option>
-                        <? endforeach; ?>
+                    <div class="modal-body">
+                        <select multiple class="form-control" id="sel5" style="height: 270px;">
+                            <? foreach ($this->listarTodosOnibusIntermunicipais as $onibus): ?>
+                                <option  value="<?= $onibus['id_onibus_viagem'] ?>"><?= $onibus['modelo'] . " " . $onibus['chassi']; ?></option>
+                            <? endforeach; ?>
 
-                        <? foreach ($this->listaDosOnibusUrbanos as $onibus1): ?>
-                            <option  value="<?= $onibus1['id_onibus_urbano'] ?>"><?= $onibus1['modelo'] . " " . $onibus1['chassi']; ?></option>
-                        <? endforeach; ?>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="alocar" data-dismiss="modal">Ok</button>
+                            <? foreach ($this->listaDosOnibusUrbanos as $onibus1): ?>
+                                <option  value="<?= $onibus1['id_onibus_urbano'] ?>"><?= $onibus1['modelo'] . " " . $onibus1['chassi']; ?></option>
+                            <? endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="alocar" data-dismiss="modal">Ok</button>
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 

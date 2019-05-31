@@ -1,8 +1,7 @@
 $(document).ready(function () {
 
-    $('#causa').mask('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS');
+
     $('#custo').mask('000.000,00', {reverse: true});
-    $('#culpado').mask('SSSSSSSSSSSSSSSSSSSSSSSSSS');
     $('#data').mask('99-99-9999');
 
     $("#descricao").blur(function ()
@@ -83,6 +82,7 @@ $(document).ready(function () {
         var data = $("#data").val();
         var hora = $("#hora").val();
         var pagante = $("#pagante").val();
+        var onibus = $("#sel5 option:selected").text();
 
         if (descricao.length === 0) {
             $('.descricao').removeClass('hidden');
@@ -103,7 +103,7 @@ $(document).ready(function () {
                 type: "POST",
                 url: baseUrl + 'sinistro/index',
                 async: false,
-                data: {descricao: descricao, causa: causa, culpado: culpado, custo: custo, data: data, hora: hora, pagante: pagante
+                data: {descricao: descricao, causa: causa, culpado: culpado, custo: custo, data: data, hora: hora, pagante: pagante, onibus: onibus
                 },
                 success: function () {
                     var dialog = bootbox.dialog({
@@ -138,10 +138,10 @@ $(document).ready(function () {
 
 $("#alocar").click(function () {
     var id_onibus = $("#sel5 option:selected").val();
-    var descricao = $("#sel5 option:selected").text();
+    var onibus = $("#sel5 option:selected").text();
 
     document.getElementById("id_onibus").src = id_onibus;
-    document.getElementById("id_onibus").value = descricao;
+    document.getElementById("id_onibus").value = onibus;
 });
 
 
@@ -155,6 +155,8 @@ $(".editar").click(function ()
     var data = $("#data").val();
     var hora = $("#hora").val();
     var pagante = $("#pagante").val();
+    var onibus = $("onibus").val();
+
 
     if (descricao.length === 0) {
         $('.descricao').removeClass('hidden');
@@ -175,7 +177,7 @@ $(".editar").click(function ()
             type: "POST",
             url: baseUrl + 'sinistro/editar',
             async: false,
-            data: {descricao: descricao, causa: causa, culpado: culpado, custo: custo, data: data, hora: hora, pagante: pagante
+            data: {descricao: descricao, causa: causa, culpado: culpado, custo: custo, data: data, hora: hora, pagante: pagante, onibus: onibus
             },
             success: function () {
                 var dialog = bootbox.dialog({

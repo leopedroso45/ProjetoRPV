@@ -137,7 +137,7 @@
             <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
                 <thead >
                     <tr>
-                        <th scope="col">Descrição</th>
+                        <th scope="col">Ônibus</th>
                         <th scope="col">Causa</th>
                         <th scope="col">Culpado</th>
                         <th scope="col">Custo</th>
@@ -147,7 +147,7 @@
                 <tbody>
                     <? foreach ($this->listaDeSinistros as $sinistro): ?>
                         <tr>
-                            <td><?= $sinistro['descricao'] ?>    </td>
+                            <td>    <?= $sinistro['onibus'] ?>    </td>
                             <td>    <?= $sinistro['causa'] ?></td>
                             <td>    <?= $sinistro['culpado'] ?></td>
                             <td>    <?= $sinistro['custo'] ?></td>

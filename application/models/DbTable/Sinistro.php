@@ -16,7 +16,7 @@ class Application_Model_DbTable_Sinistro extends Zend_Db_Table_Abstract {
         $sinistro->setData($dados['data']);
         $sinistro->setHora($dados['hora']);
         $sinistro->setPagante($dados['pagante']);
-        $sinistro->setOnibus($dados["ONIBUS"]);
+        $sinistro->setOnibus($dados['onibus']);
 
         return $sinistro->save();
     }
@@ -42,7 +42,7 @@ class Application_Model_DbTable_Sinistro extends Zend_Db_Table_Abstract {
         $sinistro->setData($dados['data']);
         $sinistro->setHora($dados['hora']);
         $sinistro->setPagante($dados['pagante']);
-        $sinistro->setOnibus($dados["ONIBUS"]);
+        $sinistro->setOnibus($dados['onibus']);
 
         return $sinistro->save();
     }
