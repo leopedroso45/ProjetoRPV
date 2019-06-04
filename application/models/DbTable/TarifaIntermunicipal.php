@@ -15,14 +15,14 @@ class Application_Model_DbTable_TarifaIntermunicipal extends Zend_Db_Table_Abstr
 
         $tarifaIntermunicipal->setIdCategoriaOnibus($dados['id_categoria']);
         $tarifaIntermunicipal->setValor($dados['valor']);
-        $tarifaIntermunicipal->setDataInicio($dados['data_inicio']);
-        $tarifaIntermunicipal->setDataFim($dados['data_fim']);
+        $tarifaIntermunicipal->setDataInicio($dados['iniciox']);
+        $tarifaIntermunicipal->setDataFim($dados['fimx']);
         //$tarifaIntermunicipal->setStatus($dados['status']); 
-         
 
 
 
-      
+
+
 
       // implementar
         
@@ -32,11 +32,32 @@ class Application_Model_DbTable_TarifaIntermunicipal extends Zend_Db_Table_Abstr
 
     public function listarTodastarifas(){
 
-    return $this->fetchAll();
+       $adapter = new Zend_Db_Adapter_Pdo_Mysql(array(
+        'driver' => 'pdo_mysql',
+        'dbname' => 'controledefrota',
+        'username' => 'root',
+        'password' => '',
+        'charset' => 'utf8'
 
-    }
 
-    
+    ));
+
+       $stmt = $adapter->query(
+         "SELECT co.descricao as categoria, co.id_categoria_onibus, ti.valor, ti.data_inicio, ti.data_fim
+
+         FROM categoria_onibus as co, tarifa_intermunicipal as ti
+
+         WHERE co.id_categoria_onibus = ti.id_categoria_onibus order by ti.data_inicio"      
+
+
+     );
+
+       $rows = $stmt->fetchAll();
+
+       return $rows;
+   }
+
+
 
    
 
@@ -44,28 +65,28 @@ class Application_Model_DbTable_TarifaIntermunicipal extends Zend_Db_Table_Abstr
 
 
 
-    public function getlinhaPorId($id) // implementar
-    {
-        $select = $this->select()->where('id_linha = ?', $id);
-        
-        return $this->fetchRow($select);
-    }
+    // public function getlinhaPorId($id) // implementar
+    // {
+    //     $select = $this->select()->where('id_linha = ?', $id);
 
-        public function editarAtivo($id, $dados)
-    {
-        $this->find($id)->current();
-        $linha = $this->getlinhaPorId($id);
-        /* @var $viabilidade Application_Model_Viabilidade */
+    //     return $this->fetchRow($select);
+    // }
 
-        if ($dados['ativo'] === 'ATIVO') {
-            $linha->setSituacao('ATIVO');
-        } elseif ($dados['ativo'] === 'INATIVO') {
-            $linha->setSituacao('INATIVO');
-        }
+    //     public function editarAtivo($id, $dados)
+    // {
+    //     $this->find($id)->current();
+    //     $linha = $this->getlinhaPorId($id);
+    //     /* @var $viabilidade Application_Model_Viabilidade */
 
-        return $linha->save();
-    }
+    //     if ($dados['ativo'] === 'ATIVO') {
+    //         $linha->setSituacao('ATIVO');
+    //     } elseif ($dados['ativo'] === 'INATIVO') {
+    //         $linha->setSituacao('INATIVO');
+    //     }
 
-    
+    //     return $linha->save();
+    // }
+
+
    
 }

@@ -10,6 +10,7 @@
         </div>
 
         <div class="col-lg-12" style="padding: 0px;">
+
             <div class="card" style="background-color:rgba(0,0,0,0.7);">
                 <div class="card-header">
                     <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
@@ -35,31 +36,31 @@
                                         </div>
                                     </a>
                                     <div class="alert-lt alert-danger validaCategoria" align="center" style="display:none" role="alert">
-                                     Campo obrigatório
-                                 </div>
+                                       Campo obrigatório
+                                   </div>
 
-                             </div>
-                             <div class="col-lg-3" >
+                               </div>
+                               <div class="col-lg-3" >
                                 <label for="data_inicio" id="label">Data Início</label><label  style="color:red" id="label">*</label>
                                 <input type="date" id="data_inicio" class="form-control" style="margin-bottom: 5px">
                                 <div class="alert-lt alert-danger validaInicio"  align="center" style="display:none" role="alert">
-                                 Campo obrigatório
-                             </div>
-                         </div>
-                         <div class="col-lg-3">
+                                   Campo obrigatório
+                               </div>
+                           </div>
+                           <div class="col-lg-3">
 
-                           <label for="data_fim" id="label">Data Fim</label>
-                           <input type="date" id="data_fim" class="form-control">
-                           <div class="alert-lt alert-danger validaFim"  align="center" style="display:none" role="alert">
-                             Campo obrigatório
-                         </div>
-                     </div>
-                     <div class="col-lg-2">
+                             <label for="data_fim" id="label">Data Fim</label><label  style="color:red" id="label">*</label>
+                             <input type="date" id="data_fim" class="form-control" style="margin-bottom: 5px">
+                             <div class="alert-lt alert-danger validaFim"  align="center" style="display:none" role="alert">
+                               Campo obrigatório
+                           </div>
+                       </div>
+                       <div class="col-lg-2">
 
 
-                       <label for="valor" id="label">Valor</label><label  style="color:red" id="label">*</label>
+                         <label for="valor" id="label">Valor</label><label  style="color:red" id="label">*</label>
 
-                       <div class="input-group xmb-2" style="margin-bottom: 5px">
+                         <div class="input-group xmb-2" style="margin-bottom: 5px">
                           <div class="input-group-prepend">
                               <span class="input-group-text" id="basic-addon1">R$</span>
                           </div>
@@ -68,47 +69,50 @@
 
 
                       <div class="alert-lt alert-danger validaValor"  align="center" style="display:none" role="alert">
-                         Campo obrigatório
-                     </div>
-                 </div>
-                
-              </div>
-               <div class="row">
-                     <div class="col-lg-4"></div>
-                     
-                     <div class="col-lg-6">
-                         <div class="alert-lt alert-danger validaIf"  align="center" style="display:none" role="alert">
-                         A data de início não pode ser maior que a data de fim.
-                     </div>
-                     </div>
-                     <div class="col-lg-2"></div>
+                       Campo obrigatório
+                   </div>
+               </div>
 
-                 </div>
-                 <div class="row">
-                     <div class="col-lg-12">
-                         <div class="alert-lt alert-danger validaHoje"  align="center" style="display:none" role="alert">
-                             A data de início não pode ser menor que a data atual.
-                         </div>
-                     </div>
-                 </div>
+           </div>
+           <div class="row">
+               <div class="col-lg-4"></div>
 
+               <div class="col-lg-6">
+                   <div class="alert-lt alert-danger validaIf"  align="center" style="display:none" role="alert">
+                       A data de início não pode ser maior que a data de fim.
+                   </div>
+               </div>
+               <div class="col-lg-2"></div>
 
-
-
-
+           </div>
+           <div class="row">
+               <div class="col-lg-12">
+                   <div class="alert-lt alert-danger validaHoje"  align="center" style="display:none" role="alert">
+                       A data de início não pode ser menor que a data atual.
+                   </div>
+                   <div class="alert-lt alert-danger validaDobanco"  align="center" style="display:none" role="alert">
+                       O período não pode conflitar com o período de uma tarifa já cadastrada para esta categoria.
+                   </div>
+               </div>
+           </div>
 
 
 
 
 
 
-         </div>	
 
 
-         <button class="btn btn-info btn-block cadastrar-tarifa" type="button">
-            Cadastrar
-        </button>
-    </form>
+
+
+
+       </div>	
+
+
+       <button class="btn btn-info btn-block cadastrar-tarifa" type="button">
+        Cadastrar
+    </button>
+</form>
 </div>
 </div>
 </div>
@@ -120,21 +124,33 @@
     <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
         <thead >
             <tr>
-                <th scope="col">Descrição</th>
-                <th scope="col">Origem</th>
-                <th scope="col">Tempo</th> <!-- atualizar para tabela da tarifa  -->
-                <th scope="col">Extensão (km)</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data de início</th> <!-- atualizar para tabela da tarifa  -->
+                <th scope="col">Data de fim</th>
 
-
-                <th scope="col" >Status</th>
-                <th scope="col">Trechos</th>
             </tr>
         </thead>
         <tbody>
 
 
         </tbody>
-    </table>
+        <? foreach ($this->listaDasTarifas as $tarifa): ?>
+
+            <?php 
+                $inicio = date_create($tarifa['data_inicio']);
+                $fim = date_create($tarifa['data_fim']);  
+                  ?>
+            
+            <tr>
+               <td><?= $tarifa['categoria'] ?>    </td>
+               <td><?= $tarifa['valor'] ?>    </td>
+               <td><?= date_format($inicio, 'd/m/Y') ?>    </td>
+               <td><?= date_format($fim, 'd/m/Y') ?>    </td>
+           </tr>
+
+       <? endforeach; ?>
+   </table>
 </div>
 </div>
 </div>

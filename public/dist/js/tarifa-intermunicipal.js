@@ -3,7 +3,7 @@ $("#valor").mask("9,99");
 
 $("#alocar-categoria").click(function(){
 
-
+    $(".validaCategoria").attr("style", "display:none");
 
     var texto = $("#sel option:selected").text();
     var id = $("#sel option:selected").val();
@@ -18,12 +18,33 @@ $("#alocar-categoria").click(function(){
 
 $("#data_inicio").focus(function(){
     $(".validaIf").attr("style", "display:none");
+    $(".validaDobanco").attr("style", "display:none");
+    $(".validaCategoria").attr("style", "display:none");
+     $(".validaInicio").attr("style", "display:none");
+     $(".validaFim").attr("style", "display:none");
 });
 $("#data_fim").focus(function(){
     $(".validaIf").attr("style", "display:none");
+    $(".validaDobanco").attr("style", "display:none");
+     $(".validaCategoria").attr("style", "display:none");
+      $(".validaInicio").attr("style", "display:none");
+     $(".validaFim").attr("style", "display:none");
 });
 $("#valor").focus(function(){
     $(".validaValor").attr("style", "display:none");
+    $(".validaDobanco").attr("style", "display:none");
+     $(".validaCategoria").attr("style", "display:none");
+      $(".validaInicio").attr("style", "display:none");
+     $(".validaFim").attr("style", "display:none");
+});
+$("#categoria").focus(function(){
+    $(".validaValor").attr("style", "display:none");
+    $(".validaDobanco").attr("style", "display:none");
+     $(".validaCategoria").attr("style", "display:none");
+     $(".validaInicio").attr("style", "display:none");
+     $(".validaFim").attr("style", "display:none");
+
+
 });
 
 $(".cadastrar-tarifa").click(function () {
@@ -49,6 +70,9 @@ $(".cadastrar-tarifa").click(function () {
 
     if ($("#data_inicio").val() === "" || $("#data_inicio").val() === null) {
         $(".validaInicio").removeAttr("style");
+    }
+    else if ($("#data_fim").val() === "" || $("#data_inicio").val() === null) {
+        $(".validaFim").removeAttr("style");
     }
     else if ($("#categoria").val() === "" || $("#categoria").val() === null) {
         $(".validaCategoria").removeAttr("style");
@@ -92,13 +116,14 @@ $(".cadastrar-tarifa").click(function () {
 
         var valor = $("#valor").val();
 
-
-        
+        var iniciox = moment(inicio).format("YYYY-MM-DD");
+        var fimx = moment(fim).format("YYYY-MM-DD");
+       
 
         $.ajax({
             type: 'POST',
             url: baseUrl + 'tarifa-intermunicipal/index',
-            data: { id_categoria: id_categoria, data_inicio: data_inicio, data_fim: data_fim, valor: valor
+            data: { id_categoria: id_categoria, iniciox: iniciox, fimx: fimx, valor: valor
             },
             async: false,
             success: function () {
@@ -126,7 +151,11 @@ $(".cadastrar-tarifa").click(function () {
 
             },
             error: function () {
-//                alert('error');
+                
+                               
+                               $(".validaDobanco").removeAttr("style");
+
+                           
             }
         });
 

@@ -7,8 +7,8 @@ class TarifaIntermunicipalController extends Zend_Controller_Action
     {
         $this->_helper->layout->setLayout('layout_admin_local');
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/script.js'));
-         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/mask.js'));
-         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/moment.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/mask.js'));
+        $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/moment.js'));
 
         $this->view->headScript()->appendFile($this->view->baseUrl('dist/js/tarifa-intermunicipal.js'));
         
@@ -21,43 +21,54 @@ class TarifaIntermunicipalController extends Zend_Controller_Action
 
         $dbTableTarifa = new Application_Model_DbTable_TarifaIntermunicipal();
         $listaTarifas = $dbTableTarifa->listarTodasTarifas();
-         $this->view->listaDasTarifas = $listaTarifas;
+        $this->view->listaDasTarifas = $listaTarifas;
 
         $listaCategorias = $dbTableCategoria->listarCategoriaOnibus();
         $this->view->listaDasCategorias = $listaCategorias;
 
-         if ($this->getRequest()->isPost()) {
+        if ($this->getRequest()->isPost()) {
 
             $dados = $this->getRequest()->getParams();
+            $excessao = false;
+            if (empty($listaTarifas)) {
 
-            foreach ($listaTarifas as $aux) {   // tentando implementar validação comparando datas de tarifas ja cadastradas com a nova.
-
-                // if ($aux['data_fim'] === "") {
-                    
-                // }
+                    $dbTableTarifa->cadastrarTarifaIntermunicipal($dados);
+                }else{
+                        foreach ($listaTarifas as $aux) {   // tentando implementar validação comparando datas de tarifas ja cadastradas com a nova.
                 
-            }
 
-            $dbTableTarifa->cadastrarTarifaIntermunicipal($dados);
+                            $inicioNova = Date($dados['iniciox']);
+                            $fimBanco = Date($aux['data_fim']);
+                            if  ($aux['id_categoria_onibus'] === $dados['id_categoria']  && strtotime($inicioNova) <= strtotime($fimBanco)) {
 
+                                $excessao = true;
 
+                            }         
 
-         }
+                        }
 
-        
-           
-       
-        
+                        if (!$excessao) {
+                                $dbTableTarifa->cadastrarTarifaIntermunicipal($dados);
+
+                        }else{
+                                $dbTableTarifa->cadastrarTarifaIntermunicipal("");
+
+                            }   
+
+                    }    
+
         }
 
-        
+    }
 
 
 
-       
-    
 
-    
+
+
+
+
+
 
 
 
