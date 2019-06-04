@@ -1,11 +1,10 @@
 <?php
 
-class Application_Model_CompraPontos extends Zend_Db_Table_Row_Abstract
+class Application_Model_CompraCredito extends Zend_Db_Table_Row_Abstract
 {
 
 //        private $id_compra;
 //        private $id_poltrona;
-//        private $id_pontos;
 
     function getId_compra()
     {
@@ -17,11 +16,6 @@ class Application_Model_CompraPontos extends Zend_Db_Table_Row_Abstract
         return $this->id_poltrona;
     }
 
-    function getId_pontos()
-    {
-        return $this->id_pontos;
-    }
-
     function setId_compra($id_compra)
     {
         $this->id_compra = $id_compra;
@@ -30,11 +24,6 @@ class Application_Model_CompraPontos extends Zend_Db_Table_Row_Abstract
     function setId_poltrona($id_poltrona)
     {
         $this->id_poltrona = $id_poltrona;
-    }
-
-    function setId_pontos($id_pontos)
-    {
-        $this->id_pontos = $id_pontos;
     }
 
 }
