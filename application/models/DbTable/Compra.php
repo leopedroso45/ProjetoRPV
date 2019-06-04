@@ -10,6 +10,9 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
     {
         $compra = $this->createRow();
         /* @var $compra Application_Model_Compra */
+        $compra->setHorario_inicio("10:00");
+        $compra->setId_linha("6");
+        $compra->setId_dia("2");
         $compra->setId_forma_pagamento($dados['id_forma_pagamento']);
         $compra->setId_usuario($dados['id_usuario']);
         $compra->setValor($dados['valor']);

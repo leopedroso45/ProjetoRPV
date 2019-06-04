@@ -20,34 +20,35 @@ class CompraController extends Zend_Controller_Action
         $listaLinha = $dbTableLinha->listarTodasLinhasAtivas();
         $this->view->listaDasLinhas = $listaLinha;
 
-        $dbTableFormaPagamento = new Application_Model_DbTable_Compra();
+        $dbTableFormaPagamento = new Application_Model_DbTable_FormaPagamento();
         $listaFormaPagamento = $dbTableFormaPagamento->listarFormasDePagamentoAtivas();
         $this->view->listaDasFormasDePagamentos = $listaFormaPagamento;
 
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
-            $poltrona = explode(',', $dados['id_poltrona']);
+//            $poltrona = explode(',', $dados['id_poltrona']);
+//            var_dump($dados['id_forma_pagamento']);die();
             $dbTableCompra = new Application_Model_DbTable_Compra();
             $id_compra = $dbTableCompra->cadastrarCompra($dados);
 
 
-            for ($i = 0; $i < sizeof($poltrona); $i++) {
+            for ($i = 0; $i < sizeof($dados['id_poltrona']); $i++) {
 
-                if ($dados['forma_pagamento'][$i] === 'Débito') {
+                if ($dados['id_forma_pagamento'] === '1') {
                     $dbTableCompraDebito = new Application_Model_DbTable_CompraDebito();
-                    $dbTableCompraDebito->cadastrarCompraDebito($id_compra, $poltrona[$i]);
+                    $dbTableCompraDebito->cadastrarCompraDebito($id_compra, $dados['id_poltrona'][$i]);
                 }
-                if ($dados['forma_pagamento'][$i] === 'Crédito') {
+                if ($dados['id_forma_pagamento'] === '2') {
                     $dbTableCompraCredito = new Application_Model_DbTable_CompraCredito();
-                    $dbTableCompraCredito->cadastrarCompraCredito($id_compra, $poltrona[$i]);
+                    $dbTableCompraCredito->cadastrarCompraCredito($id_compra, $dados['id_poltrona'][$i]);
                 }
-                if ($dados['forma_pagamento'][$i] === 'à vista') {
+                if ($dados['id_forma_pagamento'] === '3') {
                     $dbTableCompraAVista = new Application_Model_DbTable_CompraAVista();
-                    $dbTableCompraAVista->cadastrarCompraAVista($id_compra, $poltrona[$i]);
+                    $dbTableCompraAVista->cadastrarCompraAVista($id_compra, $dados['id_poltrona'][$i]);
                 }
-                if ($dados['forma_pagamento'][$i] === 'pontos') {
+                if ($dados['id_forma_pagamento'] === '4') {
                     $dbTableCompraPontos = new Application_Model_DbTable_CompraPontos();
-                    $dbTableCompraPontos->cadastrarCompraPontos($id_compra, $poltrona[$i]);
+                    $dbTableCompraPontos->cadastrarCompraPontos($id_compra, $dados['id_poltrona'][$i]);
                 }
             }
         }

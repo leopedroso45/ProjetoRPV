@@ -47,12 +47,14 @@ $(".cadastrar_compra").click(function () {
 
     var id_linha = $("#descricao_destino").attr("src");
     var id_usuario = $("#id_usuario").val();
-    var id_poltrona = $("#descricao_poltrona").attr("src");
+//    var id_poltrona = $("#descricao_poltrona").attr("src");
     var id_forma_pagamento = $("#descricao_forma_pagamento").attr("src");
     var validade = $("#data_inicio").val();
+    var passageiro = $("#passageiro").val();
     var valor = $("#valor").val();
     var seguro = "";
     var beneficio = "";
+    var poltronas = [];
 
     if ($(".btn-on").hasClass("active")) {
         seguro = "SIM";
@@ -67,6 +69,13 @@ $(".cadastrar_compra").click(function () {
     } else if ($(".isenta").hasClass("active")) {
         beneficio = "ISENTA";
     }
+    
+        
+
+//        Coletando todos onibus selecionados
+    $('.selecionada').each(function () {
+        poltronas.push($(this).attr("value"));
+    });
 
 //    alert(seguro +' '+ beneficio);
 
@@ -76,8 +85,8 @@ $(".cadastrar_compra").click(function () {
         type: 'POST',
         url: baseUrl + 'compra/index',
         async: false,
-        data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: id_poltrona,
-            id_forma_pagamento: id_forma_pagamento,
+        data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
+            id_forma_pagamento: id_forma_pagamento, passageiro: passageiro,
             validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
         },
         beforeSend: function () {
