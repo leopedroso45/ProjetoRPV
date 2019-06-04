@@ -1,5 +1,5 @@
 
-$("#valor").mask("9,99");
+$("#valor").mask("9.99");
 
 $("#alocar-categoria").click(function(){
 
