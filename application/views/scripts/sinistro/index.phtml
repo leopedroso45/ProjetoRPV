@@ -1,0 +1,252 @@
+  
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Sinistros</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px;">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Causa</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="causa" name="causa" placeholder="Causa" >
+                                    </div>
+                                    <div class="alert-lt alert-danger causa hidden"  align="center" role="alert">
+                                        Campo causa obrigatório
+                                    </div>
+                                </div>                                                      
+
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Culpado</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="culpado" name="culpado" placeholder="Culpado" >
+                                    </div>
+                                    <div class="alert-lt alert-danger culpado hidden"  align="center" role="alert">
+                                        Campo culpado obrigatório
+                                    </div>
+                                </div>       
+                                
+                                
+                                
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Custo</label><label  style="color:red" id="label">*</label>
+                                    <div class="input-group-prepend" style="padding-bottom: 5px">
+                                        <span class="input-group-text" id="basic-addon1">R$</span>
+                                        <input type="text" class="form-control" id="custo" name="custo">
+                                    </div>
+                                    <div class="alert-lt alert-danger custo hidden"  align="center" role="alert">
+                                        Campo custo obrigatório
+                                    </div>
+                                </div>                                                      
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Pagador</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="text" class="form-control" id="pagante" name="pagante" placeholder="Quem paga" >
+                                    </div>
+                                    <div class="alert-lt alert-danger pagante hidden"  align="center" role="alert">
+                                        Campo pagador obrigatório
+                                    </div>
+                                </div>                                                      
+
+                                <div class="col-lg-4">
+                                    <label for="descricao" id="label">Data</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="date" class="form-control" id="data" name="data" placeholder="Data" >
+                                    </div>
+                                    <div class="alert-lt alert-danger data hidden"  align="center" role="alert">
+                                        Campo data obrigatório
+                                    </div>
+                                </div>                                                      
+
+                                <div class="col-lg-4">
+                                    <label for="hora" id="label">Hora</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <input type="time" class="form-control" id="hora" name="hora" placeholder="Hora" >
+                                    </div>
+                                    <div class="alert-lt alert-danger hora hidden"  align="center" role="alert">
+                                        Campo hora obrigatório
+                                    </div>
+                                </div>                                                      
+                            </div>
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <label for="descricao" id="label">Descrição</label><label  style="color:red" id="label">*</label>
+                                    <div style="padding-bottom: 5px">
+                                        <textarea id="descricao" name="descricao" rows="3" class="form-control" placeholder="Descrição" data-validation-required-message="Somente números."></textarea>
+                                    </div>
+                                    <p class="help-block text-danger"></p>
+
+                                    <div class="alert-lt alert-danger descricao hidden"  align="center" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>
+                                <div class="col-lg-5" >
+                                    <label for="descricao" id="label">Ônibus</label><label  style="color:red" id="label">*</label>
+                                    <!-- <input type="text" class="form-control" id="inicio" placeholder="Local inicial da linha"> -->
+                                    <a data-toggle="modal" data-target="#exampleModalCenter-inicio" id="validaInicio">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+
+                                            <input type="text" class="form-control" src=""  disabled id="id_onibus">
+                                        </div>
+                                    </a>
+                                    <div class="alert-lt alert-danger validaInicio" align="center" style="display:none" role="alert">
+                                        Campo obrigatório
+                                    </div>
+                                </div>
+                            </div>
+                        </div>	
+
+                        <hr>
+                        <button class="btn btn-info btn-block cadastrar" type="button">
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- fim container form-->
+
+        <div class="col-lg-12">
+            <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
+                <thead >
+                    <tr>
+                        <th scope="col">Ônibus</th>
+                        <th scope="col">Causa</th>
+                        <th scope="col">Culpado</th>
+                        <th scope="col">Custo</th>
+                        <th scope="col">Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDeSinistros as $sinistro): ?>
+                        <tr>
+                            <td>    <?= $sinistro['onibus'] ?>    </td>
+                            <td>    <?= $sinistro['causa'] ?></td>
+                            <td>    <?= $sinistro['culpado'] ?></td>
+                            <td>    <?= $sinistro['custo'] ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('/sinistro/editar/id/' . $sinistro['id_sinistro']) ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--// AQUI DEVE APARECER TODOS OS ÔNIBUS DISPONÍVEIS-->
+
+<div class="modal fade" id="exampleModalCenter-inicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Selecione o Ônibus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <select multiple class="form-control" id="sel5" style="height: 270px;">
+                    <? foreach ($this->listarTodosOnibusIntermunicipais as $onibus): ?>
+                        <option  value="<?= $onibus['id_onibus_viagem'] ?>"><?= $onibus['modelo'] . " " . $onibus['chassi']; ?></option>
+                    <? endforeach; ?>
+
+                    <? foreach ($this->listaDosOnibusUrbanos as $onibus1): ?>
+                        <option  value="<?= $onibus1['id_onibus_urbano'] ?>"><?= $onibus1['modelo'] . " " . $onibus1['chassi']; ?></option>
+                    <? endforeach; ?>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alocar" data-dismiss="modal">Ok</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<? foreach ($this->listaDeSinistros as $sinistro): ?>
+    <div class="modal fade" id="<?= 'myModal' . $sinistro['id_sinistro'] ?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">VISUALIZAR SINISTRO</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="">Causa:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['causa'] ?> " name="causa" id="causa">
+                                <label >Data de nascimento:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['culpado'] ?>" name="culpado" id="culpado">
+                                <label >CPF:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['custo'] ?>" name="custo" id="custo">
+                                <label >RG:</label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['pagante'] ?>" name="pagante" id="pagante">
+                                <label> Celular: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['data'] ?>" name="data" id="data">
+                            </div>
+                            <div class="col-lg-6">
+                                <label> Rua: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['hora'] ?>" name="hora" id="hora">
+                                <label> Nº: </label>
+                                <input type="text" disabled class="form-control" value="<?= $sinistro['descricao'] ?>" name="descricao" id="descricao">									
+                            </div>
+                        </div>
+                    </form>							
+                </div>			 
+            </div>
+
+        </div>
+    </div>
+    </div>
+<? endforeach; ?>
+
+
+
+
+
+
+
+
+
