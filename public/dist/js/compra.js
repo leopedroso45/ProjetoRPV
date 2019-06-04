@@ -56,9 +56,9 @@ $(".cadastrar_compra").click(function () {
     var beneficio = "";
     var poltronas = [];
 
-    if ($(".btn-on").hasClass("active")) {
+    if ($(".seguro-on").hasClass("active")) {
         seguro = "SIM";
-    } else if ($(".btn-off").hasClass("active")) {
+    } else if ($(".seguro-off").hasClass("active")) {
         seguro = "NÃO";
     }
 

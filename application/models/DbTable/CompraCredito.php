@@ -11,7 +11,7 @@ class Application_Model_DbTable_CompraCredito extends Zend_Db_Table_Abstract
         $compraCredito = $this->createRow();
         /* @var $compraCredito Application_Model_CompraCredito */
         $compraCredito->setId_compra($compra);
-        $compraCredito->setId_poltrona($poltrona);
+        $compraCredito->setPoltrona($poltrona);
 
         return $compraCredito->save();
     }

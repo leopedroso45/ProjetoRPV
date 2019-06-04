@@ -11,7 +11,7 @@ class Application_Model_DbTable_CompraAVista extends Zend_Db_Table_Abstract
         $compraAVista = $this->createRow();
         /* @var $compraAVista Application_Model_CompraAVista */
         $compraAVista->setId_compra($compra);
-        $compraAVista->setId_poltrona($poltrona);
+        $compraAVista->setPoltrona($poltrona);
 
         return $compraAVista->save();
     }

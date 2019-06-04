@@ -11,8 +11,8 @@ class Application_Model_DbTable_CompraPontos extends Zend_Db_Table_Abstract
         $compraPontos = $this->createRow();
         /* @var $compraPontos Application_Model_CompraPontos */
         $compraPontos->setId_compra($compra);
-        $compraPontos->setId_poltrona($poltrona);
-        $compraPontos->setId_pontos($id_pontos);
+        $compraPontos->setPoltrona($poltrona);
+//        $compraPontos->setId_pontos($id_pontos);
 
         return $compraPontos->save();
     }

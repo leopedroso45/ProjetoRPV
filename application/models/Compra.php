@@ -5,11 +5,13 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
 
 //    private $horario_inicio;
 //    private $id_dia;
+//    private $id_usuario;
 //    private $id_linha;
 //    private $id_forma_pagamento;
 //    private $valor;
 //    private $seguro;
 //    private $passageiro;
+//    private $passagem;
     
     function getHorario_inicio()
     {
@@ -19,6 +21,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
     function getId_dia()
     {
         return $this->id_dia;
+    }
+
+    function getId_usuario()
+    {
+        return $this->id_usuario;
     }
 
     function getId_linha()
@@ -46,6 +53,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
         return $this->passageiro;
     }
 
+    function getPassagem()
+    {
+        return $this->passagem;
+    }
+
     function setHorario_inicio($horario_inicio)
     {
         $this->horario_inicio = $horario_inicio;
@@ -54,6 +66,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
     function setId_dia($id_dia)
     {
         $this->id_dia = $id_dia;
+    }
+
+    function setId_usuario($id_usuario)
+    {
+        $this->id_usuario = $id_usuario;
     }
 
     function setId_linha($id_linha)
@@ -79,6 +96,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
     function setPassageiro($passageiro)
     {
         $this->passageiro = $passageiro;
+    }
+
+    function setPassagem($passagem)
+    {
+        $this->passagem = $passagem;
     }
     
 

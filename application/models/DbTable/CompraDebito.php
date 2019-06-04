@@ -11,7 +11,7 @@ class Application_Model_DbTable_CompraDebito extends Zend_Db_Table_Abstract
         $compraDebito = $this->createRow();
         /* @var $compraDebito Application_Model_CompraDebito */
         $compraDebito->setId_compra($compra);
-        $compraDebito->setId_poltrona($poltrona);
+        $compraDebito->setPoltrona($poltrona);
 
         return $compraDebito->save();
     }

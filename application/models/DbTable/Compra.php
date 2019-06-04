@@ -17,18 +17,8 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         $compra->setId_usuario($dados['id_usuario']);
         $compra->setValor($dados['valor']);
         $compra->setPassageiro($dados['passageiro']);
-        
-        if ($dados['seguro'] === 'SIM') {
-            $compra->setSeguro('SIM');
-        } elseif ($dados['seguro'] === 'NAO') {
-            $compra->setSeguro('NAO');
-        }
-
-        if ($dados['desconto'] === 'SIM') {
-            $compra->setSeguro('SIM');
-        } elseif ($dados['desconto'] === 'NAO') {
-            $compra->setSeguro('NAO');
-        }
+        $compra->setPassagem($dados['beneficio']);
+        $compra->setSeguro($dados['seguro']);
 
         return $compra->save();
     }
