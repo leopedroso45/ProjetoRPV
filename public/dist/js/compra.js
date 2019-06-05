@@ -52,6 +52,7 @@ $(".cadastrar_compra").click(function () {
     var validade = $("#data_inicio").val();
     var passageiro = $("#passageiro").val();
     var valor = $("#valor").val();
+    var data = $("#data_inicio").val();
     var seguro = "";
     var beneficio = "";
     var poltronas = [];
@@ -86,7 +87,7 @@ $(".cadastrar_compra").click(function () {
         url: baseUrl + 'compra/index',
         async: false,
         data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
-            id_forma_pagamento: id_forma_pagamento, passageiro: passageiro,
+            id_forma_pagamento: id_forma_pagamento, passageiro: passageiro,data: data,
             validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
         },
         beforeSend: function () {

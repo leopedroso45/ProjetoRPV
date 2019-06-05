@@ -16,6 +16,10 @@ class CompraController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        $dbTableCompra = new Application_Model_DbTable_Compra();
+        $listaCompras = $dbTableCompra->listarCompras();
+        $this->view->listaDasCompras = $listaCompras;
+
         $dbTableLinha = new Application_Model_DbTable_Linha();
         $listaLinha = $dbTableLinha->listarTodasLinhasAtivas();
         $this->view->listaDasLinhas = $listaLinha;
@@ -52,6 +56,17 @@ class CompraController extends Zend_Controller_Action
                 }
             }
         }
+    }
+    
+        public function visualizarAction()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $dbTableCompra = new Application_Model_DbTable_Compra();
+        $listaPoltronaPorIdCompra = $dbTableCompra->listarPoltronasPorIdCompra($id);
+        $this->view->listarPoltronasPorIdCompra = $listaPoltronaPorIdCompra;
+        
+        $compraPorIdCompra = $dbTableCompra->getComprasPorId($id);
+        $this->view->compraPorId = $compraPorIdCompra;
     }
 
 }

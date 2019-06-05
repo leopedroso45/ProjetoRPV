@@ -19,6 +19,7 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         $compra->setPassageiro($dados['passageiro']);
         $compra->setPassagem($dados['beneficio']);
         $compra->setSeguro($dados['seguro']);
+        $compra->setData($dados['data']);
 
         return $compra->save();
     }
@@ -26,6 +27,47 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
     public function listarTodasCompras()
     {
         return $this->fetchAll();
+    }
+
+    public function listarCompras()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->from(array('U' => 'USUARIO'), array('U.*'))
+                ->where('C.ID_USUARIO = U.ID_USUARIO');
+
+//               var_dump($select->__toString());die();
+        return $this->fetchAll($select);
+    }
+
+    public function listarPoltronasPorIdCompra($id)
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->from(array('CD' => 'COMPRA_DEBITO'), array('CD.*'))
+//                ->from(array('CC' => 'COMPRA_CREDITO'), array('CC.*'))
+//                ->from(array('CA' => 'COMPRA_AVISTA'), array('CA.*'))
+//                ->from(array('CP' => 'COMPRA_PONTOS'), array('CP.*'))
+                ->where('C.ID_COMPRA = CD.ID_COMPRA')
+//                ->where('C.ID_COMPRA = CC.ID_COMPRA')
+//                ->where('C.ID_COMPRA = CA.ID_COMPRA')
+//                ->where('C.ID_COMPRA = CP.ID_COMPRA')
+                ->where('C.ID_COMPRA = "' . $id . '" ');
+
+//               var_dump($select->__toString());die();
+
+        return $this->fetchAll($select);
+    }
+    
+            public function getComprasPorId($id) {
+        $select = $this->select()->setIntegrityCheck(false);
+                $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->where('C.ID_COMPRA = "' . $id . '" ');
+
+//               var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
     }
 
     public function getCompraPorId($id)

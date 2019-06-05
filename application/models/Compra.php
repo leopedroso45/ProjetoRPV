@@ -12,6 +12,7 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
 //    private $seguro;
 //    private $passageiro;
 //    private $passagem;
+//    private $data;
     
     function getHorario_inicio()
     {
@@ -58,6 +59,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
         return $this->passagem;
     }
 
+    function getData()
+    {
+        return $this->data;
+    }
+
     function setHorario_inicio($horario_inicio)
     {
         $this->horario_inicio = $horario_inicio;
@@ -102,6 +108,11 @@ class Application_Model_Compra extends Zend_Db_Table_Row_Abstract
     {
         $this->passagem = $passagem;
     }
-    
+
+    function setData($data)
+    {
+        $this->data = $data;
+    }
+
 
 }

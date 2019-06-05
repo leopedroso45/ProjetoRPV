@@ -5,7 +5,7 @@
         <div class="col-lg-12" style="padding: 0px;">
             <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
                 <li class="breadcrumb-item"><a href="<?= $this->baseUrl("compra") ?>">Início</a></li>
-                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Compra</li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Compras</li>
             </ol>
         </div>
 
@@ -149,16 +149,30 @@
                 <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px; color: white;">
                     <thead >
                         <tr>
+                            <th scope="col">Vendedor</th>
                             <th scope="col">Passageiro</th>
-                            <th scope="col">Poltrona</th>
-                            <th scope="col">Seguro</th>
-                            <th scope="col">Pagamento</th>
                             <th scope="col">Valor</th>
+                            <th scope="col">Data</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                            <? foreach ($this->listaDasCompras as $compra): ?>
+                                <tr>
+                                    <td><?= $compra['nome_usuario'] ?></td>
+                                    <td><?= $compra['passageiro'] ?></td>
+                                    <td><?= $compra['valor'] ?></td>
+                                    <td><?= $compra['data'] ?></td>
+                                    <td>
+                                        <a href="<?= $this->baseUrl('compra/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
+                                            <span class="btn-label">
+                                                <i class="fas fa-eye" style="color: white;"></i>
+                                            </span>
+                                            Visualizar Detalhes
+                                        </a>
+                                    </td>
+                                </tr>
+                            <? endforeach; ?>
 
                     </tbody>
                 </table>
@@ -278,3 +292,4 @@
         </div>
     </div>
 </div>
+
