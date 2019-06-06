@@ -1,5 +1,3 @@
-
-
 var estado = document.getElementById('estado');
 $('#onoff1').on('change', function () {
     var el = this;
@@ -18,9 +16,6 @@ $('#onoff1').on('change', function () {
             alert("Info gravada: " + msg);
     });
 });
-
-
-
 
 $(document).on('click', '.clickable', function (e) {
 //    alert();
@@ -60,8 +55,6 @@ $(document).on('click', '.clickable', function (e) {
 //    //}
 //});
 
-
-
 $(".cadastrarTarifa").click(function () {
     var id_trajeto;
     var valor = $("#valor").val();
@@ -80,7 +73,7 @@ $(".cadastrarTarifa").click(function () {
 
     id_trajeto = trajetos.toString();
         //alert("id_trajeto = " + trajetos + ", valor = " + valor);
-        
+    //alert("Chegando aqui");
     $.ajax({
         type: 'POST',
         url: baseUrl + 'tarifa/index',
@@ -89,6 +82,7 @@ $(".cadastrarTarifa").click(function () {
         },
         async: false,
         success: function () {
+            alert("Cadastrando");
             bootbox.alert("Cadastro realizado com sucesso!", function () {
                 //location.reload();
             });
@@ -96,7 +90,7 @@ $(".cadastrarTarifa").click(function () {
         error: function (error) {
             //alert(error);
             //console.log(error);
-            bootbox.alert("Algo de errado não está certo!" + error, function () {
+            bootbox.alert("Algo deu errado!" + error, function () {
                 //location.reload();
             });
         }

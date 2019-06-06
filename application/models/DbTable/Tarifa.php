@@ -13,7 +13,7 @@ class Application_Model_DbTable_Tarifa extends Zend_Db_Table_Abstract
         $tarifa->setVigencia($dados['vigencia']);
         $tarifa->setId_trajeto($trajeto);
         $tarifa->setSituacao(true);
-        
+
         return $tarifa->save();
     }
     
