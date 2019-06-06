@@ -11,81 +11,79 @@
             <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.5); color: white;">
                 <div class="row">
                     <div class="col-lg-6">
-                        <label>Número da Apólice<strong title="Campo Obrigatório">*</strong></label>
                         <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="numeroApolice" name="numeroApolice" placeholder="Digite o numero da apolice" required value="<?php echo $this->seguros->getNumeroApolice(); ?>">
+                        <label>Número da Apólice</label>
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="numeroApolice" name="numeroApolice" placeholder="Digite o numero da apolice" required value="<?php echo $this->seguros->getNumeroApolice(); ?>" disabled>
                         <div class="alert alert-danger numeroApolice" style="display: none;" role="alert">
                             O campo numero de apolice é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Seguradora<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="seguradora" name="seguradora" placeholder="Digite o nome da seguradora" required value="<?php echo $this->seguros->getSeguradora(); ?>">
+                        <label>Seguradora</label>
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="seguradora" name="seguradora" placeholder="Digite o nome da seguradora" required value="<?php echo $this->seguros->getSeguradora(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo seguradora é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Cpf do Segurado<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="CpfSegurado" name="cpfSegurado" placeholder="Digite o cpf do segurado" required value="<?php echo $this->seguros->getCpfSegurado(); ?>">
+                        <label>Cpf do Segurado</label>
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="CpfSegurado" name="cpfSegurado" placeholder="Digite o cpf do segurado" required value="<?php echo $this->seguros->getCpfSegurado(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo CPF é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Nome do Segurado<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="NomeSegurado" name="nomeSegurado" placeholder="Digite o nome do segurado" required value="<?php echo $this->seguros->getNomeSegurado(); ?>">
+                        <label>Nome do Segurado</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="NomeSegurado" name="nomeSegurado" placeholder="Digite o nome do segurado" required value="<?php echo $this->seguros->getNomeSegurado(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo Nome é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Mensalidade<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="valorMensal" name="valorMensal" placeholder="Digite o valor da mensalidade" required value="<?php echo $this->seguros->getValorMensal(); ?>">
+                        <label>Mensalidade</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="valorMensal" name="valorMensal" placeholder="Digite o valor da mensalidade" required value="<?php echo $this->seguros->getValorMensal(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo Mensalidade é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Taxa da Franquia<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="taxaFranquia" name="tacaFranquia" placeholder="Digite o valor da franquia" required value="<?php echo $this->seguros->getTaxaFranquia(); ?>">
+                        <label>Taxa da Franquia</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="taxaFranquia" name="tacaFranquia" placeholder="Digite o valor da franquia" required value="<?php echo $this->seguros->getTaxaFranquia(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo Valor da Franquia é obrigatório!
                         </div>
                     </div>
                         <div class="col-lg-6">
-                        <label>Indenização por Invalidez<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="premioInvalidez" name="premioInvalidez" placeholder="Digite o valor da Indenização" required value="<?php echo $this->seguros->getPremioInvalidez(); ?>">
+                        <label>Indenização por Invalidez</strong></label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="premioInvalidez" name="premioInvalidez" placeholder="Digite o valor da Indenização" required value="<?php echo $this->seguros->getPremioInvalidez(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo Indenização por Inalidez é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Indenização por Morte<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="premioMorte" name="premioMorte" placeholder="Digite o valor da Indenização" required value="<?php echo $this->seguros->getPremioMorte(); ?>">
+                        <label>Indenização por Morte</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="premioMorte" name="premioMorte" placeholder="Digite o valor da Indenização" required value="<?php echo $this->seguros->getPremioMorte(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo Indenização por Inalidez é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Dia da adesão<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="dataInicial" name="dataInicial" placeholder="Digite o dia da adesão" required value="<?php echo $this->seguros->getDataInicial(); ?>">
+                        <label>Dia da adesão</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="dataInicial" name="dataInicial" placeholder="Digite o dia da adesão" required value="<?php echo $this->seguros->getDataInicial(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo dia da adesão é obrigatório!
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Dia da vencimento<strong title="Campo Obrigatório">*</strong></label>
-                        <input type="hidden" id="id_seguro" name="id_seguro" value="<?php echo $this->seguros->getId_Seguro(); ?>">
-                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="dataFinal" name="dataFinal" placeholder="Digite o dia do vencimento" required value="<?php echo $this->seguros->getDataFinal(); ?>">
+                        <label>Dia da vencimento</label>
+                        
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="5" id="dataFinal" name="dataFinal" placeholder="Digite o dia do vencimento" required value="<?php echo $this->seguros->getDataFinal(); ?>"disabled>
                         <div class="alert alert-danger seguradora" style="display: none;" role="alert">
                             O campo dia do vencimento é obrigatório!
                         </div>
@@ -96,7 +94,7 @@
                 <hr>
             </div>
             <br>
-                <button type="button" class="btn btn-primary btn-block editarSeguros">Confirmar</button>
+                <a href="<?= $this->baseUrl("seguros") ?>" class="btn btn-block btn-danger">Voltar</a>
             </form>
         </div>
     </div>

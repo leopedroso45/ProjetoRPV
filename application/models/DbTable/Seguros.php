@@ -27,12 +27,18 @@ class Application_Model_DbTable_Seguros extends Zend_Db_Table_Abstract
     
     public function editarSeguros($id,$dados)
     {
-        //var_dump($id, $dados); die();
         $seguros = $this->find($id)->current();
-       /*@var $seguros Application_Model_CategoriaOnibus*/
-        $seguros->setNumeroseguros($dados['numeroseguros']);
-        $seguros->setLocal($dados['local']);
-        $seguros->setComplemento($dados['complemento']);
+       /*@var $seguros Application_Model_Seguros*/
+        $seguros->setNumeroApolice($dados['numeroApolice']);
+        $seguros->setSeguradora($dados['seguradora']);
+        $seguros->setNomeSegurado($dados['nomeSegurado']);
+        $seguros->setCpfSegurado($dados['cpfSegurado']);
+        $seguros->setValorMensal($dados['valorMensal']);
+        $seguros->setTaxaFranquia($dados['taxaFranquia']);
+        $seguros->setPremioMorte($dados['premioMorte']);
+        $seguros->setPremioInvalidez($dados['premioInvalidez']);
+        $seguros->setDataInicial($dados['dataInicial']);
+        $seguros->setDataFinal($dados['dataFinal']);
 
         return $seguros->save();
     }

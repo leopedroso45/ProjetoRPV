@@ -42,12 +42,11 @@ $(".cadastrarSeguros").click(function (){
     }
 });
 
-$(".editarSeguros").click(function ()
- {
-    var id = $("#id_seguro").val();
+$(".editarSeguros").click(function (){
+    
     var numeroApolice = $("#numeroApolice").val();
     var seguradora = $("#seguradora").val();
-     var nomeSegurado = $("#nomeSegurado").val();
+    var nomeSegurado = $("#nomeSegurado").val();
     var cpfSegurado = $("#cpfSegurado").val();
     var valorMensal = $("#valorMensal").val();
     var taxaFranquia = $("#taxaFranquia").val();
@@ -56,30 +55,76 @@ $(".editarSeguros").click(function ()
     var dataInicial = $("#dataInicial").val();
     var dataFinal = $("#dataFinal").val();
 
-    if (numeroParada.length === 0) {
-        $(".numeroParada").removeAttr("style");
-        $(".local").attr("style", "display:none");
+    if (numeroApolice.length === 0) {
+        $(".numeroApolice").removeAttr("style");
+        $(".seguradora").attr("style", "display:none");
 
-    } else if (local.length === 0) {
+    /*} else if (local.length === 0) {
         $(".numeroParada").attr("style", "display:none");
-        $(".local").removeAttr("style");
+        $(".local").removeAttr("style");*/
 
     } else {
         $.ajax({
             type: "POST",
-            url: baseUrl + 'parada-onibus/editar',
+            url: baseUrl + 'seguros/editar',
             async: false,
-            data: {numeroParada: numeroParada, id: id, local: local,
-                complemento: complemento
+            data: {
+                numeroApolice: numeroApolice, seguradora: seguradora, nomeSegurado: nomeSegurado, cpfSegurado: cpfSegurado, valorMensal: valorMensal,
+                taxaFranquia: taxaFranquia, premioMorte: premioMorte, premioInvalidez: premioInvalidez, dataInicial: dataInicial, dataFinal: dataFinal
             },
             success: function () {
-                bootbox.alert("Edição realizada com sucesso!", function () {
-//                    location.reload();
+                bootbox.alert("Cadastro salvo com sucesso!", function () {
+                    location.reload();
                 });
+
+                //$(".alert-success").removeAttr("style");
             },
             error: function () {
-                console.log();
+                alert("errorrouuu!");
             }
         });
     }
 });
+
+// $(".editarSeguros").click(function ()
+//  {
+//     var id = $("#id_seguro").val();
+//     var numeroApolice = $("#numeroApolice").val();
+//     var seguradora = $("#seguradora").val();
+//     var nomeSegurado = $("#nomeSegurado").val();
+//     var cpfSegurado = $("#cpfSegurado").val();
+//     var valorMensal = $("#valorMensal").val();
+//     var taxaFranquia = $("#taxaFranquia").val();
+//     var premioMorte = $("#premioMorte").val();
+//     var premioInvalidez = $("#premioInvalidez").val();
+//     var dataInicial = $("#dataInicial").val();
+//     var dataFinal = $("#dataFinal").val();
+
+//     if (numeroParada.length === 0) {
+//         $(".numeroApolice").removeAttr("style");
+//         $(".local").attr("style", "display:none");
+
+//     } else if (local.length === 0) {
+//         $(".numeroApolice").attr("style", "display:none");
+//         $(".seguradora").removeAttr("style");
+
+//     } else {
+//         $.ajax({
+//             type: "POST",
+//             url: baseUrl + 'seguros/editar',
+//             async: false,
+//             data: {
+//                 numeroApolice: numeroApolice, seguradora: seguradora, nomeSegurado: nomeSegurado, cpfSegurado: cpfSegurado, valorMensal: valorMensal,
+//                 taxaFranquia: taxaFranquia, premioMorte: premioMorte, premioInvalidez: premioInvalidez, dataInicial: dataInicial, dataFinal: dataFinal
+//             },
+//             success: function () {
+//                 bootbox.alert("Edição realizada com sucesso!", function () {
+// //                    location.reload();
+//                 });
+//             },
+//             error: function () {
+//                 console.log();
+//             }
+//         });
+//     }
+// });
