@@ -11,8 +11,11 @@
         <div class="col-lg-12" style="background-color:rgba(0,0,0,0.5);">
             <? foreach ($this->compraPorId as $compra): ?>
             <hr>
-                <h4 style="color: white;"><strong style="color: white;">Passageiro: </strong><? echo $compra['passageiro'] ?></h4>
-                <h4 style="color: white;"><strong style="color: white;">Data de Viagem: </strong><? echo $compra['data'] ?></h4>
+                <h4 style="color: white; text-align: center"><strong style="color: white;">Passageiro: </strong><? echo $compra['passageiro'] ?></h4>
+                <h4 style="color: white; text-align: center"><strong style="color: white;">Data de Viagem: </strong><? echo $compra['data'] ?></h4>
+                <h4 style="color: white; text-align: center"><strong style="color: white;">Dia: </strong><? echo $compra['DESCRICAO'] ?></h4>
+                <h4 style="color: white; text-align: center"><strong style="color: white;">Linha: </strong><? echo $compra['descricao'] ?></h4>
+                <h4 style="color: white; text-align: center"><strong style="color: white;">Horário: </strong><? echo $compra['horario_inicio'] ?></h4>
             <? endforeach; ?>
 
             <table class="table" style="text-align: center; margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px; color: white;">

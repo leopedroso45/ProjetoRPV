@@ -3,7 +3,7 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
-    $('#valor').mask('9999999');
+    $('#valor').mask('99,99');
 });
 
 $("#alocar_destino").click(function () {
@@ -42,6 +42,22 @@ $(".poltrona").click(function () {
     $(this).addClass("selecionada");
 });
 
+$('#passageiro').blur(function () {
+    if (this.value.length === 0) {
+        $('.passageiro').removeAttr("style");
+    } else {
+        $('.passageiro').attr("style", "display: none");
+    }
+});
+
+$('#valor').blur(function () {
+    if (this.value.length === 0) {
+        $('.valor').removeAttr("style");
+    } else {
+        $('.valor').attr("style", "display: none");
+    }
+});
+
 $(".cadastrar_compra").click(function () {
 //    alert();
 
@@ -70,8 +86,8 @@ $(".cadastrar_compra").click(function () {
     } else if ($(".isenta").hasClass("active")) {
         beneficio = "ISENTA";
     }
-    
-        
+
+
 
 //        Coletando todos onibus selecionados
     $('.selecionada').each(function () {
@@ -82,32 +98,45 @@ $(".cadastrar_compra").click(function () {
 
 //    alert(id_linha +' '+ id_usuario +' '+ id_poltrona +' '+ id_forma_pagamento +' '+ validade +' '+ valor +' '+ seguro +' '+ beneficio);
 
-    $.ajax({
-        type: 'POST',
-        url: baseUrl + 'compra/index',
-        async: false,
-        data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
-            id_forma_pagamento: id_forma_pagamento, passageiro: passageiro,data: data,
-            validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
-        },
-        beforeSend: function () {
-            setTimeout(function () {
-                $('.img-loading').addClass("hidden");
-            }, 1000);
-        },
-        success: function () {
-            bootbox.alert({
-                message: "Cadastro realizado com sucesso.",
-                callback: function () {
-                    location.reload();
-                }
-            });
+    if (valor.length === 0 && passageiro.length === 0) {
+        $('.valor').removeAttr("style");
+        $('.passageiro').removeAttr("style");
 
-        },
-        error: function () {
+    } else if (valor.length === 0) {
+        $('.valor').removeAttr("style");
+
+    } else if (passageiro.length === 0) {
+        $('.passageiro').removeAttr("style");
+
+    } else {
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'compra/index',
+            async: false,
+            data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
+                id_forma_pagamento: id_forma_pagamento, passageiro: passageiro, data: data,
+                validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
+            },
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
+            success: function () {
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+
+            },
+            error: function () {
 //                alert('error');
-        }
-    });
+            }
+        });
+    }
 
 });
 
