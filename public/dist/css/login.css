@@ -1,0 +1,23 @@
+label, h3{
+    color: white;
+    font-weight: bold;
+}
+
+.jumbotron{
+    background-color:rgba(0,0,0,0.5);
+}
+
+.input-group-text{
+    color: white;
+    background: #2FA4E7;
+    border-color: #2FA4E7;
+}
+
+.btn-dark{
+    color: white;
+    cursor: pointer;
+}
+
+.btn-primary{
+    /*color:black;*/
+}

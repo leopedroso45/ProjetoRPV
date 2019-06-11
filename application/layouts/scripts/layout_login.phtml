@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -8,52 +7,33 @@
         <script type="text/javascript">
             var baseUrl = '<?= $this->baseUrl('/') ?>';
         </script>
-        <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/") ?> />
+        <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/bus.png") ?> />
         <!--Caminho da public "$this->baseUrl()-->
-
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-cerulean.css") ?> />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/style.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/login.css") ?> />
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">PampaBus</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </nav>
 
         <!--Conteudo das páginas-->
-        <div style="margin-top:5%;">
+        <main style="margin-top: 1%;">
             <?php echo $this->layout()->content; ?>
-        </div>
+        </main>
 
-        <script type="text/javascript" src="<?= $this->baseUrl('bootstrap/js/jquery.dataTables.min.js') ?>"></script>
+
+
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.min.js') ?>"></script>
+        <?= $this->headScript(); ?>
     </body>
 </html>

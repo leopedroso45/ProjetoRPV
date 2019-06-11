@@ -25,9 +25,19 @@ class Application_Model_DbTable_FormaPagamento extends Zend_Db_Table_Abstract
         return $formaPagamento->save();
     }
 
-    public function listarFormaPagamento()
+    public function listarTodasFormasDePagamentos()
     {
         return $this->fetchAll();
+    }
+    
+    public function listarFormasDePagamentoAtivas() {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('FP' => 'FORMA_PAGAMENTO'), array('FP.*'))
+        ->where('FP.STATUS = "ATIVO"');
+
+//               var_dump($select->__toString());die();
+
+        return $this->fetchAll($select);
     }
     
     public function getFormaPagamentoPorId($id)

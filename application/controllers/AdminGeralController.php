@@ -12,6 +12,17 @@ class AdminGeralController extends Zend_Controller_Action
     {
 
     }
+    
+        public function sairAction()
+    {
+        $sessionUsuario = new Application_Model_SessaoUser();
+        $usuario = $sessionUsuario->getSession();
+
+        $authAdapter = Zend_Auth::getInstance();
+        $authAdapter->clearIdentity();
+
+        $this->_redirect('/index');
+    }
 
 
 }

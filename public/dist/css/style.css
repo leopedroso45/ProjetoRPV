@@ -1,3 +1,5 @@
+
+
 .img-loading{
     position: absolute;
     top: 0px;
@@ -10,7 +12,9 @@
 }
 
 .btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-online.active{background-color: #5BB75B;color: white;}
 .btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+.btn-default.btn-afk.active{background-color: #5BB75B;color: white;}
 .btn-default{border-color: white;background-color: white;color: black;}
 
 .btn-group, .btn-group-vertical {

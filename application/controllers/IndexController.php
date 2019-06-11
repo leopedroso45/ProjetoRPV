@@ -1,80 +1,66 @@
 <?php
 
-class IndexController extends Zend_Controller_Action {
+class IndexController extends Zend_Controller_Action
+{
 
-    public function init() 
-   {
-       $this->_helper->layout->setLayout('layout');
-
-   }
-
-     public function indexAction()
+    public function init()
     {
-//        $this->view->headScript()->appendFile($this->view->baseUrl('woothemes-FlexSlider-ca347d4/jquery.flexslider.js'));
-//        $this->view->headScript()->appendFile($this->view->baseUrl('woothemes-FlexSlider-ca347d4/js/script.js'));
-//        
-//        $dbTableAula = new Application_Model_DbTable_Aula();
-//        $lista = $dbTableAula->listarTodasAulas();
-//        $this->view->listaDasAulas = $lista;
-//        
-//        $dbTableAluno = new Application_Model_DbTable_Aluno();
-//        $alunos = $dbTableAluno->listarTodosAlunos();
-//        $this->view->listaDosAlunos = $alunos;
-//        
-//        $authAdapter = Zend_Auth::getInstance();
-//        $authAdapter->clearIdentity();
-//        $login = new Application_Form_Login();
-//
-//        if ($this->getRequest()->isPost()) {
-//            if ($login->isValid($_POST)) {
-//                   $dados = $login->getValues();
-//               
-//                   $db = Zend_Db_Table::getDefaultAdapter();
-//
-//                   $authAdapter = new Zend_Auth_Adapter_DbTable(
-//                                $db,
-//                                'usuario',
-//                                'login',
-//                                'senha');
-//
-//                $authAdapter->setIdentity($dados['login']);
-//                $authAdapter->setCredential(sha1($dados['senha']));
-//
-//                $result = $authAdapter->authenticate();
-//                if ($result->isValid()) {
-//
-//                    $auth = Zend_Auth::getInstance();
-//                    $storage = $auth->getStorage();
-//                    $storage->write($authAdapter->getResultRowObject(array('cod_usuario', 'cod_aluno', 'login','cod_tipo_usuario', 'foto')));
-//                } else {
-//
-//                    $this->view->error = "Usuário ou senha incorreta!";
-//                }
-//            }
-//        }
-//
-//        $auth = Zend_Auth::getInstance();
-//       
-//        if ($auth->hasIdentity())
-//       {
-//            $identity = $auth->getIdentity();
-////            var_dump($identity);die();
-//                $modelUsuario = new Application_Model_DbTable_Usuario();
-//                $usuario = $modelUsuario->getUsuarioPorLogin($dados['login']);
-//                $modelSessaoUsuario = new Application_Model_SessaoUser();
-//                $modelSessaoUsuario->inserirDados($usuario);
-//            if($usuario->getCod_tipoUsuario()== 1){
-//                $this->_redirect('/admin-instrutor');      
-//            }
-//            if($usuario->getCod_tipoUsuario()== 2){
-//                $this->_redirect('/admin');
-//            }
-//            if($usuario->getCod_tipoUsuario()== 3){
-//                $this->_redirect('/admin-aluno');
-//            }
-//}
-//
-//        $this->view->login = $login;
+        $this->_helper->layout->setLayout('layout_login');
+    }
+
+    public function indexAction()
+    {
+
+        $authAdapter = Zend_Auth::getInstance();
+        $authAdapter->clearIdentity();
+
+        if ($this->getRequest()->isPost()) {
+            $dados = $this->_request->getPost();
+//            var_dump($dados);
+            $db = Zend_Db_Table::getDefaultAdapter();
+            $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'usuario', 'nome_usuario', 'senha', 'id_perfil');
+
+            $authAdapter->setIdentity($dados['nome_usuario']);
+            $authAdapter->setCredential($dados['senha']);
+            $result = $authAdapter->authenticate();
+
+            if ($result->isValid()) {
+                $auth = Zend_Auth::getInstance();
+                $storage = $auth->getStorage();
+                $storage->write($authAdapter->getResultRowObject(array('id_usuario', 'nome_usuario', 'senha', 'id_perfil')));
+            } else {
+
+                $this->view->error = "Usuário ou senha incorreta!";
+            }
+        }
+
+
+        $auth = Zend_Auth::getInstance();
+
+        if ($auth->hasIdentity()) {
+            $identity = $auth->getIdentity();
+//            var_dump($identity);die();
+            $modelUsuario = new Application_Model_DbTable_Usuario();
+            $usuario = $modelUsuario->getUsuarioPorLogin($dados['nome_usuario']);
+            $modelSessaoUsuario = new Application_Model_SessaoUser();
+            $modelSessaoUsuario->inserirDados($usuario);
+
+            if ($usuario->getId_perfil() === '1') {
+                $this->_redirect('/admin-local');
+            }
+            if ($usuario->getId_perfil() === '2') {
+                $this->_redirect('/admin-geral');
+            }
+            if ($usuario->getId_perfil() === '3') {
+                $this->_redirect('/admin-secretario');
+            }
+            if ($usuario->getId_perfil() === '4') {
+                $this->_redirect('/funcionario');
+            }
+            if ($usuario->getId_perfil() === '7') {
+                $this->_redirect('/admin-vendedor');
+            }
+        }
     }
 
 }

@@ -1,0 +1,8 @@
+.btn-block + .btn-block {
+     margin-top: 0%; 
+}
+
+option, #descricao_destino, #descricao_forma_pagamento, #descricao_poltrona,
+.btn, .datedropper{
+    cursor: pointer;
+}
