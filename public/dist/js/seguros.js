@@ -1,3 +1,17 @@
+$(document).ready(function () {
+    $('#tarifa').mask('9.99');
+    $('#numeroParada').mask('9999');
+    $('#modelo').mask('SSSSSSSSSSSSSS');
+    $('#marca').mask('SSSSSSSSSSSSSS');
+    $('#cor').mask('SSSSSSSSSSSSSSSS');
+    $('#banheiro').mask('99');
+    $('#valorMensal').mask('999,99');
+    $('#taxaFranquia').mask('9.999,99');
+    $('#premioMorte').mask('999.999,99');
+    $('#premioInvalidez').mask('999.999,99');
+    $('#cpfSegurado').mask('999999999-99');
+});
+
 $(".cadastrarSeguros").click(function (){
     
     var numeroApolice = $("#numeroApolice").val();
