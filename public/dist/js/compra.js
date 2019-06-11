@@ -67,7 +67,7 @@ $('#poltrona').blur(function () {
 });
 
 $('#descricao_destino').blur(function () {
-    if (this.src === "(unknown)") {
+    if (this.src === "") {
         $('.destino').removeAttr("style");
     } else {
         $('.destino').attr("style", "display: none");
@@ -75,7 +75,7 @@ $('#descricao_destino').blur(function () {
 });
 
 $('#forma_pagamento').blur(function () {
-    if (this.src === "(unknown)") {
+    if (this.src === "") {
         $('.forma_pagamento').removeAttr("style");
     } else {
         $('.forma_pagamento').attr("style", "display: none");
