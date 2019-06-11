@@ -3,7 +3,7 @@
 class Application_Model_Tarifa_Trajeto extends Zend_Db_Table_Row_Abstract
 {
 //    private $valor;
-//    private $id_trajeto;
+//    private $idtrajeto;
 //    private $id_tarifa;
     
     function getValor()
@@ -11,9 +11,9 @@ class Application_Model_Tarifa_Trajeto extends Zend_Db_Table_Row_Abstract
         return $this->valor;
     }
 
-    function getId_trajeto()
+    function getIdtrajeto()
     {
-        return $this->id_trajeto;
+        return $this->idtrajeto;
     }
 
     function getId_tarifa()
@@ -26,15 +26,19 @@ class Application_Model_Tarifa_Trajeto extends Zend_Db_Table_Row_Abstract
         $this->valor = $valor;
     }
 
-    function setId_trajeto($id_trajeto)
+    function setIdtrajeto($idtrajeto)
     {
-        $this->id_trajeto = $id_trajeto;
+        $this->idtrajeto = $idtrajeto;
     }
 
     function setId_tarifa($id_tarifa)
     {
         $this->id_tarifa = $id_tarifa;
     }
+
+
+    
+
     
 
 }

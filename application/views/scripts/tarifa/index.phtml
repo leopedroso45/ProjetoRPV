@@ -19,19 +19,18 @@
                                 <!-- O name é justamente o nome do Trajeto! -->
                                 <form>
                                     <? foreach ($this->listarTrajetos as $trajeto): ?>
+                                        <!-- <div class="checkbox"> -->
                                         <div class="checkbox">
-                                            <label><input type="checkbox" name="<?= $trajeto->getNome() ?>" value="<?= $trajeto->getId_trajeto() ?>" id="myCheck" onclick="selecionarCheckbox(this); return true;">
-                                                <?= $trajeto->getNome() ?>
+                                            <label><input type="checkbox" name="<?= $trajeto->getDescricao() ?>" value="<?= $trajeto->getId_trajeto() ?>" id="myCheck" onclick="selecionarCheckbox(this); return true;">
+                                                <?= $trajeto->getDescricao() ?>
                                             </label>
                                         </div>
-
                                     <? endforeach; ?>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col">
                     <Center><H4>Trajetos selecionados</H4></Center>
                     <div class="list-group listaTrajetosSelecionados" id="div1"></div>
@@ -56,7 +55,7 @@
                                 </div>    
                             </div>
                             <div style="margin-bottom: 5%;">
-                                <button type="submit" class="btn btn-success btn-block cadastrarTarifa">Pronto</button>
+                                <button type="button" class="btn btn-success btn-block cadastrarTarifa">Pronto</button>
                             </div>
                         </Center>
                     </form>
@@ -120,9 +119,5 @@
     function datepickerfunction() {
         $('.input-group.date').datepicker({format: "dd.mm.yyyy"});
     }
-
-
-
-
 
 </script>
