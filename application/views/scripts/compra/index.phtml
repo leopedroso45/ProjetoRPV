@@ -189,7 +189,7 @@
             <div class="modal-body">
                 <select multiple class="form-control" id="sel1" style="height: 270px;">
                     <? foreach ($this->listaDasLinhas as $linha): ?>
-                        <option  value="<?= $linha['id_linha'] ?>"><?= $linha['descricao']; ?> - <?= $linha['marca']; ?> - <?= $linha['horario_inicio']; ?></option>
+                        <option  value="<?= $linha['id_linha'] ?>"><?= $linha['DESCRICAO']; ?> - <?= $linha['marca']; ?> - <?= $linha['horario_inicio']; ?> - <?= $linha['valor']; ?></option>
                     <? endforeach; ?>
                 </select>
             </div>
