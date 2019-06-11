@@ -39,6 +39,10 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('L' => 'LINHA'), array('L.*'))
+                ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+                ->where('O.ID_ONIBUS_VIAGEM = LH.ID_ONIBUS_VIAGEM')
+                ->where('L.ID_LINHA = LH.ID_LINHA')
                 ->where('L.SITUACAO = "ATIVO"');
 
 //               var_dump($select->__toString());die();

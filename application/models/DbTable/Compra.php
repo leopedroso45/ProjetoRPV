@@ -11,7 +11,7 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         $compra = $this->createRow();
         /* @var $compra Application_Model_Compra */
         $compra->setHorario_inicio("10:00");
-        $compra->setId_linha("6");
+        $compra->setId_linha($dados['id_linha']);
         $compra->setId_dia("2");
         $compra->setId_forma_pagamento($dados['id_forma_pagamento']);
         $compra->setId_usuario($dados['id_usuario']);
@@ -40,7 +40,7 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         return $this->fetchAll($select);
     }
 
-    public function listarPoltronasPorIdCompra($id)
+    public function listarPoltronasPorIdCompras($id)
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('C' => 'COMPRA'), array('C.*'))
@@ -54,14 +54,72 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
 //                ->where('C.ID_COMPRA = CP.ID_COMPRA')
                 ->where('C.ID_COMPRA = "' . $id . '" ');
 
-//               var_dump($select->__toString());die();
+        var_dump($select->__toString());
+        die();
 
         return $this->fetchAll($select);
     }
-    
-            public function getComprasPorId($id) {
+
+    public function listarPoltronasPorIdCompra($id)
+    {
+
+        $adapter = new Zend_Db_Adapter_Pdo_Mysql(array(
+            'driver' => 'pdo_mysql',
+            'dbname' => 'controledefrota',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8'
+        ));
+//var_dump($id);die();
+        $stmt = $adapter->query(
+                "SELECT C.*, CD.*
+                    FROM COMPRA AS C, LINHA
+                    INNER JOIN COMPRA_DEBITO AS CD 
+                    WHERE C.ID_COMPRA = CD.ID_COMPRA AND
+                    
+                    C.ID_COMPRA = '" . $id . "' 
+
+                    UNION
+
+                    SELECT C.*, CC.*
+                    FROM `COMPRA` AS C
+                    INNER JOIN COMPRA_CREDITO AS CC 
+                    WHERE C.ID_COMPRA = CC.ID_COMPRA AND
+                    C.ID_COMPRA = '" . $id . "' 
+
+                    UNION
+
+                    SELECT C.*, CP.*
+                    FROM COMPRA AS C
+                    INNER JOIN COMPRA_PONTOS AS CP
+                    WHERE C.ID_COMPRA = CP.ID_COMPRA AND
+                    C.ID_COMPRA = '" . $id . "' 
+
+                    UNION
+
+                    SELECT C.*, CA.*
+                    FROM COMPRA AS C 
+                    INNER JOIN COMPRA_AVISTA AS CA 
+                    WHERE C.ID_COMPRA = CA.ID_COMPRA AND
+                    C.ID_COMPRA = '" . $id . "' 
+                        ");
+
+
+//        var_dump($stmt->__toString());die();
+
+        $rows = $stmt->fetchAll();
+
+        return $rows;
+    }
+
+    public function getComprasPorId($id)
+    {
         $select = $this->select()->setIntegrityCheck(false);
-                $select->from(array('C' => 'COMPRA'), array('C.*'))
+        $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->from(array('L' => 'LINHA'), array('L.descricao'))
+                ->from(array('D' => 'DIA'), array('D.DESCRICAO'))
+                ->where('L.ID_LINHA = C.ID_LINHA')
+                ->where('D.ID_DIA = C.ID_DIA')
                 ->where('C.ID_COMPRA = "' . $id . '" ');
 
 //               var_dump($select->__toString());die();
