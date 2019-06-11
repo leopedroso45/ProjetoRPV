@@ -58,6 +58,30 @@ $('#valor').blur(function () {
     }
 });
 
+$('#poltrona').blur(function () {
+    if (this.value.length === 0) {
+        $('.poltrona').removeAttr("style");
+    } else {
+        $('.poltrona').attr("style", "display: none");
+    }
+});
+
+$('#descricao_destino').blur(function () {
+    if (this.src === "(unknown)") {
+        $('.destino').removeAttr("style");
+    } else {
+        $('.destino').attr("style", "display: none");
+    }
+});
+
+$('#forma_pagamento').blur(function () {
+    if (this.src === "(unknown)") {
+        $('.forma_pagamento').removeAttr("style");
+    } else {
+        $('.forma_pagamento').attr("style", "display: none");
+    }
+});
+
 $(".cadastrar_compra").click(function () {
 //    alert();
 

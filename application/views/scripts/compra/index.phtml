@@ -30,6 +30,9 @@
                                             </div>
 
                                             <input type="text" class="form-control" src=""  disabled id="descricao_destino">
+                                            <div class="alert alert-danger destino" role="alert" style="display: none;">
+                                                <strong>Destino</strong> obrigatório
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -46,19 +49,26 @@
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-3">
-                                    <label>Forma de Pagamento:<strong style="color: red">*</strong></label>
-                                    <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
-                                        <div class="input-group"  style="padding-bottom: 5px">
-                                            <div class="input-group-prepend" >
-                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
-                                                    Selecionar
-                                                </span>
-                                            </div>
-                                            <input type="text" class="form-control" src=""  disabled id="descricao_forma_pagamento">
-                                        </div>
-                                    </a>
+                                    <label>Passagem:<strong style="color: red">*</strong></label>
+                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
+                                        <label class="btn btn-default btn-online meia">
+                                            <input type="radio" name="switch" checked="checked">
+                                            MEIA
+                                        </label>
+                                        <label class="btn btn-default btn-afk inteira active">
+                                            <input type="radio" name="switch">
+                                            INTEIRA
+                                        </label>
+                                        <label class="btn btn-default btn-afk isenta">
+                                            <input type="radio" name="switch">
+                                            ISENTA
+                                        </label>
+                                    </div>
                                 </div>
+
+
                                 <div class="col-lg-2">
                                     <label>Data da Viagem: <strong style="color: red">*</strong></label>
                                     <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
@@ -75,6 +85,9 @@
                                             </div>
 
                                             <input type="text" class="form-control" src=""  disabled id="descricao_poltrona">
+                                            <div class="alert alert-danger poltrona" role="alert" style="display: none;">
+                                                <strong>Poltrona</strong> obrigatória
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -93,21 +106,20 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <label>Passagem:<strong style="color: red">*</strong></label>
-                                    <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
-                                        <label class="btn btn-default btn-online meia">
-                                            <input type="radio" name="switch" checked="checked">
-                                            MEIA
-                                        </label>
-                                        <label class="btn btn-default btn-afk inteira active">
-                                            <input type="radio" name="switch">
-                                            INTEIRA
-                                        </label>
-                                        <label class="btn btn-default btn-afk isenta">
-                                            <input type="radio" name="switch">
-                                            ISENTA
-                                        </label>
-                                    </div>
+                                    <label>Forma de Pagamento:<strong style="color: red">*</strong></label>
+                                    <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_forma_pagamento">
+                                            <div class="alert alert-danger forma_pagamento" role="alert" style="display: none;">
+                                                <strong>Forma de Pag.</strong> obrigatório
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                                 <button class="btn btn-info btn-block cadastrar_compra" type="button">
                                     Cadastrar
