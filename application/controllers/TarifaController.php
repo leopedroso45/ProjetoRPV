@@ -10,21 +10,24 @@ class TarifaController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        $dbTableTarifa = new Application_Model_DbTable_Tarifa();
+        $dbTableTarifaTrajeto = new Application_Model_DbTable_Tarifa_Trajeto();
+        
         $dbTableTrajeto = new Application_Model_DbTable_Trajeto();
         $lista = $dbTableTrajeto->listarTrajetos();
         $this->view->listarTrajetos = $lista;
 
-        if ($this->getRequest()->isPost()) {
-            $dados = $this->getRequest()->getParams();
-            $trajetos = explode(',', $dados['id_trajeto']);
-            
-            for ($i = 0; $i < sizeof($trajetos); $i++) {
-                $dbTableTarifa = new Application_Model_DbTable_Tarifa();
-                $id_tarifa = $dbTableTarifa->cadastrarTarifa($dados);
+        $dados = $this->getRequest()->getParams();
 
-                $dbTableTarifa_Trajeto = new Application_Model_DbTable_Tarifa_Trajeto();
-                $dbTableTarifa_Trajeto->cadastrarTarifaTrajeto($dados, $id_tarifa, $trajetos[$i]);
-            }
+        if ($this->getRequest()->isPost()) {
+            $trajetos = explode(',', $dados['id_trajeto']);
+            //var_dump($trajetos); die();
+            $id_tarifa = $dbTableTarifa->cadastrarTarifa($dados);
+            
+//            for ($i = 0; $i < sizeof($trajetos); $i++) {
+                
+                $dbTableTarifaTrajeto->cadastrarTarifaTrajeto($dados, $id_tarifa, $trajetos[0]);
+//            }
         }
     }
 

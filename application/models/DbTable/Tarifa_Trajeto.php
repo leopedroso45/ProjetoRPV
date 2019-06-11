@@ -16,3 +16,4 @@ class Application_Model_DbTable_Tarifa_Trajeto extends Zend_Db_Table_Abstract
     }
     
 }
+
