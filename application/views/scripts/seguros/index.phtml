@@ -1,0 +1,133 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12" style="padding: 0px;">
+			<ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+				<li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+				<li class="breadcrumb-item active" style="color: white;" aria-current="page">Seguros</li>
+			</ol>
+		</div>
+
+		<div class="col-lg-12" style="padding: 0px;">
+			<div class="card" style="background-color:rgba(0,0,0,0.5);">
+				<div class="card-header">
+					<button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+				</div>
+				<div class="card-body" style="display: none;">
+					<form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.2); color: white;">
+						<div class="row">
+							<div class="col-lg-6">
+								<label>Número da Apólice<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="numeroApolice" name="numeroApolice" placeholder="Informe o numero da apolice" required/>
+								<div class="alert alert-danger numeroApolice" style="display: none;" role="alert">
+									O campo numero da apólice é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Seguradora <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="seguradora" name="seguradora" placeholder="Informe o nome da seguradora" required/>
+								<div class="alert alert-danger seguradora" style="display: none;" role="alert">
+									O campo seguradora é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Cpf do Segurado<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="cpfSegurado" name="cpfSegurado" placeholder="Informe o cpf do segurado" required/>
+								<div class="alert alert-danger cpfSegurado" style="display: none;" role="alert">
+									O campo CPF é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Nome do Segurado <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="nomeSegurado" name="nomeSegurado" placeholder="Informe o nome do segurado" required/>
+								<div class="alert alert-danger nomeSegurado" style="display: none;" role="alert">
+									O campo Nome é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Mensalidade<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="valorMensal" name="valorMensal" placeholder="Informe o valor da mensalidade" required/>
+								<div class="alert alert-danger valorMensal" style="display: none;" role="alert">
+									O campo Mensalidade é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Taxa da Franquia<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="taxaFranquia" name="taxaFranquia" placeholder="Informe o valor da taxa de franquia" required/>
+								<div class="alert alert-danger taxaFranquia" style="display: none;" role="alert">
+									O campo Taxa de franquia é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Valor da indenização por morte<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="premioMorte" name="premioMorte" placeholder="Informe o valor da indenização a ser recebida por morte" required/>
+								<div class="alert alert-danger premioMorte" style="display: none;" role="alert">
+									O campo Indenização é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Valor da indenização por invalidez<strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" class="form-control" id="premioInvalidez" name="premioInvalidez" placeholder="Informe o valor da indenização a ser recebida por morte" required/>
+								<div class="alert alert-danger premioInvalidez" style="display: none;" role="alert">
+									O campo Indenização é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Data da Adesão<strong title="Campo Obrigatório">*</strong></label>
+								<input type="date" class="form-control" id="dataInicial" name="dataInicial" placeholder="Informe a data de adesão do contrato" required/>
+								<div class="alert alert-danger dataInicial" style="display: none;" role="alert">
+									O campo Data da Adesão é obrigatório!
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<label>Data do Vencimento<strong title="Campo Obrigatório">*</strong></label>
+								<input type="date" class="form-control" id="dataFinal" name="dataFinal" placeholder="Informe a data de vencimento do contrato" required/>
+								<div class="alert alert-danger dataFinal" style="display: none;" role="alert">
+									O campo Data do Vencimento é obrigatório!
+								</div>
+							</div>
+						<div class="alert alert-success " style="display: none;" role="alert">
+							Cadastro de parada realizado com sucesso!
+						</div>
+						</div>
+						<br>				
+							<button type="button" class="btn btn-info btn-block cadastrarSeguros">Cadastrar</button>
+						</form>
+					</div>	
+				</div>
+			</div>
+
+
+			<table class="table" style="margin-top: 2%; background-color:rgba(0,0,0,0.6); padding: 0px;">
+				<thead>
+					<tr>
+						<!-- <th scope="col">ID</th> -->
+						<th scope="col">N° da Apolice</th>
+						<th scope="col">Cpf do Segurado</th>
+						<th scope="col">Nome</th>
+						<th scope="col">Data Inicial</th>
+						<th scope="col">Data Final</th>
+						<th scope="col">Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<? foreach ($this->listarSeguros as $seguros): ?>
+						<tr>
+							<td><?= $seguros->getNumeroApolice() ?> </td>                   
+							<td><?= $seguros->getCpfSegurado() ?>  </td>
+							<td><?= $seguros->getNomeSegurado() ?>  </td>
+							<td><?= $seguros->getDataInicial() ?>  </td>
+							<td><?= $seguros->getDataFinal() ?>  </td>
+							<td>
+								<a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('seguros/editar/id/' . $seguros['id_seguro']) ?>">
+									<span class="btn-label">
+										<i class="fas fa-eye"></i>
+									</span>
+									Visualizar Detalhes
+								</a>
+							</td>
+						</tr>
+					<? endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+

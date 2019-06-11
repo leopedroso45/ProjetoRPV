@@ -73,7 +73,7 @@ $(".editarParada").click(function ()
             },
             success: function () {
                 bootbox.alert("Edição realizada com sucesso!", function () {
-//                    location.reload();
+                    location.reload();
                 });
             },
             error: function () {
