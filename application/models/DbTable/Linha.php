@@ -6,6 +6,9 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
     protected $_name = 'linha';
     protected $_rowClass = "Application_Model_Linha";
 
+
+    
+    
     public function cadastrarLinha($dados)
     {
         $linha = $this->createRow();
@@ -16,61 +19,50 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 
         // atualização
         $linha->setOrigem($dados['inicio']);
-        $linha->setTempo($dados['tempoTotall']);
-        $linha->setKm($dados['kmtotal']);
+        $linha->setTempo($dados['tempoTotall']); 
+        $linha->setKm($dados['kmtotal']); 
 
 
 
+      
 
-
-        // implementar
-
+      // implementar
+        
         return $linha->save();
     }
 
-    public function listarTodosLinhas1()
-    {
 
-        return $this->fetchAll();
-    }
+    public function listarTodosLinhas1(){
 
-    public function listarTodasLinhasAtivas()
-    {
+    return $this->fetchAll();
 
-        $select = $this->select()->setIntegrityCheck(false);
-        $select->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha'))
-                ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
-                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
-                ->from(array('T' => 'TARIFA_INTERMUNICIPAL'), array('T.*'))
-                ->from(array('C' => 'CATEGORIA_ONIBUS'), array('C.*'))
-                ->where('T.ID_CATEGORIA_ONIBUS = C.ID_CATEGORIA_ONIBUS')
-                ->where('O.ID_CATEGORIA_ONIBUS = T.ID_CATEGORIA_ONIBUS')
-                ->where('O.ID_ONIBUS_VIAGEM = LH.ID_ONIBUS_VIAGEM')
-                ->where('L.ID_LINHA = LH.ID_LINHA')
-                ->where('L.SITUACAO = "ATIVO"');
-
-//               var_dump($select->__toString());die();
-
-        return $this->fetchAll($select);
     }
 
     public function listarTodasLinhas()
     {
         // implementar
-
-
-
+                
+                
+        
         return $this->fetchAll();
+
+       
     }
+
+   
+
+
+
+
 
     public function getlinhaPorId($id)
     {
         $select = $this->select()->where('id_linha = ?', $id);
-
+        
         return $this->fetchRow($select);
     }
 
-    public function editarAtivo($id, $dados)
+        public function editarAtivo($id, $dados)
     {
         $this->find($id)->current();
         $linha = $this->getlinhaPorId($id);
@@ -85,4 +77,6 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
         return $linha->save();
     }
 
+    
+   
 }

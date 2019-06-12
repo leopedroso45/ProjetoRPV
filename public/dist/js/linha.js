@@ -1,39 +1,6 @@
 
 
 
-//$('#trecho1').blur(function () {
-// var tempo_inicial = $("input#total").val();
-// var aux = $("input#trecho1").val();
-// alert(moment.duration(200, 'hours'));
-
-//      var trecho1 = moment(tempo_inicial, 'HH:mm').add(aux , 'minutes').format('hh:mm');
-
-
-//     document.getElementById('total').value = trecho1;
-// });
-// $('#trecho2').blur(function () {
-
-//       var trecho2 = $("input#trecho2").val();
-
-//      var total = $("input#total").val();
-//     var soma = total + trecho1;
-
-//     document.getElementById('total').value = soma;
-// });
-//  $('#tempo_fim').blur(function () {
-//       var tempo_fim = document.getElementById('tempo_fim').value;
-//       var s = document.getElementById('total').value;
-//     //  //alert(tempo_fim);
-//     //  alert(s);
-//     // //   var tempo_fim2 = moment(tempo_fim).format('hh:mm');
-//     // // alert(tempo_fim2);
-//     // var s2 = moment(s, 'hh:mm').add(10, 'minutes').format('hh:mm');
-//     // alert(s2);
-//      var total = moment(tempo_fim,'minutes').add(s, 'hh:mm').format('hh:mm'); 
-
-
-//     document.getElementById('total').value = total;
-// });
 
 
 
@@ -190,6 +157,8 @@ $("#tempo_fim").blur(function(){
 $("#alocar-trecho").click(function () {
 
     $('.validaTrecho').attr("style", "display:none");
+
+    
     $(".validaTrechovazio").attr("style", "display:none");
     var id_trecho = $("#sel4 option:selected").val();
     var descricao = $("#sel4 option:selected").text();

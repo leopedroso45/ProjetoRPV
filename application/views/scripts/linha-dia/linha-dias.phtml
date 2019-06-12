@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.8);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("linha-dia") ?>">Linha Horários</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Detalhes da linha</li>
+                </ol>
+            </nav>
+
+            <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.8); padding: 0px; color: white; text-align: center; font-size: 20px">
+                <thead >
+                    <tr>
+                        <th scope="col">Trecho</th>
+                        <th scope="col">Horário de chegada</th>
+                        
+                        
+                    </tr>
+
+                </thead>
+                
+                
+                <?php $cont = 0; ?>
+
+                <? foreach ($this->listaDasLinhash as $linhaTrecho): ?>
+
+                    <?php if ($cont === 0) {
+                       ?>
+                       <div style="background-color: rgba(0,0,0,0.8); text-align: center">
+
+
+                           <h2><?= $linhaTrecho['descLinha'] ?> </h2>
+                           <h5>| Dia: <?= $linhaTrecho['dia'] ?> | Saída: <?= $linhaTrecho['horario_inicio'] ?> | Origem: <?= $linhaTrecho['origem'] ?> | Tempo total de viagem: <?= $linhaTrecho['tempoLinha'] ?>  |</h5>
+                           <h5>| Motorista: <?= $linhaTrecho['nome'] ?> | Ônibus: <?= $linhaTrecho['modelo'] ?>  |</h5>
+
+                           <?php $tempo_inicio = new DateTime($linhaTrecho['horario_inicio']); ?>
+                           <?php $tempo_inicio->add(new DateInterval('PT00H'.$linhaTrecho['tempo'].'M')) ?>
+
+                       </div>
+                       <tbody>
+                         <tr>
+
+                        <?php
+                           $cont++;
+                           }
+                       ?>
+
+                        <?php if ($cont === 1) {
+
+                          ?>
+                          <tr>
+                           <td>   <?= $linhaTrecho['descTrecho'] ?>  </td>
+
+
+                           <td>  <?= $tempo_inicio->format('H:i') ?>  </td>
+
+
+
+
+                       </tr>
+                       <?php $cont++;
+                   } else{ ?>
+
+                    <tr>
+
+                        <td>   <?= $linhaTrecho['descTrecho'] ?>  </td>
+                     
+                            <?php $tempo_inicio->add(new DateInterval('PT00H'.$linhaTrecho['tempo'].'M')) ?>
+
+                        <td>  <?= $tempo_inicio->format('H:i') ?>  </td>
+
+                    </tr>
+
+                  <?} 
+                endforeach; ?>
+              </tbody>
+          </table>
+
+      </div>
+  </div>
+</div>
