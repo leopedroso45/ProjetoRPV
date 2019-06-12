@@ -98,13 +98,13 @@
                                         <strong>Passageiro</strong> obrigatório.
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <label>Valor:<strong style="color: red">*</strong></label>
-                                    <input type="text" class="form-control" id="valor">
-                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
+                                <!--<div class="col-lg-3">-->
+                                    <!--<label>Valor:<strong style="color: red">*</strong></label>-->
+                                    <input type="hidden" class="form-control" id="valor" >
+<!--                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
                                         <strong>Valor</strong> obrigatório.
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="col-lg-3">
                                     <label>Forma de Pagamento:<strong style="color: red">*</strong></label>
                                     <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
@@ -157,7 +157,7 @@
                             <tr>
                                 <td><?= $compra['nome_usuario'] ?></td>
                                 <td><?= $compra['passageiro'] ?></td>
-                                <td><?= $compra['valor'] ?></td>
+                                <td>R$ <?= $compra['valor'] ?></td>
                                 <td><?= $compra['data'] ?></td>
                                 <td>
                                     <a href="<?= $this->baseUrl('compra/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
@@ -189,7 +189,8 @@
             <div class="modal-body">
                 <select multiple class="form-control" id="sel1" style="height: 270px;">
                     <? foreach ($this->listaDasLinhas as $linha): ?>
-                        <option  value="<?= $linha['id_linha'] ?>"><?= $linha['DESCRICAO']; ?> - <?= $linha['marca']; ?> - <?= $linha['horario_inicio']; ?> - <?= $linha['valor']; ?></option>
+                    <option  value="<?= $linha['id_linha'] . "," . $linha['valor'] * $linha['KM']; ?>">
+                            <?= $linha['DESCRICAO']; ?> - <?= $linha['marca']; ?> - <?= $linha['horario_inicio']; ?> - R$ <?= $linha['valor'] * $linha['KM']; ?></option>
                     <? endforeach; ?>
                 </select>
             </div>

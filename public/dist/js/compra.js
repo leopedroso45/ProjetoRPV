@@ -7,12 +7,17 @@ $(document).ready(function () {
 });
 
 $("#alocar_destino").click(function () {
+    
+    var res = $("#sel1 option:selected").val().split(",");
 
-    var id_destino = $("#sel1 option:selected").val();
+    var id_destino = res[0];
     var descricao = $("#sel1 option:selected").text();
+    var valor = res[1];
+//    alert(valor);
 
     document.getElementById("descricao_destino").value = descricao;
     document.getElementById("descricao_destino").src = id_destino;
+    document.getElementById("valor").value = valor;
 });
 
 $("#alocar_poltrona").click(function () {
@@ -96,6 +101,7 @@ $(".cadastrar_compra").click(function () {
     var seguro = "";
     var beneficio = "";
     var poltronas = [];
+    var cont = 0;
 
     if ($(".seguro-on").hasClass("active")) {
         seguro = "SIM";
@@ -116,7 +122,10 @@ $(".cadastrar_compra").click(function () {
 //        Coletando todos onibus selecionados
     $('.selecionada').each(function () {
         poltronas.push($(this).attr("value"));
+        cont++;
     });
+    
+    valor = valor * cont;
 
 //    alert(seguro +' '+ beneficio);
 
@@ -133,6 +142,9 @@ $(".cadastrar_compra").click(function () {
         $('.passageiro').removeAttr("style");
 
     } else {
+        
+        
+//        alert(valor);
 
         $.ajax({
             type: 'POST',
