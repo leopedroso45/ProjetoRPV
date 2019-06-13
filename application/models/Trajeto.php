@@ -26,7 +26,7 @@ class Application_Model_Trajeto extends Zend_Db_Table_Row_Abstract
     /**
      * @return mixed
      */
-    public function getIdTrajeto()
+    public function getId_trajeto()
     {
         return $this->id_trajeto;
     }
