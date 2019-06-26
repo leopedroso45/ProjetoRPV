@@ -5,7 +5,7 @@
         <div class="col-lg-12" style="padding: 0px;">
             <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
                 <li class="breadcrumb-item"><a href="<?= $this->baseUrl("compra") ?>">Início</a></li>
-                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Compras</li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Venda</li>
             </ol>
         </div>
 
@@ -20,7 +20,7 @@
                             <div class="row">
                                 <input type="text" class="form-control hidden" id="id_usuario" value="<?= Zend_Auth::getInstance()->getIdentity()->id_usuario ?>">
                                 <div class="col-lg-4">
-                                    <label>Destino:</label>
+                                    <label>Destino:<strong style="color: red">*</strong></label>
                                     <a data-toggle="modal" data-target="#destinos" id="destino">
                                         <div class="input-group"  style="padding-bottom: 5px">
                                             <div class="input-group-prepend" >
@@ -30,52 +30,14 @@
                                             </div>
 
                                             <input type="text" class="form-control" src=""  disabled id="descricao_destino">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-2">
-                                    <label>Valor:</label>
-                                    <input type="text" class="form-control" id="valor">
-                                </div>
-                                <div class="col-lg-3">
-                                    <label>Forma de Pagamento:</label>
-                                    <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
-                                        <div class="input-group"  style="padding-bottom: 5px">
-                                            <div class="input-group-prepend" >
-                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
-                                                    Selecionar
-                                                </span>
+                                            <div class="alert alert-danger destino" role="alert" style="display: none;">
+                                                <strong>Destino</strong> obrigatório
                                             </div>
-                                            <input type="text" class="form-control" src=""  disabled id="descricao_forma_pagamento">
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <label>Data da Viagem:</label>
-                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
-                                    <!--data-lock="form"-->
-                                </div>
-                                <div class="col-lg-3">
-                                    <label>Poltrona:</label>
-                                    <a data-toggle="modal" data-target="#poltronas" id="poltrona">
-                                        <div class="input-group"  style="padding-bottom: 5px">
-                                            <div class="input-group-prepend" >
-                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
-                                                    Selecionar
-                                                </span>
-                                            </div>
-
-                                            <input type="text" class="form-control" src=""  disabled id="descricao_poltrona">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-3">
-                                    <label>Passageiro:</label>
-                                    <input type="text" class="form-control" id="passageiro">
-                                </div>
-
-                                <div class="col-lg-2">
-                                    <label>Seguro:</label>
+                                    <label>Seguro:<strong style="color: red">*</strong></label>
                                     <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
                                         <label class="btn btn-default btn-on seguro-on" >
                                             <input type="radio" name="switch" checked="checked">
@@ -87,8 +49,9 @@
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-3">
-                                    <label>Passagem:</label>
+                                    <label>Passagem:<strong style="color: red">*</strong></label>
                                     <div class="btn-group col-lg-offset-5" id="status" data-toggle="buttons">
                                         <label class="btn btn-default btn-online meia">
                                             <input type="radio" name="switch" checked="checked">
@@ -104,6 +67,60 @@
                                         </label>
                                     </div>
                                 </div>
+
+
+                                <div class="col-lg-2">
+                                    <label>Data da Viagem: <strong style="color: red">*</strong></label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
+                                    <!--data-lock="form"-->
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Poltrona:<strong style="color: red">*</strong></label>
+                                    <a data-toggle="modal" data-target="#poltronas" id="poltrona">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_poltrona">
+                                            <div class="alert alert-danger poltrona" role="alert" style="display: none;">
+                                                <strong>Poltrona</strong> obrigatória
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Passageiro:<strong style="color: red">*</strong></label>
+                                    <input type="text" class="form-control" id="passageiro">
+                                    <div class="alert alert-danger passageiro" role="alert" style="display: none;">
+                                        <strong>Passageiro</strong> obrigatório.
+                                    </div>
+                                </div>
+                                <!--<div class="col-lg-3">-->
+                                    <!--<label>Valor:<strong style="color: red">*</strong></label>-->
+                                    <input type="hidden" class="form-control" id="valor" >
+<!--                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
+                                        <strong>Valor</strong> obrigatório.
+                                    </div>
+                                </div>-->
+                                <div class="col-lg-3">
+                                    <label>Forma de Pagamento:<strong style="color: red">*</strong></label>
+                                    <a data-toggle="modal" data-target="#formas-pagamento" id="forma-pagamento">
+                                        <div class="input-group"  style="padding-bottom: 5px">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" src=""  disabled id="descricao_forma_pagamento">
+                                            <div class="alert alert-danger forma_pagamento" role="alert" style="display: none;">
+                                                <strong>Forma de Pag.</strong> obrigatório
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 <button class="btn btn-info btn-block cadastrar_compra" type="button">
                                     Cadastrar
                                 </button>
@@ -113,27 +130,6 @@
                                     <br>
                                     <div class="alert alert-danger descricao" role="alert" style="display: none;">
                                         O campo <strong>Descrição</strong> é obrigatório.
-                                    </div>
-                                </div>
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-6">
-                                    <div class="alert alert-danger valor" role="alert" style="display: none;">
-                                        O campo <strong>Valor</strong> é obrigatório.
-                                    </div>
-                                    <div class="alert alert-danger valor-incorreto" role="alert" style="display: none;">
-                                        O campo <strong>Valor</strong> deve conter no mínimo 5 digitos.
-                                    </div>
-                                    <div class="alert alert-danger dia" role="alert" style="display: none;">
-                                        Verifique o <strong>dia</strong> correto para data de término!
-                                    </div>
-                                    <div class="alert alert-danger mes" role="alert" style="display: none;">
-                                        Verifique o <strong>mês</strong> correto para data de término!
-                                    </div>
-                                    <div class="alert alert-danger ano" role="alert" style="display: none;">
-                                        Verifique o <strong>ano</strong> correto para data de término!
-                                    </div>
-                                    <div class="alert alert-danger data" role="alert" style="display: none;">
-                                        Verifique a <strong>data</strong> correta para término!
                                     </div>
                                 </div>
                             </div>
@@ -157,22 +153,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <? foreach ($this->listaDasCompras as $compra): ?>
-                                <tr>
-                                    <td><?= $compra['nome_usuario'] ?></td>
-                                    <td><?= $compra['passageiro'] ?></td>
-                                    <td><?= $compra['valor'] ?></td>
-                                    <td><?= $compra['data'] ?></td>
-                                    <td>
-                                        <a href="<?= $this->baseUrl('compra/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
-                                            <span class="btn-label">
-                                                <i class="fas fa-eye" style="color: white;"></i>
-                                            </span>
-                                            Visualizar Detalhes
-                                        </a>
-                                    </td>
-                                </tr>
-                            <? endforeach; ?>
+                        <? foreach ($this->listaDasCompras as $compra): ?>
+                            <tr>
+                                <td><?= $compra['nome_usuario'] ?></td>
+                                <td><?= $compra['passageiro'] ?></td>
+                                <td>R$ <?= $compra['valor'] ?></td>
+                                <td><?= $compra['data'] ?></td>
+                                <td>
+                                    <a href="<?= $this->baseUrl('compra/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
+                                        <span class="btn-label">
+                                            <i class="fas fa-eye" style="color: white;"></i>
+                                        </span>
+                                        Visualizar Detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                        <? endforeach; ?>
 
                     </tbody>
                 </table>
@@ -193,7 +189,8 @@
             <div class="modal-body">
                 <select multiple class="form-control" id="sel1" style="height: 270px;">
                     <? foreach ($this->listaDasLinhas as $linha): ?>
-                        <option  value="<?= $linha['id_linha'] ?>"><?= $linha['descricao']; ?></option>
+                    <option  value="<?= $linha['id_linha'] . "," . $linha['valor'] * $linha['KM']; ?>">
+                            <?= $linha['DESCRICAO']; ?> - <?= $linha['marca']; ?> - <?= $linha['horario_inicio']; ?> - R$ <?= $linha['valor'] * $linha['KM']; ?></option>
                     <? endforeach; ?>
                 </select>
             </div>

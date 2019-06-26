@@ -73,8 +73,13 @@ $(document).ready(function () {
         }
     });
 
+
+
+});
+
     $(".cadastrar").click(function ()
     {
+//        alert();
         var descricao = $("#descricao").val();
         var causa = $("#causa").val();
         var culpado = $("#culpado").val();
@@ -133,8 +138,6 @@ $(document).ready(function () {
             });
         }
     });
-
-});
 
 $("#alocar").click(function () {
     var id_onibus = $("#sel5 option:selected").val();

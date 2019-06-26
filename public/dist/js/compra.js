@@ -3,16 +3,21 @@ $(document).ready(function () {
         lang: 'pt'
     });
 
-    $('#valor').mask('9999999');
+    $('#valor').mask('99,99');
 });
 
 $("#alocar_destino").click(function () {
+    
+    var res = $("#sel1 option:selected").val().split(",");
 
-    var id_destino = $("#sel1 option:selected").val();
+    var id_destino = res[0];
     var descricao = $("#sel1 option:selected").text();
+    var valor = res[1];
+//    alert(valor);
 
     document.getElementById("descricao_destino").value = descricao;
     document.getElementById("descricao_destino").src = id_destino;
+    document.getElementById("valor").value = valor;
 });
 
 $("#alocar_poltrona").click(function () {
@@ -42,6 +47,46 @@ $(".poltrona").click(function () {
     $(this).addClass("selecionada");
 });
 
+$('#passageiro').blur(function () {
+    if (this.value.length === 0) {
+        $('.passageiro').removeAttr("style");
+    } else {
+        $('.passageiro').attr("style", "display: none");
+    }
+});
+
+$('#valor').blur(function () {
+    if (this.value.length === 0) {
+        $('.valor').removeAttr("style");
+    } else {
+        $('.valor').attr("style", "display: none");
+    }
+});
+
+$('#poltrona').blur(function () {
+    if (this.value.length === 0) {
+        $('.poltrona').removeAttr("style");
+    } else {
+        $('.poltrona').attr("style", "display: none");
+    }
+});
+
+$('#descricao_destino').blur(function () {
+    if (this.src === "") {
+        $('.destino').removeAttr("style");
+    } else {
+        $('.destino').attr("style", "display: none");
+    }
+});
+
+$('#forma_pagamento').blur(function () {
+    if (this.src === "") {
+        $('.forma_pagamento').removeAttr("style");
+    } else {
+        $('.forma_pagamento').attr("style", "display: none");
+    }
+});
+
 $(".cadastrar_compra").click(function () {
 //    alert();
 
@@ -56,6 +101,7 @@ $(".cadastrar_compra").click(function () {
     var seguro = "";
     var beneficio = "";
     var poltronas = [];
+    var cont = 0;
 
     if ($(".seguro-on").hasClass("active")) {
         seguro = "SIM";
@@ -70,44 +116,63 @@ $(".cadastrar_compra").click(function () {
     } else if ($(".isenta").hasClass("active")) {
         beneficio = "ISENTA";
     }
-    
-        
+
+
 
 //        Coletando todos onibus selecionados
     $('.selecionada').each(function () {
         poltronas.push($(this).attr("value"));
+        cont++;
     });
+    
+    valor = valor * cont;
 
 //    alert(seguro +' '+ beneficio);
 
 //    alert(id_linha +' '+ id_usuario +' '+ id_poltrona +' '+ id_forma_pagamento +' '+ validade +' '+ valor +' '+ seguro +' '+ beneficio);
 
-    $.ajax({
-        type: 'POST',
-        url: baseUrl + 'compra/index',
-        async: false,
-        data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
-            id_forma_pagamento: id_forma_pagamento, passageiro: passageiro,data: data,
-            validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
-        },
-        beforeSend: function () {
-            setTimeout(function () {
-                $('.img-loading').addClass("hidden");
-            }, 1000);
-        },
-        success: function () {
-            bootbox.alert({
-                message: "Cadastro realizado com sucesso.",
-                callback: function () {
-                    location.reload();
-                }
-            });
+    if (valor.length === 0 && passageiro.length === 0) {
+        $('.valor').removeAttr("style");
+        $('.passageiro').removeAttr("style");
 
-        },
-        error: function () {
+    } else if (valor.length === 0) {
+        $('.valor').removeAttr("style");
+
+    } else if (passageiro.length === 0) {
+        $('.passageiro').removeAttr("style");
+
+    } else {
+        
+        
+//        alert(valor);
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'compra/index',
+            async: false,
+            data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
+                id_forma_pagamento: id_forma_pagamento, passageiro: passageiro, data: data,
+                validade: validade, valor: valor, seguro: seguro, beneficio: beneficio
+            },
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
+            success: function () {
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+
+            },
+            error: function () {
 //                alert('error');
-        }
-    });
+            }
+        });
+    }
 
 });
 

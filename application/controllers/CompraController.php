@@ -24,6 +24,10 @@ class CompraController extends Zend_Controller_Action
         $listaLinha = $dbTableLinha->listarTodasLinhasAtivas();
         $this->view->listaDasLinhas = $listaLinha;
 
+//        $dbTableLinhaHorario = new Application_Model_DbTable_Linha_Horario();
+//        $listaLinhaHorario = $dbTableLinhaHorario->listarTodasLinhasHorariosAtivas();
+//        $this->view->listaDasLinhaHorarios = $listaLinhaHorario;
+
         $dbTableFormaPagamento = new Application_Model_DbTable_FormaPagamento();
         $listaFormaPagamento = $dbTableFormaPagamento->listarFormasDePagamentoAtivas();
         $this->view->listaDasFormasDePagamentos = $listaFormaPagamento;
@@ -31,7 +35,7 @@ class CompraController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
 //            $poltrona = explode(',', $dados['id_poltrona']);
-//            var_dump($dados['id_forma_pagamento']);die();
+//            var_dump($dados['id_linha']);die();
             $dbTableCompra = new Application_Model_DbTable_Compra();
             $id_compra = $dbTableCompra->cadastrarCompra($dados);
 
@@ -57,14 +61,14 @@ class CompraController extends Zend_Controller_Action
             }
         }
     }
-    
-        public function visualizarAction()
+
+    public function visualizarAction()
     {
         $id = $this->getRequest()->getParam('id');
         $dbTableCompra = new Application_Model_DbTable_Compra();
         $listaPoltronaPorIdCompra = $dbTableCompra->listarPoltronasPorIdCompra($id);
         $this->view->listarPoltronasPorIdCompra = $listaPoltronaPorIdCompra;
-        
+
         $compraPorIdCompra = $dbTableCompra->getComprasPorId($id);
         $this->view->compraPorId = $compraPorIdCompra;
     }
