@@ -1,0 +1,201 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("encomendas") ?>">Solicitar Transportes de Encomendas</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Visualizar</li>
+            </ol>
+        </div>
+
+
+        <div class="col-lg-12" style="padding: 0px;">
+
+            <div class="card-body">                  
+                <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.7); color: white; padding: 30px;">
+                    <div class="form-group">
+                        <table border="3" style="padding: 10px;"> 
+                            <tr><td>
+                                    <div class="row">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        <center><h2>PRODUTO</h2></center>
+                                    </div>
+                                    <div class="row">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;
+                                        <div class="col-lg-5">
+                                            <label for="descricao" id="label">Produto</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Qual é a encomenda?" value="<? echo $this->encomendas->getNomeProduto() ?>">
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-5">
+                                            <label for="descricao" id="label">Peso (KG)</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="peso" name="peso" placeholder="Peso em KG" value="<? echo $this->encomendas->getPeso() ?>" >
+                                            </div>
+                                        </div>  
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Altura (CM)</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="altura" name="altura" placeholder="Altura em CM" value="<? echo $this->encomendas->getAltura() ?>" >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Largura (CM)</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="largura" name="largura" placeholder="Largura em CM" value="<? echo $this->encomendas->getLargura() ?>">
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Comprimento (CM)</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="comprimento" name="comprimento" placeholder="Comprimento em CM" value="<? echo $this->encomendas->getComprimento() ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </td></tr>
+                        </table>    
+
+
+                        <br>
+                        <table border="4" style="padding: 10px;"> 
+                            <tr><td>
+                                    <div class="row">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp
+                                        <center><h2>REMETENTE</h2></center>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Nome Remetente</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="nomeRemetente" name="nomeRemetente" placeholder="Nome do Remetente" value="<? echo $this->encomendas->getNomeRemetente() ?>">
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">CPF Remetente</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="cpfRemetente" name="cpfRemetente" placeholder="CPF do Remetente" value="<? echo $this->encomendas->getCpfRemetente() ?>">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Telefone</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="celularRemetente" name="celularRemetente" placeholder="N° do celular do Remetente" value="<? echo $this->encomendas->getCelularRemetente() ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp
+                                            <div class="col-lg-2">
+                                                <label for="descricao" id="label">CEP</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="cepRemetente" name="cepRemetente" placeholder="CEP" value="<? echo $this->encomendas->getCepRemetente() ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label for="descricao" id="label">Rua</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="ruaRemetente" name="ruaRemetente" placeholder="Rua remetente" value="<? echo $this->encomendas->getRuaRemetente() ?>">
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-3">
+                                                <label for="descricao" id="label">Bairro</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="bairroRemetente" name="bairroRemetente" placeholder="Bairro" value="<? echo $this->encomendas->getBairroRemetente() ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label for="descricao" id="label">Cidade</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="cidadeRemetente" name="cidadeRemetente" placeholder="Cidade" value="<? echo $this->encomendas->getCidadeRemetente() ?>">
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </td></tr>
+                        </table>    
+                        <br>
+                        <table border="3" style="padding: 10px;"> 
+                            <tr><td>
+                                    <div class="row">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                                        <center><h2>DESTINATÁRIO</h2></center>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Nome Destinatário</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="nomeDestinatario" name="nomeDestinatario" placeholder="Nome do Destinatário" value="<? echo $this->encomendas->getNomeDestinatario() ?>">
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">CPF Destinatário</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="cpfDestinatario" name="cpfDestinatario" placeholder="CPF do Destinatário" value="<? echo $this->encomendas->getCpfDestinatario() ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label for="descricao" id="label">Telefone</label><label  style="color:red" id="label">*</label>
+                                            <div style="padding-bottom: 5px">
+                                                <input type="text" disabled class="form-control" id="celularDestinatario" name="celularDestinatario" placeholder="N° do celular do Destinatário" value="<? echo $this->encomendas->getCelularDestinatario() ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            <div class="col-lg-2">
+                                                <label for="descricao" id="label">CEP</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="cepDestinatario" name="cepDestinatario" placeholder="CEP" value="<? echo $this->encomendas->getCepDestinatario() ?>" >
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label for="descricao" id="label">Rua</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="ruaDestinatario" name="ruaDestinatario" placeholder="Rua destinatário" value="<? echo $this->encomendas->getRuaDestinatario() ?>">
+                                                </div>
+
+                                            </div> 
+                                            <div class="col-lg-3">
+                                                <label for="descricao" id="label">Bairro</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="bairroDestinatario" name="bairroDestinatario" placeholder="Bairro" value="<? echo $this->encomendas->getBairroDestinatario() ?>">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <label for="descricao" id="label">N°</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="numeroDestinatario" name="cidadeRemetente" placeholder="N°" value="<? echo $this->encomendas->getNumeroDestinatario() ?>" >
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-2">
+                                                <label for="descricao" id="label">Cidade</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" disabled class="form-control" id="cidadeDestinatario" name="cidadeDestinatario" placeholder="Cidade" value="<? echo $this->encomendas->getCidadeDestinatario() ?>" >
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    </div></td></tr>
+                        </table>    
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

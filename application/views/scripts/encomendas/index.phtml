@@ -1,0 +1,359 @@
+  
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-local") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Solicitar Transportes de Encomendas</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);">
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Solicitar Transporte de Encomenda</button>
+                </div>
+                <div class="card-body" style="display: none;">
+                    <form class="jumbontron" method="post"  style="background-color:rgba(0,0,0,0.2); color: white; padding: 30px;">
+                        <div class="form-group">
+
+                            <table border="3" style="padding: 10px;"> 
+                                <tr><td>
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            <center><h2>PRODUTO</h2></center>
+                                        </div>
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp&nbsp;
+                                            <div class="col-lg-5">
+                                                <label for="descricao" id="label">Produto</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Qual é a encomenda?" >
+                                                </div>
+                                                <div class="alert-lt alert-danger nomeProduto hidden"  align="center" role="alert">
+                                                    Campo NOME DO PRODUTO obrigatório
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-5">
+                                                <label for="descricao" id="label">Peso (KG)</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="peso" name="peso" placeholder="Peso em KG" >
+                                                </div>
+                                                <div class="alert-lt alert-danger peso hidden"  align="center" role="alert">
+                                                    Campo PESO obrigatório
+                                                </div>
+                                            </div>  
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Altura (CM)</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="altura" name="altura" placeholder="Altura em CM" >
+                                                </div>
+                                                <div class="alert-lt alert-danger altura hidden"  align="center" role="alert">
+                                                    Campo ALTURA obrigatório
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Largura (CM)</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="largura" name="largura" placeholder="Largura em CM" >
+                                                </div>
+                                                <div class="alert-lt alert-danger largura hidden"  align="center" role="alert">
+                                                    Campo LARGURA obrigatório
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Comprimento (CM)</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="comprimento" name="comprimento" placeholder="Comprimento em CM" >
+                                                </div>
+                                                <div class="alert-lt alert-danger comprimento hidden"  align="center" role="alert">
+                                                    Campo COMPRIMENTO obrigatório
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </td></tr>
+                            </table>    
+
+
+                            <br>
+                            <table border="4" style="padding: 10px;"> 
+                                <tr><td>
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp
+                                            <center><h2>REMETENTE</h2></center>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Nome Remetente</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="nomeRemetente" name="nomeRemetente" placeholder="Nome do Remetente" >
+                                                </div>
+                                                <div class="alert-lt alert-danger nomeRemetente hidden"  align="center" role="alert">
+                                                    Campo NOME REMETENTE obrigatório
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">CPF Remetente</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="cpfRemetente" name="cpfRemetente" placeholder="CPF do Remetente" >
+                                                </div>
+                                                <div class="alert-lt alert-danger cpfRemetente hidden"  align="center" role="alert">
+                                                    Campo CPF obrigatório
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Telefone</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="celularRemetente" name="celularRemetente" placeholder="N° do celular do Remetente" >
+                                                </div>
+                                                <div class="alert-lt alert-danger celularRemetente hidden"  align="center" role="alert">
+                                                    Campo TELEFONE obrigatório
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp
+                                                <div class="col-lg-2">
+                                                    <label for="descricao" id="label">CEP</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="cepRemetente" name="cepRemetente" placeholder="CEP" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger cepRemetente hidden"  align="center" role="alert">
+                                                        Campo CEP obrigatório
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label for="descricao" id="label">Rua</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="ruaRemetente" name="ruaRemetente" placeholder="Rua remetente" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger ruaRemetente hidden"  align="center" role="alert">
+                                                        Campo RUA obrigatório
+                                                    </div>
+                                                </div> 
+                                                <div class="col-lg-3">
+                                                    <label for="descricao" id="label">Bairro</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="bairroRemetente" name="bairroRemetente" placeholder="Bairro" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger bairroRemetente hidden"  align="center" role="alert">
+                                                        Campo BAIRRO obrigatório
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label for="descricao" id="label">Cidade</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="cidadeRemetente" name="cidadeRemetente" placeholder="Cidade" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger cidadeRemetente hidden"  align="center" role="alert">
+                                                        Campo cidade obrigatório
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </td></tr>
+                            </table>    
+                            <br>
+                            <table border="3" style="padding: 10px;"> 
+                                <tr><td>
+                                        <div class="row">
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp
+                                            <center><h2>DESTINATÁRIO</h2></center>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Nome Destinatário</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="nomeDestinatario" name="nomeDestinatario" placeholder="Nome do Destinatário" >
+                                                </div>
+                                                <div class="alert-lt alert-danger nomeDestinatario hidden"  align="center" role="alert">
+                                                    Campo NOME DESTINATÁRIO obrigatório
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">CPF Destinatário</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="cpfDestinatario" name="cpfDestinatario" placeholder="CPF do Destinatário" >
+                                                </div>
+                                                <div class="alert-lt alert-danger cpfDestinatario hidden"  align="center" role="alert">
+                                                    Campo CPF obrigatório
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <label for="descricao" id="label">Telefone</label><label  style="color:red" id="label">*</label>
+                                                <div style="padding-bottom: 5px">
+                                                    <input type="text" class="form-control" id="celularDestinatario" name="celularDestinatario" placeholder="N° do celular do Destinatário" >
+                                                </div>
+                                                <div class="alert-lt alert-danger celularDestinatario hidden"  align="center" role="alert">
+                                                    Campo TELEFONE obrigatório
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                <div class="col-lg-2">
+                                                    <label for="descricao" id="label">CEP</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="cepDestinatario" name="cepDestinatario" placeholder="CEP" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger cepDestinatario hidden"  align="center" role="alert">
+                                                        Campo CEP obrigatório
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label for="descricao" id="label">Rua</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="ruaDestinatario" name="ruaDestinatario" placeholder="Rua destinatário" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger ruaDestinatario hidden"  align="center" role="alert">
+                                                        Campo RUA obrigatório
+                                                    </div>
+                                                </div> 
+                                                <div class="col-lg-3">
+                                                    <label for="descricao" id="label">Bairro</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="bairroDestinatario" name="bairroDestinatario" placeholder="Bairro" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger bairroDestinatario hidden"  align="center" role="alert">
+                                                        Campo BAIRRO obrigatório
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <label for="descricao" id="label">N°</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="numeroDestinatario" name="cidadeRemetente" placeholder="N°" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger numeroDestinatario hidden"  align="center" role="alert">
+                                                        Campo NÚMERO obrigatório
+                                                    </div>
+                                                </div> 
+                                                <div class="col-lg-2">
+                                                    <label for="descricao" id="label">Cidade</label><label  style="color:red" id="label">*</label>
+                                                    <div style="padding-bottom: 5px">
+                                                        <input type="text" class="form-control" id="cidadeDestinatario" name="cidadeDestinatario" placeholder="Cidade" >
+                                                    </div>
+                                                    <div class="alert-lt alert-danger cidadeDestinatario hidden"  align="center" role="alert">
+                                                        Campo CIDADE obrigatório
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        </div></td></tr>
+                            </table>    
+
+                        </div>
+                        <button class="btn btn-info btn-block cadastrar" type="button">
+                            Cadastrar
+                        </button>
+                </div>
+            </div>
+            </form>
+        </div>
+
+
+        <!-- fim container form-->
+
+        <div class="col-lg-12">
+            <table class="table"  style="margin-top: 1%; background-color:rgba(0,0,0,0.7); padding: 0px; color: white; text-align: center">
+                <thead >
+                    <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Peso</th>
+                        <th scope="col">Remetente</th>
+                        <th scope="col">Cidade de Saída</th>
+                        <th scope="col">Cidade de Chegada</th>
+                        <th scope="col">Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDeEncomendas as $encomendas): ?>
+                        <tr>
+                            <td>    <?= $encomendas['nomeProduto'] ?>    </td>
+                            <td>    <?= $encomendas['peso'] ?></td>
+                            <td>    <?= $encomendas['nomeRemetente'] ?></td>
+                            <td>    <?= $encomendas['cidadeRemetente'] ?></td>
+                            <td>    <?= $encomendas['cidadeDestinatario'] ?></td>
+                            <td class="text-center">
+                                <a class="btn btn-primary btn-labeled" href="<?= $this->baseUrl('/encomendas/editar/id/' . $encomendas['id_produto']) ?>" >
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    Visualizar Detalhes
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<? foreach ($this->listaDeEncomendas as $encomendas): ?>
+    <div class="modal fade" id="<?= 'myModal' . $encomendas['id_produto'] ?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">VISUALIZAR ENCOMENDAS</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="">Causa:</label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['nomeProduto'] ?> " name="nomeProduto" id="nomeProduto">
+                                <label >Data de nascimento:</label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['peso'] ?>" name="peso" id="peso">
+                                <label >CPF:</label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['altura'] ?>" name="altura" id="altura">
+                                <label >RG:</label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['largura'] ?>" name="largura" id="largura">
+                                <label> Celular: </label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['comprimento'] ?>" name="comprimento" id="comprimento">
+                            </div>
+                            <div class="col-lg-6">
+                                <label> Rua: </label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['nomeRemetente'] ?>" name="nomeRemetente" id="nomeRemetente">
+                                <label> Nº: </label>
+                                <input type="text" disabled class="form-control" value="<?= $encomendas['cpfRemetente'] ?>" name="cpfRemetente" id="cpfRemetente">									
+                            </div>
+                        </div>
+                    </form>							
+                </div>			 
+            </div>
+
+        </div>
+    </div>
+    </div>
+<? endforeach; ?>
+
+
+
+
+
+
+
+
+
