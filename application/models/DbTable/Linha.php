@@ -39,6 +39,15 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 //               var_dump($select->__toString());die();
         return $this->fetchAll($select);
     }
+    
+        public function listarTodasCidades()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('C' => 'CIDADE'), array('C.*'));
+
+//               var_dump($select->__toString());die();
+        return $this->fetchAll($select);
+    }
 
     public function listarTodosLinhas1()
     {

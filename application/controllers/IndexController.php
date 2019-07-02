@@ -60,6 +60,9 @@ class IndexController extends Zend_Controller_Action
             if ($usuario->getId_perfil() === '7') {
                 $this->_redirect('/admin-vendedor');
             }
+            if ($usuario->getId_perfil() === '8') {
+                $this->_redirect('/admin-cliente');
+            }
         }
     }
 

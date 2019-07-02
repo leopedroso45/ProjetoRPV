@@ -1,0 +1,124 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-estudante") ?>">Início</a></li>
+                <li class="breadcrumb-item active" style="color: white;" aria-current="page">Compra</li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="card" style="background-color:rgba(0,0,0,0.5);"><!--
+                <div class="card-header">
+                    <button class="btn btn-info clickable card-collapsed">Cadastrar</button>
+                </div>-->
+                <div class="card-body">
+                    <div class="jumbontron" method="post" style="background-color:rgba(0,0,0,0.2); color: white; padding: 15px; border-radius: 0.25rem;">
+                        <div class="form-group">
+                            <div class="row">
+                                <input type="text" class="form-control hidden" id="id_usuario" value="<?= Zend_Auth::getInstance()->getIdentity()->id_usuario ?>">
+                                <div class="col-lg-4">
+                                    <label>Cidade de origem:<strong style="color: red">*</strong></label>
+                                    <a data-toggle="modal" data-target="#origens">
+                                        <div class="input-group"  style="padding-bottom: 5px; cursor: pointer;">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control" src="" disabled id="origem" placeholder="Cidade de origem" style="cursor: pointer;">
+                                            <div class="alert alert-danger origem" role="alert" style="display: none;">
+                                                <strong>Origem</strong> obrigatório
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Cidade de destino:<strong style="color: red">*</strong></label>
+                                    <a data-toggle="modal" data-target="#destinos">
+                                        <div class="input-group"  style="padding-bottom: 5px; cursor: pointer;">
+                                            <div class="input-group-prepend" >
+                                                <span style="cursor: pointer;" class="input-group-text" id="validationTooltipUsernamePrepend">
+                                                    Selecionar
+                                                </span>
+                                            </div>
+
+                                            <input type="text" class="form-control" src=""  disabled id="destino" placeholder="Cidade de destino" style="cursor: pointer;">
+                                            <div class="alert alert-danger destino" role="alert" style="display: none;">
+                                                <strong>Destino</strong> obrigatório
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Data de ida: <strong style="color: red">*</strong></label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
+                                    <!--data-lock="form"-->
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Data de volta: <strong style="color: red">*</strong></label>
+                                    <input type="text" class="form-control datedropper" id="data_inicio" data-format="d/m/Y" data-large-mode="true" data-large-default="true" data-lock=""  data-translate-mode="true" data-lang="pt" data-theme="my-style" data-max-year="2030">
+                                    <!--data-lock="form"-->
+                                </div>
+                                <hr>
+                                <button class="btn btn-info btn-block cadastrar_compra" type="button">
+                                    Buscar
+                                </button>
+                                <!--<hr>-->
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="origens" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Selecione um local de destino</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select multiple class="form-control" id="sel3" style="height: 270px;">
+                        <? foreach ($this->listaDasOrigens as $destino): ?>
+                            <option  value="<?= $destino['id_cidade'] ?>"><?= $destino['nome']; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="alocar_origem" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="modal fade" id="destinos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Selecione um local de destino</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select multiple class="form-control" id="sel4" style="height: 270px;">
+                        <? foreach ($this->listaDasOrigens as $destino): ?>
+                            <option  value="<?= $destino['id_cidade'] ?>"><?= $destino['nome']; ?></option>
+                        <? endforeach; ?>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="alocar_destiny" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>

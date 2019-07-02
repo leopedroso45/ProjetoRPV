@@ -6,6 +6,38 @@ $(document).ready(function () {
     $('#valor').mask('99,99');
 });
 
+$("#alocar_origem").click(function () {
+    
+    var id_cidade = $("#sel3 option:selected").val();
+//    alert(id_cidade);
+//
+//    var id_destino = res[0];
+    var descricao = $("#sel3 option:selected").text();
+//    alert(descricao);
+//    var valor = res[1];
+//    alert(valor);
+
+    document.getElementById("origem").value = descricao;
+    document.getElementById("origem").src = id_cidade;
+//    document.getElementById("valor").value = valor;
+});
+
+$("#alocar_destiny").click(function () {
+    
+    var id_cidade = $("#sel4 option:selected").val();
+//    alert(id_cidade);
+//
+//    var id_destino = res[0];
+    var descricao = $("#sel4 option:selected").text();
+//    alert(descricao);
+//    var valor = res[1];
+//    alert(valor);
+
+    document.getElementById("destino").value = descricao;
+    document.getElementById("destino").src = id_cidade;
+//    document.getElementById("valor").value = valor;
+});
+
 $("#alocar_destino").click(function () {
     
     var res = $("#sel1 option:selected").val().split(",");
