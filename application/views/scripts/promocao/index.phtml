@@ -2,32 +2,53 @@
 	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
   <div class="row">
   	<div class="col-lg-4"></div>
-  	  <div class="col-lg-4">
-        <form>
-          <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-light">
-            <div class="card-body">
-              <div class="form-group">
+  	<div class="col-lg-4">
+      <form>
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+          <div class="card-body">
+            <div class="form-group">
               <label><center><h3>Cadastre uma nova promoção</h3></center></label>
-              </div>
-              <div class="form-group">
-                <label>Nome</label>
-                <input type="text" class="form-control" id="nome_promocao" required>
-              </div>
-              <div class="form-group">
-                <label>Descrição</label>
-                <input type="text" class="form-control" id="descricao_promocao" required>
-              </div>
-              <div class="form-group">
-                <label>Valor</label>
-                <input type="number" class="form-control" id="valor_promocao" min="5" max="100" required>
-              </div>
-              <button type="button" class="btn btn-block btn-primary cadastrarPromocao">Cadastrar</button>
-              <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
             </div>
-          </div>      
-          <div class="col-lg-4"></div>
-        </form>
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" class="form-control" id="nome_promocao" required>
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <input type="text" class="form-control" id="descricao_promocao" required>
+            </div>
+            <div class="form-group">
+              <label>Valor</label>
+              <input type="number" class="form-control" id="valor_promocao" min="5" max="100" required>
+            </div>
+            <button type="button" class="btn btn-block btn-primary cadastrarPromocao">Cadastrar</button>
+            <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
+          </div>
+        </div>
+      </form>
+    </div>      
+    <div class="col-lg-4">
+    <div style="background-color:DodgerBlue;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Identificador</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
   </div>
 </div>
