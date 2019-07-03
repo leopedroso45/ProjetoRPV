@@ -13,6 +13,7 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         $compra->setHorario_inicio("10:00");
         $compra->setId_linha($dados['id_linha']);
         $compra->setId_dia("2");
+        //$compra->set_Promocao("id_promocao");
         $compra->setId_forma_pagamento($dados['id_forma_pagamento']);
         $compra->setId_usuario($dados['id_usuario']);
         $compra->setValor($dados['valor']);
