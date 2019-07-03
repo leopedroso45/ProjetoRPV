@@ -27,7 +27,7 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
-                ->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha', 'L.KM'))
+                ->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha', 'L.KM', 'L.origem', 'L.destino'))
                 ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
                 ->from(array('T' => 'tarifa_intermunicipal'), array('T.*'))
                 ->from(array('C' => 'categoria_onibus'), array('C.*'))
@@ -39,13 +39,31 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
 //               var_dump($select->__toString());die();
         return $this->fetchAll($select);
     }
-    
-        public function listarTodasCidades()
+
+    public function listarTodasCidades()
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('C' => 'CIDADE'), array('C.*'));
 
 //               var_dump($select->__toString());die();
+        return $this->fetchAll($select);
+    }
+
+    public function listarLinhaHorariosPor($dados)
+    {
+//        var_dump($dados);
+        $origem = $dados['origem'];
+        $destino = $dados['destino'];
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('L' => 'LINHA'), array('L.*'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+                ->where('L.ID_LINHA = LH.ID_LINHA')
+                ->where("L.DESTINO = '$destino'")
+                ->where("L.ORIGEM = '$origem'");
+
+//               var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
         return $this->fetchAll($select);
     }
 
