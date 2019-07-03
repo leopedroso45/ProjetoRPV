@@ -7,7 +7,7 @@ $(document).ready(function () {
 });
 
 $("#alocar_origem").click(function () {
-    
+
     var id_cidade = $("#sel3 option:selected").val();
 //    alert(id_cidade);
 //
@@ -23,7 +23,7 @@ $("#alocar_origem").click(function () {
 });
 
 $("#alocar_destiny").click(function () {
-    
+
     var id_cidade = $("#sel4 option:selected").val();
 //    alert(id_cidade);
 //
@@ -39,7 +39,7 @@ $("#alocar_destiny").click(function () {
 });
 
 $("#alocar_destino").click(function () {
-    
+
     var res = $("#sel1 option:selected").val().split(",");
 
     var id_destino = res[0];
@@ -156,7 +156,7 @@ $(".cadastrar_compra").click(function () {
         poltronas.push($(this).attr("value"));
         cont++;
     });
-    
+
     valor = valor * cont;
 
 //    alert(seguro +' '+ beneficio);
@@ -174,8 +174,8 @@ $(".cadastrar_compra").click(function () {
         $('.passageiro').removeAttr("style");
 
     } else {
-        
-        
+
+
 //        alert(valor);
 
         $.ajax({
@@ -205,6 +205,33 @@ $(".cadastrar_compra").click(function () {
             }
         });
     }
+
+});
+
+$(".buscar").click(function () {
+//    alert('buscando');
+
+    var origem = $("#origem").val();
+    var destino = $("#destino").val();
+//    alert(origem);
+//    alert(destino);
+
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'admin-cliente/index',
+        async: false,
+        data: {origem: origem, destino: destino
+        },
+        beforeSend: function () {
+
+        },
+        success: function () {
+
+        },
+        error: function () {
+
+        }
+    });
 
 });
 
