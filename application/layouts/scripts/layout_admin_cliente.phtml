@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="UTF-8">
+        <title>Controle de Frotas</title>
+        <script type="text/javascript">
+            var baseUrl = '<?= $this->baseUrl('/') ?>';
+        </script>
+        <link rel="icon" type="image/png" href=<?= $this->baseUrl("dist/img/") ?> />
+        <!--Caminho da public "$this->baseUrl()-->
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-datepicker.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/datedropper.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/my-style.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/compra.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/bootstrap-cerulean.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/categoriaPassageiro.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/trajeto.css") ?> />
+        <link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/style.css") ?> />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="position: fixed; top:0; right:0; left:0; z-index:1030;">
+            <div class="container">
+                <a class="navbar-brand" href="<?= $this->baseUrl("") ?>">
+                    PampaBus
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?= $this->baseUrl("admin-cliente") ?>">
+                                <i class="fas fa-home"></i>
+                                Início
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->baseUrl("admin-cliente/buscar") ?>">
+                                Compra Online
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#Modal-sair" accesskey="s" title="(Alt+s) Sair">
+                                <u>S</u>air
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Conteudo das páginas-->
+        <main style="margin-top: 5%;">
+            <?php echo $this->layout()->content; ?>
+        </main>
+
+        <div class="modal fade" id="Modal-sair" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title float-left" style="color:black;"></h5>
+                    </div>
+                    <div class="modal-body">
+                        <h5>
+                            Deseja realmente sair do sistema?
+                        </h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" href="<?= $this->baseUrl('/admin-secretario/sair') ?>">
+                            Confirmar
+                        </a>
+                        <a class="btn btn-dark" style="color: white; cursor: pointer;" data-dismiss="modal">
+                            Cancelar
+                        </a>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/jquery-3.3.1.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootstrap.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/bootbox.min.js') ?>"></script>
+        <script type="text/javascript" src="<?= $this->baseUrl('dist/js/mask.js') ?>"></script>
+        <?= $this->headScript(); ?>
+    </body>
+</html>

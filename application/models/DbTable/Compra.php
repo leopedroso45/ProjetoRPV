@@ -10,13 +10,14 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
     {
         $compra = $this->createRow();
         /* @var $compra Application_Model_Compra */
-        $compra->setHorario_inicio("10:00");
+        $compra->setHorario_inicio($dados['horario_inicio']);
         $compra->setId_linha($dados['id_linha']);
-        $compra->setId_dia("2");
+        $compra->setId_dia($dados['id_dia']);
+        //$compra->set_Promocao("id_promocao");
         $compra->setId_forma_pagamento($dados['id_forma_pagamento']);
         $compra->setId_usuario($dados['id_usuario']);
-        $compra->setValor($dados['valor']);
-        $compra->setPassageiro($dados['passageiro']);
+//        $compra->setValor($dados['valor']);
+//        $compra->setPassageiro($dados['passageiro']);
         $compra->setPassagem($dados['beneficio']);
         $compra->setSeguro($dados['seguro']);
         $compra->setData($dados['data']);
@@ -133,6 +134,40 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
         $select = $this->select()->where('id_compra = ?', $id);
 
         return $this->fetchRow($select);
+    }
+
+//    public function getComprasPorIdUsuario($id)
+//    {
+//        $select = $this->select()->where('id_usuario = ?', $id);
+////        var_dump($select->__toString());die();
+//
+//        return $this->fetchAll($select);
+//    }
+
+    public function getComprasPorIdUsuario($id)
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+                ->from(array('L' => 'LINHA'), array('L.descricao'))
+                ->from(array('D' => 'DIA'), array('D.descricao AS dia'))
+                ->from(array('U' => 'USUARIO'), array('U.*'))
+                ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
+                ->from(array('CO' => 'categoria_onibus'), array('CO.descricao AS DESC'))
+                
+                ->where('LH.ID_ONIBUS_VIAGEM = O.ID_ONIBUS_VIAGEM')
+                ->where('LH.ID_LINHA = L.ID_LINHA')
+                ->where('LH.ID_DIA = D.ID_DIA')
+                ->where('L.ID_LINHA = C.ID_LINHA')
+                ->where('D.ID_DIA = C.ID_DIA')
+                ->where('U.ID_USUARIO = C.ID_USUARIO')
+                ->where('CO.ID_CATEGORIA_ONIBUS = O.ID_CATEGORIA_ONIBUS')
+                ->where('C.ID_USUARIO = "' . $id . '" ');
+
+//               var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
     }
 
     public function editarSeguro($id, $dados)

@@ -27,16 +27,65 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
-                ->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha', 'L.KM'))
+                ->from(array('D' => 'DIA'), array('D.descricao AS DESC'))
+                ->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha', 'L.KM', 'L.origem', 'L.destino'))
                 ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
                 ->from(array('T' => 'tarifa_intermunicipal'), array('T.*'))
                 ->from(array('C' => 'categoria_onibus'), array('C.*'))
                 ->where('LH.ID_ONIBUS_VIAGEM = O.ID_ONIBUS_VIAGEM')
                 ->where('LH.ID_LINHA = L.ID_LINHA')
+                ->where('LH.ID_DIA = D.ID_DIA')
                 ->where('C.ID_CATEGORIA_ONIBUS = O.ID_CATEGORIA_ONIBUS')
                 ->where('T.ID_CATEGORIA_ONIBUS = O.ID_CATEGORIA_ONIBUS');
 
 //               var_dump($select->__toString());die();
+        return $this->fetchAll($select);
+    }
+
+    public function listarTodasCidades()
+    {
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('C' => 'CIDADE'), array('C.*'));
+
+//               var_dump($select->__toString());die();
+        return $this->fetchAll($select);
+    }
+
+    public function listarLinhaHorariosPor($dados)
+    {
+//        var_dump($dados);
+        $origem = $dados['origem'];
+        $destino = $dados['destino'];
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('L' => 'LINHA'), array('L.*'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+                ->where('L.ID_LINHA = LH.ID_LINHA')
+                ->where("L.DESTINO = '$destino'")
+                ->where("L.ORIGEM = '$origem'");
+
+//               var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
+        return $this->fetchAll($select);
+    }
+
+    public function listarLinhaHorario($linha_horario)
+    {
+//        $linhaHorario = explode(',', $dados['id_dia']);
+//        var_dump($linha_horario[1]);die();
+        $select = $this->select()->setIntegrityCheck(false);
+        $select->from(array('L' => 'LINHA'), array('L.ID_LINHA', 'L.descricao'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+                ->from(array('D' => 'DIA'), array('D.ID_DIA', 'D.DESCRICAO'))
+                ->where('L.ID_LINHA = LH.ID_LINHA')
+                ->where('LH.ID_DIA = D.ID_DIA')
+                ->where('LH.ID_LINHA = "' . $linha_horario[1] . '"')
+                ->where('LH.ID_DIA = "' . $linha_horario[0] . '"')
+                ->where('LH.HORARIO_INICIO = "' . $linha_horario[2] . '"');
+
+//               var_dump($select->__toString());die();
+//        o var_dump serve pra ti ver o resultado da instrução sql na página
+
         return $this->fetchAll($select);
     }
 

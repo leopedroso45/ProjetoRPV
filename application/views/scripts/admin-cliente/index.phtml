@@ -1,0 +1,48 @@
+<img src="<?= $this->baseUrl("dist/img/loading.gif") ?>" class="img-loading hidden" alt="carregando...">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="padding: 0px;">
+            <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                <li class="breadcrumb-item"><a href="<?= $this->baseUrl("admin-estudante") ?>">Início</a></li>
+            </ol>
+        </div>
+
+        <div class="col-lg-12">
+            <table class="table"  style="margin-top: 2%; background-color:rgba(0,0,0,0.5); padding: 0px; color: white;">
+                <thead >
+                    <tr>
+                        <th scope="col">Origem x Destino</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Dia</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Horário</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? foreach ($this->listaDasCompras as $compra): ?>
+                        <? if ($compra === NULL) { ?>
+                            Nenhum resultado
+                        <? } ?>
+                        <tr>
+                            <td><?= $compra['descricao'] ?></td>
+                            <td><?= $compra['DESC'] ?></td>
+                            <td><?= $compra['dia'] ?></td>
+                            <td><?= $compra['data'] ?></td>
+                            <td><?= $compra['horario_inicio'] ?>h</td>
+                            <td>
+                                <a href="<?= $this->baseUrl('admin-cliente/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
+                                    <span class="btn-label">
+                                        <i class="fas fa-eye" style="color: white;"></i>
+                                    </span>
+                                    Visualizar
+                                </a>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

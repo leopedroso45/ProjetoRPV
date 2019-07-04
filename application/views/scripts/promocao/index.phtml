@@ -1,0 +1,54 @@
+<div class="container">
+	<link rel="stylesheet" type="text/css" href=<?= $this->baseUrl("dist/css/forma-pagamento.css") ?> />
+  <div class="row">
+  	<div class="col-lg-4"></div>
+  	<div class="col-lg-4">
+      <form>
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+          <div class="card-body">
+            <div class="form-group">
+              <label><center><h3>Cadastre uma nova promoção</h3></center></label>
+            </div>
+            <div class="form-group">
+              <label>Nome</label>
+              <input type="text" class="form-control" id="nome_promocao" required>
+            </div>
+            <div class="form-group">
+              <label>Descrição</label>
+              <input type="text" class="form-control" id="descricao_promocao" required>
+            </div>
+            <div class="form-group">
+              <label>Valor</label>
+              <input type="number" class="form-control" id="valor_promocao" min="5" max="100" required>
+            </div>
+            <button type="button" class="btn btn-block btn-primary cadastrarPromocao">Cadastrar</button>
+            <a href="../public/menuinicial" class="btn btn-block btn-danger btn-primary">Voltar</a>
+          </div>
+        </div>
+      </form>
+    </div>      
+    <div class="col-lg-4">
+    <div style="background-color:DodgerBlue; height: 500px; overflow:auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Identificador</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($this->listaDasPromocoes as $promocao): ?>
+              <tr>
+                <th scope="row"><?= $promocao->getId_promocao() ?></th>
+                <td><?= $promocao->getNome_promocao() ?></td>
+                <td><?= $promocao->getValor_promocao() ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

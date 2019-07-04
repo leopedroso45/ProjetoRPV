@@ -6,8 +6,40 @@ $(document).ready(function () {
     $('#valor').mask('99,99');
 });
 
+$("#alocar_origem").click(function () {
+
+    var id_cidade = $("#sel3 option:selected").val();
+//    alert(id_cidade);
+//
+//    var id_destino = res[0];
+    var descricao = $("#sel3 option:selected").text();
+//    alert(descricao);
+//    var valor = res[1];
+//    alert(valor);
+
+    document.getElementById("origem").value = descricao;
+    document.getElementById("origem").src = id_cidade;
+//    document.getElementById("valor").value = valor;
+});
+
+$("#alocar_destiny").click(function () {
+
+    var id_cidade = $("#sel4 option:selected").val();
+//    alert(id_cidade);
+//
+//    var id_destino = res[0];
+    var descricao = $("#sel4 option:selected").text();
+//    alert(descricao);
+//    var valor = res[1];
+//    alert(valor);
+
+    document.getElementById("destino").value = descricao;
+    document.getElementById("destino").src = id_cidade;
+//    document.getElementById("valor").value = valor;
+});
+
 $("#alocar_destino").click(function () {
-    
+
     var res = $("#sel1 option:selected").val().split(",");
 
     var id_destino = res[0];
@@ -124,7 +156,7 @@ $(".cadastrar_compra").click(function () {
         poltronas.push($(this).attr("value"));
         cont++;
     });
-    
+
     valor = valor * cont;
 
 //    alert(seguro +' '+ beneficio);
@@ -142,8 +174,8 @@ $(".cadastrar_compra").click(function () {
         $('.passageiro').removeAttr("style");
 
     } else {
-        
-        
+
+
 //        alert(valor);
 
         $.ajax({
@@ -173,6 +205,96 @@ $(".cadastrar_compra").click(function () {
             }
         });
     }
+
+});
+
+$(".cadastrar_compra_online").click(function () {
+//    alert();
+
+    var id_linha = $("#id_linha").val();
+    var id_dia = $("#id_dia").val();
+    var horario_inicio = $("#horario_inicio").val();
+    var id_usuario = $("#id_usuario").val();
+    var id_forma_pagamento = $("#descricao_forma_pagamento").attr("src");
+    var data = $("#data").val();
+    var seguro = "";
+    var beneficio = "";
+    var poltronas = [];
+    var cont = 0;
+
+    if ($(".seguro-on").hasClass("active")) {
+        seguro = "SIM";
+    } else if ($(".seguro-off").hasClass("active")) {
+        seguro = "NÃO";
+    }
+
+    if ($(".inteira").hasClass("active")) {
+        beneficio = "INTEIRA";
+    } else if ($(".meia").hasClass("active")) {
+        beneficio = "MEIA";
+    } else if ($(".isenta").hasClass("active")) {
+        beneficio = "ISENTA";
+    }
+
+//        Coletando todos onibus selecionados
+    $('.selecionada').each(function () {
+        poltronas.push($(this).attr("value"));
+        cont++;
+    });
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'admin-cliente/cadastrar',
+            async: false,
+            data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
+                id_forma_pagamento: id_forma_pagamento, data: data, id_dia: id_dia,
+                seguro: seguro, beneficio: beneficio, horario_inicio: horario_inicio
+            },
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
+            success: function () {
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+
+            },
+            error: function () {
+//                alert('error');
+            }
+        });
+
+});
+
+$(".buscar").click(function () {
+//    alert('buscando');
+
+    var origem = $("#origem").val();
+    var destino = $("#destino").val();
+//    alert(origem);
+//    alert(destino);
+
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + 'admin-cliente/index',
+        async: false,
+        data: {origem: origem, destino: destino
+        },
+        beforeSend: function () {
+
+        },
+        success: function () {
+
+        },
+        error: function () {
+
+        }
+    });
 
 });
 
