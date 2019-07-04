@@ -208,6 +208,69 @@ $(".cadastrar_compra").click(function () {
 
 });
 
+$(".cadastrar_compra_online").click(function () {
+//    alert();
+
+    var id_linha = $("#id_linha").val();
+    var id_dia = $("#id_dia").val();
+    var horario_inicio = $("#horario_inicio").val();
+    var id_usuario = $("#id_usuario").val();
+    var id_forma_pagamento = $("#descricao_forma_pagamento").attr("src");
+    var data = $("#data").val();
+    var seguro = "";
+    var beneficio = "";
+    var poltronas = [];
+    var cont = 0;
+
+    if ($(".seguro-on").hasClass("active")) {
+        seguro = "SIM";
+    } else if ($(".seguro-off").hasClass("active")) {
+        seguro = "NÃO";
+    }
+
+    if ($(".inteira").hasClass("active")) {
+        beneficio = "INTEIRA";
+    } else if ($(".meia").hasClass("active")) {
+        beneficio = "MEIA";
+    } else if ($(".isenta").hasClass("active")) {
+        beneficio = "ISENTA";
+    }
+
+//        Coletando todos onibus selecionados
+    $('.selecionada').each(function () {
+        poltronas.push($(this).attr("value"));
+        cont++;
+    });
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + 'admin-cliente/cadastrar',
+            async: false,
+            data: {id_linha: id_linha, id_usuario: id_usuario, id_poltrona: poltronas,
+                id_forma_pagamento: id_forma_pagamento, data: data, id_dia: id_dia,
+                seguro: seguro, beneficio: beneficio, horario_inicio: horario_inicio
+            },
+            beforeSend: function () {
+                setTimeout(function () {
+                    $('.img-loading').addClass("hidden");
+                }, 1000);
+            },
+            success: function () {
+                bootbox.alert({
+                    message: "Cadastro realizado com sucesso.",
+                    callback: function () {
+                        location.reload();
+                    }
+                });
+
+            },
+            error: function () {
+//                alert('error');
+            }
+        });
+
+});
+
 $(".buscar").click(function () {
 //    alert('buscando');
 

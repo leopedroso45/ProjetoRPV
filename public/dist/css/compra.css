@@ -6,3 +6,7 @@ option, #descricao_destino, #descricao_forma_pagamento, #descricao_poltrona,
 .btn, .datedropper{
     cursor: pointer;
 }
+
+/*#sel2 > option:nth-child(1){
+    background-image:url("../../dist/img/Livre.gif");
+}*/
