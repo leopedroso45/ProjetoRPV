@@ -11,15 +11,15 @@
               <label><center><h3>Cadastre uma nova promoção</h3></center></label>
             </div>
             <div class="form-group">
-              <label>Nome</label>
+                <label style="color:black;">Nome</label>
               <input type="text" class="form-control" id="nome_promocao" required>
             </div>
             <div class="form-group">
-              <label>Descrição</label>
+              <label style="color:black;">Descrição</label>
               <input type="text" class="form-control" id="descricao_promocao" required>
             </div>
             <div class="form-group">
-              <label>Valor</label>
+              <label style="color:black;">Valor</label>
               <input type="number" class="form-control" id="valor_promocao" min="5" max="100" required>
             </div>
             <button type="button" class="btn btn-block btn-primary cadastrarPromocao">Cadastrar</button>
@@ -43,7 +43,7 @@
               <tr>
                 <th scope="row"><?= $promocao->getId_promocao() ?></th>
                 <td><?= $promocao->getNome_promocao() ?></td>
-                <td><?= $promocao->getValor_promocao() ?></td>
+                <td>R$ <?= $promocao->getValor_promocao() ?>,00</td>
               </tr>
             <?php endforeach; ?>
           </tbody>
