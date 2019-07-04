@@ -1,3 +1,9 @@
+$(document).ready(function () {
+    //$('#nome_promocao').mask('SSSSSSS');
+    //$('#descricao_promocao').mask('SSSSSSSSSSSSSSS');
+    $('#valor_promocao').mask('99.99');
+});
+
 $(".cadastrarPromocao").click(function (){
 
     var nome_promocao = $("#nome_promocao").val();
