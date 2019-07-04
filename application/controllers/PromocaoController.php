@@ -10,6 +10,9 @@ class PromocaoController extends Zend_Controller_Action
     public function indexAction()
     {
         $dbtablePromocao = new Application_Model_DbTable_Promocao();
+        $listaPromocoes = $dbtablePromocao->listarTodasPromocoes();
+        $this->view->listaDasPromocoes = $listaPromocoes;
+
         if ($this->getRequest()->isPost()) {
             $dados = $this->getRequest()->getParams();
             $dbtablePromocao->cadastrarPromocao($dados);     

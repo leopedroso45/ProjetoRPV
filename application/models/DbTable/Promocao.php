@@ -13,4 +13,9 @@ class Application_Model_DbTable_Promocao extends Zend_Db_Table_Abstract {
         return $promocao->save();
     }
 
+    public function listarTodasPromocoes()
+    {
+        return $this->fetchAll();
+    }
+
 }
