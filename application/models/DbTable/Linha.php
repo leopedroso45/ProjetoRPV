@@ -26,7 +26,7 @@ class Application_Model_DbTable_Linha extends Zend_Db_Table_Abstract
     public function listarTodasLinhasAtivas()
     {
         $select = $this->select()->setIntegrityCheck(false);
-        $select->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*'))
+        $select->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*','LH.valor AS VAL'))
                 ->from(array('D' => 'DIA'), array('D.descricao AS DESC'))
                 ->from(array('L' => 'LINHA'), array('L.DESCRICAO', 'L.id_linha', 'L.KM', 'L.origem', 'L.destino'))
                 ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))

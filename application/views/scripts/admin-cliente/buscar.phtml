@@ -79,9 +79,10 @@
                 <thead >
                     <tr>
                         <th scope="col">Origem x Destino</th>
-                        <th scope="col">Tipo</th>
+                        <th scope="col">Opção</th>
                         <th scope="col">Dia</th>
                         <th scope="col">Data</th>
+                        <th scope="col">Valor</th>
                         <th scope="col">Horário</th>
                         <th scope="col">Ações</th>
                     </tr>
@@ -93,6 +94,7 @@
                             <td><?= $linhaHorarios['descricao'] ?></td>
                             <td><?= $linhaHorarios['DESC'] ?></td>
                             <td><?= $linhaHorarios['data'] ?></td>
+                            <td>R$ <?= $linhaHorarios['VAL'] ?></td>
                             <td><?= $linhaHorarios['horario_inicio'] ?>h</td>
                             <td>
                                 <a href="<?= $this->baseUrl('admin-cliente/cadastrar/id/' . $linhaHorarios['id_dia'] . ',' . $linhaHorarios['id_linha'] . ',' . $linhaHorarios['horario_inicio']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">

@@ -117,10 +117,17 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
     {
         $select = $this->select()->setIntegrityCheck(false);
         $select->from(array('C' => 'COMPRA'), array('C.*'))
+                ->from(array('LH' => 'LINHA_HORARIOS'), array('LH.*', 'LH.valor AS VAL'))
                 ->from(array('L' => 'LINHA'), array('L.descricao'))
                 ->from(array('D' => 'DIA'), array('D.DESCRICAO'))
+                ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
+                ->from(array('CO' => 'categoria_onibus'), array('CO.descricao AS DESC'))
+                ->where('LH.ID_LINHA = L.ID_LINHA')
+                ->where('LH.ID_DIA = D.ID_DIA')
                 ->where('L.ID_LINHA = C.ID_LINHA')
                 ->where('D.ID_DIA = C.ID_DIA')
+                ->where('LH.ID_ONIBUS_VIAGEM = O.ID_ONIBUS_VIAGEM')
+                ->where('CO.ID_CATEGORIA_ONIBUS = O.ID_CATEGORIA_ONIBUS')
                 ->where('C.ID_COMPRA = "' . $id . '" ');
 
 //               var_dump($select->__toString());die();
@@ -154,7 +161,6 @@ class Application_Model_DbTable_Compra extends Zend_Db_Table_Abstract
                 ->from(array('U' => 'USUARIO'), array('U.*'))
                 ->from(array('O' => 'ONIBUS_VIAGEM'), array('O.*'))
                 ->from(array('CO' => 'categoria_onibus'), array('CO.descricao AS DESC'))
-                
                 ->where('LH.ID_ONIBUS_VIAGEM = O.ID_ONIBUS_VIAGEM')
                 ->where('LH.ID_LINHA = L.ID_LINHA')
                 ->where('LH.ID_DIA = D.ID_DIA')

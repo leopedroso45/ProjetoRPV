@@ -13,7 +13,7 @@
                 <thead >
                     <tr>
                         <th scope="col">Origem x Destino</th>
-                        <th scope="col">Tipo</th>
+                        <th scope="col">Opção</th>
                         <th scope="col">Dia</th>
                         <th scope="col">Data</th>
                         <th scope="col">Horário</th>
@@ -23,23 +23,28 @@
                 <tbody>
                     <? foreach ($this->listaDasCompras as $compra): ?>
                         <? if ($compra === NULL) { ?>
-                            Nenhum resultado
+                            <tr>
+                                <td>
+                                    Nenhum resultado
+                                </td>
+                            </tr>
+                        <? } else { ?>
+                            <tr>
+                                <td><?= $compra['descricao'] ?></td>
+                                <td><?= $compra['DESC'] ?></td>
+                                <td><?= $compra['dia'] ?></td>
+                                <td><?= $compra['data'] ?></td>
+                                <td><?= $compra['horario_inicio'] ?>h</td>
+                                <td>
+                                    <a href="<?= $this->baseUrl('admin-cliente/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
+                                        <span class="btn-label">
+                                            <i class="fas fa-eye" style="color: white;"></i>
+                                        </span>
+                                        Visualizar
+                                    </a>
+                                </td>
+                            </tr>
                         <? } ?>
-                        <tr>
-                            <td><?= $compra['descricao'] ?></td>
-                            <td><?= $compra['DESC'] ?></td>
-                            <td><?= $compra['dia'] ?></td>
-                            <td><?= $compra['data'] ?></td>
-                            <td><?= $compra['horario_inicio'] ?>h</td>
-                            <td>
-                                <a href="<?= $this->baseUrl('admin-cliente/visualizar/id/' . $compra['id_compra']) ?>" class="btn btn-primary btn-labeled" style="cursor: pointer;">
-                                    <span class="btn-label">
-                                        <i class="fas fa-eye" style="color: white;"></i>
-                                    </span>
-                                    Visualizar
-                                </a>
-                            </td>
-                        </tr>
                     <? endforeach; ?>
                 </tbody>
             </table>
