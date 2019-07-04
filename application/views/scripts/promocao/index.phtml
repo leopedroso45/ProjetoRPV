@@ -35,17 +35,17 @@
             <tr>
               <th scope="col">Identificador</th>
               <th scope="col">Nome</th>
-              <th scope="col">Descrição</th>
               <th scope="col">Valor</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
+            <?php foreach ($this->listaDasPromocoes as $promocao): ?>
+              <tr>
+                <th scope="row"><?= $promocao->getId_promocao() ?></th>
+                <td><?= $promocao->getNome_promocao() ?></td>
+                <td><?= $promocao->getValor_promocao() ?></td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
