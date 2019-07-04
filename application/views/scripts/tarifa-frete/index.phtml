@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:rgba(0,0,0,0.5);">
+                    <li class="breadcrumb-item"><a href="<?= $this->baseUrl("secretario") ?>">Início</a></li>
+                    <li class="breadcrumb-item active" style="color:white;" aria-current="page">Tarifas de Frete
+                    </li>
+                </ol>
+            </nav>
+            <form class="jumbotron" method="post" style="background-color:rgba(0,0,0,0.5); color: white;">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Peso <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="hidden" id="id_tarifa" name="id_tarifa" value="<?php echo $this->tarifa->getId_Tarifa(); ?>">
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="4" id="peso" name="peso" placeholder="Digite a tarifa a ser cobrada pelo peso" required value="<?php echo $this->tarifa->getPeso(); ?>">
+                        <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                            O campo numero de parada é obrigatório!
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Tamanho <strong title="Campo Obrigatório">*</strong></label>
+                        <input type="text" class="form-control" onkeyup="somenteNumeros(this);" maxlength="4" id="tamanho" name="tamanho" placeholder="Digite a tarifa a ser cobrada pelo tamanho" required value="<?php echo $this->tarifa->getTamanho(); ?>">
+                        <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                            O campo numero de parada é obrigatório!
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Observação </label>
+                        <input type="text" class="form-control" id="observacao" name="observacao" placeholder="Preencha uma observação, se necessário" value="<?php echo $this->tarifa->getObservacao(); ?>">
+                        <div class="alert alert-danger numeroParada" style="display: none;" role="alert">
+                            O campo numero de parada é obrigatório!
+                        </div>
+                    </div>
+                </div>
+                    <div class="alert alert-success " style="display: none;" role="alert">
+                        Cadastro de parada realizado com sucesso!
+                    </div>
+                    <hr>
+                    <button type="button" class="btn btn-primary btn-block editarTarifaFrete">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
